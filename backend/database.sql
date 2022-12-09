@@ -9,12 +9,12 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE
     `user` (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        username VARCHAR (255),
-        firstname VARCHAR(255),
-        lastname VARCHAR(255),
-        `password` VARCHAR(255),
-        mail VARCHAR(255),
-        `role` VARCHAR(255)
+        username VARCHAR (255) NOT NULL,
+        firstname VARCHAR(255) NOT NULL,
+        lastname VARCHAR(255) NOT NULL,
+        `password` VARCHAR(255) NOT NULL,
+        mail VARCHAR(255) NOT NULL,
+        `role` VARCHAR(255) NOT NULL
     );
 
 INSERT INTO
@@ -339,7 +339,7 @@ DROP TABLE IF EXISTS advice;
 CREATE TABLE
     advice (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        textAdvice LONGTEXT,
+        textAdvice LONGTEXT NOT NULL,
         user_id INT NOT NULL,
         CONSTRAINT fk_advice_user FOREIGN KEY (user_id) REFERENCES `user`(id),
         decisionMaking_id INT NOT NULL,
@@ -361,7 +361,7 @@ DROP TABLE IF EXISTS conflict;
 CREATE TABLE
     conflict (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        textConflict LONGTEXT,
+        textConflict LONGTEXT NOT NULL,
         user_id INT NOT NULL,
         CONSTRAINT fk_conflict_user FOREIGN KEY (user_id) REFERENCES `user`(id),
         decision_id INT NOT NULL,
