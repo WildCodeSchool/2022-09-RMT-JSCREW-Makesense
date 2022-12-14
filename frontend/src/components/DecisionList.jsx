@@ -29,9 +29,9 @@ function DecisionList() {
           </div>
         </div>
       </div>
-      <h1 className="text-start font-bold text-3xl px-12 pt-8 pb-4">
+      <h2 className="text-start font-bold text-3xl px-12 pt-8 pb-4">
         Première décision prise
-      </h1>
+      </h2>
       <div className="px-2">
         <div className="flex -mx-2">
           <div className="w-1/3 px-2">
