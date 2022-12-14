@@ -2,12 +2,18 @@ const express = require("express");
 
 const router = express.Router();
 
-const itemControllers = require("./controllers/itemControllers");
+const DecisionMakingController = require("./controllers/DecisionMakingController");
+const DecisionController = require("./controllers/DecisionController");
+const DesignatedUserController = require("./controllers/DesignatedUserController");
+const AdviceController = require("./controllers/AdviceController");
+const ConflictController = require("./controllers/ConflictController");
+const UserController = require("./controllers/UserController");
 
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
+router.get("/decisionsMaking", DecisionMakingController.browse);
+router.get("/decisions", DecisionController.browse);
+router.get("/roles", DesignatedUserController.browse);
+router.get("/advices", AdviceController.browse);
+router.get("/conflicts", ConflictController.browse);
+router.get("/users", UserController.browse);
 
 module.exports = router;
