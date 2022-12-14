@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-
 import DecisionCard from "./DecisionCard";
 
 function DecisionList() {
   return (
     <div>
-      <h3>Décisions en cours</h3>
+      <h1 className="text-start	font-bold text-3xl px-12 pt-8 pb-4">
+        Décisions en cours
+      </h1>
       <div className="px-2">
         <div className="flex -mx-2">
           <div className="w-1/3 px-2">
@@ -19,7 +19,19 @@ function DecisionList() {
           </div>
         </div>
       </div>
-      <h3>Première décision prise</h3>
+      <div className="px-2">
+        <div className="flex -mx-2">
+          <div className="w-1/3 px-2">
+            <DecisionCard />
+          </div>
+          <div className="w-1/3 px-2">
+            <DecisionCard />
+          </div>
+        </div>
+      </div>
+      <h1 className="text-start font-bold text-3xl px-10 pt-8 pb-4">
+        Première décision prise
+      </h1>
       <div className="px-2">
         <div className="flex -mx-2">
           <div className="w-1/3 px-2">

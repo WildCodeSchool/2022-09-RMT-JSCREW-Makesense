@@ -356,10 +356,10 @@ CREATE TABLE
         textDecision LONGTEXT NOT NULL
     );
 
-DROP TABLE IF EXISTS conflict;
+DROP TABLE IF EXISTS `conflict`;
 
 CREATE TABLE
-    conflict (
+    `conflict` (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         textConflict LONGTEXT NOT NULL,
         user_id INT NOT NULL,
