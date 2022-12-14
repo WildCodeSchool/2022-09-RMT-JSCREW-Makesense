@@ -11,7 +11,11 @@ const dataTest = {
     "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
   risk: "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
   decisionStatus: "Prise de décision commencée",
-  dateCreate: "2022-12-08",
+  dateCreate: "08 déc 2022",
+  dateAdvice: "2022-22-08",
+  dateFirstDecision: "2023-10-01",
+  dateConflict: "2023-17-01",
+  dateFinalDecision: "2023-22-01",
 };
 
 export default function ShowOneDecision() {
@@ -47,8 +51,8 @@ export default function ShowOneDecision() {
   }
 
   return (
-    <div className="display: flex w-full mt-20">
-      <div className="text-left ml-20 w-4/5">
+    <div className="flex w-full pt-20">
+      <div className="text-left ml-20 w-4/5 pr-20">
         <p className="border-2 border-solid border-black w-fit rounded-full px-2">
           {dataTest.decisionStatus}
         </p>
@@ -59,10 +63,10 @@ export default function ShowOneDecision() {
           <img src="" alt="mon avatar" />
           <p>{dataTest.user_id}</p>
         </div>
-        <div>
+        <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText1}
-            className="text-emerald-900 text-2xl font-bold ml-10 inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
             type="button"
           >
             <svg
@@ -81,13 +85,13 @@ export default function ShowOneDecision() {
             Detail decision
           </button>
           {myText1 ? (
-            <p className="text-black ml-20">{dataTest.description}</p>
+            <p className="text-black ml-10 mb-5">{dataTest.description}</p>
           ) : null}
         </div>
-        <div>
+        <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText2}
-            className="text-emerald-900 text-2xl font-bold ml-10 inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
             type="button"
           >
             <svg
@@ -106,13 +110,13 @@ export default function ShowOneDecision() {
             Impact sur l'organisation
           </button>
           {myText2 ? (
-            <p className="text-black ml-20">{dataTest.impact}</p>
+            <p className="text-black ml-10 mb-5">{dataTest.impact}</p>
           ) : null}
         </div>
-        <div>
+        <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText3}
-            className="text-emerald-900 text-2xl font-bold ml-10 inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
             type="button"
           >
             <svg
@@ -131,13 +135,13 @@ export default function ShowOneDecision() {
             Bénéfices
           </button>
           {myText3 ? (
-            <p className="text-black ml-20">{dataTest.profit}</p>
+            <p className="text-black ml-10 mb-5">{dataTest.profit}</p>
           ) : null}
         </div>
-        <div>
+        <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText4}
-            className="text-emerald-900 text-2xl font-bold ml-10 inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
             type="button"
           >
             <svg
@@ -155,12 +159,14 @@ export default function ShowOneDecision() {
             </svg>
             Risques Potentiels
           </button>
-          {myText4 ? <p className="text-black ml-20">{dataTest.risk}</p> : null}
+          {myText4 ? (
+            <p className="text-black ml-10 mb-5">{dataTest.risk}</p>
+          ) : null}
         </div>
-        <div>
+        <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText5}
-            className="text-emerald-900 text-2xl font-bold ml-10 inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
             type="button"
           >
             <svg
@@ -178,12 +184,12 @@ export default function ShowOneDecision() {
             </svg>
             Avis
           </button>
-          {myText5 ? <p className="text-black ml-20">test</p> : null}
+          {myText5 ? <p className="text-black ml-10 mb-5">test</p> : null}
         </div>
-        <div>
+        <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText6}
-            className="text-emerald-900 text-2xl font-bold ml-10 inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
             type="button"
           >
             <svg
@@ -201,11 +207,11 @@ export default function ShowOneDecision() {
             </svg>
             Première Décision
           </button>
-          {myText6 ? <p className="text-black ml-20">test</p> : null}
+          {myText6 ? <p className="text-black ml-10 mb-5">test</p> : null}
         </div>
       </div>
 
-      <div className="text-center w-1/5">
+      <div className="text-center w-1/5 border-l-2">
         <div className="mb-16">
           <h3 className="text-emerald-900 text-xl font-bold">
             Dates à retenir
@@ -213,10 +219,10 @@ export default function ShowOneDecision() {
           <div className="inline-flex mt-8">
             <div className="w-2/5">
               <p className="">{dataTest.dateCreate}</p>
-              <p className="mt-6">{dataTest.dateCreate}</p>
-              <p className="mt-6">{dataTest.dateCreate}</p>
-              <p className="mt-6">{dataTest.dateCreate}</p>
-              <p className="mt-6">{dataTest.dateCreate}</p>
+              <p className="mt-6">{dataTest.dateAdvice}</p>
+              <p className="mt-6">{dataTest.dateFirstDecision}</p>
+              <p className="mt-6">{dataTest.dateConflict}</p>
+              <p className="mt-6">{dataTest.dateFinalDecision}</p>
             </div>
             <div className="w-1/5">
               <div className="h-4 w-4 mt-1 border border-black rounded-full bg-lime-400 align-middle mx-auto" />
@@ -242,17 +248,65 @@ export default function ShowOneDecision() {
           <h3 className="text-emerald-900 text-xl font-bold">
             Personnes impactées
           </h3>
-          <p>voir les avis</p>
+          <div className="flex justify-center mt-5">
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+          </div>
+          <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight">
+            voir les avis
+          </p>
         </div>
         <div>
-          <h3 className="text-emerald-900 text-xl font-bold">
+          <h3 className="text-emerald-900 text-xl font-bold mt-5">
             Personnes expertes
           </h3>
-          <p>voir les avis</p>
+          <div className="flex justify-center mt-5">
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+            <img
+              className="w-10 h-10 rounded-full mr-4"
+              src="./src/assets/Avatar.png"
+              alt="Avatar utilisateur"
+            />
+          </div>
+          <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight">
+            voir les avis
+          </p>
         </div>
         <div>
           <button
-            className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-4 rounded-full"
+            className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
             type="button"
           >
             Donner mon avis
