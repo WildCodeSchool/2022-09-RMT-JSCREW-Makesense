@@ -269,6 +269,17 @@ VALUES (
         "user"
     );
 
+CREATE TABLE
+    decisionStatus (
+        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        status VARCHAR(255) NOT NULL
+    );
+
+INSERT INTO
+    decisionStatus (status) VALUE (
+        "Prise de décision commencée"
+    ), ("Première décision prise");
+
 DROP TABLE IF EXISTS decisionMaking;
 
 CREATE TABLE
@@ -281,7 +292,8 @@ CREATE TABLE
         impact LONGTEXT NOT NULL,
         profit LONGTEXT NOT NULL,
         risk LONGTEXT NOT NULL,
-        decisionStatus VARCHAR(255) NOT NULL,
+        decisionStatus_id INT NOT NULL,
+        CONSTRAINT fk_decisionMaking_decisionStatus FOREIGN KEY (decisionStatus_id) REFERENCES decisionStatus(id),
         dateCreate DATE NOT NULL,
         dateAdvice DATE,
         dateFirstDecision DATE,
@@ -298,7 +310,7 @@ INSERT INTO
         impact,
         profit,
         risk,
-        decisionStatus,
+        decisionStatus_id,
         dateCreate
     )
 VALUES (
@@ -309,7 +321,17 @@ VALUES (
         "Les impacts pour l’organisation sont de deux ordres : 1 : Financier :  La baisse du tarif du café sera compensée par une hausse de sa consommation. Les pertes seront donc nulles pour l’entreprise qui pourra même espérer des bénéfices.  2 : Vision positive de l’entreprise : Les salariés seront sensibles à cette baisse significative, particulièrement en cette période d’inflation.",
         "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
         "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
-        "Prise de décision commencée",
+        2,
+        "2022-12-08"
+    ), (
+        2,
+        16,
+        "Baisser le prix du café à la machine",
+        "Suite à des échanges avec différents collaborateurs, nous avons constaté que le prix du café à la machine-ci était trop élevé (0,75 euros). Le café faisant partie intégrante de notre quotidien, nous réclamons une baisse conséquente du prix fixée à 0,40 euros afin que nous puissions nous réunir de façon conviviale lors de nos pauses et ainsi échanger plus régulièrement autour d'un bon café. Nos différents échanges ont mis en exergue le fait que le prix actuel du café empêchaient certaines personnes d’en consommer, réduisant par conséquent les liens sociaux",
+        "Les impacts pour l’organisation sont de deux ordres : 1 : Financier :  La baisse du tarif du café sera compensée par une hausse de sa consommation. Les pertes seront donc nulles pour l’entreprise qui pourra même espérer des bénéfices.  2 : Vision positive de l’entreprise : Les salariés seront sensibles à cette baisse significative, particulièrement en cette période d’inflation.",
+        "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
+        "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
+        1,
         "2022-12-08"
     );
 
