@@ -310,6 +310,7 @@ VALUES (
         "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
         "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
         "Prise de décision commencée",
+        "Première décision prise",
         "2022-12-08"
     ), (
         2,
@@ -328,6 +329,7 @@ VALUES (
         "Pour une meilleure ergonomie, pour prévenir des troubles musculo-squelletiques, nous nous engageons à changer ceux-ci pour le confort et le bien-être de tous nos collaborateurs.",
         "Meilleur environnement pour une meilleure rentabilité, ces fauteuils éco-responsable seront changés tous les 5 ans et remis à diverses associations pour être réutilisés dans les pays les plus nécessiteux.",
         "Date de livraison indéterminée, certains open-space seront livrés plusieurs semaines avant d'autres",
+        "Première décision prise",
         "02/01/2023"
     ), (
         4,
@@ -383,6 +385,7 @@ VALUES (
         "Aborder les vacances scolaires plus sereinement pour les parents.",
         "Minimiser les conflits",
         "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
+        "Première décision prise",
         "12/04/2023"
     );
 
