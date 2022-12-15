@@ -15,7 +15,7 @@ const dataTest = {
   dateAdvice: "18 déc 2022",
   dateFirstDecision: "1er jan 2023",
   dateConflict: "17 jan 2023",
-  dateFinalDecision: "22 jan 2023"
+  dateFinalDecision: "22 jan 2023",
 };
 
 export default function ShowOneDecision() {
@@ -315,4 +315,4 @@ export default function ShowOneDecision() {
       </div>
     </div>
   );
-};
+}
