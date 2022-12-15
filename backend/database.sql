@@ -282,7 +282,7 @@ CREATE TABLE
         profit LONGTEXT NOT NULL,
         risk LONGTEXT NOT NULL,
         decisionStatus VARCHAR(255) NOT NULL,
-        dateCreate DATE NOT NULL,
+        dateCreate DATE NOT NULL DEFAULT CURRENT_DATE,
         dateAdvice DATE,
         dateFirstDecision DATE,
         dateConflict DATE,
@@ -311,6 +311,79 @@ VALUES (
         "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
         "Prise de décision commencée",
         "2022-12-08"
+    ), (
+        2,
+        17,
+        "Proposition d'un menu végétarien à la cantine",
+        "Dans le respect des choix de nos collaborateurs en matière culinaire, nous vous proposons de créer un menu végétarien sans gluten.",
+        "Aucun impact économique, juste un impact sur le bien-être de nos collaborateurs et sur le respect de leur choix de vie.",
+        "Les collaborateurs étant forcés à prendre leurs pauses à l'extérieur de la société pourront bénéficier d'un menu au sein de nos cantines",
+        "Certains risques, liés aux allergènes, peuvent être prévenu dès lors de l'entrée de la cantine, il suffira de prévenir le chef cuisinier qui se tiendra à votre disposition, pour qu'il prenne en compte votre demande.",
+        "12/04/2023"
+    ), (
+        3,
+        14,
+        "Remplacement des fauteuils de bureau",
+        "Dans le cadre du remplacement de tous les postes de travail; viens par synergie; le changement de tous les fauteuils de bureau.",
+        "Pour une meilleure ergonomie, pour prévenir des troubles musculo-squelletiques, nous nous engageons à changer ceux-ci pour le confort et le bien-être de tous nos collaborateurs.",
+        "Meilleur environnement pour une meilleure rentabilité, ces fauteuils éco-responsable seront changés tous les 5 ans et remis à diverses associations pour être réutilisés dans les pays les plus nécessiteux.",
+        "Date de livraison indéterminée, certains open-space seront livrés plusieurs semaines avant d'autres",
+        "02/01/2023"
+    ), (
+        4,
+        12,
+        "Remplacement du mobilier de bureau",
+        "Depuis plusieurs années, les collaborateurs nous signalent des difficultés liées au vieillissement de l'outil bureautique qui semble nuire aux
+        rendements de l'entreprise ainsi qu'aux performances des salariés. Le matériel usité ayant fait son temps, il nous paraît indispensable de le  remplacer par un nouvel outil plus en adéquation avec la nouvelle norme de base sur l’ergonomie, correspondant davantage aux attentes de tous nos associés et collaborateurs. Dans une logique de cohérence écologique,
+        nous ferons le choix de travailler avec le maximum d'entreprises et artisans locaux en accord avec l'utilisation et la fabrication de
+        matériaux durables et écoresponsables. Pour ce faire, nous avons pris en compte de nombreux critères d'amélioration pour le bien-être
+        au travail. Notre choix s’est donc porté sur de nouveaux fauteuils de bureaux ergonomiques ainsi que des bureaux assis-debout.
+        Dans le même temps, nous souhaitons procéder au remplacement des radiateurs et climatisations par des pompes à chaleur, bien plus économiques et durables. La mise en place de nouvelles imprimantes modernes et donc plus efficientes est également envisagée ainsi que le remplacement du réseau internet filaire actuel par un réseau fibré. Enfin, suite à la première vague de modernisation des locaux de l'entreprise, nous terminerons par le remplacement de tous les luminaires par des plafonniers à LED.
+
+        Dans la liste des nouveaux outils, nous avons répertorié :
+        - des fauteuils ergonomiques,
+        - des bureaux assis-debout,
+        - des imprimantes nouvelle génération,
+        - la rénovation du réseau internet filaire par fibre,
+        - une pompe à chaleur,
+        - des plafonniers LED.
+
+        Nous sommes à l'écoute de toute suggestion et espérons avoir un maximum de retours sur cette initiative qui signerait le nouveau départ de l'entreprise vers une période de transition écologique.
+        Nous avons tenu compte de toutes les réclamations adressées aux ressources humaines ces dernières années.
+
+        Nous ne sommes toutefois pas à l'abri d’oublis. Par conséquent, nous vous invitons à réfléchir à d’autres propositions pour contribuer à votre nouvel environnement de travail.
+
+        En cas d’approbation de nos propositions, nous prévoyons d’initier les travaux durant la période estivale afin de limiter les nuisances dans votre environnement de travail. Pour cela,
+
+        La décision devra être prise au plus tard au mois de mai afin de ne pas retarder le planning prévisionnel des principaux chantiers clients en cours.
+
+        Faites du sens, soyez MakeSense.",
+        "L'impact mesuré sur l'entreprise est double :
+        d'une part, ce projet nécessite une grosse enveloppe budgétaire,
+        d'autre part, nos dirigeants offriraient à notre entreprise un avenir plus écologique et à ses collaborateurs un environnement de travail plus sain.
+        Nos experts ont évalué le coût total du projet à 528.660 euros pour un déploiement sur une période de 3 mois. Les espaces de travail seront donc perturbés durant quelques semaines. A terme, les changements devraient toutefois grandement améliorer le bien-être au travail, véritable enjeu au cœur de la politique de l’entreprise.",
+        "Nous attendons un rapide retour sur investissement via un amortissement sur la facture énergétique. Nous espérons que les nouveaux outils seront acceptés par tous les collaborateurs afin de permettre une meilleure performance.",
+        "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
+        bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
+        02 / 03 / 2023,
+        02 / 03 / 2023,
+        02 / 04 / 2023,
+        02 / 05 / 2023,
+        10 / 05 / 2023,
+        "Suite à vos retours, nous avons fait le choix de procéder au rafraîchissement des murs des locaux de travail. D'après plusieurs études, il nous semble opportun de repeindre les murs par des teintes de couleurs plus à même d'égayer vos journées et non les murs en teintes blanches et grises qui, j''en conviens, étaient moroses. Cela entraîne un léger surcoût sur la totalité du projet,
+        passant de 528 660 € à 532 000 € suites aux négociations avec les artisans locaux. Bien sûr, pour respecter notre nouvelle charte écologique et durable, nous avons fait le choix de peinture écoresponsable aux couleurs pastels qui nous ont été recommandées."
+    ), (
+        5,
+        18,
+        "Créer une fête annuelle",
+        "Comme il est de coutume au sein de nombreuses entreprises, je vous propose d’organiser une soirée annuelle de « Noël » afin que nous puissions ensemble, célébrer une année supplémentaire passée ensemble.
+        Cet événement débutera à 17h le vendredi 16 décembre par une partie de bowling en équipe de 4 personnes. Les formations des équipes seront tirées au sort afin de favoriser les rencontres. Au sein de chaque équipe, chacune des personnes devra offrir à l’un de ses coéquipiers un présent, acheté au préalable (valeur maximum 10 euros). Le thème cette année pour le présent : le voyage.
+        Cette partie endiablée sera suivie d’un repas de « Noël » au sein même du bowling. Un traiteur, choisi au préalable, nous aura concocté un menu « entrée-plat-dessert » suivi de quelques douceurs. Ce repas sera, bien évidemment accompagné de doux nectar, sélectionné avec délicatesse par notre expert Yanis.
+        Pour les plus téméraires, une soirée dansante sous le thème des années 80, animé par un DJ, vous sera proposé.",
+        "Aborder les vacances scolaires plus sereinement pour les parents.",
+        "Minimiser les conflits",
+        "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
+        "12/04/2023"
     );
 
 DROP TABLE IF EXISTS designatedUser;
@@ -345,6 +418,15 @@ CREATE TABLE
         decisionMaking_id INT NOT NULL,
         CONSTRAINT fk_advice_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id)
     );
+
+INSERT INTO
+    advice (id, textAdvice, user_id, decisionMaking_id)
+VALUES (1,
+        "Bonjour Sylvain, très bonne initiative, je pense que le fait de baisser le prix du café nous permettra d'être plus en symbiose du fait que certaines personnes se restreignaient à cause du coût; assez fort; de celui-ci.
+        Nous verrons dorénavant plus de collègues dès lors de ce changement. Cela nous apportera une meilleure entente et de nombreux liens au-delà du cadre professionnel.",
+        10,
+        1
+        );
 
 DROP TABLE IF EXISTS decision;
 
