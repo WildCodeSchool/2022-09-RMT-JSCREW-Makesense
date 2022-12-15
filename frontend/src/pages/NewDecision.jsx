@@ -1,9 +1,31 @@
 import React, { useState } from "react";
 
 function NewDecision() {
-  const [handleChange, setHandleChange] = useState("");
-  const handleInput = (e) => {
-    setHandleChange(e.target.value);
+  const [handleDecisionTitle, setHandleDecisonTitle] = useState("");
+  const [handleDecisionDescription, setHandleDecisionDescription] =
+    useState("");
+  const [handleImpact, setHandleImpact] = useState("");
+  const [handleBenefits, setHandleBenefits] = useState("");
+  const [handleRisk, setHandleRisk] = useState("");
+  const [handleDecisionDate, setHandleDecisionDate] = useState("mydate");
+
+  const handleDecisionInput = (e) => {
+    setHandleDecisonTitle(e.target.value);
+  };
+  const handleDescriptionInput = (e) => {
+    setHandleDecisionDescription(e.target.value);
+  };
+  const handleImpactInput = (e) => {
+    setHandleImpact(e.target.value);
+  };
+  const handleBenefitsInput = (e) => {
+    setHandleBenefits(e.target.value);
+  };
+  const handleRiskInput = (e) => {
+    setHandleRisk(e.target.value);
+  };
+  const handleDecisionDateInput = (e) => {
+    setHandleDecisionDate(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,8 +48,8 @@ function NewDecision() {
                     type="text"
                     id="decisionTitle"
                     name="decisionTitle"
-                    value={handleChange}
-                    onChange={handleInput}
+                    value={handleDecisionTitle}
+                    onChange={handleDecisionInput}
                   />
                 </div>
                 <div className=" mb-5">
@@ -37,6 +59,8 @@ function NewDecision() {
                     type="text"
                     id="decisionDetail"
                     name="decisionDetail"
+                    value={handleDecisionDescription}
+                    onChange={handleDescriptionInput}
                   />
                 </div>
               </div>
@@ -44,21 +68,23 @@ function NewDecision() {
                 <div className="mb-20">
                   <p className="mb-2">Saisie date</p>
                   <input
-                    className="border border-500 w-6/12 rounded-lg"
+                    className="border border-500 w-8/12 rounded-lg"
                     type="date"
+                    value={handleDecisionDate}
+                    onChange={handleDecisionDateInput}
                   />
                 </div>
                 <div className="mb-2 ">
                   <p className="mb-2">Personnes expertes</p>
                   <input
-                    className="border border-500 rounded-lg w-6/12"
+                    className="border border-500 rounded-lg w-8/12"
                     type="text"
                   />
                 </div>
                 <div className="mb-5">
                   <p className="mb-2">Personnes impactées</p>
                   <input
-                    className="border border-500 rounded-lg w-6/12"
+                    className="border border-500 rounded-lg w-8/12"
                     type="text"
                   />
                 </div>
@@ -71,6 +97,8 @@ function NewDecision() {
                 type="text"
                 id="impact"
                 name="impact"
+                value={handleImpact}
+                onChange={handleImpactInput}
               />
             </div>
             <div className=" mb-5">
@@ -80,6 +108,8 @@ function NewDecision() {
                 type="text"
                 id="benefits"
                 name="benefits"
+                value={handleBenefits}
+                onChange={handleBenefitsInput}
               />
             </div>
             <div className=" mb-5">
@@ -89,18 +119,20 @@ function NewDecision() {
                 type="text"
                 id="decisionTitle"
                 name="decisionTitle"
+                value={handleRisk}
+                onChange={handleRiskInput}
               />
             </div>
             <div className="flex justify-end w-7/12">
               <button
                 type="submit"
-                className="bg-green-900 hover:bg-green-700 w-2/12 h-10 rounded-lg text-white"
+                className="bg-green-900 hover:bg-green-700 w-3/12 h-10 rounded-lg text-white"
               >
                 Annuler
               </button>
               <button
                 type="submit"
-                className="bg-green-900 hover:bg-green-700 w-2/12 h-10 ml-3 rounded-lg text-white"
+                className="bg-green-900 hover:bg-green-700 w-3/12 h-10 ml-3 rounded-lg text-white"
               >
                 Valider
               </button>
