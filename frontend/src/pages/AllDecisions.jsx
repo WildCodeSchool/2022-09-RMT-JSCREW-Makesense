@@ -1,13 +1,12 @@
+import DecisionList from "../components/DecisionList";
 import Search from "../components/Search";
-import DecisionInProgressList from "../components/DecisionInProgressList";
-import FirstDecisionList from "../components/FirstDecisionList";
 
 function AllDecisions() {
   return (
     <div>
       <Search />
-      <DecisionInProgressList />
-      <FirstDecisionList />
+      <DecisionList statusId={1} title="Décision en cours" />
+      <DecisionList statusId={2} title="Première décision prise" />
     </div>
   );
 }
