@@ -12,10 +12,10 @@ const dataTest = {
   risk: "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
   decisionStatus: "Prise de décision commencée",
   dateCreate: "08 déc 2022",
-  dateAdvice: "2022-22-08",
-  dateFirstDecision: "2023-10-01",
-  dateConflict: "2023-17-01",
-  dateFinalDecision: "2023-22-01",
+  dateAdvice: "18 déc 2022",
+  dateFirstDecision: "1er jan 2023",
+  dateConflict: "17 jan 2023",
+  dateFinalDecision: "22 jan 2023"
 };
 
 export default function ShowOneDecision() {
@@ -56,12 +56,12 @@ export default function ShowOneDecision() {
         <p className="border-2 border-solid border-black w-fit rounded-full px-2">
           {dataTest.decisionStatus}
         </p>
-        <h2 className="text-emerald-900 text-4xl font-bold">
+        <h2 className="text-emerald-900 text-4xl font-bold mt-2">
           {dataTest.title}
         </h2>
-        <div className="inline-flex mb-20">
-          <img src="" alt="mon avatar" />
-          <p>{dataTest.user_id}</p>
+        <div className="inline-flex mb-20 mt-2">
+          <img src="" alt="Avatar utilisateur" />
+          <p className="ml-5">Par {dataTest.user_id}</p>
         </div>
         <div className="border-b-2 ml-10">
           <button
@@ -82,7 +82,7 @@ export default function ShowOneDecision() {
                 clipRule="evenodd"
               />
             </svg>
-            Detail decision
+            Détail décision
           </button>
           {myText1 ? (
             <p className="text-black ml-10 mb-5">{dataTest.description}</p>
@@ -91,7 +91,7 @@ export default function ShowOneDecision() {
         <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText2}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
             <svg
@@ -116,7 +116,7 @@ export default function ShowOneDecision() {
         <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText3}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
             <svg
@@ -141,7 +141,7 @@ export default function ShowOneDecision() {
         <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText4}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
             <svg
@@ -166,7 +166,7 @@ export default function ShowOneDecision() {
         <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText5}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
             <svg
@@ -189,7 +189,7 @@ export default function ShowOneDecision() {
         <div className="border-b-2 ml-10">
           <button
             onClick={toggleDisplayMyText6}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
+            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
             <svg
@@ -315,4 +315,4 @@ export default function ShowOneDecision() {
       </div>
     </div>
   );
-}
+};
