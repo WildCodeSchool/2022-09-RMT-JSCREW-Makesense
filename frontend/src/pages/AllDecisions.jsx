@@ -2,12 +2,12 @@ import Search from "../components/Search";
 import DecisionInProgressList from "../components/DecisionInProgressList";
 import FirstDecisionList from "../components/FirstDecisionList";
 
-function AllDecisions() {
+function AllDecisions({ search, handleSearch }) {
   return (
     <div>
-      <Search />
-      <DecisionInProgressList />
-      <FirstDecisionList />
+      <Search search={search} handleSearch={handleSearch} />
+      <DecisionInProgressList search={search} />
+      <FirstDecisionList search={search} />
     </div>
   );
 }

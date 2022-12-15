@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import DecisionCard from "./DecisionCard";
 
-function FirstDecisionList() {
+function FirstDecisionList({ search }) {
   const [firstDecisionList, setFirstDecisionsList] = useState([]);
 
   useEffect(() => {
@@ -21,12 +21,17 @@ function FirstDecisionList() {
           <div className="flex -mx-2">
             <div className="w-1/3 px-2">
               {firstDecisionList &&
-                firstDecisionList.map((decisionsMaking) => (
-                  <DecisionCard
-                    key={decisionsMaking.id}
-                    decisionsMaking={decisionsMaking}
-                  />
-                ))}
+                firstDecisionList
+                  .filter(
+                    (decisionsMaking) =>
+                      decisionsMaking.title.includes(search) || search === ""
+                  )
+                  .map((decisionsMaking) => (
+                    <DecisionCard
+                      key={decisionsMaking.id}
+                      decisionsMaking={decisionsMaking}
+                    />
+                  ))}
             </div>
           </div>
         </div>
