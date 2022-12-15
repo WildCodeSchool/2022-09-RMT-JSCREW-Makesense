@@ -1,11 +1,13 @@
 import Search from "../components/Search";
-import DecisionList from "../components/DecisionList";
+import DecisionInProgressList from "../components/DecisionInProgressList";
+import FirstDecisionList from "../components/FirstDecisionList";
 
 function AllDecisions() {
   return (
     <div>
       <Search />
-      <DecisionList />
+      <DecisionInProgressList />
+      <FirstDecisionList />
     </div>
   );
 }

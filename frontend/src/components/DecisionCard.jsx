@@ -3,7 +3,7 @@ function DecisionCard({ decisionsMaking }) {
     <div className="max-w-sm rounded-lg border-2 overflow-hidden ml-10 my-2">
       <div className="px-6 pt-4">
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          {decisionsMaking.decisionStatus}
+          {decisionsMaking.status}
         </span>
       </div>
       <div className="px-6 py-4">
@@ -15,7 +15,7 @@ function DecisionCard({ decisionsMaking }) {
             alt="Avatar of user"
           />
           <p className="text-gray-700 text-base text-sm">
-            Par {decisionsMaking.user_id}
+            Par {decisionsMaking.firstname} {decisionsMaking.lastname}
           </p>
         </div>
       </div>
