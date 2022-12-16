@@ -1,22 +1,5 @@
-import React, { useState } from "react";
-
-const dataTest = {
-  user_id: "Sylvain Tormo",
-  title: "Baisser le prix du café à la machine",
-  description:
-    "Suite à des échanges avec différents collaborateurs, nous avons constaté que le prix du café à la machine-ci était trop élevé (0,75 euros). Le café faisant partie intégrante de notre quotidien, nous réclamons une baisse conséquente du prix fixée à 0,40 euros afin que nous puissions nous réunir de façon conviviale lors de nos pauses et ainsi échanger plus régulièrement autour d'un bon café. Nos différents échanges ont mis en exergue le fait que le prix actuel du café empêchaient certaines personnes d’en consommer, réduisant par conséquent les liens sociaux",
-  impact:
-    "Les impacts pour l’organisation sont de deux ordres : 1 : Financier :  La baisse du tarif du café sera compensée par une hausse de sa consommation. Les pertes seront donc nulles pour l’entreprise qui pourra même espérer des bénéfices.  2 : Vision positive de l’entreprise : Les salariés seront sensibles à cette baisse significative, particulièrement en cette période d’inflation.",
-  profit:
-    "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
-  risk: "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
-  decisionStatus: "Prise de décision commencée",
-  dateCreate: "08 déc 2022",
-  dateAdvice: "18 déc 2022",
-  dateFirstDecision: "1er jan 2023",
-  dateConflict: "17 jan 2023",
-  dateFinalDecision: "22 jan 2023",
-};
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function ShowOneDecision() {
   const [myText1, setMyText1] = useState(false);
@@ -25,6 +8,16 @@ export default function ShowOneDecision() {
   const [myText4, setMyText4] = useState(false);
   const [myText5, setMyText5] = useState(false);
   const [myText6, setMyText6] = useState(false);
+
+  const [oneDecision, setOneDecision] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/decisionsMaking/?status=${id}`)
+      .then((res) => res.json())
+      .then((data) => setOneDecision(data))
+      .catch((err) => console.error(err));
+  }, [id]);
 
   function toggleDisplayMyText1() {
     setMyText1(!myText1);
@@ -54,14 +47,16 @@ export default function ShowOneDecision() {
     <div className="flex w-full pt-20">
       <div className="text-left ml-20 w-4/5 pr-20">
         <p className="border-2 border-solid border-black w-fit rounded-full px-2">
-          {dataTest.decisionStatus}
+          {oneDecision.status}
         </p>
         <h2 className="text-emerald-900 text-4xl font-bold mt-2">
-          {dataTest.title}
+          {oneDecision.title}
         </h2>
         <div className="inline-flex mb-20 mt-2">
-          <img src="" alt="Avatar utilisateur" />
-          <p className="ml-5">Par {dataTest.user_id}</p>
+          <img src="./src/assets/Avatar.png" alt="Avatar utilisateur" />
+          <p className="ml-5">
+            Par {oneDecision.firstname} {oneDecision.lastname}
+          </p>
         </div>
         <div className="border-b-2 ml-10">
           <button
@@ -85,7 +80,7 @@ export default function ShowOneDecision() {
             Détail décision
           </button>
           {myText1 ? (
-            <p className="text-black ml-10 mb-5">{dataTest.description}</p>
+            <p className="text-black ml-10 mb-5">{oneDecision.description}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
@@ -110,7 +105,7 @@ export default function ShowOneDecision() {
             Impact sur l'organisation
           </button>
           {myText2 ? (
-            <p className="text-black ml-10 mb-5">{dataTest.impact}</p>
+            <p className="text-black ml-10 mb-5">{oneDecision.impact}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
@@ -135,7 +130,7 @@ export default function ShowOneDecision() {
             Bénéfices
           </button>
           {myText3 ? (
-            <p className="text-black ml-10 mb-5">{dataTest.profit}</p>
+            <p className="text-black ml-10 mb-5">{oneDecision.profit}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
@@ -160,7 +155,7 @@ export default function ShowOneDecision() {
             Risques Potentiels
           </button>
           {myText4 ? (
-            <p className="text-black ml-10 mb-5">{dataTest.risk}</p>
+            <p className="text-black ml-10 mb-5">{oneDecision.risk}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
@@ -218,11 +213,11 @@ export default function ShowOneDecision() {
           </h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
-              <p className="">{dataTest.dateCreate}</p>
-              <p className="mt-6">{dataTest.dateAdvice}</p>
-              <p className="mt-6">{dataTest.dateFirstDecision}</p>
-              <p className="mt-6">{dataTest.dateConflict}</p>
-              <p className="mt-6">{dataTest.dateFinalDecision}</p>
+              <p className="">{oneDecision.dateCreate}</p>
+              <p className="mt-6">{oneDecision.dateAdvice}</p>
+              <p className="mt-6">{oneDecision.dateFirstDecision}</p>
+              <p className="mt-6">{oneDecision.dateConflict}</p>
+              <p className="mt-6">{oneDecision.dateFinalDecision}</p>
             </div>
             <div className="w-1/5">
               <div className="h-4 w-4 mt-1 border border-black rounded-full bg-lime-400 align-middle mx-auto" />
@@ -236,7 +231,7 @@ export default function ShowOneDecision() {
               <div className="h-4 w-4 border border-black rounded-full bg-slate-300 align-middle mx-auto" />
             </div>
             <div className="w-2/5 font-bold text-xs">
-              <p>{dataTest.decisionStatus}</p>
+              <p>{oneDecision.decisionStatus}</p>
               <p className="mt-4">Deadline pour donner son avis</p>
               <p className="mt-4">Première décision prise</p>
               <p className="mt-4">Deadline pour rentrer en conflit</p>
