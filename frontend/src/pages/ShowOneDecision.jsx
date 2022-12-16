@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function ShowOneDecision() {
-  const [myText1, setMyText1] = useState(false);
-  const [myText2, setMyText2] = useState(false);
-  const [myText3, setMyText3] = useState(false);
-  const [myText4, setMyText4] = useState(false);
-  const [myText5, setMyText5] = useState(false);
-  const [myText6, setMyText6] = useState(false);
+  const [detailDecision, setDetailDecision] = useState(false);
+  const [impactOrganisation, setImpactOrganisation] = useState(false);
+  const [benef, setBenef] = useState(false);
+  const [risk, setRisk] = useState(false);
+  const [avis, setAvis] = useState(false);
+  const [premiereDecision, setPremiereDecision] = useState(false);
 
   const [oneDecision, setOneDecision] = useState([]);
   const { id } = useParams();
@@ -19,28 +19,28 @@ export default function ShowOneDecision() {
       .catch((err) => console.error(err));
   }, [id]);
 
-  function toggleDisplayMyText1() {
-    setMyText1(!myText1);
+  function toggleDisplayDetailDecision() {
+    setDetailDecision(!detailDecision);
   }
 
-  function toggleDisplayMyText2() {
-    setMyText2(!myText2);
+  function toggleDisplayImpactOrganisation() {
+    setImpactOrganisation(!impactOrganisation);
   }
 
-  function toggleDisplayMyText3() {
-    setMyText3(!myText3);
+  function toggleDisplayBenef() {
+    setBenef(!benef);
   }
 
-  function toggleDisplayMyText4() {
-    setMyText4(!myText4);
+  function toggleDisplayRisk() {
+    setRisk(!risk);
   }
 
-  function toggleDisplayMyText5() {
-    setMyText5(!myText5);
+  function toggleDisplayAvis() {
+    setAvis(!avis);
   }
 
-  function toggleDisplayMyText6() {
-    setMyText6(!myText6);
+  function toggleDisplayPremiereDecision() {
+    setPremiereDecision(!premiereDecision);
   }
 
   return (
@@ -60,7 +60,7 @@ export default function ShowOneDecision() {
         </div>
         <div className="border-b-2 ml-10">
           <button
-            onClick={toggleDisplayMyText1}
+            onClick={toggleDisplayDetailDecision}
             className="text-emerald-900 text-2xl font-bold inline-flex items-center"
             type="button"
           >
@@ -79,13 +79,13 @@ export default function ShowOneDecision() {
             </svg>
             Détail décision
           </button>
-          {myText1 ? (
+          {detailDecision ? (
             <p className="text-black ml-10 mb-5">{oneDecision.description}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
           <button
-            onClick={toggleDisplayMyText2}
+            onClick={toggleDisplayImpactOrganisation}
             className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
@@ -104,13 +104,13 @@ export default function ShowOneDecision() {
             </svg>
             Impact sur l'organisation
           </button>
-          {myText2 ? (
+          {impactOrganisation ? (
             <p className="text-black ml-10 mb-5">{oneDecision.impact}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
           <button
-            onClick={toggleDisplayMyText3}
+            onClick={toggleDisplayBenef}
             className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
@@ -129,13 +129,13 @@ export default function ShowOneDecision() {
             </svg>
             Bénéfices
           </button>
-          {myText3 ? (
+          {benef ? (
             <p className="text-black ml-10 mb-5">{oneDecision.profit}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
           <button
-            onClick={toggleDisplayMyText4}
+            onClick={toggleDisplayRisk}
             className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
@@ -154,13 +154,13 @@ export default function ShowOneDecision() {
             </svg>
             Risques Potentiels
           </button>
-          {myText4 ? (
+          {risk ? (
             <p className="text-black ml-10 mb-5">{oneDecision.risk}</p>
           ) : null}
         </div>
         <div className="border-b-2 ml-10">
           <button
-            onClick={toggleDisplayMyText5}
+            onClick={toggleDisplayAvis}
             className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
@@ -179,11 +179,11 @@ export default function ShowOneDecision() {
             </svg>
             Avis
           </button>
-          {myText5 ? <p className="text-black ml-10 mb-5">test</p> : null}
+          {avis ? <p className="text-black ml-10 mb-5">test</p> : null}
         </div>
         <div className="border-b-2 ml-10">
           <button
-            onClick={toggleDisplayMyText6}
+            onClick={toggleDisplayPremiereDecision}
             className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
@@ -202,7 +202,9 @@ export default function ShowOneDecision() {
             </svg>
             Première Décision
           </button>
-          {myText6 ? <p className="text-black ml-10 mb-5">test</p> : null}
+          {premiereDecision ? (
+            <p className="text-black ml-10 mb-5">test</p>
+          ) : null}
         </div>
       </div>
 
