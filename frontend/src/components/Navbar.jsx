@@ -26,7 +26,7 @@ function Navbar() {
             src={PictoArchive}
             alt="logo2"
           />
-          <p>Archives</p>
+          <p>Les Archives</p>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <img
@@ -42,7 +42,7 @@ function Navbar() {
             src={PictoNotification}
             alt="logo4"
           />
-          <p>Notification</p>
+          <p>Notifications</p>
         </div>
         <div className="inline-block text-center place-content-center mr-10">
           <img
