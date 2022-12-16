@@ -269,6 +269,17 @@ VALUES (
         "user"
     );
 
+CREATE TABLE
+    decisionStatus (
+        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        status VARCHAR(255) NOT NULL
+    );
+
+INSERT INTO
+    decisionStatus (status) VALUE (
+        "Prise de décision commencée"
+    ), ("Première décision prise");
+
 DROP TABLE IF EXISTS decisionMaking;
 
 CREATE TABLE
@@ -281,7 +292,8 @@ CREATE TABLE
         impact LONGTEXT NOT NULL,
         profit LONGTEXT NOT NULL,
         risk LONGTEXT NOT NULL,
-        decisionStatus VARCHAR(255) NOT NULL,
+        decisionStatus_id INT NOT NULL,
+        CONSTRAINT fk_decisionMaking_decisionStatus FOREIGN KEY (decisionStatus_id) REFERENCES decisionStatus(id),
         dateCreate DATE NOT NULL DEFAULT CURRENT_DATE,
         dateAdvice DATE,
         dateFirstDecision DATE,
@@ -298,8 +310,12 @@ INSERT INTO
         impact,
         profit,
         risk,
-        decisionStatus,
-        dateCreate
+        decisionStatus_id,
+        dateCreate,
+        dateAdvice,
+        dateFirstDecision,
+        dateConflict,
+        dateFinalDecision
     )
 VALUES (
         1,
@@ -309,8 +325,7 @@ VALUES (
         "Les impacts pour l’organisation sont de deux ordres : 1 : Financier :  La baisse du tarif du café sera compensée par une hausse de sa consommation. Les pertes seront donc nulles pour l’entreprise qui pourra même espérer des bénéfices.  2 : Vision positive de l’entreprise : Les salariés seront sensibles à cette baisse significative, particulièrement en cette période d’inflation.",
         "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
         "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
-        "Prise de décision commencée",
-        "Première décision prise",
+        2,
         "2022-12-08"
     ), (
         2,
@@ -320,6 +335,7 @@ VALUES (
         "Aucun impact économique, juste un impact sur le bien-être de nos collaborateurs et sur le respect de leur choix de vie.",
         "Les collaborateurs étant forcés à prendre leurs pauses à l'extérieur de la société pourront bénéficier d'un menu au sein de nos cantines",
         "Certains risques, liés aux allergènes, peuvent être prévenu dès lors de l'entrée de la cantine, il suffira de prévenir le chef cuisinier qui se tiendra à votre disposition, pour qu'il prenne en compte votre demande.",
+        1, 
         "12/04/2023"
     ), (
         3,
@@ -329,7 +345,7 @@ VALUES (
         "Pour une meilleure ergonomie, pour prévenir des troubles musculo-squelletiques, nous nous engageons à changer ceux-ci pour le confort et le bien-être de tous nos collaborateurs.",
         "Meilleur environnement pour une meilleure rentabilité, ces fauteuils éco-responsable seront changés tous les 5 ans et remis à diverses associations pour être réutilisés dans les pays les plus nécessiteux.",
         "Date de livraison indéterminée, certains open-space seront livrés plusieurs semaines avant d'autres",
-        "Première décision prise",
+        1,
         "02/01/2023"
     ), (
         4,
@@ -367,6 +383,7 @@ VALUES (
         "Nous attendons un rapide retour sur investissement via un amortissement sur la facture énergétique. Nous espérons que les nouveaux outils seront acceptés par tous les collaborateurs afin de permettre une meilleure performance.",
         "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
         bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
+        2, 
         02 / 03 / 2023,
         02 / 03 / 2023,
         02 / 04 / 2023,
@@ -385,7 +402,7 @@ VALUES (
         "Aborder les vacances scolaires plus sereinement pour les parents.",
         "Minimiser les conflits",
         "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
-        "Première décision prise",
+        1,
         "12/04/2023"
     );
 

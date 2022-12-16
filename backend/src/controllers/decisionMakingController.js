@@ -1,10 +1,11 @@
 const models = require("../models");
 
 const browse = (req, res) => {
+  const { status } = req.query;
   models.decisionMaking
-    .findAll()
-    .then(([rows]) => {
-      res.send(rows);
+    .findAll(status)
+    .then(([decisionMaking]) => {
+      res.send(decisionMaking);
     })
     .catch((err) => {
       console.error(err);
