@@ -26,7 +26,7 @@ function Navbar() {
             src={PictoArchive}
             alt="logo2"
           />
-          <p>Les Archives</p>
+          <p>Archives</p>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <img
