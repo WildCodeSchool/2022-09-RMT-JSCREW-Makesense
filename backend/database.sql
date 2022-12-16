@@ -311,7 +311,11 @@ INSERT INTO
         profit,
         risk,
         decisionStatus_id,
-        dateCreate
+        dateCreate,
+        dateAdvice,
+        dateFirstDecision,
+        dateConflict,
+        dateFinalDecision
     )
 VALUES (
         1,
@@ -331,7 +335,7 @@ VALUES (
         "Aucun impact économique, juste un impact sur le bien-être de nos collaborateurs et sur le respect de leur choix de vie.",
         "Les collaborateurs étant forcés à prendre leurs pauses à l'extérieur de la société pourront bénéficier d'un menu au sein de nos cantines",
         "Certains risques, liés aux allergènes, peuvent être prévenu dès lors de l'entrée de la cantine, il suffira de prévenir le chef cuisinier qui se tiendra à votre disposition, pour qu'il prenne en compte votre demande.",
-        1, 
+        1,
         "12/04/2023"
     ), (
         3,
@@ -379,7 +383,7 @@ VALUES (
         "Nous attendons un rapide retour sur investissement via un amortissement sur la facture énergétique. Nous espérons que les nouveaux outils seront acceptés par tous les collaborateurs afin de permettre une meilleure performance.",
         "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
         bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
-        2, 
+        2,
         02 / 03 / 2023,
         02 / 03 / 2023,
         02 / 04 / 2023,
@@ -398,6 +402,7 @@ VALUES (
         "Aborder les vacances scolaires plus sereinement pour les parents.",
         "Minimiser les conflits",
         "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
+        1,
         1,
         "12/04/2023"
     );
@@ -436,13 +441,19 @@ CREATE TABLE
     );
 
 INSERT INTO
-    advice (id, textAdvice, user_id, decisionMaking_id)
-VALUES (1,
+    advice (
+        id,
+        textAdvice,
+        user_id,
+        decisionMaking_id
+    )
+VALUES (
+        1,
         "Bonjour Julien, très bonne initiative, je pense que le fait de baisser le prix du café nous permettra d'être plus en symbiose du fait que certaines personnes se restreignaient à cause du coût; assez fort; de celui-ci.
         Nous verrons dorénavant plus de collègues dès lors de ce changement. Cela nous apportera une meilleure entente et de nombreux liens au-delà du cadre professionnel.",
         10,
         1
-        );
+    );
 
 DROP TABLE IF EXISTS decision;
 
