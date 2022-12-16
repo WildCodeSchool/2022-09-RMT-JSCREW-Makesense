@@ -9,7 +9,6 @@ function NewDecision() {
     decision_impact: "",
     decision_benefits: "",
     decision_risk: "",
-    decision_date: "",
   });
 
   const handleDecision = (message, value) => {
@@ -67,10 +66,6 @@ function NewDecision() {
                   <input
                     className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]"
                     type="date"
-                    value={decision.decision_date}
-                    onChange={(e) =>
-                      handleDecision(e.target.message, e.target.value)
-                    }
                   />
                 </div>
                 <div className="mb-2 ">
