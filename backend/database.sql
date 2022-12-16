@@ -158,7 +158,7 @@ VALUES (
     ), (
         17,
         "klavigne",
-        "kevin",
+        "Kevin",
         "Lavigne",
         "Azerty123",
         "kevinlavigne@mail.com",
@@ -294,7 +294,7 @@ CREATE TABLE
         risk LONGTEXT NOT NULL,
         decisionStatus_id INT NOT NULL,
         CONSTRAINT fk_decisionMaking_decisionStatus FOREIGN KEY (decisionStatus_id) REFERENCES decisionStatus(id),
-        dateCreate DATE NOT NULL DEFAULT CURRENT_DATE,
+        dateCreate DATE NOT NULL,
         dateAdvice DATE,
         dateFirstDecision DATE,
         dateConflict DATE,
@@ -311,11 +311,7 @@ INSERT INTO
         profit,
         risk,
         decisionStatus_id,
-        dateCreate,
-        dateAdvice,
-        dateFirstDecision,
-        dateConflict,
-        dateFinalDecision
+        dateCreate
     )
 VALUES (
         1,
@@ -326,7 +322,7 @@ VALUES (
         "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
         "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
         2,
-        "2022/12/08"
+        "2022-12-08"
     ), (
         2,
         17,
@@ -336,7 +332,7 @@ VALUES (
         "Les collaborateurs étant forcés à prendre leurs pauses à l'extérieur de la société pourront bénéficier d'un menu au sein de nos cantines",
         "Certains risques, liés aux allergènes, peuvent être prévenu dès lors de l'entrée de la cantine, il suffira de prévenir le chef cuisinier qui se tiendra à votre disposition, pour qu'il prenne en compte votre demande.",
         1,
-        "12/04/2023"
+        "2023-04-12"
     ), (
         3,
         14,
@@ -346,7 +342,7 @@ VALUES (
         "Meilleur environnement pour une meilleure rentabilité, ces fauteuils éco-responsable seront changés tous les 5 ans et remis à diverses associations pour être réutilisés dans les pays les plus nécessiteux.",
         "Date de livraison indéterminée, certains open-space seront livrés plusieurs semaines avant d'autres",
         1,
-        "02/01/2023"
+        "2023-01-02"
     ), (
         4,
         12,
@@ -379,22 +375,16 @@ VALUES (
         "L'impact mesuré sur l'entreprise est double :
         d'une part, ce projet nécessite une grosse enveloppe budgétaire,
         d'autre part, nos dirigeants offriraient à notre entreprise un avenir plus écologique et à ses collaborateurs un environnement de travail plus sain.
-        Nos experts ont évalué le coût total du projet à 528.660 euros pour un déploiement sur une période de 3 mois. Les espaces de travail seront donc perturbés durant quelques semaines. A terme, les changements devraient toutefois grandement améliorer le bien-être au travail, véritable enjeu au cœur de la politique de l’entreprise.",
+        Nos experts ont évalué le coût tota du projet à 528.660 euros pour un déploiement sur une période de 3 mois. Les espaces de travail seront donc perturbés durant quelques semaines. A terme, les changements devraient toutefois grandement améliorer le bien-être au travail, véritable enjeu au cœur de la politique de l’entreprise.",
         "Nous attendons un rapide retour sur investissement via un amortissement sur la facture énergétique. Nous espérons que les nouveaux outils seront acceptés par tous les collaborateurs afin de permettre une meilleure performance.",
         "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
         bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
         2,
-        02 / 03 / 2023,
-        02 / 03 / 2023,
-        02 / 04 / 2023,
-        02 / 05 / 2023,
-        10 / 05 / 2023,
-        "Suite à vos retours, nous avons fait le choix de procéder au rafraîchissement des murs des locaux de travail. D'après plusieurs études, il nous semble opportun de repeindre les murs par des teintes de couleurs plus à même d'égayer vos journées et non les murs en teintes blanches et grises qui, j''en conviens, étaient moroses. Cela entraîne un léger surcoût sur la totalité du projet,
-        passant de 528 660 € à 532 000 € suites aux négociations avec les artisans locaux. Bien sûr, pour respecter notre nouvelle charte écologique et durable, nous avons fait le choix de peinture écoresponsable aux couleurs pastels qui nous ont été recommandées."
+        "2023-03-02"
     ), (
         5,
         18,
-        "Créer une fête annuelle",
+        "Créer une fête annuelle pour renforcer la cohésion d'équipe",
         "Comme il est de coutume au sein de nombreuses entreprises, je vous propose d’organiser une soirée annuelle de « Noël » afin que nous puissions ensemble, célébrer une année supplémentaire passée ensemble.
         Cet événement débutera à 17h le vendredi 16 décembre par une partie de bowling en équipe de 4 personnes. Les formations des équipes seront tirées au sort afin de favoriser les rencontres. Au sein de chaque équipe, chacune des personnes devra offrir à l’un de ses coéquipiers un présent, acheté au préalable (valeur maximum 10 euros). Le thème cette année pour le présent : le voyage.
         Cette partie endiablée sera suivie d’un repas de « Noël » au sein même du bowling. Un traiteur, choisi au préalable, nous aura concocté un menu « entrée-plat-dessert » suivi de quelques douceurs. Ce repas sera, bien évidemment accompagné de doux nectar, sélectionné avec délicatesse par notre expert Yanis.
@@ -403,8 +393,7 @@ VALUES (
         "Minimiser les conflits",
         "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
         1,
-        1,
-        "12/04/2023"
+        "2023-04-12"
     );
 
 DROP TABLE IF EXISTS designatedUser;

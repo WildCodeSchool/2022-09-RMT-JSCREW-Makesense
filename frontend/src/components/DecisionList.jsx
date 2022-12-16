@@ -20,21 +20,19 @@ function DecisionList({ search, statusId, title }) {
           {title}
         </h1>
         <div className="px-2">
-          <div className="flex -mx-2">
-            <div className="w-1/3 px-2">
-              {decisionList &&
-                decisionList
-                  .filter(
-                    (decisionsMaking) =>
-                      decisionsMaking.title.includes(search) || search === ""
-                  )
-                  .map((decisionsMaking) => (
-                    <DecisionCard
-                      key={decisionsMaking.id}
-                      decisionsMaking={decisionsMaking}
-                    />
-                  ))}
-            </div>
+          <div className="flex w-full -mx-2">
+            {decisionList &&
+              decisionList
+                .filter(
+                  (decisionsMaking) =>
+                    decisionsMaking.title.includes(search) || search === ""
+                )
+                .map((decisionsMaking) => (
+                  <DecisionCard
+                    key={decisionsMaking.id}
+                    decisionsMaking={decisionsMaking}
+                  />
+                ))}
           </div>
         </div>
       </div>
