@@ -375,7 +375,7 @@ VALUES (
         "L'impact mesuré sur l'entreprise est double :
         d'une part, ce projet nécessite une grosse enveloppe budgétaire,
         d'autre part, nos dirigeants offriraient à notre entreprise un avenir plus écologique et à ses collaborateurs un environnement de travail plus sain.
-        Nos experts ont évalué le coût tota du projet à 528.660 euros pour un déploiement sur une période de 3 mois. Les espaces de travail seront donc perturbés durant quelques semaines. A terme, les changements devraient toutefois grandement améliorer le bien-être au travail, véritable enjeu au cœur de la politique de l’entreprise.",
+        Nos experts ont évalué le coût total du projet à 528.660 euros pour un déploiement sur une période de 3 mois. Les espaces de travail seront donc perturbés durant quelques semaines. A terme, les changements devraient toutefois grandement améliorer le bien-être au travail, véritable enjeu au cœur de la politique de l’entreprise.",
         "Nous attendons un rapide retour sur investissement via un amortissement sur la facture énergétique. Nous espérons que les nouveaux outils seront acceptés par tous les collaborateurs afin de permettre une meilleure performance.",
         "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
         bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
