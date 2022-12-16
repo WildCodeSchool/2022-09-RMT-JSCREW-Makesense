@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import DecisionCard from "./DecisionCard";
 
-function DecisionList({ statusId, title }) {
+function DecisionList({ search, statusId, title }) {
   const [decisionList, setDecisionList] = useState();
 
   useEffect(() => {
@@ -20,16 +20,19 @@ function DecisionList({ statusId, title }) {
           {title}
         </h1>
         <div className="px-2">
-          <div className="flex -mx-2">
-            <div className="w-1/3 px-2">
-              {decisionList &&
-                decisionList.map((decisionsMaking) => (
+          <div className="flex w-full -mx-2">
+            {decisionList &&
+              decisionList
+                .filter(
+                  (decisionsMaking) =>
+                    decisionsMaking.title.includes(search) || search === ""
+                )
+                .map((decisionsMaking) => (
                   <DecisionCard
                     key={decisionsMaking.id}
                     decisionsMaking={decisionsMaking}
                   />
                 ))}
-            </div>
           </div>
         </div>
       </div>

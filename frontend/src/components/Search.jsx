@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search() {
+function Search({ search, handleSearch }) {
   return (
     <form className="px-12 pt-8 flex justify-end">
       <div className="relative">
@@ -19,9 +19,12 @@ function Search() {
           />
         </svg>
         <input
-          type="text"
+          type="search"
           placeholder="Rechercher"
-          className="w-80 py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600"
+          aria-label="Search"
+          className="w-80 py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-gray-300"
+          value={search}
+          onChange={(event) => handleSearch(event.target.value)}
         />
       </div>
     </form>

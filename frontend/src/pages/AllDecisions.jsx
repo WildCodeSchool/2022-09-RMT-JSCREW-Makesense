@@ -1,12 +1,16 @@
 import DecisionList from "../components/DecisionList";
 import Search from "../components/Search";
 
-function AllDecisions() {
+function AllDecisions({ search, handleSearch }) {
   return (
     <div>
-      <Search />
-      <DecisionList statusId={1} title="Décision en cours" />
-      <DecisionList statusId={2} title="Première décision prise" />
+      <Search search={search} handleSearch={handleSearch} />
+      <DecisionList statusId={1} title="Décision en cours" search={search} />
+      <DecisionList
+        statusId={2}
+        title="Première décision prise"
+        search={search}
+      />
     </div>
   );
 }
