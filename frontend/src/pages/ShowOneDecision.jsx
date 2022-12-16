@@ -231,7 +231,7 @@ export default function ShowOneDecision() {
               <div className="h-4 w-4 border border-black rounded-full bg-slate-300 align-middle mx-auto" />
             </div>
             <div className="w-2/5 font-bold text-xs">
-              <p>{oneDecision.decisionStatus}</p>
+              <p>{oneDecision.status}</p>
               <p className="mt-4">Deadline pour donner son avis</p>
               <p className="mt-4">Première décision prise</p>
               <p className="mt-4">Deadline pour rentrer en conflit</p>
