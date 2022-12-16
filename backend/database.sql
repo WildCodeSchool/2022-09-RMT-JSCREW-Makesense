@@ -384,11 +384,11 @@ VALUES (
         "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
         bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
         2,
-        02 / 03 / 2023,
-        02 / 03 / 2023,
-        02 / 04 / 2023,
-        02 / 05 / 2023,
-        10 / 05 / 2023,
+        02/03/2023,
+        02/03/2023,
+        02/04/2023,
+        02/05/2023,
+        10/05/2023,
         "Suite à vos retours, nous avons fait le choix de procéder au rafraîchissement des murs des locaux de travail. D'après plusieurs études, il nous semble opportun de repeindre les murs par des teintes de couleurs plus à même d'égayer vos journées et non les murs en teintes blanches et grises qui, j''en conviens, étaient moroses. Cela entraîne un léger surcoût sur la totalité du projet,
         passant de 528 660 € à 532 000 € suites aux négociations avec les artisans locaux. Bien sûr, pour respecter notre nouvelle charte écologique et durable, nous avons fait le choix de peinture écoresponsable aux couleurs pastels qui nous ont été recommandées."
     ), (
