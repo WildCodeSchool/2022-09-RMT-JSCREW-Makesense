@@ -3,32 +3,21 @@ import React, { useState } from "react";
 import "./newDecision.css";
 
 function NewDecision() {
-  const [handleDecisionTitle, setHandleDecisonTitle] = useState("");
-  const [handleDecisionDescription, setHandleDecisionDescription] =
-    useState("");
-  const [handleImpact, setHandleImpact] = useState("");
-  const [handleBenefits, setHandleBenefits] = useState("");
-  const [handleRisk, setHandleRisk] = useState("");
-  const [handleDecisionDate, setHandleDecisionDate] = useState("mydate");
+  const [decision, setDecision] = useState({
+    decision_title: "",
+    decision_description: "",
+    decision_impact: "",
+    decision_benefits: "",
+    decision_risk: "",
+    decision_date: "",
+  });
 
-  const handleDecisionInput = (e) => {
-    setHandleDecisonTitle(e.target.value);
+  const handleDecision = (message, value) => {
+    const newDecision = { ...decision };
+    newDecision[message] = value;
+    setDecision(newDecision);
   };
-  const handleDescriptionInput = (e) => {
-    setHandleDecisionDescription(e.target.value);
-  };
-  const handleImpactInput = (e) => {
-    setHandleImpact(e.target.value);
-  };
-  const handleBenefitsInput = (e) => {
-    setHandleBenefits(e.target.value);
-  };
-  const handleRiskInput = (e) => {
-    setHandleRisk(e.target.value);
-  };
-  const handleDecisionDateInput = (e) => {
-    setHandleDecisionDate(e.target.value);
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -51,8 +40,10 @@ function NewDecision() {
                     id="decisionTitle"
                     name="decisionTitle"
                     required
-                    value={handleDecisionTitle}
-                    onChange={handleDecisionInput}
+                    value={decision.decision_title}
+                    onChange={(e) =>
+                      handleDecision(e.target.message, e.target.value)
+                    }
                   />
                 </div>
                 <div className=" mb-5">
@@ -63,8 +54,10 @@ function NewDecision() {
                     id="decisionDetail"
                     name="decisionDetail"
                     required
-                    value={handleDecisionDescription}
-                    onChange={handleDescriptionInput}
+                    value={decision.decision_description}
+                    onChange={(e) =>
+                      handleDecision(e.target.message, e.target.value)
+                    }
                   />
                 </div>
               </div>
@@ -74,8 +67,10 @@ function NewDecision() {
                   <input
                     className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]"
                     type="date"
-                    value={handleDecisionDate}
-                    onChange={handleDecisionDateInput}
+                    value={decision.decision_date}
+                    onChange={(e) =>
+                      handleDecision(e.target.message, e.target.value)
+                    }
                   />
                 </div>
                 <div className="mb-2 ">
@@ -104,8 +99,10 @@ function NewDecision() {
                 id="impact"
                 name="impact"
                 required
-                value={handleImpact}
-                onChange={handleImpactInput}
+                value={decision.decision_impact}
+                onChange={(e) =>
+                  handleDecision(e.target.message, e.target.value)
+                }
               />
             </div>
             <div className=" mb-5">
@@ -116,8 +113,10 @@ function NewDecision() {
                 id="benefits"
                 name="benefits"
                 required
-                value={handleBenefits}
-                onChange={handleBenefitsInput}
+                value={decision.decision_benefits}
+                onChange={(e) =>
+                  handleDecision(e.target.message, e.target.value)
+                }
               />
             </div>
             <div className=" mb-5">
@@ -128,8 +127,10 @@ function NewDecision() {
                 id="decisionTitle"
                 name="decisionTitle"
                 required
-                value={handleRisk}
-                onChange={handleRiskInput}
+                value={decision.decision_risk}
+                onChange={(e) =>
+                  handleDecision(e.target.message, e.target.value)
+                }
               />
             </div>
             <div className="flex justify-end w-7/12 mb-5">
