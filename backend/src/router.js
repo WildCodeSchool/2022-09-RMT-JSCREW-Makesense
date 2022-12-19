@@ -10,6 +10,7 @@ const ConflictController = require("./controllers/conflictController");
 const UserController = require("./controllers/userController");
 
 router.get("/decisionsMaking", DecisionMakingController.browse);
+router.get("/decisionsMaking/:id", DecisionMakingController.read);
 router.get("/decisions", DecisionController.browse);
 router.get("/roles", DesignatedUserController.browse);
 router.get("/advices", AdviceController.browse);
