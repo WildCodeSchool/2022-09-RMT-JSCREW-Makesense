@@ -1,5 +1,9 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from "@components/Navbar";
+import NewDecision from "@pages/NewDecision";
+import ArchivedDecisions from "@pages/ArchivedDecisions";
 import AllDecisions from "./pages/AllDecisions";
 
 import "./App.css";
@@ -11,10 +15,17 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <Router>
       <Navbar />
-      <AllDecisions search={search} handleSearch={handleSearch} />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<AllDecisions search={search} handleSearch={handleSearch} />}
+        />
+        <Route path="/user/decision/new" element={<NewDecision />} />
+        <Route path="/archives" element={<ArchivedDecisions />} />
+      </Routes>
+    </Router>
   );
 }
 
