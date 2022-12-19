@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "@components/Navbar";
 import NewDecision from "@pages/NewDecision";
+import ArchivedDecisions from "@pages/ArchivedDecisions";
 import AllDecisions from "./pages/AllDecisions";
 
 import "./App.css";
@@ -21,7 +22,8 @@ function App() {
           path="/"
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
         />
-        <Route path="/user/decision/create" element={<NewDecision />} />
+        <Route path="/user/decision/new" element={<NewDecision />} />
+        <Route path="/archives" element={<ArchivedDecisions />} />
       </Routes>
     </Router>
   );
