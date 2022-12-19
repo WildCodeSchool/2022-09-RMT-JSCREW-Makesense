@@ -278,7 +278,7 @@ CREATE TABLE
 INSERT INTO
     decisionStatus (status) VALUE (
         "Prise de décision commencée"
-    ), ("Première décision prise");
+    ), ("Première décision prise"), ("Décision archivée");
 
 DROP TABLE IF EXISTS decisionMaking;
 
@@ -392,7 +392,7 @@ VALUES (
         "Aborder les vacances scolaires plus sereinement pour les parents.",
         "Minimiser les conflits",
         "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
-        1,
+        3,
         "2023-04-12"
     );
 
