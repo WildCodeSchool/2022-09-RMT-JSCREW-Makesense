@@ -11,9 +11,9 @@ function NewDecision() {
     decision_risk: "",
   });
 
-  const handleDecision = (message, value) => {
+  const handleDecision = (position, value) => {
     const newDecision = { ...decision };
-    newDecision[message] = value;
+    newDecision[position] = value;
     setDecision(newDecision);
   };
 
@@ -37,11 +37,11 @@ function NewDecision() {
                     className="border-2 w-8/12 rounded-lg outline-[#c8c8c8]"
                     type="text"
                     id="decisionTitle"
-                    name="decisionTitle"
+                    name="decision_title"
                     required
                     value={decision.decision_title}
                     onChange={(e) =>
-                      handleDecision(e.target.message, e.target.value)
+                      handleDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
@@ -51,11 +51,11 @@ function NewDecision() {
                     className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8]"
                     type="text"
                     id="decisionDetail"
-                    name="decisionDetail"
+                    name="decision_description"
                     required
                     value={decision.decision_description}
                     onChange={(e) =>
-                      handleDecision(e.target.message, e.target.value)
+                      handleDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
@@ -92,12 +92,10 @@ function NewDecision() {
                 className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8]"
                 type="text"
                 id="impact"
-                name="impact"
+                name="decision_impact"
                 required
                 value={decision.decision_impact}
-                onChange={(e) =>
-                  handleDecision(e.target.message, e.target.value)
-                }
+                onChange={(e) => handleDecision(e.target.name, e.target.value)}
               />
             </div>
             <div className=" mb-5">
@@ -106,12 +104,10 @@ function NewDecision() {
                 className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8]"
                 type="text"
                 id="benefits"
-                name="benefits"
+                name="decision_benefits"
                 required
                 value={decision.decision_benefits}
-                onChange={(e) =>
-                  handleDecision(e.target.message, e.target.value)
-                }
+                onChange={(e) => handleDecision(e.target.name, e.target.value)}
               />
             </div>
             <div className=" mb-5">
@@ -120,12 +116,10 @@ function NewDecision() {
                 className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8]"
                 type="text"
                 id="decisionTitle"
-                name="decisionTitle"
+                name="decision_risk"
                 required
                 value={decision.decision_risk}
-                onChange={(e) =>
-                  handleDecision(e.target.message, e.target.value)
-                }
+                onChange={(e) => handleDecision(e.target.name, e.target.value)}
               />
             </div>
             <div className="flex justify-end w-7/12 mb-5">
