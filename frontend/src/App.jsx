@@ -21,7 +21,7 @@ function App() {
           path="/"
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
         />
-        <Route path="/user/decision/create" element={<NewDecision />} />
+        <Route path="/user/decision/new" element={<NewDecision />} />
       </Routes>
     </Router>
   );
