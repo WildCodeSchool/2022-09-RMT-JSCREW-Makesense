@@ -1,9 +1,9 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  const { status } = req.query;
+  const { status, search } = req.query;
   models.decisionMaking
-    .findAll(status)
+    .findAll(status, search)
     .then(([decisionMaking]) => {
       res.send(decisionMaking);
     })

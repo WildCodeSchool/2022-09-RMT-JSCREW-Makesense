@@ -7,12 +7,14 @@ function DecisionList({ search, statusId, title }) {
 
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/decisionsMaking/?status=${statusId}`
+      `${
+        import.meta.env.VITE_BACKEND_URL
+      }/decisionsMaking/?status=${statusId}&search=${search}`
     )
       .then((res) => res.json())
       .then((data) => setDecisionList(data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [search]);
   return (
     <div>
       <div>
@@ -22,17 +24,12 @@ function DecisionList({ search, statusId, title }) {
         <div className="px-2">
           <div className="flex w-full -mx-2">
             {decisionList &&
-              decisionList
-                .filter(
-                  (decisionsMaking) =>
-                    decisionsMaking.title.includes(search) || search === ""
-                )
-                .map((decisionsMaking) => (
-                  <DecisionCard
-                    key={decisionsMaking.id}
-                    decisionsMaking={decisionsMaking}
-                  />
-                ))}
+              decisionList.map((decisionsMaking) => (
+                <DecisionCard
+                  key={decisionsMaking.id}
+                  decisionsMaking={decisionsMaking}
+                />
+              ))}
           </div>
         </div>
       </div>
