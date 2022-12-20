@@ -10,8 +10,7 @@ class UserManager extends AbstractManager {
     const value = [];
     if (searchPerson) {
       query += " where firstname like ? or lastname like ?";
-      value.push(`%${searchPerson}%`);
-      value.push(`%${searchPerson}%`);
+      value.push(`%${searchPerson}%`, `%${searchPerson}%`);
     }
     return this.connection.query(query, value);
   }

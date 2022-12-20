@@ -12,6 +12,11 @@ function NewDecision() {
     decision_risk: "",
   });
 
+  /**
+   *maj du state en fonction de sa propriété
+   * @param {string} position
+   * @param {string} value
+   */
   const handleDecision = (position, value) => {
     const newDecision = { ...decision };
     newDecision[position] = value;
@@ -75,7 +80,7 @@ function NewDecision() {
                 </div>
                 <div className="mb-5">
                   <p className="mb-2">Personnes impactées*</p>
-                  <SearchPerson />
+                  <SearchPerson SearchPerson={SearchPerson} />
                 </div>
               </div>
             </div>

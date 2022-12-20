@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import apiConnexion from "../services/apiConnexion";
 
 function SearchPerson() {
-  const [datas, setDatas] = useState([]);
+  const [users, setUsers] = useState();
   const [searchUser, setSearchUser] = useState("");
   useEffect(() => {
     apiConnexion
       .get(`/users/list/?searchUser=${searchUser}`)
-      .then((users) => setDatas(users.data))
+      .then((usr) => setUsers(usr.data))
       .catch((err) => console.error(err));
   }, [searchUser]);
   const handleSearchUser = (e) => {
@@ -25,8 +25,8 @@ function SearchPerson() {
         />
       </div>
       <div className="searchResults">
-        {datas.length > 0 &&
-          datas.map((user) => {
+        {users &&
+          users.map((user) => {
             return (
               <ul className="searchResult " key={user.id}>
                 {user.firstname} {user.lastname}
