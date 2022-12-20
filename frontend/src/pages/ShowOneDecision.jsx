@@ -19,6 +19,126 @@ export default function ShowOneDecision() {
       .catch((err) => console.error(err));
   }, [id]);
 
+  function getDateCreate(strDate) {
+    const strSplitDate = String(strDate).split(" ");
+    let date = new Date(strSplitDate[0]);
+    let dd = date.getDate();
+    let mm = date.getMonth() + 1;
+    let yyyy = date.getFullYear();
+    if (dd > 30) {
+      mm += 1;
+      dd -= 30;
+    }
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    if (mm > 12) {
+      yyyy += 1;
+      mm -= 12;
+    }
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+    date = `${dd}-${mm}-${yyyy}`;
+    return date.toString();
+  }
+
+  function getDateAdvice(strDate) {
+    const strSplitDate = String(strDate).split(" ");
+    let date = new Date(strSplitDate[0]);
+    let dd = date.getDate() + 10;
+    let mm = date.getMonth() + 1;
+    let yyyy = date.getFullYear();
+    if (dd > 30) {
+      mm += 1;
+      dd -= 30;
+    }
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    if (mm > 12) {
+      yyyy += 1;
+      mm -= 12;
+    }
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+    date = `${dd}-${mm}-${yyyy}`;
+    return date.toString();
+  }
+
+  function getDateFirstDecision(strDate) {
+    const strSplitDate = String(strDate).split(" ");
+    let date = new Date(strSplitDate[0]);
+    let dd = date.getDate();
+    let mm = date.getMonth() + 2;
+    let yyyy = date.getFullYear();
+    if (dd > 30) {
+      mm += 1;
+      dd -= 30;
+    }
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    if (mm > 12) {
+      yyyy += 1;
+      mm -= 12;
+    }
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+    date = `${dd}-${mm}-${yyyy}`;
+    return date.toString();
+  }
+
+  function getDateConflict(strDate) {
+    const strSplitDate = String(strDate).split(" ");
+    let date = new Date(strSplitDate[0]);
+    let dd = date.getDate() + 10;
+    let mm = date.getMonth() + 2;
+    let yyyy = date.getFullYear();
+    if (dd > 30) {
+      mm += 1;
+      dd -= 30;
+    }
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    if (mm > 12) {
+      yyyy += 1;
+      mm -= 12;
+    }
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+    date = `${dd}-${mm}-${yyyy}`;
+    return date.toString();
+  }
+
+  function getDateFinalDecision(strDate) {
+    const strSplitDate = String(strDate).split(" ");
+    let date = new Date(strSplitDate[0]);
+    let dd = date.getDate() + 10;
+    let mm = date.getMonth() + 3;
+    let yyyy = date.getFullYear();
+    if (dd > 30) {
+      mm += 1;
+      dd -= 30;
+    }
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    if (mm > 12) {
+      yyyy += 1;
+      mm -= 12;
+    }
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+    date = `${dd}-${mm}-${yyyy}`;
+    return date.toString();
+  }
+
   function toggleDisplayDetailDecision() {
     setDetailDecision(!detailDecision);
   }
@@ -219,11 +339,15 @@ export default function ShowOneDecision() {
           </h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
-              <p className="">{oneDecision.dateCreate}</p>
-              <p className="mt-6">{oneDecision.dateAdvice}</p>
-              <p className="mt-6">{oneDecision.dateFirstDecision}</p>
-              <p className="mt-6">{oneDecision.dateConflict}</p>
-              <p className="mt-6">{oneDecision.dateFinalDecision}</p>
+              <p className="">{getDateCreate(oneDecision.dateCreate)}</p>
+              <p className="mt-6">{getDateAdvice(oneDecision.dateCreate)}</p>
+              <p className="mt-6">
+                {getDateFirstDecision(oneDecision.dateCreate)}
+              </p>
+              <p className="mt-6">{getDateConflict(oneDecision.dateCreate)}</p>
+              <p className="mt-6">
+                {getDateFinalDecision(oneDecision.dateCreate)}
+              </p>
             </div>
             <div className="w-1/5">
               <div className="h-4 w-4 mt-1 border border-black rounded-full bg-lime-400 align-middle mx-auto" />
