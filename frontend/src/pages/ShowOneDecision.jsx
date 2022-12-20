@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Avatar } from "@assets/";
 
 export default function ShowOneDecision() {
   const [detailDecision, setDetailDecision] = useState(false);
@@ -13,7 +14,7 @@ export default function ShowOneDecision() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/decisionsMaking/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}decisionsMaking/${id}`)
       .then((res) => res.json())
       .then((data) => setOneDecision(data))
       .catch((err) => console.error(err));
@@ -61,11 +62,7 @@ export default function ShowOneDecision() {
           {oneDecision.title}
         </h2>
         <div className="inline-flex mb-20 mt-2">
-          <img
-            className="w-10 h-10"
-            src="../src/assets/Avatar.png"
-            alt="Avatar utilisateur"
-          />
+          <img className="w-10 h-10" src={Avatar} alt="Avatar utilisateur" />
           <p className="ml-5 mt-2 text-base text-sm">
             Par {oneDecision.firstname} {oneDecision.lastname}
           </p>
