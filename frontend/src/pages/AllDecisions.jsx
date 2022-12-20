@@ -3,7 +3,7 @@ import Search from "../components/Search";
 
 function AllDecisions({ search, handleSearch }) {
   return (
-    <div>
+    <div className="h-[100vh]">
       <Search search={search} handleSearch={handleSearch} />
       <DecisionList statusId={1} title="Décision en cours" search={search} />
       <DecisionList
