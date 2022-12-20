@@ -7,6 +7,7 @@ import PictoDecision from "@assets/decision.svg";
 import PictoNotification from "@assets/notification.svg";
 import PictoLogout from "@assets/logout.svg";
 import PictoUsers from "@assets/users.svg";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -14,11 +15,13 @@ function Navbar() {
       <img className="ml-10 aspect-auto" src={Logo} alt="logo" />
       <div>
         <div className="inline-block text-center place-content-center items-center mr-4">
-          <img
-            className="inline place-content-center p-1 m-1"
-            src={PictoHome}
-            alt="home"
-          />
+          <Link to="/">
+            <img
+              className="inline place-content-center p-2 m-2"
+              src={PictoHome}
+              alt="home"
+            />
+          </Link>
           <p>Parcourir les décisions</p>
         </div>
 
@@ -31,11 +34,13 @@ function Navbar() {
           <p>Mes décisions</p>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
-          <img
-            className="inline place-content-center p-1 m-1"
-            src={PictoArchive}
-            alt="archives"
-          />
+          <Link to="/archives">
+            <img
+              className="inline place-content-center p-2 m-2"
+              src={PictoArchive}
+              alt="archives"
+            />
+          </Link>
           <p>Archives</p>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
