@@ -3,7 +3,7 @@ import apiConnexion from "../services/apiConnexion";
 
 function SearchPerson() {
   const [datas, setDatas] = useState([]);
-  const [searchUser, setsearchUser] = useState("");
+  const [searchUser, setSearchUser] = useState("");
   useEffect(() => {
     apiConnexion
       .get(`/users/list/?searchUser=${searchUser}`)
@@ -12,7 +12,7 @@ function SearchPerson() {
   }, [searchUser]);
   const handleSearchUser = (e) => {
     const { value } = e.target;
-    setsearchUser(value);
+    setSearchUser(value);
   };
   return (
     <div>
@@ -28,7 +28,7 @@ function SearchPerson() {
         {datas.length > 0 &&
           datas.map((user) => {
             return (
-              <ul className="searchResult">
+              <ul className="searchResult " key={user.id}>
                 {user.firstname} {user.lastname}
               </ul>
             );
