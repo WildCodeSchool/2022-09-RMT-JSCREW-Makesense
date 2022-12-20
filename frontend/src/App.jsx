@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from "@components/Navbar";
-import NewDecision from "@pages/NewDecision";
-import ArchivedDecisions from "@pages/ArchivedDecisions";
+import Navbar from "./components/Navbar";
+import NewDecision from "./pages/NewDecision";
+import ArchivedDecisions from "./pages/ArchivedDecisions";
 import AllDecisions from "./pages/AllDecisions";
+import Footer from "./components/Footer";
 
 import "./App.css";
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/user/decision/new" element={<NewDecision />} />
         <Route path="/archives" element={<ArchivedDecisions />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
