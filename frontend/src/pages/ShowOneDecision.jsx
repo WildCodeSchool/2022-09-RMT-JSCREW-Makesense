@@ -13,7 +13,7 @@ export default function ShowOneDecision() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/decisionsMaking/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}decisionsMaking/${id}`)
       .then((res) => res.json())
       .then((data) => setOneDecision(data))
       .catch((err) => console.error(err));
