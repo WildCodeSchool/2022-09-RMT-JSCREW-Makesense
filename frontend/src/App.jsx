@@ -26,7 +26,7 @@ function App() {
         />
         <Route path="/user/decision/new" element={<NewDecision />} />
         <Route path="/archives" element={<ArchivedDecisions />} />
-        <Route path="/onedecision" element={<ShowOneDecision />} />
+        <Route path="/onedecision/:id" element={<ShowOneDecision />} />
       </Routes>
       <Footer />
     </Router>
