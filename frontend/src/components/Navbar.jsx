@@ -17,7 +17,7 @@ function Navbar() {
         <div className="inline-block text-center place-content-center items-center mr-4">
           <Link to="/">
             <img
-              className="inline place-content-center p-2 m-2"
+              className="inline place-content-center p-1 m-1"
               src={PictoHome}
               alt="home"
             />
@@ -36,7 +36,7 @@ function Navbar() {
         <div className="inline-block text-center place-content-center mr-4">
           <Link to="/archives">
             <img
-              className="inline place-content-center p-2 m-2"
+              className="inline place-content-center p-1 m-1"
               src={PictoArchive}
               alt="archives"
             />
