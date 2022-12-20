@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 function AdminNewUser() {
   const [user, setUser] = useState({
-    user_identifiant: "",
-    user_prenom: "",
-    user_nom: "",
-    user_email: "",
-    user_motdepasse: "",
+    user_username: "",
+    user_firstname: "",
+    user_lastname: "",
+    user_mail: "",
+    user_password: "",
     user_role: "administrateur",
   });
 
@@ -31,9 +31,9 @@ function AdminNewUser() {
           <input
             className="w-72 border-2 border-500 rounded-lg"
             type="text"
-            name="user_identifiant"
+            name="user_username"
             required="required"
-            value={user.user_identifiant}
+            value={user.user_username}
             onChange={(e) => handleNewUser(e.target.name, e.target.value)}
           />
         </div>
@@ -43,9 +43,9 @@ function AdminNewUser() {
             <input
               className="border-2 border-500 rounded-lg mr-12"
               type="text"
-              name="user_prenom"
+              name="user_firstname"
               required="required"
-              value={user.user_prenom}
+              value={user.user_firstname}
               onChange={(e) => handleNewUser(e.target.name, e.target.value)}
             />
           </div>
@@ -54,9 +54,9 @@ function AdminNewUser() {
             <input
               className="border-2 border-500 rounded-lg"
               type="text"
-              name="user_nom"
+              name="user_lastname"
               required="required"
-              value={user.user_nom}
+              value={user.user_lastname}
               onChange={(e) => handleNewUser(e.target.name, e.target.value)}
             />
           </div>
@@ -66,9 +66,9 @@ function AdminNewUser() {
           <input
             className="w-72 border-2 border-500 rounded-lg"
             type="text"
-            name="user_email"
+            name="user_mail"
             required="required"
-            value={user.user_email}
+            value={user.user_mail}
             onChange={(e) => handleNewUser(e.target.name, e.target.value)}
           />
         </div>
@@ -77,9 +77,9 @@ function AdminNewUser() {
           <input
             className="w-72 border-2 border-500 rounded-lg"
             type="text"
-            name="user_motdepasse"
+            name="user_password"
             required="required"
-            value={user.user_motdepasse}
+            value={user.user_password}
             onChange={(e) => handleNewUser(e.target.name, e.target.value)}
           />
         </div>
