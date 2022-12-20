@@ -261,22 +261,22 @@ export default function ShowOneDecision() {
           <div className="flex justify-center mt-5">
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
           </div>
@@ -291,22 +291,22 @@ export default function ShowOneDecision() {
           <div className="flex justify-center mt-5">
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="../src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
           </div>
