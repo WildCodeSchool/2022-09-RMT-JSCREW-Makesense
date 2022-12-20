@@ -19,125 +19,16 @@ export default function ShowOneDecision() {
       .catch((err) => console.error(err));
   }, [id]);
 
-  function getDateCreate(strDate) {
-    const strSplitDate = String(strDate).split(" ");
-    let date = new Date(strSplitDate[0]);
-    let dd = date.getDate();
-    let mm = date.getMonth() + 1;
-    let yyyy = date.getFullYear();
-    if (dd > 30) {
-      mm += 1;
-      dd -= 30;
-    }
-    if (dd < 10) {
-      dd = `0${dd}`;
-    }
-    if (mm > 12) {
-      yyyy += 1;
-      mm -= 12;
-    }
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-    date = `${dd}-${mm}-${yyyy}`;
-    return date.toString();
-  }
-
-  function getDateAdvice(strDate) {
-    const strSplitDate = String(strDate).split(" ");
-    let date = new Date(strSplitDate[0]);
-    let dd = date.getDate() + 10;
-    let mm = date.getMonth() + 1;
-    let yyyy = date.getFullYear();
-    if (dd > 30) {
-      mm += 1;
-      dd -= 30;
-    }
-    if (dd < 10) {
-      dd = `0${dd}`;
-    }
-    if (mm > 12) {
-      yyyy += 1;
-      mm -= 12;
-    }
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-    date = `${dd}-${mm}-${yyyy}`;
-    return date.toString();
-  }
-
-  function getDateFirstDecision(strDate) {
-    const strSplitDate = String(strDate).split(" ");
-    let date = new Date(strSplitDate[0]);
-    let dd = date.getDate();
-    let mm = date.getMonth() + 2;
-    let yyyy = date.getFullYear();
-    if (dd > 30) {
-      mm += 1;
-      dd -= 30;
-    }
-    if (dd < 10) {
-      dd = `0${dd}`;
-    }
-    if (mm > 12) {
-      yyyy += 1;
-      mm -= 12;
-    }
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-    date = `${dd}-${mm}-${yyyy}`;
-    return date.toString();
-  }
-
-  function getDateConflict(strDate) {
-    const strSplitDate = String(strDate).split(" ");
-    let date = new Date(strSplitDate[0]);
-    let dd = date.getDate() + 10;
-    let mm = date.getMonth() + 2;
-    let yyyy = date.getFullYear();
-    if (dd > 30) {
-      mm += 1;
-      dd -= 30;
-    }
-    if (dd < 10) {
-      dd = `0${dd}`;
-    }
-    if (mm > 12) {
-      yyyy += 1;
-      mm -= 12;
-    }
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-    date = `${dd}-${mm}-${yyyy}`;
-    return date.toString();
-  }
-
-  function getDateFinalDecision(strDate) {
-    const strSplitDate = String(strDate).split(" ");
-    let date = new Date(strSplitDate[0]);
-    let dd = date.getDate() + 10;
-    let mm = date.getMonth() + 3;
-    let yyyy = date.getFullYear();
-    if (dd > 30) {
-      mm += 1;
-      dd -= 30;
-    }
-    if (dd < 10) {
-      dd = `0${dd}`;
-    }
-    if (mm > 12) {
-      yyyy += 1;
-      mm -= 12;
-    }
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-    date = `${dd}-${mm}-${yyyy}`;
-    return date.toString();
-  }
+  const dateCreate = new Date(oneDecision.dateCreate);
+  const timeDate = dateCreate.getTime();
+  const advice = timeDate + 1000 * 60 * 60 * 24 * 7;
+  const firstDecision = timeDate + 1000 * 60 * 60 * 24 * 7 * 4;
+  const conflict = timeDate + 1000 * 60 * 60 * 24 * 7 * 8;
+  const finalDecision = timeDate + 1000 * 60 * 60 * 24 * 7 * 10;
+  const dateAdvice = new Date(advice);
+  const dateFirstDecision = new Date(firstDecision);
+  const dateConflict = new Date(conflict);
+  const dateFinalDecision = new Date(finalDecision);
 
   function toggleDisplayDetailDecision() {
     setDetailDecision(!detailDecision);
@@ -339,14 +230,14 @@ export default function ShowOneDecision() {
           </h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
-              <p className="">{getDateCreate(oneDecision.dateCreate)}</p>
-              <p className="mt-6">{getDateAdvice(oneDecision.dateCreate)}</p>
+              <p className="">{`${dateCreate.toLocaleDateString()}`}</p>
+              <p className="mt-6">{`${dateAdvice.toLocaleDateString()}`}</p>
               <p className="mt-6">
-                {getDateFirstDecision(oneDecision.dateCreate)}
+                {`${dateFirstDecision.toLocaleDateString()}`}
               </p>
-              <p className="mt-6">{getDateConflict(oneDecision.dateCreate)}</p>
+              <p className="mt-6">{`${dateConflict.toLocaleDateString()}`}</p>
               <p className="mt-6">
-                {getDateFinalDecision(oneDecision.dateCreate)}
+                {`${dateFinalDecision.toLocaleDateString()}`}
               </p>
             </div>
             <div className="w-1/5">
