@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Avatar } from "@assets/";
 
 export default function ShowOneDecision() {
   const [detailDecision, setDetailDecision] = useState(false);
@@ -13,11 +14,19 @@ export default function ShowOneDecision() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/decisionsMaking/?status=${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}decisionsMaking/${id}`)
       .then((res) => res.json())
       .then((data) => setOneDecision(data))
       .catch((err) => console.error(err));
   }, [id]);
+
+  const dateCreate = new Date(oneDecision.dateCreate);
+  const timeDate = dateCreate.getTime();
+
+  const dateAdvice = new Date(timeDate + 1000 * 60 * 60 * 24 * 7);
+  const dateFirstDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 4);
+  const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
+  const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
 
   function toggleDisplayDetailDecision() {
     setDetailDecision(!detailDecision);
@@ -53,8 +62,8 @@ export default function ShowOneDecision() {
           {oneDecision.title}
         </h2>
         <div className="inline-flex mb-20 mt-2">
-          <img src="./src/assets/Avatar.png" alt="Avatar utilisateur" />
-          <p className="ml-5">
+          <img className="w-10 h-10" src={Avatar} alt="Avatar utilisateur" />
+          <p className="ml-5 mt-2 text-base text-sm">
             Par {oneDecision.firstname} {oneDecision.lastname}
           </p>
         </div>
@@ -215,11 +224,15 @@ export default function ShowOneDecision() {
           </h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
-              <p className="">{oneDecision.dateCreate}</p>
-              <p className="mt-6">{oneDecision.dateAdvice}</p>
-              <p className="mt-6">{oneDecision.dateFirstDecision}</p>
-              <p className="mt-6">{oneDecision.dateConflict}</p>
-              <p className="mt-6">{oneDecision.dateFinalDecision}</p>
+              <p className="">{`${dateCreate.toLocaleDateString()}`}</p>
+              <p className="mt-6">{`${dateAdvice.toLocaleDateString()}`}</p>
+              <p className="mt-6">
+                {`${dateFirstDecision.toLocaleDateString()}`}
+              </p>
+              <p className="mt-6">{`${dateConflict.toLocaleDateString()}`}</p>
+              <p className="mt-6">
+                {`${dateFinalDecision.toLocaleDateString()}`}
+              </p>
             </div>
             <div className="w-1/5">
               <div className="h-4 w-4 mt-1 border border-black rounded-full bg-lime-400 align-middle mx-auto" />
@@ -233,7 +246,7 @@ export default function ShowOneDecision() {
               <div className="h-4 w-4 border border-black rounded-full bg-slate-300 align-middle mx-auto" />
             </div>
             <div className="w-2/5 font-bold text-xs">
-              <p>{oneDecision.status}</p>
+              <p>Prise de décision commencée</p>
               <p className="mt-4">Deadline pour donner son avis</p>
               <p className="mt-4">Première décision prise</p>
               <p className="mt-4">Deadline pour rentrer en conflit</p>
@@ -248,22 +261,22 @@ export default function ShowOneDecision() {
           <div className="flex justify-center mt-5">
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
           </div>
@@ -278,22 +291,22 @@ export default function ShowOneDecision() {
           <div className="flex justify-center mt-5">
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar utilisateur"
             />
           </div>
