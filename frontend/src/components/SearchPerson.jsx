@@ -11,7 +11,7 @@ function SearchPerson() {
       .catch((err) => console.error(err));
   }, [searchUser]);
   const handleSearchUser = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setsearchUser(value);
   };
   return (
@@ -28,8 +28,8 @@ function SearchPerson() {
         {datas.length > 0 &&
           datas.map((user) => {
             return (
-              <ul className="searchResult" key={user.id}>
-                {user.lastname}
+              <ul className="searchResult">
+                {user.firstname} {user.lastname}
               </ul>
             );
           })}
