@@ -18,15 +18,11 @@ class DecisionMakingManager extends AbstractManager {
   }
 
   findOne(id) {
-    let query = `select dm.id, dm.title, dm.description, dm.impact, dm.profit, dm.risk, dm.dateCreate, dm.dateAdvice, dm.dateFirstDecision, dm.dateConflict, dm.dateFinalDecision, u.firstname, u.lastname, ds.status from ${this.table} as dm 
+    const query = `select dm.id, dm.title, dm.description, dm.impact, dm.profit, dm.risk, dm.dateCreate, dm.dateAdvice, dm.dateFirstDecision, dm.dateConflict, dm.dateFinalDecision, u.firstname, u.lastname, ds.status from ${this.table} as dm 
   inner join user as u on u.id = dm.user_id 
-  inner join decisionStatus as ds on ds.id = dm.decisionStatus_id`;
-    const value = [];
-    if (id) {
-      query += " where dm.id = ?";
-      value.push(id);
-    }
-    return this.connection.query(query, value);
+  inner join decisionStatus as ds on ds.id = dm.decisionStatus_id
+  where dm.id = ?`;
+    return this.connection.query(query, [id]);
   }
 }
 

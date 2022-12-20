@@ -13,7 +13,7 @@ export default function ShowOneDecision() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}decisionsMaking/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/decisionsMaking/${id}`)
       .then((res) => res.json())
       .then((data) => setOneDecision(data))
       .catch((err) => console.error(err));
@@ -21,14 +21,11 @@ export default function ShowOneDecision() {
 
   const dateCreate = new Date(oneDecision.dateCreate);
   const timeDate = dateCreate.getTime();
-  const advice = timeDate + 1000 * 60 * 60 * 24 * 7;
-  const firstDecision = timeDate + 1000 * 60 * 60 * 24 * 7 * 4;
-  const conflict = timeDate + 1000 * 60 * 60 * 24 * 7 * 8;
-  const finalDecision = timeDate + 1000 * 60 * 60 * 24 * 7 * 10;
-  const dateAdvice = new Date(advice);
-  const dateFirstDecision = new Date(firstDecision);
-  const dateConflict = new Date(conflict);
-  const dateFinalDecision = new Date(finalDecision);
+
+  const dateAdvice = new Date(timeDate + 1000 * 60 * 60 * 24 * 7);
+  const dateFirstDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 4);
+  const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
+  const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
 
   function toggleDisplayDetailDecision() {
     setDetailDecision(!detailDecision);
