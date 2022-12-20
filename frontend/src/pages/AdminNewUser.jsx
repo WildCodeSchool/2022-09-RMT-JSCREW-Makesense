@@ -10,9 +10,9 @@ function AdminNewUser() {
     user_role: "administrateur",
   });
 
-  const handleNewUser = (txtmsg, value) => {
+  const handleNewUser = (position, value) => {
     const newUser = { ...user };
-    newUser[txtmsg] = value;
+    newUser[position] = value;
     setUser(newUser);
   };
 
