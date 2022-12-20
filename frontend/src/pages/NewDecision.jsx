@@ -1,3 +1,4 @@
+import SearchPerson from "@components/SearchPerson";
 import React, { useState } from "react";
 
 import "./newDecision.css";
@@ -70,19 +71,11 @@ function NewDecision() {
                 </div>
                 <div className="mb-2 ">
                   <p className="mb-2">Personnes expertes*</p>
-                  <input
-                    className="border-2 border-500 rounded-lg w-8/12 outline-[#c8c8c8]"
-                    type="text"
-                    required
-                  />
+                  <SearchPerson />
                 </div>
                 <div className="mb-5">
                   <p className="mb-2">Personnes impactées*</p>
-                  <input
-                    className="border-2 border-500 rounded-lg w-8/12 outline-[#c8c8c8]"
-                    type="text"
-                    required
-                  />
+                  <SearchPerson />
                 </div>
               </div>
             </div>
