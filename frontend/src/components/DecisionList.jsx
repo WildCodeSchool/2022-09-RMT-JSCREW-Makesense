@@ -9,7 +9,7 @@ function DecisionList({ search, statusId, title }) {
     fetch(
       `${
         import.meta.env.VITE_BACKEND_URL
-      }/decisionsMaking/?status=${statusId}&search=${search}`
+      }decisionsMaking/?status=${statusId}&search=${search}`
     )
       .then((res) => res.json())
       .then((data) => setDecisionList(data))
