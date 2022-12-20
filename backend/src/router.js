@@ -16,5 +16,6 @@ router.get("/roles", DesignatedUserController.browse);
 router.get("/advices", AdviceController.browse);
 router.get("/conflicts", ConflictController.browse);
 router.get("/users", UserController.browse);
+router.get("/users/list", UserController.read);
 
 module.exports = router;
