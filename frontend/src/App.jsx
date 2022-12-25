@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Authentification from "@pages/Authentification";
 import Navbar from "@components/Navbar";
 import NewDecision from "@pages/NewDecision";
 import ArchivedDecisions from "@pages/ArchivedDecisions";
@@ -19,6 +20,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/connexion" element={<Authentification />} />
         <Route
           path="/"
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
