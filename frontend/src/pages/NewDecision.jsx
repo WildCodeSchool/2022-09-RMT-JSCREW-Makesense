@@ -1,5 +1,6 @@
 import SearchPerson from "@components/SearchPerson";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./newDecision.css";
 
@@ -76,7 +77,7 @@ function NewDecision() {
                 </div>
                 <div className="mb-2 ">
                   <p className="mb-2">Personnes expertes*</p>
-                  <SearchPerson />
+                  <SearchPerson SearchPerson={SearchPerson} />
                 </div>
                 <div className="mb-5">
                   <p className="mb-2">Personnes impactées*</p>
@@ -121,18 +122,23 @@ function NewDecision() {
               />
             </div>
             <div className="flex justify-end w-7/12 mb-5">
-              <button
-                type="submit"
-                className="bg-green-900 hover:bg-green-700 w-3/12 h-10 rounded-lg text-white"
+              <Link
+                to="/user/decision"
+                className="text-center  bg-green-900 hover:bg-green-700 w-3/12 h-10 ml-3 rounded-lg text-white"
               >
-                Annuler
-              </button>
-              <button
-                type="submit"
-                className="bg-green-900 hover:bg-green-700 w-3/12 h-10 ml-3 rounded-lg text-white"
+                <button
+                  type="submit"
+                  className="bg-green-900 hover:bg-green-700 w-3/12 h-10 rounded-lg text-white"
+                >
+                  Annuler
+                </button>
+              </Link>
+              <Link
+                to="/user/decision"
+                className="text-center  bg-green-900 hover:bg-green-700 w-3/12 h-10 ml-3 rounded-lg text-white"
               >
-                Valider
-              </button>
+                <button type="submit">Valider</button>
+              </Link>
             </div>
           </div>
         </div>
