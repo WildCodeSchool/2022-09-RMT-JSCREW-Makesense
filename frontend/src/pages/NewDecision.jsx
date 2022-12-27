@@ -24,13 +24,22 @@ function NewDecision() {
     setDecision(newDecision);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (addDecision) => {
+    const newDecision = [...decision];
+    if (newDecision.some((elem) => elem.index === addDecision.index)) {
+      const myDecision = newDecision.find(
+        (pokemon) => pokemon.index === addDecision.index
+      );
+      myDecision.quantity += 1;
+    } else {
+      newDecision.push({ ...addDecision, quantity: 1 });
+    }
+    setDecision(newDecision);
   };
 
   return (
     <div className="w-11/12 ml-20">
-      <h1 className="font-bold mb-5 text-green-900">
+      <h1 className="font-bold mb-5 text-green-900 mt-5">
         Créer une prise de décision
       </h1>
       <form action="" onSubmit={handleSubmit}>
@@ -136,7 +145,7 @@ function NewDecision() {
           </div>
           <div className="decisionByUser w-4/12 text-center">
             <div className="mb-20">
-              <p className="mb-2">Saisie date</p>
+              <p className="mb-2">Date du jour</p>
               <input
                 className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]"
                 type="date"
