@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import SearchPerson from "@components/SearchPerson";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -124,20 +125,15 @@ function NewDecision() {
                 <div className="flex justify-end w-7/12 mb-5">
                   <Link
                     to="/user/decision"
-                    className="text-center  bg-green-900 hover:bg-green-700 w-3/12 h-10 ml-3 rounded-lg text-white"
+                    className="text-center  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                   >
-                    <button
-                      type="submit"
-                      className="bg-green-900 hover:bg-green-700 w-3/12 h-10 rounded-lg text-white"
-                    >
-                      Annuler
-                    </button>
+                    Annuler
                   </Link>
                   <Link
                     to="/user/decision"
-                    className="text-center  bg-green-900 hover:bg-green-700 w-3/12 h-10 ml-3 rounded-lg text-white"
+                    className="text-center  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                   >
-                    <button type="submit">Valider</button>
+                    Valider
                   </Link>
                 </div>
               </div>
@@ -145,7 +141,7 @@ function NewDecision() {
           </div>
           <div className="decisionByUser w-4/12 text-center">
             <div className="mb-20">
-              <p className="mb-2">Date du jour</p>
+              <p className="mb-2">Date de création</p>
               <input
                 className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]"
                 type="date"
