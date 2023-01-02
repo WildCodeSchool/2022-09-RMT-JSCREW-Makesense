@@ -29,7 +29,12 @@ function Authentification() {
             />
           </div>
           <div className="group m-3 flex justify-center">
-            <button type="button">Connexion</button>
+            <button
+              className="mt-4 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+              type="button"
+            >
+              Connexion
+            </button>
           </div>
         </form>
       </div>
