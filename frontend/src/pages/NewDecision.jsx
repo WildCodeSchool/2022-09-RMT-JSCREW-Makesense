@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import SearchPerson from "@components/SearchPerson";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -125,13 +124,13 @@ function NewDecision() {
                 <div className="flex justify-end w-7/12 mb-5">
                   <Link
                     to="/user/decision"
-                    className="text-center  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                    className="text-center w-28  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                   >
                     Annuler
                   </Link>
                   <Link
                     to="/user/decision"
-                    className="text-center  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                    className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                   >
                     Valider
                   </Link>
