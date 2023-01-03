@@ -10,11 +10,13 @@ const ConflictController = require("./controllers/conflictController");
 const UserController = require("./controllers/userController");
 
 router.get("/decisionsMaking", DecisionMakingController.browse);
+router.get("/decisionsMaking/:id", DecisionMakingController.read);
 router.get("/decisions", DecisionController.browse);
 router.get("/roles", DesignatedUserController.browse);
 router.get("/advices", AdviceController.browse);
 router.get("/conflicts", ConflictController.browse);
 router.get("/users", UserController.browse);
+router.get("/users/list", UserController.read);
 
 router.delete("/users/:id", UserController.destroy);
 

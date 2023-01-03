@@ -28,7 +28,21 @@ const destroy = (req, res) => {
     });
 };
 
+const read = (req, res) => {
+  const { searchUser } = req.query;
+  models.user
+    .findByName(searchUser)
+    .then(([newDecision]) => {
+      res.send(newDecision);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
-  destroy
+  destroy,
+  read,
 };
