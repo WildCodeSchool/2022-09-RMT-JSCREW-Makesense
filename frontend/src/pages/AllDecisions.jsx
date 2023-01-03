@@ -7,7 +7,10 @@ function AllDecisions({ search, handleSearch }) {
   return (
     <div className="h-[100vh]">
       <div className="flex justify-between">
-        <Link to="/user/decision/new" className="ml-10 mt-8 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2">
+        <Link
+          to="/user/decision/new"
+          className="ml-10 mt-8 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+        >
           Créer une nouvelle prise de décision
         </Link>
         <Search search={search} handleSearch={handleSearch} />

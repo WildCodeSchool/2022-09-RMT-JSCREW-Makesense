@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import apiConnexion from "../services/apiConnexion";
+
 import { Avatar } from "@assets/";
 
 export default function ShowOneDecision() {
@@ -14,9 +16,11 @@ export default function ShowOneDecision() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}decisionsMaking/${id}`)
-      .then((res) => res.json())
-      .then((data) => setOneDecision(data))
+    apiConnexion
+      .get(`decisionsMaking/${id}`)
+      .then((res) => {
+        setOneDecision(res.data);
+      })
       .catch((err) => console.error(err));
   }, [id]);
 
