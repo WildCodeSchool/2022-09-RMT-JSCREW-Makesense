@@ -12,6 +12,7 @@ class UserManager extends AbstractManager {
       query += " where firstname like ? or lastname like ?";
       value.push(`%${searchPerson}%`, `%${searchPerson}%`);
     }
+    query += "limit 5";
     return this.connection.query(query, value);
   }
 }

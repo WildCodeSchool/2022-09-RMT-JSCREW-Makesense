@@ -4,16 +4,23 @@ import apiConnexion from "../services/apiConnexion";
 function SearchPerson() {
   const [users, setUsers] = useState();
   const [searchUser, setSearchUser] = useState("");
+
   useEffect(() => {
-    apiConnexion
-      .get(`/users/list/?searchUser=${searchUser}`)
-      .then((usr) => setUsers(usr.data))
-      .catch((err) => console.error(err));
+    if (searchUser !== "") {
+      apiConnexion
+        .get(`/users/list/?searchUser=${searchUser}`)
+        .then((usr) => setUsers(usr.data))
+        .catch((err) => console.error(err));
+    } else {
+      setUsers();
+    }
   }, [searchUser]);
+
   const handleSearchUser = (e) => {
     const { value } = e.target;
     setSearchUser(value);
   };
+
   return (
     <div>
       <div className="searchBar">
