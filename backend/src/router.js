@@ -16,4 +16,6 @@ router.get("/advices", AdviceController.browse);
 router.get("/conflicts", ConflictController.browse);
 router.get("/users", UserController.browse);
 
+router.delete("/users/:id", UserController.destroy);
+
 module.exports = router;
