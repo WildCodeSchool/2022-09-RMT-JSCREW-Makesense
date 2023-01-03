@@ -33,19 +33,13 @@ function SearchPerson() {
       </div>
       <div className="searchResults absolute">
         {users &&
-          users
-            // .filter(
-            //   (user) =>
-            //     user.name.startsWith(setUsers) ||
-            //     user.lastname.startsWith(setUsers)
-            // )
-            .map((user) => {
-              return (
-                <ul className="searchResult  bg-gray-300 p-2" key={user.id}>
-                  {user.firstname} {user.lastname}
-                </ul>
-              );
-            })}
+          users.map((user) => {
+            return (
+              <ul className="searchResult  bg-gray-300 p-2" key={user.id}>
+                {user.firstname} {user.lastname}
+              </ul>
+            );
+          })}
       </div>
     </div>
   );
