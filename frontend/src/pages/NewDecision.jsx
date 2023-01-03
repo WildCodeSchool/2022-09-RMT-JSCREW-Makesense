@@ -24,17 +24,8 @@ function NewDecision() {
     setDecision(newDecision);
   };
 
-  const handleSubmit = (addDecision) => {
-    const newDecision = [...decision];
-    if (newDecision.some((elem) => elem.index === addDecision.index)) {
-      const myDecision = newDecision.find(
-        (pokemon) => pokemon.index === addDecision.index
-      );
-      myDecision.quantity += 1;
-    } else {
-      newDecision.push({ ...addDecision, quantity: 1 });
-    }
-    setDecision(newDecision);
+   const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
