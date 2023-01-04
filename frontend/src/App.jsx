@@ -32,8 +32,8 @@ function App() {
             <ArchivedDecisions search={search} handleSearch={handleSearch} />
           }
         />
-        <Route path="/onedecision/:id" element={<ShowOneDecision />} />
-        <Route path="/onedecision/:id/advice" element={<MyAdvice />} />
+        <Route path="/decision/:id" element={<ShowOneDecision />} />
+        <Route path="/decision/:id/advice" element={<MyAdvice />} />
       </Routes>
       <Footer />
     </Router>
