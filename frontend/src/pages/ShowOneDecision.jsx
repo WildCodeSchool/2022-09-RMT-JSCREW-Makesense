@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Avatar } from "@assets/";
 import apiConnexion from "../services/apiConnexion";
 
@@ -219,7 +219,14 @@ export default function ShowOneDecision() {
           ) : null}
         </div>
       </div>
-
+      <div>
+        <Link
+          to="/update-decision"
+          className="ml-10 mt-8 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+        >
+          Modifier
+        </Link>
+      </div>
       <div className="text-center w-1/5 border-l-2">
         <div className="mb-16">
           <h3 className="text-emerald-900 text-xl font-bold">
