@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 
@@ -17,15 +17,11 @@ export default function MyAdvice() {
   };
 
   const handleSubmit = () => {
-    alert("avis enregistré");
-  };
-
-  useEffect(() => {
     apiConnexion
-      .post(`/decisionsMaking/${id}/advice`, myAdviceText)
-      .then((res) => setMyAdviceText(res.data.id))
+      .post(`/decisionsMaking/advice`, myAdviceText)
+      .then(alert("ok"))
       .catch((err) => console.error(err));
-  }, [myAdviceText]);
+  };
 
   return (
     <div className="pt-20 w-[1000px] mx-auto mb-80">
