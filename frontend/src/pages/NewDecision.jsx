@@ -24,7 +24,7 @@ function NewDecision() {
     setDecision(newDecision);
   };
 
-   const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
   };
 
