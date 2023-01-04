@@ -13,21 +13,16 @@ const browse = (req, res) => {
 };
 
 const postAdvice = (req, res) => {
-  const { textAdvice, userId, decisionMakingId } = req.body;
-
   models.advice
-    .query(
-      "INSERT INTO advice(textAdvice, user_id, decisionMaking_id) VALUES (?, ?, ?)",
-      [textAdvice, userId, decisionMakingId]
-    )
+    .insert(req.body)
     .then(([result]) => {
       res
-        .location(`/decisionsMaking/:id/advice/${result.insertId}`)
+        .location(`/decisionsMaking/advice/${result.insertId}`)
         .sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("L'avis n'as pu être enregistré");
+      res.sendStatus(500);
     });
 };
 

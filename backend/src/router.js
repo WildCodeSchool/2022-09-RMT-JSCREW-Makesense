@@ -18,6 +18,6 @@ router.get("/conflicts", ConflictController.browse);
 router.get("/users", UserController.browse);
 router.get("/users/list", UserController.read);
 
-router.post("/decisionsMaking/:id/advice", AdviceController.postAdvice);
+router.post("/decisionsMaking/advice", AdviceController.postAdvice);
 
 module.exports = router;
