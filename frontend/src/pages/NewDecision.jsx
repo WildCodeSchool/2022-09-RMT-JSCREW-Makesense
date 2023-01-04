@@ -1,32 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
 import ChoosenPerson from "@components/ChoosenPerson";
+import ExportContextDecision from "../contexts/DecisionContext";
 
 function NewDecision() {
-  const [decision, setDecision] = useState({
-    decision_title: "",
-    decision_description: "",
-    decision_impact: "",
-    decision_benefits: "",
-    decision_risk: "",
-  });
+  const { mainDecision, handleMainDecision } = useContext(
+    ExportContextDecision.DecisionContext
+  );
 
   /**
    *maj du state en fonction de sa propriété
    * @param {string} position
    * @param {string} value
    */
-  const handleDecision = (position, value) => {
-    const newDecision = { ...decision };
-    newDecision[position] = value;
-    setDecision(newDecision);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const getDate = () => {
+    const date = new Date();
+    return `${date.getDay() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
   return (
@@ -47,11 +44,11 @@ function NewDecision() {
                         className="border-2 w-full rounded-lg outline-[#c8c8c8]"
                         type="text"
                         id="decisionTitle"
-                        name="decision_title"
+                        name="title"
                         required
-                        value={decision.decision_title}
+                        value={mainDecision.title}
                         onChange={(e) =>
-                          handleDecision(e.target.name, e.target.value)
+                          handleMainDecision(e.target.name, e.target.value)
                         }
                       />
                     </div>
@@ -61,11 +58,11 @@ function NewDecision() {
                         className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] resize-none"
                         type="text"
                         id="decisionDetail"
-                        name="decision_description"
+                        name="description"
                         required
-                        value={decision.decision_description}
+                        value={mainDecision.description}
                         onChange={(e) =>
-                          handleDecision(e.target.name, e.target.value)
+                          handleMainDecision(e.target.name, e.target.value)
                         }
                       />
                     </div>
@@ -77,11 +74,11 @@ function NewDecision() {
                     className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="impact"
-                    name="decision_impact"
+                    name="impact"
                     required
-                    value={decision.decision_impact}
+                    value={mainDecision.impact}
                     onChange={(e) =>
-                      handleDecision(e.target.name, e.target.value)
+                      handleMainDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
@@ -91,11 +88,11 @@ function NewDecision() {
                     className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="benefits"
-                    name="decision_benefits"
+                    name="benefits"
                     required
-                    value={decision.decision_benefits}
+                    value={mainDecision.benefits}
                     onChange={(e) =>
-                      handleDecision(e.target.name, e.target.value)
+                      handleMainDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
@@ -105,11 +102,11 @@ function NewDecision() {
                     className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="decisionTitle"
-                    name="decision_risk"
+                    name="risk"
                     required
-                    value={decision.decision_risk}
+                    value={mainDecision.risk}
                     onChange={(e) =>
-                      handleDecision(e.target.name, e.target.value)
+                      handleMainDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
@@ -133,10 +130,9 @@ function NewDecision() {
           <div className="decisionByUser w-4/12 text-center">
             <div className="mb-20">
               <p className="mb-2">Date de création</p>
-              <input
-                className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]"
-                type="date"
-              />
+              <p className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]">
+                {getDate()}
+              </p>
             </div>
             <div className="mb-2 ">
               <p className="mb-2">Personnes expertes*</p>

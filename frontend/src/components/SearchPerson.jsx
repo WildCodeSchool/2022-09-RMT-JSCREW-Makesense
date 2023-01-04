@@ -35,9 +35,13 @@ function SearchPerson() {
         {users &&
           users.map((user) => {
             return (
-              <ul className="searchResult  bg-gray-300 p-2" key={user.id}>
+              <button
+                type="button"
+                className="searchResult flex w-full bg-gray-300 p-2"
+                key={user.id}
+              >
                 {user.firstname} {user.lastname}
-              </ul>
+              </button>
             );
           })}
       </div>
