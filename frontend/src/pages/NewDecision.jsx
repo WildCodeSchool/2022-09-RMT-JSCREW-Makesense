@@ -142,16 +142,16 @@ function NewDecision() {
               <p className="mb-2">Personnes expertes*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
-            <div className="mb-5">
+            <div className="mb-2">
               <p className="mb-2">Personnes impactées*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
             <div className="expertPersons mt-52">
-              <p className="">Personnes expertes choisies:</p>
+              <p className="mb-2">Personnes expertes choisies</p>
               <ChoosenPerson />
             </div>
             <div className="impactedPersons mt-5">
-              <p className="">Personnes impactées choisies:</p>
+              <p className="mb-2">Personnes impactées choisies</p>
               <ChoosenPerson />
             </div>
           </div>
