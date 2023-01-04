@@ -56,7 +56,7 @@ export default function ShowOneDecision() {
   }
 
   return (
-    <div className="flex w-full pt-20">
+    <div className="flex w-full pt-20 mb-20">
       <div className="text-left ml-20 w-4/5 pr-20">
         <p className="border-2 border-solid border-black w-fit rounded-full px-2">
           {oneDecision.status}
@@ -313,14 +313,13 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight">
+          <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight mb-20">
             voir les avis
           </p>
         </div>
         <Link
           to={`/decision/${id}/advice`}
-          className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
-          type="button"
+          className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full text-sm"
         >
           Donner mon avis
         </Link>
