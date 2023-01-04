@@ -1,6 +1,9 @@
-import SearchPerson from "@components/SearchPerson";
 import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
+
+import SearchPerson from "@components/SearchPerson";
+import ChoosenPerson from "@components/ChoosenPerson";
 
 function NewDecision() {
   const [decision, setDecision] = useState({
@@ -142,6 +145,14 @@ function NewDecision() {
             <div className="mb-5">
               <p className="mb-2">Personnes impactées*</p>
               <SearchPerson SearchPerson={SearchPerson} />
+            </div>
+            <div className="expertPersons mt-52">
+              <p className="">Personnes expertes choisies:</p>
+              <ChoosenPerson />
+            </div>
+            <div className="impactedPersons mt-5">
+              <p className="">Personnes impactées choisies:</p>
+              <ChoosenPerson />
             </div>
           </div>
         </div>
