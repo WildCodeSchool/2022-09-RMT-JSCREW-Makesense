@@ -26,7 +26,7 @@ function App() {
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
         />
         <Route path="/user/decision/new" element={<NewDecision />} />
-        <Route path="/update-decision/:id" element={<UpdateDecision />} />
+        <Route path="/update/decision/:id" element={<UpdateDecision />} />
         <Route
           path="/archives"
           element={

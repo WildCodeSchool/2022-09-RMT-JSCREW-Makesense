@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import apiConnexion from "../services/apiConnexion";
 
 function UpdateDecision() {
-  const [updateDecision, setUpdateDecision] = useState({
-    decision_title: "",
-    decision_description: "",
-    decision_impact: "",
-    decision_benefits: "",
-    decision_risk: "",
-  });
   const { id } = useParams();
+
+  const [updateDecision, setUpdateDecision] = useState([]);
+
+  useEffect(() => {
+    apiConnexion
+      .post(`decisionsMaking/${id}`)
+      .then((res) => {
+        setUpdateDecision(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, [id]);
+
+  useEffect(() => {
+    apiConnexion
+      .get(`decisionsMaking/${id}`)
+      .then((res) => {
+        setUpdateDecision(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, [id]);
+
   /**
    *maj du state en fonction de sa propriété
    * @param {string} position
@@ -40,28 +55,25 @@ function UpdateDecision() {
                     <div className="mb-5 w-11/12">
                       <p className="mb-2">Titre de la décision*</p>
                       <input
-                        className="border-2 w-8/12 rounded-lg outline-[#c8c8c8] bg-gray-200"
+                        className="border-2 w-8/12 rounded-lg outline-[#c8c8c8] bg-[#eeeeee] text-[#7a7a7a]"
                         type="text"
                         id="decisionTitle"
-                        name="decision_title"
+                        name="title"
                         disabled="disabled"
                         required
-                        value={updateDecision.decision_title}
+                        value={updateDecision.title}
                       />
                     </div>
                     <div className="mb-5">
                       <p className="mb-2">Descriptif de la décision*</p>
                       <textarea
-                        className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] bg-gray-200 resize-none"
+                        className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] bg-gray-200 resize-none bg-[#eeeeee] text-[#7a7a7a]"
                         type="text"
                         id="decisionDetail"
                         name="decision_description"
                         disabled="disabled"
                         required
-                        value={updateDecision.decision_description}
-                        onChange={(e) =>
-                          handleUpdateDecision(e.target.name, e.target.value)
-                        }
+                        value={updateDecision.description}
                       />
                     </div>
                   </div>
@@ -69,40 +81,48 @@ function UpdateDecision() {
                 <div className="mb-5 w-full">
                   <p className="mb-2">Impact sur l'organisation*</p>
                   <textarea
-                    className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a]"
                     type="text"
                     id="impact"
                     name="decision_impact"
+                    disabled="disabled"
                     required
-                    value={updateDecision.decision_impact}
-                    onChange={(e) =>
-                      handleUpdateDecision(e.target.name, e.target.value)
-                    }
+                    value={updateDecision.impact}
                   />
                 </div>
                 <div className="mb-5">
                   <p className="mb-2">Bénéfices*</p>
                   <textarea
-                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a]"
                     type="text"
                     id="benefits"
                     name="decision_benefits"
+                    disabled="disabled"
                     required
-                    value={updateDecision.decision_benefits}
-                    onChange={(e) =>
-                      handleUpdateDecision(e.target.name, e.target.value)
-                    }
+                    value={updateDecision.profit}
                   />
                 </div>
                 <div className=" mb-5">
                   <p className="mb-2">Risques potentiels*</p>
+                  <textarea
+                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a]"
+                    type="text"
+                    id="decisionTitle"
+                    name="decision_risk"
+                    disabled="disabled"
+                    required
+                    value={updateDecision.risk}
+                  />
+                </div>
+                <div className=" mb-5">
+                  <p className="mb-2">Modification status de la décision*</p>
                   <textarea
                     className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="decisionTitle"
                     name="decision_risk"
                     required
-                    value={updateDecision.decision_risk}
+                    value={updateDecision.premiereDecision}
                     onChange={(e) =>
                       handleUpdateDecision(e.target.name, e.target.value)
                     }
@@ -110,13 +130,13 @@ function UpdateDecision() {
                 </div>
                 <div className="flex justify-end w-7/12 mb-5">
                   <Link
-                    to={`/onedecision/${id}`}
+                    to={`/decision/${id}`}
                     className="text-center w-28  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                   >
                     Annuler
                   </Link>
                   <Link
-                    to={`/onedecision/${id}`}
+                    to={`/decision/${id}`}
                     className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                   >
                     Valider
