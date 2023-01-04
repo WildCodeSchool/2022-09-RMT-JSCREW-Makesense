@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
+import "./DarkMode.css";
+
 function DarkModeButton() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   function handleToggle() {
     setDarkMode(!darkMode);
@@ -9,13 +11,12 @@ function DarkModeButton() {
   }
 
   return (
-    <button
-      type="button"
-      className="bg-gray-800 text-white font-bold py-2 px-4 rounded"
-      onClick={handleToggle}
-    >
-      {darkMode ? "Mode clair" : "Mode sombre"}
-    </button>
+    <div>
+      <label className="switch">
+        <input type="checkbox" onClick={handleToggle} />
+        <span className="slider round" />
+      </label>
+    </div>
   );
 }
 
