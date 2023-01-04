@@ -18,4 +18,6 @@ router.get("/conflicts", ConflictController.browse);
 router.get("/users", UserController.browse);
 router.get("/users/list", UserController.read);
 
+router.delete("/users/:id", UserController.destroy);
+
 module.exports = router;
