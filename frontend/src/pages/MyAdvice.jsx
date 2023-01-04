@@ -5,8 +5,8 @@ export default function MyAdvice() {
   const { id } = useParams();
   const [myAdviceText, setMyAdviceText] = useState({
     textAdvice: "",
-    user_id: 10,
-    decisionMaking_id: id,
+    userId: 10,
+    decisionMakingId: id,
   });
 
   const handleAdvice = (position, value) => {
@@ -16,7 +16,7 @@ export default function MyAdvice() {
   };
 
   const handleSubmit = () => {
-    alert(myAdviceText);
+    alert("avis enregistré");
   };
 
   return (
@@ -39,21 +39,23 @@ export default function MyAdvice() {
           />
         </form>
       </div>
-      <Link to={`/onedecision/${id}`} className="flex justify-end">
-        <button
+      <div className="flex justify-end">
+        <Link
+          to={`/onedecision/${id}`}
           className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm mr-10"
           type="button"
         >
           Annuler
-        </button>
-        <button
+        </Link>
+        <Link
+          to={`/onedecision/${id}`}
           className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
           type="button"
           onClick={handleSubmit}
         >
           Valider
-        </button>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }
