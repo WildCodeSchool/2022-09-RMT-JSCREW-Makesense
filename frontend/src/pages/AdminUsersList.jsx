@@ -29,13 +29,11 @@ function AdminUsersList() {
   return (
     <div>
       <div className="flex justify-center mt-6 mb-6">
-      <Link to="/adduser">
-        <button
-          type="submit"
-          className="bg-green-900 hover:bg-green-700 w-48 h-10 rounded-lg text-white"
+        <Link
+          to="/adduser"
+          className="flex justify-center items-center bg-green-900 hover:bg-green-700 w-48 h-10 rounded-lg text-white"
         >
           Ajouter un utilisateur
-        </button>
         </Link>
       </div>
       <div className="flex justify-center">
