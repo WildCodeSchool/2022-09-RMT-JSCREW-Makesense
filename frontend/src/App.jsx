@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import MyAdvice from "@pages/MyAdvice";
 import NewDecision from "./pages/NewDecision";
 import ArchivedDecisions from "./pages/ArchivedDecisions";
 import ShowOneDecision from "./pages/ShowOneDecision";
@@ -32,6 +33,7 @@ function App() {
           }
         />
         <Route path="/onedecision/:id" element={<ShowOneDecision />} />
+        <Route path="/myadvice" element={<MyAdvice />} />
       </Routes>
       <Footer />
     </Router>

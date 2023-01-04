@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Avatar } from "@assets/";
 
 export default function ShowOneDecision() {
@@ -314,14 +314,14 @@ export default function ShowOneDecision() {
             voir les avis
           </p>
         </div>
-        <div>
+        <Link to="/myadvice">
           <button
             className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
             type="button"
           >
             Donner mon avis
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );
