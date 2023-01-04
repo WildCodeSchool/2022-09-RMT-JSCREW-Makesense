@@ -2,8 +2,6 @@ import SearchPerson from "@components/SearchPerson";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import "./newDecision.css";
-
 function NewDecision() {
   const [decision, setDecision] = useState({
     decision_title: "",
@@ -57,7 +55,7 @@ function NewDecision() {
                     <div className=" mb-5">
                       <p className="mb-2">Descriptif de la décision*</p>
                       <textarea
-                        className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8]"
+                        className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] resize-none"
                         type="text"
                         id="decisionDetail"
                         name="decision_description"
@@ -73,7 +71,7 @@ function NewDecision() {
                 <div className="mb-5 w-full">
                   <p className="mb-2">Impact sur l'organisation*</p>
                   <textarea
-                    className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8]"
+                    className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="impact"
                     name="decision_impact"
@@ -87,7 +85,7 @@ function NewDecision() {
                 <div className=" mb-5">
                   <p className="mb-2">Bénéfices*</p>
                   <textarea
-                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8]"
+                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="benefits"
                     name="decision_benefits"
@@ -101,7 +99,7 @@ function NewDecision() {
                 <div className=" mb-5">
                   <p className="mb-2">Risques potentiels*</p>
                   <textarea
-                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8]"
+                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="decisionTitle"
                     name="decision_risk"
