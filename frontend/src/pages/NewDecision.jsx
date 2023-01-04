@@ -41,10 +41,10 @@ function NewDecision() {
               <div className="w-full">
                 <div className="flex">
                   <div className="w-7/12">
-                    <div className="mb-5 w-11/12">
+                    <div className="mb-5 w-full">
                       <p className="mb-2">Titre de la décision*</p>
                       <input
-                        className="border-2 w-8/12 rounded-lg outline-[#c8c8c8]"
+                        className="border-2 w-full rounded-lg outline-[#c8c8c8]"
                         type="text"
                         id="decisionTitle"
                         name="decision_title"
