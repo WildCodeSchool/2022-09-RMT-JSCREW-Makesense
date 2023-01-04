@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import "./App.css";
+import AdminUsersList from "@pages/AdminUsersList";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -34,6 +35,7 @@ function App() {
         />
         <Route path="/onedecision/:id" element={<ShowOneDecision />} />
         <Route path="/onedecision/:id/advice" element={<MyAdvice />} />
+        <Route path="/gestionuserslist" element={<AdminUsersList />} />
       </Routes>
       <Footer />
     </Router>

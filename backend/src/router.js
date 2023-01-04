@@ -20,4 +20,6 @@ router.get("/users/list", UserController.read);
 
 router.post("/decisionsMaking/advice", AdviceController.postAdvice);
 
+router.delete("/users/:id", UserController.destroy);
+
 module.exports = router;
