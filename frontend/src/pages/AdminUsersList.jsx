@@ -30,7 +30,7 @@ function AdminUsersList() {
     <div>
       <div className="flex justify-center mt-6 mb-6">
         <Link
-          to="/adduser"
+          to="/users/creation"
           className="flex justify-center items-center bg-green-900 hover:bg-green-700 w-48 h-10 rounded-lg text-white"
         >
           Ajouter un utilisateur

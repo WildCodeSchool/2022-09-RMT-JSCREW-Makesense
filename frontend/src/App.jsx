@@ -34,8 +34,8 @@ function App() {
           }
         />
         <Route path="/onedecision/:id" element={<ShowOneDecision />} />
-        <Route path="/gestionuserslist" element={<AdminUsersList />} />
-        <Route path="/adduser" element={<AdminNewUser />} />
+        <Route path="/users" element={<AdminUsersList />} />
+        <Route path="/users/creation" element={<AdminNewUser />} />
       </Routes>
       <Footer />
     </Router>
