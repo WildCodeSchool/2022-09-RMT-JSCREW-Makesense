@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function MyAdvice() {
   const [myAdviceText, setMyAdviceText] = useState({ advice_text: "" });
+  const { id } = useParams();
 
   const handleAdvice = (position, value) => {
     const newAdvice = { ...myAdviceText };
@@ -22,7 +23,7 @@ export default function MyAdvice() {
         </h2>
       </div>
       <div className="mb-10">
-        <form action="" onSubmit={handleSubmit}>
+        <form>
           <textarea
             className="border-2 border-500 h-80 w-full mt-20 rounded-lg outline-[#c8c8c8]"
             type="text"
@@ -34,7 +35,7 @@ export default function MyAdvice() {
           />
         </form>
       </div>
-      <Link to="/" className="flex justify-end">
+      <Link to={`/onedecision/${id}`} className="flex justify-end">
         <button
           className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm mr-10"
           type="button"
@@ -44,6 +45,7 @@ export default function MyAdvice() {
         <button
           className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
           type="button"
+          onClick={handleSubmit}
         >
           Valider
         </button>

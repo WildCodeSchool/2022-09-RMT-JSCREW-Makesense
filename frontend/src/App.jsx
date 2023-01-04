@@ -33,7 +33,7 @@ function App() {
           }
         />
         <Route path="/onedecision/:id" element={<ShowOneDecision />} />
-        <Route path="/myadvice" element={<MyAdvice />} />
+        <Route path="/onedecision/:id/advice" element={<MyAdvice />} />
       </Routes>
       <Footer />
     </Router>
