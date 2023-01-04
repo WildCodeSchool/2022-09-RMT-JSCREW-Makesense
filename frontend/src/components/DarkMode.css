@@ -3,7 +3,7 @@
   position: relative;
   display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 34spx;
 }
 
 /* Hide default HTML checkbox */
@@ -21,7 +21,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #FFF201;
   -webkit-transition: .4s;
   transition: .4s;
 }
