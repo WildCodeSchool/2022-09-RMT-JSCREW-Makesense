@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import MyAdvice from "@pages/MyAdvice";
+import AdminUsersList from "@pages/AdminUsersList";
 import NewDecision from "./pages/NewDecision";
 import ArchivedDecisions from "./pages/ArchivedDecisions";
 import ShowOneDecision from "./pages/ShowOneDecision";
@@ -34,6 +35,7 @@ function App() {
         />
         <Route path="/decision/:id" element={<ShowOneDecision />} />
         <Route path="/decision/:id/advice" element={<MyAdvice />} />
+        <Route path="/gestionuserslist" element={<AdminUsersList />} />
       </Routes>
       <Footer />
     </Router>

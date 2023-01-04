@@ -28,7 +28,7 @@ function SearchPerson() {
         {users &&
           users.map((user) => {
             return (
-              <ul className="searchResult " key={user.id}>
+              <ul className="searchResult" key={user.id}>
                 {user.firstname} {user.lastname}
               </ul>
             );

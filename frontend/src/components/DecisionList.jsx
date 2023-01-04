@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import apiConnexion from "../services/apiConnexion";
 
 import DecisionCard from "./DecisionCard";
 
@@ -6,13 +7,11 @@ function DecisionList({ search, statusId, title }) {
   const [decisionList, setDecisionList] = useState();
 
   useEffect(() => {
-    fetch(
-      `${
-        import.meta.env.VITE_BACKEND_URL
-      }decisionsMaking/?status=${statusId}&search=${search}`
-    )
-      .then((res) => res.json())
-      .then((data) => setDecisionList(data))
+    apiConnexion
+      .get(`decisionsMaking/?status=${statusId}&search=${search}`)
+      .then((res) => {
+        setDecisionList(res.data);
+      })
       .catch((err) => console.error(err));
   }, [search]);
   return (
