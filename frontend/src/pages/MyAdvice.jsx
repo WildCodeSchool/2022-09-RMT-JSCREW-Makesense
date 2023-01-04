@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
 export default function MyAdvice() {
-  const [myAdviceText, setMyAdviceText] = useState({ advice_text: "" });
   const { id } = useParams();
+  const [myAdviceText, setMyAdviceText] = useState({
+    textAdvice: "",
+    user_id: 10,
+    decisionMaking_id: id,
+  });
 
   const handleAdvice = (position, value) => {
     const newAdvice = { ...myAdviceText };
@@ -11,8 +15,8 @@ export default function MyAdvice() {
     setMyAdviceText(newAdvice);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    alert(myAdviceText);
   };
 
   return (
@@ -28,9 +32,9 @@ export default function MyAdvice() {
             className="border-2 border-500 h-80 w-full mt-20 rounded-lg outline-[#c8c8c8]"
             type="text"
             id="adviceText"
-            name="advice_text"
+            name="textAdvice"
             required
-            value={myAdviceText.advice_text}
+            value={myAdviceText.textAdvice}
             onChange={(e) => handleAdvice(e.target.name, e.target.value)}
           />
         </form>
