@@ -25,7 +25,7 @@ function SearchPerson() {
     <div>
       <div className="searchBar">
         <input
-          className="border-2 border-500 rounded-lg w-8/12 outline-[#c8c8c8]"
+          className="border-2 border-500 rounded-lg w-full outline-[#c8c8c8]"
           type="text"
           onChange={handleSearchUser}
           required
