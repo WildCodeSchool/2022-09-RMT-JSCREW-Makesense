@@ -221,7 +221,7 @@ export default function ShowOneDecision() {
       </div>
       <div>
         <Link
-          to="/update-decision"
+          to={`/update-decision/${id}`}
           className="ml-10 mt-8 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
         >
           Modifier
