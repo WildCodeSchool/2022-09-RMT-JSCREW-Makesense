@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import AdminUsersList from "@pages/AdminUsersList";
+import AdminNewUser from "@pages/AdminNewUser";
 import NewDecision from "./pages/NewDecision";
 import ArchivedDecisions from "./pages/ArchivedDecisions";
 import ShowOneDecision from "./pages/ShowOneDecision";
@@ -9,7 +11,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import "./App.css";
-import AdminUsersList from "@pages/AdminUsersList";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -34,6 +35,7 @@ function App() {
         />
         <Route path="/onedecision/:id" element={<ShowOneDecision />} />
         <Route path="/gestionuserslist" element={<AdminUsersList />} />
+        <Route path="/adduser" element={<AdminNewUser />} />
       </Routes>
       <Footer />
     </Router>
