@@ -44,7 +44,7 @@ function Navbar() {
           <p>Archives</p>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
-          <Link to="/gestionuserslist">
+          <Link to="/users">
             <img
               className="inline place-content-center m-1"
               src={PictoUsers}
