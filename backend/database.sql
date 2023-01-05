@@ -32,7 +32,7 @@ VALUES (
         "arouxel",
         "Alexandre",
         "Rouxel",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "alexandrerouxel@mail.com",
         "user"
     ), (
@@ -40,7 +40,7 @@ VALUES (
         "ahakimi",
         "Amina",
         "Hakimi",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "aminahakimi@mail.com",
         "user"
     ), (
@@ -48,7 +48,7 @@ VALUES (
         "cpiancatelli",
         "Charlie",
         "Piancatelli",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "charliepiancatelli@mail.com",
         "user"
     ), (
@@ -56,7 +56,7 @@ VALUES (
         "cguichard",
         "Christopher",
         "Guichard",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "christopherguichard44@gmail.com",
         "user"
     ), (
@@ -64,7 +64,7 @@ VALUES (
         "emartinez",
         "Emmanuel",
         "Martinez",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "emmanuelmartinez@mail.com",
         "user"
     ), (
@@ -72,7 +72,7 @@ VALUES (
         "glemoine",
         "Gaëtan",
         "Lemoine",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "gaetanlemoine@mail.com",
         "user"
     ), (
@@ -80,7 +80,7 @@ VALUES (
         "gwernert",
         "Guillaume",
         "Wernert",
-        "MakeSenseProjet3!",
+        "$argon2id$v=19$m=65536,t=5,p=1$4c8hssuotK6/e5qCvtGvQw$BugMwutuOxrZCFr1ptEbmRDhMzT3RI08UrwcnJjXoL8",
         "guillaumewernert@mail.com",
         "administrator"
     ), (
@@ -88,7 +88,7 @@ VALUES (
         "jvaxelaire",
         "Jordan",
         "Vaxelaire",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "jordanvaxelaire@mail.com",
         "user"
     ), (
@@ -96,7 +96,7 @@ VALUES (
         "kaouadia",
         "Karim",
         "Aoudia",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "karimaoudia@mail.com",
         "user"
     ), (
@@ -104,7 +104,7 @@ VALUES (
         "stormo",
         "Sylvain",
         "Tormo",
-        "LeToulousain11",
+        "$argon2id$v=19$m=65536,t=5,p=1$PPil+7D3GLyBQe7FuWUlXQ$O8qDWfl/YXfoIgHm4Rbvvf+0Xq5dmXs9TM4+LomAXwY",
         "sylvain.tormo11@gmail.com",
         "user"
     ), (
@@ -112,7 +112,7 @@ VALUES (
         "spetaccia",
         "Sébastien",
         "Petaccia",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "sebastienpetaccia@mail.com",
         "user"
     ), (
@@ -120,7 +120,7 @@ VALUES (
         "tralambotsiro",
         "Tsiry",
         "Ralambotsirofo",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "tsiryralambotsirofo@mail.com",
         "user"
     ), (
@@ -128,7 +128,7 @@ VALUES (
         "vpapadopoulos",
         "Vassili",
         "Papadopoulos",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "vassilipapadopoulos@mail.com",
         "user"
     ), (
@@ -136,7 +136,7 @@ VALUES (
         "yviot",
         "Yanis",
         "Viot",
-        "jesuisunnez",
+        "$argon2id$v=19$m=65536,t=5,p=1$RuwKBZ6U4GyUp070M4VcsA$cBqYfvdyMbVfXUrGDwyh7R72qRI5Jas0VuicngzrHGs",
         "yayav.yaya@gmail.com",
         "administrator"
     ), (
@@ -144,7 +144,7 @@ VALUES (
         "jmarkarian",
         "Joy",
         "Markarian",
-        "WCS2022!",
+        "$argon2id$v=19$m=65536,t=5,p=1$HiWYJB4Y6/P9JRe908ksGQ$5IIIk7yVhigPkwXg8HOO8Q3YwixMNy/ax15Ta9ATkKI",
         "jmarkarian@hotmail.fr",
         "administrator"
     ), (
@@ -152,7 +152,7 @@ VALUES (
         "jrichard",
         "Julien",
         "Richard",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "julienrichard@mail.com",
         "user"
     ), (
@@ -160,7 +160,7 @@ VALUES (
         "klavigne",
         "Kevin",
         "Lavigne",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "kevinlavigne@mail.com",
         "user"
     ), (
@@ -168,7 +168,7 @@ VALUES (
         "agorski",
         "Anthony",
         "Gorski",
-        "Crewstillant!",
+        "$argon2id$v=19$m=65536,t=5,p=1$PtphdlePmHzgd8cA7siVQA$pd5RJxteeD8pfRKpe8AqcSStqRg5nR7rLCJC4agSBAE",
         "anthonygorski@mail.com",
         "administrator"
     ), (
@@ -176,7 +176,7 @@ VALUES (
         "jfmorin",
         "Jean-François",
         "Morin",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "jeanfrançoismorin@gmail.com",
         "user"
     ), (
@@ -184,7 +184,7 @@ VALUES (
         "bvandanjon",
         "Benoît",
         "Vandanjon",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "benoitvandanjon@mail.com",
         "user"
     ), (
@@ -192,7 +192,7 @@ VALUES (
         "pdegee",
         "Pierre",
         "Degée",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "pierredegée@mail.com",
         "user"
     ), (
@@ -200,7 +200,7 @@ VALUES (
         "rboe",
         "Rachel",
         "Boé",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "rachelboé@mail.com",
         "user"
     ), (
@@ -208,7 +208,7 @@ VALUES (
         "alenne",
         "Adrien",
         "Lenne",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "adrienlenne@mail.com",
         "user"
     ), (
@@ -216,7 +216,7 @@ VALUES (
         "iboyer",
         "Iris",
         "Boyer",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "irisboyer@mail.com",
         "user"
     ), (
@@ -224,7 +224,7 @@ VALUES (
         "edurand",
         "Elia",
         "Durand",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "eliadurand@mail.com",
         "user"
     ), (
@@ -232,7 +232,7 @@ VALUES (
         "mfontaine",
         "Maxence",
         "Fontaine",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "maxencefontaine@mail.com",
         "user"
     ), (
@@ -240,7 +240,7 @@ VALUES (
         "olefebvre",
         "Océane",
         "Lefebvre",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "océanelefebvre@mail.com",
         "user"
     ), (
@@ -248,7 +248,7 @@ VALUES (
         "abrebion",
         "Antonin",
         "Brebion",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "antoninbrebion@mail.com",
         "user"
     ), (
@@ -256,7 +256,7 @@ VALUES (
         "mbrunet",
         "Marcel",
         "Brunet",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "marcelbrunet@gmail.com",
         "user"
     ), (
@@ -264,7 +264,7 @@ VALUES (
         "jmercier",
         "Jean",
         "Mercier",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "jeanmercier@hotmail.fr",
         "user"
     );

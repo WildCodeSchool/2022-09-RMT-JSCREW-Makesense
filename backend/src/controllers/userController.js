@@ -19,9 +19,9 @@ const validateUser = (req, res) => {
     .findOne(req.body)
     .then(async ([user]) => {
       if (user[0]) {
-        if (await verifyHash(user[0].hashedpassword, req.body.password)) {
+        if (await verifyHash(user[0].password, req.body.password)) {
           const myUser = { ...user[0] };
-          delete myUser.hashedpassword;
+          delete myUser.password;
           const token = jwt.sign(myUser, process.env.JWT_AUTH_SECRET, {
             expiresIn: "24h",
           });
