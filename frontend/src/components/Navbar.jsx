@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Logo from "@assets/logo1.svg";
 import PictoHome from "@assets/home.svg";
@@ -7,12 +8,18 @@ import PictoDecision from "@assets/decision.svg";
 import PictoNotification from "@assets/notification.svg";
 import PictoLogout from "@assets/logout.svg";
 import PictoUsers from "@assets/users.svg";
-import { Link } from "react-router-dom";
+
+import DarkModeButton from "./DarkModeButton";
 
 function Navbar() {
   return (
     <div className="flex justify-between pb-1 bg-gray-200">
-      <img className="ml-10 aspect-auto" src={Logo} alt="logo" />
+      <Link to="/">
+        <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
+      </Link>
+      <div className="mt-3">
+        <DarkModeButton />
+      </div>
       <div>
         <div className="inline-block text-center place-content-center items-center mr-4">
           <Link to="/">
@@ -21,10 +28,9 @@ function Navbar() {
               src={PictoHome}
               alt="home"
             />
+            <p>Parcourir les décisions</p>
           </Link>
-          <p>Parcourir les décisions</p>
         </div>
-
         <div className="inline-block text-center place-content-center mr-4">
           <img
             className="inline place-content-center p-1 m-1"
@@ -40,8 +46,8 @@ function Navbar() {
               src={PictoArchive}
               alt="archives"
             />
+            <p>Archives</p>
           </Link>
-          <p>Archives</p>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <Link to="/users">
