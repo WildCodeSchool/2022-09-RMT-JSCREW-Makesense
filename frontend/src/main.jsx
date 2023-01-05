@@ -8,8 +8,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <ExportContextDecision.DecisonProvider>
+    <ExportContextDecision.DecisionProvider>
       <App />
-    </ExportContextDecision.DecisonProvider>
+    </ExportContextDecision.DecisionProvider>
   </React.StrictMode>
 );
