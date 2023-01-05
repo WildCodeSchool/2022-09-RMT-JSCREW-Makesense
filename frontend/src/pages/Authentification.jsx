@@ -5,7 +5,7 @@ import Logo from "@assets/logo1.svg";
 function Authentification() {
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex justify-center h-100">
         <img src={Logo} alt="Logo" />
       </div>
       <div className="flex justify-center card rounded-none">
@@ -14,7 +14,7 @@ function Authentification() {
             <label htmlFor="login">Identifiant :</label>
             <br />
             <input
-              className="border-2 border-500 w-12/12 rounded-lg outline-[#c8c8c8]"
+              className="border-2 border-500 w-80 rounded-lg outline-[#c8c8c8]"
               type="text"
               name="login"
             />
@@ -23,8 +23,8 @@ function Authentification() {
             <label htmlFor="password">Mot de passe :</label>
             <br />
             <input
-              className="border-2 border-500 w-12/12 rounded-lg outline-[#c8c8c8]"
-              type="text"
+              className="border-2 border-500 w-80 rounded-lg outline-[#c8c8c8]"
+              type="password"
               name="password"
             />
           </div>

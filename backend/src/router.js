@@ -2,6 +2,9 @@ const express = require("express");
 
 const router = express.Router();
 
+const checkUser = require("./services/user");
+const checkAuth = require("./middleware/auth");
+
 const DecisionMakingController = require("./controllers/decisionMakingController");
 const DecisionController = require("./controllers/decisionController");
 const DesignatedUserController = require("./controllers/designatedUserController");
@@ -9,11 +12,13 @@ const AdviceController = require("./controllers/adviceController");
 const ConflictController = require("./controllers/conflictController");
 const UserController = require("./controllers/userController");
 
-router.get("/decisionsMaking", DecisionMakingController.browse);
-router.get("/decisions", DecisionController.browse);
-router.get("/roles", DesignatedUserController.browse);
-router.get("/advices", AdviceController.browse);
-router.get("/conflicts", ConflictController.browse);
-router.get("/users", UserController.browse);
+router.get("/decisionsMaking", checkAuth, DecisionMakingController.browse);
+router.get("/decisions", checkAuth, DecisionController.browse);
+router.get("/roles", checkAuth, DesignatedUserController.browse);
+router.get("/advices", checkAuth, AdviceController.browse);
+router.get("/conflicts", checkAuth, ConflictController.browse);
+router.get("/users", checkAuth, UserController.browse);
+
+router.post("/login", checkUser, UserController.validateUser);
 
 module.exports = router;
