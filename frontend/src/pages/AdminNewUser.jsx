@@ -87,7 +87,7 @@ function AdminNewUser() {
           <p className="mb-2">Rôle</p>
           <div className="relative w-52 lg:max-w-sm">
             <select
-              className="w-52 p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
+              className="w-52 p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none"
               name="user_role"
               onChange={(e) => handleNewUser(e.target.name, e.target.value)}
             >
