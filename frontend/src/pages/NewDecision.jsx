@@ -23,7 +23,7 @@ function NewDecision() {
 
   const getDate = () => {
     const date = new Date();
-    return `${date.getDay() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    return `${date.getDay() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`};
 
   return (
     <div className="w-11/12 ml-20">
@@ -154,6 +154,6 @@ function NewDecision() {
       </form>
     </div>
   );
-}
+};
 
 export default NewDecision;
