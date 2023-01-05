@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const DecisionContext = createContext();
 
-function DecisonProvider({ children }) {
+function DecisionProvider({ children }) {
   const [mainDecision, setMainDecision] = useState({
     title: "",
     description: "",
@@ -37,6 +37,6 @@ function DecisonProvider({ children }) {
 }
 const ExportContextDecision = {
   DecisionContext,
-  DecisonProvider,
+  DecisionProvider,
 };
 export default ExportContextDecision;
