@@ -2,7 +2,7 @@ import React from "react";
 
 import Logo from "@assets/logo1.svg";
 
-function Authentification() {
+function Login() {
   return (
     <div>
       <div className="flex justify-center h-100">
@@ -42,4 +42,4 @@ function Authentification() {
   );
 }
 
-export default Authentification;
+export default Login;
