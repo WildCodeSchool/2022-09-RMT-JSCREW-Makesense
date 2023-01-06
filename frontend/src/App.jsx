@@ -37,6 +37,7 @@ function App() {
         <Route path="/users" element={<AdminUsersList />} />
         <Route path="/users/creation" element={<AdminNewUser />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
