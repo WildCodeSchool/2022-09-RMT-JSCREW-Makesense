@@ -37,7 +37,7 @@ function NewDecision() {
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
-                  <div className="w-9/12">
+                  <div className="w-7/12">
                     <div className="mb-5 w-full">
                       <p className="mb-2">Titre de la décision*</p>
                       <input
@@ -71,7 +71,7 @@ function NewDecision() {
                 <div className="mb-5 w-full">
                   <p className="mb-2">Impact sur l'organisation*</p>
                   <textarea
-                    className="border-2 border-500 h-80 w-9/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="impact"
                     name="impact"
@@ -85,7 +85,7 @@ function NewDecision() {
                 <div className=" mb-5">
                   <p className="mb-2">Bénéfices*</p>
                   <textarea
-                    className="border-2 border-500 h-80  w-9/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="benefits"
                     name="benefits"
@@ -99,7 +99,7 @@ function NewDecision() {
                 <div className=" mb-5">
                   <p className="mb-2">Risques potentiels*</p>
                   <textarea
-                    className="border-2 border-500 h-80  w-9/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
                     id="decisionTitle"
                     name="risk"
@@ -110,7 +110,7 @@ function NewDecision() {
                     }
                   />
                 </div>
-                <div className="flex justify-end w-9/12 mb-5">
+                <div className="flex justify-end w-7/12 mb-5">
                   <Link
                     to="/user/decision"
                     className="text-center w-28  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
@@ -127,10 +127,12 @@ function NewDecision() {
               </div>
             </div>
           </div>
-          <div className="decisionByUser w-4/12">
-            <div className="flex justify-between h-8 outline-[#c8c8c8] mb-20">
-              <p>Date de création :</p>
-              <p>{getDate()}</p>
+          <div className="decisionByUser w-4/12 text-center">
+            <div className="mb-20">
+              <p className="mb-2">Date de création</p>
+              <p className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]">
+                {getDate()}
+              </p>
             </div>
             <div className="mb-2 ">
               <p className="mb-2">Personnes expertes*</p>
