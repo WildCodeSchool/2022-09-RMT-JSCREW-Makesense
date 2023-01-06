@@ -15,9 +15,9 @@ function Navbar() {
   return (
     <div className="flex justify-between pb-1 bg-gray-200">
       <Link to="/">
-        <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
+        <img className="ml-10 mt-6 aspect-auto" src={Logo} alt="logo" />
       </Link>
-      <div className="mt-3">
+      <div className="mt-6">
         <DarkModeButton />
       </div>
       <div>
