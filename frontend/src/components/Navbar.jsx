@@ -15,16 +15,16 @@ function Navbar() {
   return (
     <div className="flex justify-between pb-1 bg-gray-200">
       <Link to="/">
-        <img className="ml-10 mt-6 aspect-auto" src={Logo} alt="logo" />
+        <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
       </Link>
-      <div className="mt-6">
+      <div className="mt-3">
         <DarkModeButton />
       </div>
       <div>
         <div className="inline-block text-center place-content-center items-center mr-4">
           <Link to="/">
             <img
-              className="inline place-content-center p-2 m-2"
+              className="inline place-content-center p-1 m-1"
               src={PictoHome}
               alt="logo1"
             />
@@ -33,7 +33,7 @@ function Navbar() {
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <img
-            className="inline place-content-center p-2 m-2"
+            className="inline place-content-center p-1 m-1"
             src={PictoDecision}
             alt="logo2"
           />
@@ -42,7 +42,7 @@ function Navbar() {
         <div className="inline-block text-center place-content-center mr-4">
           <Link to="/archives">
             <img
-              className="inline place-content-center p-2 m-2"
+              className="inline place-content-center p-1 m-1"
               src={PictoArchive}
               alt="logo3"
             />
@@ -61,7 +61,7 @@ function Navbar() {
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <img
-            className="inline place-content-center p-2 m-1"
+            className="inline place-content-center m-1"
             src={PictoNotification}
             alt="logo5"
           />
@@ -69,7 +69,7 @@ function Navbar() {
         </div>
         <div className="inline-block text-center place-content-center mr-10">
           <img
-            className="inline place-content-center p-2 m-2"
+            className="inline place-content-center p-1 m-1"
             src={PictoLogout}
             alt="logo6"
           />
