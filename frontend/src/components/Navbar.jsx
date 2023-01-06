@@ -24,27 +24,27 @@ function Navbar() {
         <div className="inline-block text-center place-content-center items-center mr-4">
           <Link to="/">
             <img
-              className="inline place-content-center p-1 m-1"
+              className="inline place-content-center p-2 m-2"
               src={PictoHome}
-              alt="home"
+              alt="logo1"
             />
             <p>Parcourir les décisions</p>
           </Link>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <img
-            className="inline place-content-center p-1 m-1"
+            className="inline place-content-center p-2 m-2"
             src={PictoDecision}
-            alt="decisions"
+            alt="logo2"
           />
           <p>Mes décisions</p>
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <Link to="/archives">
             <img
-              className="inline place-content-center p-1 m-1"
+              className="inline place-content-center p-2 m-2"
               src={PictoArchive}
-              alt="archives"
+              alt="logo3"
             />
             <p>Archives</p>
           </Link>
@@ -61,17 +61,17 @@ function Navbar() {
         </div>
         <div className="inline-block text-center place-content-center mr-4">
           <img
-            className="inline place-content-center m-1"
+            className="inline place-content-center p-2 m-1"
             src={PictoNotification}
-            alt="notifications"
+            alt="logo5"
           />
           <p>Notifications</p>
         </div>
         <div className="inline-block text-center place-content-center mr-10">
           <img
-            className="inline place-content-center p-1 m-1"
+            className="inline place-content-center p-2 m-2"
             src={PictoLogout}
-            alt="logout"
+            alt="logo6"
           />
           <p>Se déconnecter</p>
         </div>
