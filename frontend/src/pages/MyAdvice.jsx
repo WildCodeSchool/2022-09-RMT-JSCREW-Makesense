@@ -19,6 +19,7 @@ export default function MyAdvice() {
   const handleSubmit = () => {
     apiConnexion
       .post(`/decision/advice`, myAdviceText)
+      .then(alert("message envoyé"))
       .catch((err) => console.error(err));
   };
 
@@ -49,13 +50,13 @@ export default function MyAdvice() {
         >
           Annuler
         </Link>
-        <Link
-          to={`/decision/${id}`}
+        <button
+          type="button"
           className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
           onClick={handleSubmit}
         >
           Valider
-        </Link>
+        </button>
       </div>
     </div>
   );

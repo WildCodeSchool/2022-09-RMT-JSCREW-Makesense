@@ -16,9 +16,7 @@ const postAdvice = (req, res) => {
   models.advice
     .insert(req.body)
     .then(([result]) => {
-      res
-        .location(`/decisionsMaking/advice/${result.insertId}`)
-        .sendStatus(201);
+      res.location(`/decision/advice/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
