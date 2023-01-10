@@ -12,6 +12,21 @@ const browse = (req, res) => {
     });
 };
 
+const postAdvice = (req, res) => {
+  models.advice
+    .insert(req.body)
+    .then(([result]) => {
+      res
+        .location(`/decisionsMaking/advice/${result.insertId}`)
+        .sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
+  postAdvice,
 };
