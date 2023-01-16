@@ -12,6 +12,7 @@ export default function ShowOneDecision() {
   const [premiereDecision, setPremiereDecision] = useState(false);
 
   const [oneDecision, setOneDecision] = useState([]);
+  const [adviceList, setAdviceList] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,6 +20,12 @@ export default function ShowOneDecision() {
       .get(`decisionsMaking/${id}`)
       .then((res) => {
         setOneDecision(res.data);
+      })
+      .catch((err) => console.error(err));
+    apiConnexion
+      .get(`advices/${id}`)
+      .then((res) => {
+        setAdviceList(res.data);
       })
       .catch((err) => console.error(err));
   }, [id]);
@@ -191,7 +198,11 @@ export default function ShowOneDecision() {
             </svg>
             Avis
           </button>
-          {avis ? <p className="text-black ml-10 mb-5">test</p> : null}
+          {avis ? (
+            <p className="text-black ml-10 mb-5">
+              {adviceList.map((e) => e.txt)}
+            </p>
+          ) : null}
         </div>
         <div className="border-b-2 ml-10">
           <button

@@ -18,6 +18,8 @@ router.get("/conflicts", ConflictController.browse);
 router.get("/users", UserController.browse);
 router.get("/users/list", UserController.read);
 
+router.get("advices/:id", AdviceController.read);
+
 router.post("/decision/advice", AdviceController.postAdvice);
 
 router.delete("/users/:id", UserController.destroy);

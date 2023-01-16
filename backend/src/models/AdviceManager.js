@@ -11,6 +11,11 @@ class AdviceManager extends AbstractManager {
       [advice.textAdvice, advice.userId, advice.decisionMakingId]
     );
   }
+
+  findOne(id) {
+    const query = `select * from ${this.table} where decisionMaking_id = ?`;
+    return this.connection.query(query, [id]);
+  }
 }
 
 module.exports = AdviceManager;
