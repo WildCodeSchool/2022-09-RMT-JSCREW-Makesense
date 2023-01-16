@@ -1,140 +1,152 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
-import "./newDecision.css";
+import { Link } from "react-router-dom";
+
+import SearchPerson from "@components/SearchPerson";
+import ChoosenPerson from "@components/ChoosenPerson";
+import ExportContextDecision from "../contexts/DecisionContext";
 
 function NewDecision() {
-  const [decision, setDecision] = useState({
-    decision_title: "",
-    decision_description: "",
-    decision_impact: "",
-    decision_benefits: "",
-    decision_risk: "",
-  });
+  const { mainDecision, handleMainDecision } = useContext(
+    ExportContextDecision.DecisionContext
+  );
 
-  const handleDecision = (position, value) => {
-    const newDecision = { ...decision };
-    newDecision[position] = value;
-    setDecision(newDecision);
-  };
+  /**
+   *maj du state en fonction de sa propriété
+   * @param {string} position
+   * @param {string} value
+   */
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
+  const getDate = () => {
+    const date = new Date();
+    return `${date.getDay() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  };
+
   return (
     <div className="w-11/12 ml-20">
-      <h1 className="font-bold mb-5 text-green-900">
+      <h1 className="font-bold mb-5 text-green-900 mt-5">
         Créer une prise de décision
       </h1>
       <form action="" onSubmit={handleSubmit}>
-        <div className="flex">
-          <div className="w-full">
+        <div className="decision flex">
+          <div className="writeDecision w-full">
             <div className="flex">
-              <div className="w-7/12">
-                <div className="mb-5 w-11/12">
-                  <p className="mb-2">Titre de la décision*</p>
-                  <input
-                    className="border-2 w-8/12 rounded-lg outline-[#c8c8c8]"
+              <div className="w-full">
+                <div className="flex">
+                  <div className="w-10/12">
+                    <div className="mb-5 w-full">
+                      <p className="mb-2">Titre de la décision*</p>
+                      <input
+                        className="border-2 w-full rounded-lg outline-[#c8c8c8]"
+                        type="text"
+                        id="decisionTitle"
+                        name="title"
+                        required
+                        value={mainDecision.title}
+                        onChange={(e) =>
+                          handleMainDecision(e.target.name, e.target.value)
+                        }
+                      />
+                    </div>
+                    <div className=" mb-5">
+                      <p className="mb-2">Descriptif de la décision*</p>
+                      <textarea
+                        className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] resize-none"
+                        type="text"
+                        id="decisionDetail"
+                        name="description"
+                        required
+                        value={mainDecision.description}
+                        onChange={(e) =>
+                          handleMainDecision(e.target.name, e.target.value)
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="mb-5 w-full">
+                  <p className="mb-2">Impact sur l'organisation*</p>
+                  <textarea
+                    className="border-2 border-500 h-80 w-10/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
-                    id="decisionTitle"
-                    name="decision_title"
+                    id="impact"
+                    name="impact"
                     required
-                    value={decision.decision_title}
+                    value={mainDecision.impact}
                     onChange={(e) =>
-                      handleDecision(e.target.name, e.target.value)
+                      handleMainDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
                 <div className=" mb-5">
-                  <p className="mb-2">Descriptif de la décision*</p>
+                  <p className="mb-2">Bénéfices*</p>
                   <textarea
-                    className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8]"
+                    className="border-2 border-500 h-80 w-10/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
-                    id="decisionDetail"
-                    name="decision_description"
+                    id="benefits"
+                    name="benefits"
                     required
-                    value={decision.decision_description}
+                    value={mainDecision.benefits}
                     onChange={(e) =>
-                      handleDecision(e.target.name, e.target.value)
+                      handleMainDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
-              </div>
-              <div className="w-4/12 text-center">
-                <div className="mb-20">
-                  <p className="mb-2">Saisie date</p>
-                  <input
-                    className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]"
-                    type="date"
-                  />
-                </div>
-                <div className="mb-2 ">
-                  <p className="mb-2">Personnes expertes*</p>
-                  <input
-                    className="border-2 border-500 rounded-lg w-8/12 outline-[#c8c8c8]"
+                <div className=" mb-5">
+                  <p className="mb-2">Risques potentiels*</p>
+                  <textarea
+                    className="border-2 border-500 h-80 w-10/12 rounded-lg outline-[#c8c8c8] resize-none"
                     type="text"
+                    id="decisionTitle"
+                    name="risk"
                     required
+                    value={mainDecision.risk}
+                    onChange={(e) =>
+                      handleMainDecision(e.target.name, e.target.value)
+                    }
                   />
                 </div>
-                <div className="mb-5">
-                  <p className="mb-2">Personnes impactées*</p>
-                  <input
-                    className="border-2 border-500 rounded-lg w-8/12 outline-[#c8c8c8]"
-                    type="text"
-                    required
-                  />
+                <div className="flex justify-end w-10/12 mb-5">
+                  <Link
+                    to="/user/decision"
+                    className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                  >
+                    Annuler
+                  </Link>
+                  <Link
+                    to="/user/decision"
+                    className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                  >
+                    Valider
+                  </Link>
                 </div>
               </div>
             </div>
-            <div className="mb-5 w-full">
-              <p className="mb-2">Impact sur l'organisation*</p>
-              <textarea
-                className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8]"
-                type="text"
-                id="impact"
-                name="decision_impact"
-                required
-                value={decision.decision_impact}
-                onChange={(e) => handleDecision(e.target.name, e.target.value)}
-              />
+          </div>
+          <div className="decisionByUser w-6/12">
+            <div className="mb-12 flex justify-between">
+              <p className="mb-2">Date de création:</p>
+              <p>{getDate()}</p>
             </div>
-            <div className=" mb-5">
-              <p className="mb-2">Bénéfices*</p>
-              <textarea
-                className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8]"
-                type="text"
-                id="benefits"
-                name="decision_benefits"
-                required
-                value={decision.decision_benefits}
-                onChange={(e) => handleDecision(e.target.name, e.target.value)}
-              />
+            <div className="mb-2 ">
+              <p className="mb-2">Personnes expertes*</p>
+              <SearchPerson SearchPerson={SearchPerson} />
             </div>
-            <div className=" mb-5">
-              <p className="mb-2">Risques potentiels*</p>
-              <textarea
-                className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8]"
-                type="text"
-                id="decisionTitle"
-                name="decision_risk"
-                required
-                value={decision.decision_risk}
-                onChange={(e) => handleDecision(e.target.name, e.target.value)}
-              />
+            <div className="expertPersons mb-40">
+              <p className="mb-2">Personnes expertes choisies</p>
+              <ChoosenPerson />
             </div>
-            <div className="flex justify-end w-7/12 mb-5">
-              <button
-                type="submit"
-                className="bg-green-900 hover:bg-green-700 w-3/12 h-10 rounded-lg text-white"
-              >
-                Annuler
-              </button>
-              <button
-                type="submit"
-                className="bg-green-900 hover:bg-green-700 w-3/12 h-10 ml-3 rounded-lg text-white"
-              >
-                Valider
-              </button>
+            <div className="mb-2">
+              <p className="mb-2">Personnes impactées*</p>
+              <SearchPerson SearchPerson={SearchPerson} />
+            </div>
+            <div className="impactedPersons mt-5">
+              <p className="mb-2">Personnes impactées choisies</p>
+              <ChoosenPerson />
             </div>
           </div>
         </div>

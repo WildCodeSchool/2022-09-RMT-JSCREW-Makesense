@@ -2,11 +2,14 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "@pages/Login";
-import Navbar from "@components/Navbar";
-import NewDecision from "@pages/NewDecision";
-import ArchivedDecisions from "@pages/ArchivedDecisions";
-import ShowOneDecision from "@pages/ShowOneDecision";
+import AdminUsersList from "@pages/AdminUsersList";
+import AdminNewUser from "@pages/AdminNewUser";
+import NewDecision from "./pages/NewDecision";
+import ArchivedDecisions from "./pages/ArchivedDecisions";
+import ShowOneDecision from "./pages/ShowOneDecision";
 import AllDecisions from "./pages/AllDecisions";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 import "./App.css";
 
@@ -26,9 +29,17 @@ function App() {
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
         />
         <Route path="/user/decision/new" element={<NewDecision />} />
-        <Route path="/archives" element={<ArchivedDecisions />} />
-        <Route path="/onedecision" element={<ShowOneDecision />} />
+        <Route
+          path="/archives"
+          element={
+            <ArchivedDecisions search={search} handleSearch={handleSearch} />
+          }
+        />
+        <Route path="/onedecision/:id" element={<ShowOneDecision />} />
+        <Route path="/users" element={<AdminUsersList />} />
+        <Route path="/users/creation" element={<AdminNewUser />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
