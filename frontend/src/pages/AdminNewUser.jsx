@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function AdminNewUser() {
   const [user, setUser] = useState({
@@ -97,12 +98,12 @@ function AdminNewUser() {
           </div>
         </div>
         <div className="flex justify-end w-7/12 mb-4">
-          <button
-            type="submit"
-            className="bg-green-900 hover:bg-green-700 w-24 h-10 rounded-lg text-white"
+          <Link
+            to="/users"
+            className="flex justify-center items-center bg-green-900 hover:bg-green-700 w-24 h-10 rounded-lg text-white"
           >
             Annuler
-          </button>
+          </Link>
           <button
             type="submit"
             className="bg-green-900 hover:bg-green-700 w-24 h-10 ml-3 rounded-lg text-white"
