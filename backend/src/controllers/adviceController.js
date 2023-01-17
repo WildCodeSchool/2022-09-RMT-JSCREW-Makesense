@@ -19,13 +19,12 @@ const postAdvice = (req, res) => {
       res
         .location(`/decision/advice/${result.insertId}`)
         .status(201)
-        .send("Votre avis a bien été enregistré");
+        .send(result.insertId);
     })
     .catch((err) => {
       console.error(err);
       res
-        .status(500)
-        .send("malheureusement, votre avis n'a pas pu être envoyé");
+        .sendStatus(500)
     });
 };
 
