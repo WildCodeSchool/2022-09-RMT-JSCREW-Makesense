@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 const checkUser = (req, res, next) => {
   const { error } = Joi.object({
-    mail: Joi.string().email({
+    email: Joi.string().email({
       minDomainSegments: 2,
       tlds: { allow: ["com", "net", "fr"] },
     }),
