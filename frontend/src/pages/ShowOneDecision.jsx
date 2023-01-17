@@ -23,7 +23,7 @@ export default function ShowOneDecision() {
       })
       .catch((err) => console.error(err));
     apiConnexion
-      .get(`advices`)
+      .get(`advices/${id}`)
       .then((res) => {
         setAdviceList(res.data);
       })
@@ -295,7 +295,9 @@ export default function ShowOneDecision() {
             />
           </div>
           <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight">
-            voir les avis
+            <button onClick={toggleDisplayAvis} type="button">
+              Voir Les avis
+            </button>
           </p>
         </div>
         <div>
@@ -325,7 +327,9 @@ export default function ShowOneDecision() {
             />
           </div>
           <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight mb-20">
-            voir les avis
+            <button onClick={toggleDisplayAvis} type="button">
+              Voir Les avis
+            </button>
           </p>
         </div>
         <Link

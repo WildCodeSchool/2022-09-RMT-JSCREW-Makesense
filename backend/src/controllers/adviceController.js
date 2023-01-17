@@ -16,11 +16,16 @@ const postAdvice = (req, res) => {
   models.advice
     .insert(req.body)
     .then(([result]) => {
-      res.location(`/decision/advice/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/decision/advice/${result.insertId}`)
+        .status(201)
+        .send("Votre avis a bien été enregistré");
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res
+        .status(500)
+        .send("malheureusement, votre avis n'a pas pu être envoyé");
     });
 };
 
