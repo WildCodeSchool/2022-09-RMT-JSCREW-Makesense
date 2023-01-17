@@ -11,9 +11,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #0C3944
 }
-
-.dark-mode {
-  background-color:#0B313B !important;
-  color: #ffffff;
-}
-

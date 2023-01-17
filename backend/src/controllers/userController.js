@@ -28,7 +28,7 @@ const destroy = (req, res) => {
       console.error(err);
       res.sendStatus(500);
     });
-};  
+};
 
 const validateUser = (req, res) => {
   models.user
