@@ -193,7 +193,10 @@ export default function ShowOneDecision() {
           </button>
           {avis ? (
             <p className="text-black ml-10 mb-5">
-              {oneDecision.advice.map((e) => e.textAdvice)}
+              {oneDecision.advice.map((e) => <div className="mb-6">
+                <div className="mb-2">Avis de {e.firstname} {e.lastname} :</div>
+                <div>{e.textAdvice}</div>
+                </div>)}
             </p>
           ) : null}
         </div>

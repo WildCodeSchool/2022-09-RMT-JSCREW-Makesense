@@ -13,7 +13,9 @@ class AdviceManager extends AbstractManager {
   }
 
   findOne(id) {
-    const query = `select * from ${this.table} where decisionMaking_id = ?`;
+    const query = `select *, u.firstname, u.lastname from ${this.table} 
+    inner join user as u on u.id = ${this.table}.user_id 
+    where decisionMaking_id = ?`;
     return this.connection.query(query, [id]);
   }
 }
