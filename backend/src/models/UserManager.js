@@ -15,11 +15,11 @@ class UserManager extends AbstractManager {
     query += "limit 5";
     return this.connection.query(query, value);
   }
-  
+
   findOne(user) {
     return this.connection.query(
-      `select * from  ${this.table} where mail = ?`,
-      [user.mail]
+      `select * from  ${this.table} where email = ?`,
+      [user.email]
     );
   }
 }

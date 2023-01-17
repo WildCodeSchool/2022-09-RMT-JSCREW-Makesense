@@ -28,7 +28,7 @@ const destroy = (req, res) => {
       console.error(err);
       res.sendStatus(500);
     });
-};  
+};
 
 const validateUser = (req, res) => {
   models.user
@@ -41,7 +41,6 @@ const validateUser = (req, res) => {
           const token = jwt.sign(myUser, process.env.JWT_AUTH_SECRET, {
             expiresIn: "24h",
           });
-
           res
             .status(201)
             .cookie("access_token", token, {

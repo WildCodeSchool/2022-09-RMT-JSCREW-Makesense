@@ -6,7 +6,7 @@ function AdminNewUser() {
     user_username: "",
     user_firstname: "",
     user_lastname: "",
-    user_mail: "",
+    user_email: "",
     user_password: "",
     user_role: "administrateur",
   });
@@ -69,7 +69,7 @@ function AdminNewUser() {
             type="text"
             name="user_mail"
             required="required"
-            value={user.user_mail}
+            value={user.user_email}
             onChange={(e) => handleNewUser(e.target.name, e.target.value)}
           />
         </div>
