@@ -12,8 +12,8 @@ CREATE TABLE
         username VARCHAR (255) NOT NULL,
         firstname VARCHAR(255) NOT NULL,
         lastname VARCHAR(255) NOT NULL,
-        `password` VARCHAR(255) NOT NULL,
-        mail VARCHAR(255) NOT NULL,
+        hashedpassword VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
         `role` VARCHAR(255) NOT NULL
     );
 
@@ -23,8 +23,8 @@ INSERT INTO
         username,
         firstname,
         lastname,
-        `password`,
-        mail,
+        hashedpassword,
+        email,
         `role`
     )
 VALUES (
