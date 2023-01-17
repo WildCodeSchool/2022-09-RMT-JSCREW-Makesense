@@ -22,6 +22,7 @@ router.get("/conflicts", checkAuth, ConflictController.browse);
 router.get("/users", checkAuth, UserController.browse);
 router.get("/users/list", checkAuth, UserController.read);
 router.post("/login", checkUser, UserController.validateUser);
+router.post("/users", checkAuth, UserController.add);
 router.delete("/users/:id", checkAuth, UserController.destroy);
 
 
