@@ -19,7 +19,9 @@ const read = (req, res) => {
   models.decisionMaking
     .findOne(id)
     .then(([decisionMaking]) => {
-      res.send(decisionMaking[0]);
+      models.advice.findOne(id).then(([rows]) => {
+        res.send({ ...decisionMaking[0], advice: rows });
+      });
     })
     .catch((err) => {
       console.error(err);

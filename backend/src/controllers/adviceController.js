@@ -29,22 +29,7 @@ const postAdvice = (req, res) => {
     });
 };
 
-const read = (req, res) => {
-  const { id } = req.params;
-
-  models.advice
-    .findOne(id)
-    .then(([rows]) => {
-      res.send(rows[0]);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 module.exports = {
   browse,
   postAdvice,
-  read,
 };
