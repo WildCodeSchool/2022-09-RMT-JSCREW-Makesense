@@ -27,8 +27,8 @@ function NewDecision() {
   };
 
   return (
-    <div className="w-11/12 ml-20">
-      <h1 className="font-bold mb-5 text-green-900 mt-5">
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec]">
+      <h1 className="font-bold text-3xl px-12 py-8 ">
         Créer une prise de décision
       </h1>
       <form action="" onSubmit={handleSubmit}>
@@ -38,10 +38,12 @@ function NewDecision() {
               <div className="w-full">
                 <div className="flex">
                   <div className="w-10/12">
-                    <div className="mb-5 w-full">
-                      <p className="mb-2">Titre de la décision*</p>
+                    <div className="w-full">
+                      <p className="px-12 pb-4 text-xl">
+                        Titre de la prise de décision*
+                      </p>
                       <input
-                        className="border-2 w-full rounded-lg outline-[#c8c8c8]"
+                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mx-12 mb-10 text-lg"
                         type="text"
                         id="decisionTitle"
                         name="title"
@@ -52,10 +54,12 @@ function NewDecision() {
                         }
                       />
                     </div>
-                    <div className=" mb-5">
-                      <p className="mb-2">Descriptif de la décision*</p>
+                    <div>
+                      <p className="px-12 pb-4 text-xl">
+                        Descriptif de la décision*
+                      </p>
                       <textarea
-                        className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] resize-none"
+                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
                         type="text"
                         id="decisionDetail"
                         name="description"
@@ -68,10 +72,12 @@ function NewDecision() {
                     </div>
                   </div>
                 </div>
-                <div className="mb-5 w-full">
-                  <p className="mb-2">Impact sur l'organisation*</p>
+                <div>
+                  <p className="px-12 pb-4 text-xl">
+                    Impacts sur l'organisation*
+                  </p>
                   <textarea
-                    className="border-2 border-500 h-80 w-10/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
                     type="text"
                     id="impact"
                     name="impact"
@@ -82,10 +88,10 @@ function NewDecision() {
                     }
                   />
                 </div>
-                <div className=" mb-5">
-                  <p className="mb-2">Bénéfices*</p>
+                <div>
+                  <p className="px-12 pb-4 text-xl">Bénéfices*</p>
                   <textarea
-                    className="border-2 border-500 h-80 w-10/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
                     type="text"
                     id="benefits"
                     name="benefits"
@@ -96,10 +102,10 @@ function NewDecision() {
                     }
                   />
                 </div>
-                <div className=" mb-5">
-                  <p className="mb-2">Risques potentiels*</p>
+                <div>
+                  <p className="px-12 pb-4 text-xl">Risques potentiels*</p>
                   <textarea
-                    className="border-2 border-500 h-80 w-10/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
                     type="text"
                     id="decisionTitle"
                     name="risk"
@@ -112,14 +118,14 @@ function NewDecision() {
                 </div>
                 <div className="flex justify-end w-10/12 mb-5">
                   <Link
-                    to="/user/decision"
-                    className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                    to="/"
+                    className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Annuler
                   </Link>
                   <Link
                     to="/user/decision"
-                    className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                    className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Valider
                   </Link>
@@ -128,23 +134,23 @@ function NewDecision() {
             </div>
           </div>
           <div className="decisionByUser w-6/12">
-            <div className="mb-12 flex justify-between">
-              <p className="mb-2">Date de création:</p>
-              <p>{getDate()}</p>
+            <div className="flex justify-start mb-5">
+              <p className="pr-5 text-xl">Date de création :</p>
+              <p className="text-xl">{getDate()}</p>
             </div>
-            <div className="mb-2 ">
-              <p className="mb-2">Personnes expertes*</p>
+            <div>
+              <p className="text-xl pb-4">Personnes expertes*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
-            <div className="expertPersons mb-40">
-              <p className="mb-2">Personnes expertes choisies</p>
+            <div className="expertPersons">
+              <p className="text-xl pb-4">Personnes expertes choisies</p>
               <ChoosenPerson />
             </div>
-            <div className="mb-2">
-              <p className="mb-2">Personnes impactées*</p>
+            <div>
+              <p className="text-xl pb-4">Personnes impactées*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
-            <div className="impactedPersons mt-5">
+            <div className="impactedPersons text-xl pb-4">
               <p className="mb-2">Personnes impactées choisies</p>
               <ChoosenPerson />
             </div>

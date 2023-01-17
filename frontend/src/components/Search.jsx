@@ -22,7 +22,7 @@ function Search({ search, handleSearch }) {
           type="search"
           placeholder="Rechercher"
           aria-label="Search"
-          className="w-80 py-3 pl-12 pr-4 text-[#3d6169] border border-[#b6c4c7] rounded-md outline-none bg-[#f5f7f7] focus:bg-white focus:border-[#e7ebec]"
+          className="dark:bg-[#e7ebec] w-80 py-3 pl-12 pr-4 text-[#3d6169] border border-[#b6c4c7] rounded-md outline-none bg-[#f5f7f7] focus:bg-white focus:border-[#e7ebec]"
           value={search}
           onChange={(event) => handleSearch(event.target.value)}
         />

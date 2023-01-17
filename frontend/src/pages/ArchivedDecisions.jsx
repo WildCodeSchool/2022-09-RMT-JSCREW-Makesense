@@ -3,7 +3,7 @@ import Search from "../components/Search";
 
 function ArchivedDecisions({ search, handleSearch }) {
   return (
-    <div className="h-[100vh]">
+    <div className="h-[120vh] dark:bg-[#0c3944]">
       <Search search={search} handleSearch={handleSearch} />
       <DecisionList statusId={3} title="Décisions archivées" search={search} />
     </div>
