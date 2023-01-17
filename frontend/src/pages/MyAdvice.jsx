@@ -19,7 +19,6 @@ export default function MyAdvice() {
   const handleSubmit = () => {
     apiConnexion
       .post(`/decision/advice`, myAdviceText)
-      .then(alert("message envoyé"))
       .catch((err) => console.error(err));
   };
 
