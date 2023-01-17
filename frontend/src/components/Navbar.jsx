@@ -26,7 +26,7 @@ function Navbar() {
             <img
               className="inline place-content-center p-1 m-1"
               src={PictoHome}
-              alt="home"
+              alt="logo1"
             />
             <p>Parcourir les décisions</p>
           </Link>
@@ -35,7 +35,7 @@ function Navbar() {
           <img
             className="inline place-content-center p-1 m-1"
             src={PictoDecision}
-            alt="decisions"
+            alt="logo2"
           />
           <p>Mes décisions</p>
         </div>
@@ -44,7 +44,7 @@ function Navbar() {
             <img
               className="inline place-content-center p-1 m-1"
               src={PictoArchive}
-              alt="archives"
+              alt="logo3"
             />
             <p>Archives</p>
           </Link>
@@ -63,7 +63,7 @@ function Navbar() {
           <img
             className="inline place-content-center m-1"
             src={PictoNotification}
-            alt="notifications"
+            alt="logo5"
           />
           <p>Notifications</p>
         </div>
@@ -71,7 +71,7 @@ function Navbar() {
           <img
             className="inline place-content-center p-1 m-1"
             src={PictoLogout}
-            alt="logout"
+            alt="logo6"
           />
           <p>Se déconnecter</p>
         </div>

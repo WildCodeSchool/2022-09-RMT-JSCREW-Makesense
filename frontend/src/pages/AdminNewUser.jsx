@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function AdminNewUser() {
   const [user, setUser] = useState({
     user_username: "",
     user_firstname: "",
     user_lastname: "",
-    user_mail: "",
+    user_email: "",
     user_password: "",
     user_role: "administrateur",
   });
@@ -68,7 +69,7 @@ function AdminNewUser() {
             type="text"
             name="user_mail"
             required="required"
-            value={user.user_mail}
+            value={user.user_email}
             onChange={(e) => handleNewUser(e.target.name, e.target.value)}
           />
         </div>
@@ -97,12 +98,12 @@ function AdminNewUser() {
           </div>
         </div>
         <div className="flex justify-end w-7/12 mb-4">
-          <button
-            type="submit"
-            className="bg-green-900 hover:bg-green-700 w-24 h-10 rounded-lg text-white"
+          <Link
+            to="/users"
+            className="flex justify-center items-center bg-green-900 hover:bg-green-700 w-24 h-10 rounded-lg text-white"
           >
             Annuler
-          </button>
+          </Link>
           <button
             type="submit"
             className="bg-green-900 hover:bg-green-700 w-24 h-10 ml-3 rounded-lg text-white"
