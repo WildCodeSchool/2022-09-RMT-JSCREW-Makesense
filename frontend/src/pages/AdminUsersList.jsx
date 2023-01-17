@@ -50,7 +50,7 @@ function AdminUsersList() {
                 <td className="p-1.5">
                   {user.firstname} {user.lastname}
                 </td>
-                <td>{user.mail}</td>
+                <td>{user.email}</td>
                 <td>
                   <div className="flex justify-center w-52">
                     <select
