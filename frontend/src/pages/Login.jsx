@@ -13,8 +13,9 @@ function Login() {
 
   const handleSubmit = () => {
     setMessage("");
-    const emailPattern = /^[^s@]+@[^s@]+.[^s@]+$/;
-    const pwdPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
+    const emailPattern =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     if (
       emailPattern.test(connexion.email) &&
       pwdPattern.test(connexion.password)
@@ -49,7 +50,7 @@ function Login() {
               type="email"
               value={connexion.email}
               onChange={(e) =>
-                setConnexion({ ...connexion, email: e.target.value })()
+                setConnexion({ ...connexion, email: e.target.value })
               }
               autoComplete="email"
               required

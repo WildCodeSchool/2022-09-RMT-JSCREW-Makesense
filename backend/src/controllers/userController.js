@@ -41,7 +41,6 @@ const validateUser = (req, res) => {
           const token = jwt.sign(myUser, process.env.JWT_AUTH_SECRET, {
             expiresIn: "24h",
           });
-
           res
             .status(201)
             .cookie("access_token", token, {
