@@ -23,7 +23,7 @@ export default function ShowOneDecision() {
       })
       .catch((err) => console.error(err));
     apiConnexion
-      .get(`advices/${id}`)
+      .get(`advices`)
       .then((res) => {
         setAdviceList(res.data);
       })

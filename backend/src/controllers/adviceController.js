@@ -29,8 +29,8 @@ const read = (req, res) => {
 
   models.advice
     .findOne(id)
-    .then(([advices]) => {
-      res.send(advices[0]);
+    .then(([rows]) => {
+      res.send(rows[0]);
     })
     .catch((err) => {
       console.error(err);

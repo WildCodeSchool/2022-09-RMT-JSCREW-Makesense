@@ -50,13 +50,14 @@ export default function MyAdvice() {
         >
           Annuler
         </Link>
-        <button
+        <Link
+          to={`/decision/${id}`}
           type="button"
           className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
           onClick={handleSubmit}
         >
           Valider
-        </button>
+        </Link>
       </div>
     </div>
   );
