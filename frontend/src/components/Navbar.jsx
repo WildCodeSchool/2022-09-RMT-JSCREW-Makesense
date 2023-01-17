@@ -13,7 +13,7 @@ import DarkModeButton from "./DarkModeButton";
 
 function Navbar() {
   return (
-    <div className="flex justify-between pb-1 bg-gray-200 dark:bg-gray-700">
+    <div className="flex justify-between pb-1 bg-[#ced7da] dark:bg-[#6d888f] dark:text-[#e7ebec]">
       <Link to="/">
         <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
       </Link>

@@ -6,7 +6,7 @@ function Search({ search, handleSearch }) {
       <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3"
+          className="absolute top-0 bottom-0 w-6 h-6 my-auto text-[#3d6169] left-3"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -22,7 +22,7 @@ function Search({ search, handleSearch }) {
           type="search"
           placeholder="Rechercher"
           aria-label="Search"
-          className="w-80 py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-gray-300"
+          className="w-80 py-3 pl-12 pr-4 text-[#3d6169] border border-[#b6c4c7] rounded-md outline-none bg-[#f5f7f7] focus:bg-white focus:border-[#e7ebec]"
           value={search}
           onChange={(event) => handleSearch(event.target.value)}
         />
