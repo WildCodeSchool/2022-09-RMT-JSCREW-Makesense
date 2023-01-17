@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 
 function UpdateDecision() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const [updateDecision, setUpdateDecision] = useState([]);
-  const [updateStatus, setUpdateStatus] = useState([]);
+  const [updateDecision, setUpdateDecision] = useState({
+    decisionMaking_id: "",
+  });
+
+  const [updateStatus, setUpdateStatus] = useState({
+    status: "",
+  });
 
   useEffect(() => {
     apiConnexion
-      .post(`decisionsMaking/${id}`)
+      .put(`decisionsMaking/${id}`)
       .then((res) => {
         setUpdateStatus(res.data);
+        setTimeout(() => navigate(`/onedecision/${id}`), 2500);
       })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     apiConnexion
@@ -24,7 +31,7 @@ function UpdateDecision() {
         setUpdateDecision(res.data);
       })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, []);
 
   const handleUpdateDecision = () => {
     const newStatus = { ...updateStatus };
@@ -45,7 +52,7 @@ function UpdateDecision() {
                   <div className="mb-5 w-11/12">
                     <p className="mb-2">Titre de la décision*</p>
                     <input
-                      className="border-2 w-8/12 rounded-lg outline-[#c8c8c8] bg-[#eeeeee] text-[#7a7a7a]"
+                      className="border-2 w-8/12 rounded-lg outline-[#c8c8c8] bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
                       type="text"
                       id="decisionTitle"
                       name="title"
@@ -71,9 +78,20 @@ function UpdateDecision() {
                     </select>
                   </div>
                   <div className="mb-5">
+                    <p className="mb-2">Prise de la première décision*</p>
+                    <textarea
+                      className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] resize-none text-[#7a7a7a]"
+                      type="text"
+                      id="decisionDetail"
+                      name="decision_description"
+                      required
+                      value={updateDecision.premiereDecision}
+                    />
+                  </div>
+                  <div className="mb-5">
                     <p className="mb-2">Descriptif de la décision*</p>
                     <textarea
-                      className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] bg-gray-200 resize-none bg-[#eeeeee] text-[#7a7a7a]"
+                      className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] bg-gray-200 resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
                       type="text"
                       id="decisionDetail"
                       name="decision_description"
@@ -87,7 +105,7 @@ function UpdateDecision() {
               <div className="mb-5 w-full">
                 <p className="mb-2">Impact sur l'organisation*</p>
                 <textarea
-                  className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a]"
+                  className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
                   type="text"
                   id="impact"
                   name="decision_impact"
@@ -99,7 +117,7 @@ function UpdateDecision() {
               <div className="mb-5">
                 <p className="mb-2">Bénéfices*</p>
                 <textarea
-                  className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a]"
+                  className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
                   type="text"
                   id="benefits"
                   name="decision_benefits"
@@ -111,7 +129,7 @@ function UpdateDecision() {
               <div className=" mb-5">
                 <p className="mb-2">Risques potentiels*</p>
                 <textarea
-                  className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a]"
+                  className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
                   type="text"
                   id="decisionTitle"
                   name="decision_risk"
@@ -123,7 +141,7 @@ function UpdateDecision() {
               <div className="flex justify-end w-7/12 mb-5">
                 <Link
                   to={`/decision/${id}`}
-                  className="text-center w-28  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                  className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                 >
                   Annuler
                 </Link>
