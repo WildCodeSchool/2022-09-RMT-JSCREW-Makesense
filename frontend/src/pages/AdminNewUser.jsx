@@ -93,34 +93,25 @@ function AdminNewUser() {
               />
             </div>
           </div>
-        <div className="mb-8">
-          <p className="mb-2">E-mail</p>
-          <input
-            className="w-72 border-2 border-500 rounded-lg"
-            type="text"
-            name="user_mail"
-            required="required"
-            value={user.user_email}
-            onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-          />
-        </div>
-        <div className="mb-8">
-          <p className="mb-2">Mot de Passe</p>
-          <input
-            className="w-72 border-2 border-500 rounded-lg"
-            type="text"
-            name="user_password"
-            required="required"
-            value={user.user_password}
-            onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-          />
-        </div>
-        <div className="mb-8">
-          <p className="mb-2">Rôle</p>
-          <div className="relative w-52 lg:max-w-sm">
-            <select
-              className="w-52 p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none"
-              name="user_role"
+          <div className="mb-8">
+            <p className="mb-2">E-mail</p>
+            <input
+              className="w-72 border-2 border-500 rounded-lg"
+              type="text"
+              name="user_email"
+              required="required"
+              value={user.user_email}
+              onChange={(e) => handleNewUser(e.target.name, e.target.value)}
+            />
+          </div>
+          <div className="mb-8">
+            <p className="mb-2">Mot de Passe</p>
+            <input
+              className="w-72 border-2 border-500 rounded-lg"
+              type="text"
+              name="user_password"
+              required="required"
+              value={user.user_password}
               onChange={(e) => handleNewUser(e.target.name, e.target.value)}
             />
           </div>

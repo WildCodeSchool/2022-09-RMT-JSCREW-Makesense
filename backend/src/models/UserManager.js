@@ -18,16 +18,16 @@ class UserManager extends AbstractManager {
 
   findOne(user) {
     return this.connection.query(
-      `select * from  ${this.table} where mail = ?`,
-      [user.mail]
+      `select * from  ${this.table} where email = ?`,
+      [user.email]
     );
   }
 
   insert(user) {
     return this.connection.query(
-      `insert into ${this.table} (username, firstname, lastname, password, mail, role) values (?, ?, ?, ?, ?, ?)`,
-      [user.user_username, user.user_firstname, user.user_lastname, user.user_password, user.user_mail, user.user_role]
-    );
+      `insert into ${this.table} (username, firstname, lastname, password, email, role) values (?, ?, ?, ?, ?, ?)`,
+      [user.user_username, user.user_firstname, user.user_lastname, user.user_password, user.user_email, user.user_role]
+    ); 
   }
 }
 
