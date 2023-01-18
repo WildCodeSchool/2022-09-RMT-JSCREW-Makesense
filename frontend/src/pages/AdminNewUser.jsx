@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
+
 import apiConnexion from "../services/apiConnexion";
+import editMeta from "../services/seo";
+
 import "react-toastify/dist/ReactToastify.css";
 
 function AdminNewUser() {
+  editMeta("Renseigner un nouvel utilisateur");
+
   const [user, setUser] = useState({
-    user_username: "",
     user_firstname: "",
     user_lastname: "",
     user_email: "",
@@ -126,10 +130,10 @@ function AdminNewUser() {
               </select>
             </div>
           </div>
-          <div className="flex justify-center mb-5">
+          <div className="flex justify-center pb-5">
             <Link
               to="/users"
-              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2"
             >
               Annuler
             </Link>

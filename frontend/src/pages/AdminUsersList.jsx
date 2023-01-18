@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 
 import apiConnexion from "../services/apiConnexion";
 import "react-toastify/dist/ReactToastify.css";
+import editMeta from "../services/seo";
 
 function AdminUsersList() {
+  editMeta("Gestion des utilisateurs");
+
   const [usersList, setUsersList] = useState();
 
   useEffect(() => {
