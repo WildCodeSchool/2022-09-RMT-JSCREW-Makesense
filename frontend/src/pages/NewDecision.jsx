@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import SearchPerson from "@components/SearchPerson";
 import ChoosenPerson from "@components/ChoosenPerson";
 import ExportContextDecision from "../contexts/DecisionContext";
+import editMeta from "../services/seo";
 
 function NewDecision() {
+  editMeta("Créer une prise de décision");
+
   const { mainDecision, handleMainDecision } = useContext(
     ExportContextDecision.DecisionContext
   );
