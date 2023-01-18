@@ -1,10 +1,20 @@
-DROP DATABASE IF EXISTS makesense;
-
-CREATE DATABASE makesense;
+CREATE DATABASE IF NOT EXISTS makesense;
 
 USE makesense;
 
+DROP TABLE IF EXISTS designatedUser;
+
+DROP TABLE IF EXISTS advice;
+
+DROP TABLE IF EXISTS conflict;
+
+DROP TABLE IF EXISTS decision;
+
+DROP TABLE IF EXISTS decisionMaking;
+
 DROP TABLE IF EXISTS `user`;
+
+DROP TABLE IF EXISTS decisionStatus;
 
 CREATE TABLE
     `user` (
@@ -280,8 +290,6 @@ INSERT INTO
         "Prise de décision commencée"
     ), ("Première décision prise"), ("Décision archivée");
 
-DROP TABLE IF EXISTS decisionMaking;
-
 CREATE TABLE
     decisionMaking (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -396,8 +404,6 @@ VALUES (
         "2023-04-12"
     );
 
-DROP TABLE IF EXISTS designatedUser;
-
 CREATE TABLE
     designatedUser (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -416,8 +422,6 @@ INSERT INTO
         `status`
     )
 VALUES (1, 25, 1, "Personne impactée"), (2, 6, 1, "Personne experte");
-
-DROP TABLE IF EXISTS advice;
 
 CREATE TABLE
     advice (
@@ -444,8 +448,6 @@ VALUES (
         1
     );
 
-DROP TABLE IF EXISTS decision;
-
 CREATE TABLE
     decision (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -453,8 +455,6 @@ CREATE TABLE
         CONSTRAINT fk_decision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
         textDecision LONGTEXT NOT NULL
     );
-
-DROP TABLE IF EXISTS conflict;
 
 CREATE TABLE
     conflict (
