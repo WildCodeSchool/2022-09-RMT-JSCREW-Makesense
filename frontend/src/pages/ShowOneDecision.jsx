@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { Avatar } from "@assets/";
 import apiConnexion from "../services/apiConnexion";
@@ -60,7 +60,7 @@ export default function ShowOneDecision() {
   }
 
   return (
-    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec]">
+    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16">
       <div className="text-left w-4/5 py-8 mr-16">
         <p className="dark:text-[#0c3944] inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-5">
           {oneDecision.status}
@@ -193,7 +193,18 @@ export default function ShowOneDecision() {
             </svg>
             Avis
           </button>
-          {avis ? <p className="text-lg mb-5 ml-10">test</p> : null}
+          {avis ? (
+            <p className="text-lg mb-5 ml-10">
+              {oneDecision.advice.map((e) => (
+                <div className="mb-6">
+                  <div className="mb-2">
+                    Avis de {e.firstname} {e.lastname} :
+                  </div>
+                  <div>{e.textAdvice}</div>
+                </div>
+              ))}
+            </p>
+          ) : null}
         </div>
         <div className="border-b-2">
           <button
@@ -251,7 +262,7 @@ export default function ShowOneDecision() {
               <p className="mt-4">Deadline pour donner son avis</p>
               <p className="mt-4">Première décision prise</p>
               <p className="mt-4">Deadline pour rentrer en conflit</p>
-              <p className="mt-4">Décision définitive</p>
+              <p className="mt-5">Décision définitive</p>
             </div>
           </div>
         </div>
@@ -282,7 +293,9 @@ export default function ShowOneDecision() {
             />
           </div>
           <p className="text-end mt-3 ml-4 font-extralight">
-            Consulter les avis
+            <button onClick={toggleDisplayAvis} type="button">
+              Consulter les avis
+            </button>
           </p>
         </div>
         <div>
@@ -309,18 +322,18 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-end mt-3 ml-4 font-extralight">
-            Consulter les avis
+          <p className="text-end mt-3 ml-4 font-extralight mb-20">
+            <button onClick={toggleDisplayAvis} type="button">
+              Consulter les avis
+            </button>
           </p>
         </div>
-        <div>
-          <button
-            className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
-            type="button"
-          >
-            Donner mon avis
-          </button>
-        </div>
+        <Link
+          to={`/decision/${id}/advice`}
+          className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
+        >
+          Donner mon avis
+        </Link>
       </div>
     </div>
   );

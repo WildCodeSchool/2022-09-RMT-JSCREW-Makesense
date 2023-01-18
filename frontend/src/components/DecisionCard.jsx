@@ -4,7 +4,7 @@ function DecisionCard({ decisionsMaking }) {
   return (
     <Link
       className="max-w-sm flex flex-col rounded-lg border-2 border-[#e7ebec] overflow-hidden ml-10 my-2 w-1/3 px-2"
-      to={`/onedecision/${decisionsMaking.id}`}
+      to={`/decision/${decisionsMaking.id}`}
     >
       <div className="px-6 pt-4">
         <span className="inline-block bg-[#e7ebec] rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
