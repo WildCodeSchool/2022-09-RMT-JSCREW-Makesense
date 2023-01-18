@@ -25,7 +25,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="/home"
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
         />
         <Route path="/user/decision/new" element={<NewDecision />} />
@@ -37,7 +37,7 @@ function App() {
         />
         <Route path="/decision/:id" element={<ShowOneDecision />} />
         <Route path="/decision/:id/advice" element={<MyAdvice />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/users" element={<AdminUsersList />} />
         <Route path="/users/creation" element={<AdminNewUser />} />
       </Routes>

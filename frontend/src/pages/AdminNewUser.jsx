@@ -11,7 +11,6 @@ function AdminNewUser() {
   editMeta("Renseigner un nouvel utilisateur");
 
   const [user, setUser] = useState({
-    user_username: "",
     user_firstname: "",
     user_lastname: "",
     user_email: "",
@@ -63,17 +62,6 @@ function AdminNewUser() {
           Renseigner un nouvel utilisateur
         </h1>
         <form>
-          <div>
-            <p className="pb-4 text-xl">Identifiant</p>
-            <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
-              type="text"
-              name="user_username"
-              required="required"
-              value={user.user_username}
-              onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-            />
-          </div>
           <div className="flex justify-start">
             <div className="pr-5">
               <p className="pb-4 text-xl">Prénom</p>
@@ -133,16 +121,16 @@ function AdminNewUser() {
               </select>
             </div>
           </div>
-          <div className="flex justify-center mb-5">
+          <div className="flex justify-center pb-5">
             <Link
               to="/users"
-              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2"
             >
               Annuler
             </Link>
             <button
               type="submit"
-              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2"
               onClick={handleAddUser}
             >
               Valider
