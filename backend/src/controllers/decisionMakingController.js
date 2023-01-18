@@ -20,7 +20,7 @@ const read = (req, res) => {
     .findOne(id)
     .then(([decisionMaking]) => {
       models.advice.findOne(id).then(([rows]) => {
-        res.send({ ...decisionMaking[0], advice: rows });
+        res.status(200).send({ ...decisionMaking[0], advice: rows });
       });
     })
     .catch((err) => {
