@@ -33,8 +33,10 @@ function AdminNewUser() {
         ...user,
       })
       .then(() => {
-        notify("Utilisateur ajouté!");
-        setTimeout(() => navigate("/users"), 4000);
+        notify(
+          `L'utilisateur "${user.user_firstname} ${user.user_lastname}" a été ajouté.`
+        );
+        setTimeout(() => navigate("/users"), 3000);
       })
       .catch((err) => console.error(err));
   };
@@ -43,7 +45,7 @@ function AdminNewUser() {
     <>
       <ToastContainer
         position="top-right"
-        autoClose={4000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
