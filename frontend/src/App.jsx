@@ -13,6 +13,7 @@ import "./App.css";
 
 function App() {
   const [search, setSearch] = useState("");
+
   const handleSearch = (value) => {
     setSearch(value);
   };
@@ -26,7 +27,7 @@ function App() {
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
         />
         <Route path="/user/decision/new" element={<NewDecision />} />
-        <Route path="/update/decision/:id" element={<UpdateDecision />} />
+        <Route path="/decision/:id/update" element={<UpdateDecision />} />
         <Route
           path="/archives"
           element={

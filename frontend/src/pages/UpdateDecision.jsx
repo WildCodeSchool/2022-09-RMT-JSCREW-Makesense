@@ -4,7 +4,10 @@ import apiConnexion from "../services/apiConnexion";
 
 function UpdateDecision() {
   const { id } = useParams();
+
   const navigate = useNavigate();
+
+  const [decision, setDecision] = useState([]);
 
   const [updateDecision, setUpdateDecision] = useState({
     decisionMaking_id: "",
@@ -14,7 +17,7 @@ function UpdateDecision() {
     status: "",
   });
 
-  useEffect(() => {
+  const putStatusDecision = () => {
     apiConnexion
       .put(`decisionsMaking/${id}`)
       .then((res) => {
@@ -22,20 +25,38 @@ function UpdateDecision() {
         setTimeout(() => navigate(`/onedecision/${id}`), 2500);
       })
       .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
+  };
+  const getDecision = () => {
     apiConnexion
       .get(`decisionsMaking/${id}`)
+      .then((res) => {
+        setDecision(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
+  const postFirstDecision = () => {
+    apiConnexion
+      .post(`decisionsMaking/${id}`)
       .then((res) => {
         setUpdateDecision(res.data);
       })
       .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getDecision();
+    putStatusDecision();
+    postFirstDecision();
   }, []);
 
-  const handleUpdateDecision = () => {
+  const handleUpdateStatus = () => {
     const newStatus = { ...updateStatus };
     setUpdateStatus(newStatus);
+  };
+
+  const handleUpdateDecision = () => {
+    const firstDecision = { ...updateDecision };
+    setUpdateDecision(firstDecision);
   };
 
   return (
@@ -58,19 +79,19 @@ function UpdateDecision() {
                       name="title"
                       disabled="disabled"
                       required
-                      value={updateDecision.title}
+                      value={decision.title}
                     />
                   </div>
                   <div className=" mb-5">
                     <p className="mb-2">Modification status de la décision*</p>
                     <select
-                      onChange={(e) => handleUpdateDecision(e.target.value)}
+                      onChange={(e) => handleUpdateStatus(e.target.value)}
                       className="border-2 border-500 h-10  w-5/12 rounded-lg outline-[#c8c8c8] resize-none"
                       type="text"
                       id="decisionStatus"
                       name="status"
                       required
-                      value={updateStatus.status}
+                      value={decision.status}
                     >
                       <option value="1">Prise de décision commencée</option>
                       <option value="2">Première décision prise</option>
@@ -85,7 +106,7 @@ function UpdateDecision() {
                       id="decisionDetail"
                       name="decision_description"
                       required
-                      value={updateDecision.premiereDecision}
+                      value={decision.premiereDecision}
                     />
                   </div>
                   <div className="mb-5">
@@ -97,7 +118,7 @@ function UpdateDecision() {
                       name="decision_description"
                       disabled="disabled"
                       required
-                      value={updateDecision.description}
+                      value={decision.description}
                     />
                   </div>
                 </div>
@@ -111,7 +132,7 @@ function UpdateDecision() {
                   name="decision_impact"
                   disabled="disabled"
                   required
-                  value={updateDecision.impact}
+                  value={decision.impact}
                 />
               </div>
               <div className="mb-5">
@@ -123,7 +144,7 @@ function UpdateDecision() {
                   name="decision_benefits"
                   disabled="disabled"
                   required
-                  value={updateDecision.profit}
+                  value={decision.profit}
                 />
               </div>
               <div className=" mb-5">
@@ -135,7 +156,7 @@ function UpdateDecision() {
                   name="decision_risk"
                   disabled="disabled"
                   required
-                  value={updateDecision.risk}
+                  value={decision.risk}
                 />
               </div>
               <div className="flex justify-end w-7/12 mb-5">
@@ -145,12 +166,13 @@ function UpdateDecision() {
                 >
                   Annuler
                 </Link>
-                <Link
-                  to={`/decision/${id}`}
+                <button
+                  type="button"
+                  onClick={(e) => handleUpdateDecision(e.target.value)}
                   className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                 >
                   Valider
-                </Link>
+                </button>
               </div>
             </div>
           </div>
