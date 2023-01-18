@@ -3,31 +3,51 @@ import apiConnexion from "../services/apiConnexion";
 import ExportContextDecision from "../contexts/DecisionContext";
 
 function SearchPerson() {
-  const [users, setUsers] = useState();
-  const [searchUser, setSearchUser] = useState("");
+  const [searchExpertInput, setSearchExpertInput] = useState();
+  const [searchImpactedInput, setSearchImpactedInput] = useState();
+  const [searchExpert, setSearchExpert] = useState();
+  const [searchImpacted, setSearchImpacted] = useState();
   const { experts, handleExpert, impacted, handleImpacted } = useContext(
     ExportContextDecision.DecisionContext
   );
 
+  const getUser = (value, callback) => {
+    apiConnexion
+      .get(`/users/list/?searchUser=${value}`)
+      .then((usr) => callback(usr.data))
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
-    if (searchUser !== "") {
-      apiConnexion
-        .get(`/users/list/?searchUser=${searchUser}`)
-        .then((usr) => setUsers(usr.data))
-        .catch((err) => console.error(err));
-    } else {
-      setUsers();
+    if (searchExpertInput) {
+      getUser(searchExpertInput, setSearchExpert);
+    } else if (searchImpactedInput) {
+      getUser(searchImpactedInput, setSearchImpacted);
     }
-  }, [searchUser]);
+  }, [searchExpertInput, searchImpactedInput]);
 
   const handleSearchExpert = (e) => {
     const { value } = e.target;
-    setSearchUser(value);
+    setSearchImpactedInput();
+    setSearchImpacted();
+    setSearchExpertInput(value);
   };
 
   const handleSearchImpacted = (e) => {
     const { value } = e.target;
-    setSearchUser(value);
+    setSearchExpertInput();
+    setSearchExpert();
+    setSearchImpactedInput(value);
+  };
+
+  const handleExpertAdd = (user) => {
+    handleExpert(user);
+    setSearchExpert();
+  };
+
+  const handleImpactedAdd = (user) => {
+    handleImpacted(user);
+    setSearchImpacted();
   };
 
   return (
@@ -41,14 +61,14 @@ function SearchPerson() {
           required
         />
         <div className="searchResults absolute">
-          {users &&
-            users.map((user) => {
+          {searchExpert &&
+            searchExpert.map((user) => {
               return (
                 <button
                   type="button"
                   className="searchResult flex w-full bg-gray-300 p-2"
                   key={user.id}
-                  onClick={() => handleExpert(user)}
+                  onClick={() => handleExpertAdd(user)}
                 >
                   {user.firstname} {user.lastname}
                 </button>
@@ -78,14 +98,14 @@ function SearchPerson() {
           required
         />
         <div className="searchResults absolute">
-          {users &&
-            users.map((user) => {
+          {searchImpacted &&
+            searchImpacted.map((user) => {
               return (
                 <button
                   type="button"
                   className="searchResult flex w-full bg-gray-300 p-2"
                   key={user.id}
-                  onClick={() => handleImpacted(user)}
+                  onClick={() => handleImpactedAdd(user)}
                 >
                   {user.firstname} {user.lastname}
                 </button>
