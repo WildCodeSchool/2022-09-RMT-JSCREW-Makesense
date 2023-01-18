@@ -53,7 +53,7 @@ function AdminNewUser() {
         pauseOnHover
         theme="dark"
       />
-      <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12 ">
+      <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
         <h1 className="font-bold text-3xl py-8">
           Renseigner un nouvel utilisateur
         </h1>
