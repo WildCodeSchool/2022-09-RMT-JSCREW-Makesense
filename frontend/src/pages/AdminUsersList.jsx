@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import apiConnexion from "../services/apiConnexion";
+import editMeta from "../services/seo";
 
 function AdminUsersList() {
+  editMeta("Gestion des utilisateurs");
+
   const [usersList, setUsersList] = useState();
 
   useEffect(() => {
