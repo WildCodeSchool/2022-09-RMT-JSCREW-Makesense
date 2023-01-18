@@ -38,7 +38,7 @@ function Login() {
       <div className="flex justify-center py-10">
         <img src={Logo} alt="Logo" />
       </div>
-      <div className="flex justify-center card rounded-none ">
+      <div className="flex justify-center card rounded-none">
         <form>
           <div className="group">
             <label htmlFor="login" className="group font-bold text-2xl">
