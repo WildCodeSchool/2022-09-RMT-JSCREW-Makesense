@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import { Avatar } from "@assets/";
 import apiConnexion from "../services/apiConnexion";
+import editMeta from "../services/seo";
 
 export default function ShowOneDecision() {
   const [detailDecision, setDetailDecision] = useState(false);
@@ -13,6 +15,8 @@ export default function ShowOneDecision() {
 
   const [oneDecision, setOneDecision] = useState([]);
   const { id } = useParams();
+
+  editMeta(oneDecision.title);
 
   useEffect(() => {
     apiConnexion

@@ -31,13 +31,13 @@ function SearchPerson() {
           required
         />
       </div>
-      <div className="searchResults absolute">
+      <div className="searchResults absolute border-2 border-[#e5e7eb] rounded-lg bg-[#e5e7eb] dark:text-[#0c3944] dark:border-[#9eb0b4] dark:bg-[#9eb0b4]">
         {users &&
           users.map((user) => {
             return (
               <button
                 type="button"
-                className="searchResult flex w-full bg-[#e5e7eb] dark:text-[#e7ebec] p-3"
+                className="searchResult flex w-full  p-3"
                 key={user.id}
               >
                 {user.firstname} {user.lastname}
