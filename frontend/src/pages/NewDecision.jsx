@@ -37,7 +37,7 @@ function NewDecision() {
                 <div className="flex">
                   <div className="w-10/12">
                     <div className="w-full">
-                      <p className="pb-4 text-xl">
+                      <p className="pb-4 text-xl font-bold">
                         Titre de la prise de décision*
                       </p>
                       <input
@@ -53,7 +53,9 @@ function NewDecision() {
                       />
                     </div>
                     <div>
-                      <p className="pb-4 text-xl">Descriptif de la décision*</p>
+                      <p className="pb-4 text-xl font-bold">
+                        Descriptif de la décision*
+                      </p>
                       <textarea
                         className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                         type="text"
@@ -69,7 +71,9 @@ function NewDecision() {
                   </div>
                 </div>
                 <div>
-                  <p className="pb-4 text-xl">Impacts sur l'organisation*</p>
+                  <p className="pb-4 text-xl font-bold">
+                    Impacts sur l'organisation*
+                  </p>
                   <textarea
                     className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
@@ -83,7 +87,7 @@ function NewDecision() {
                   />
                 </div>
                 <div>
-                  <p className="pb-4 text-xl">Bénéfices*</p>
+                  <p className="pb-4 text-xl font-bold">Bénéfices*</p>
                   <textarea
                     className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
@@ -97,7 +101,7 @@ function NewDecision() {
                   />
                 </div>
                 <div>
-                  <p className="pb-4 text-xl">Risques potentiels*</p>
+                  <p className="pb-4 text-xl font-bold">Risques potentiels*</p>
                   <textarea
                     className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
@@ -129,22 +133,24 @@ function NewDecision() {
           </div>
           <div className="decisionByUser w-6/12">
             <div className="flex justify-start mb-5">
-              <p className="pr-5 text-xl">Date de création :</p>
+              <p className="pr-5 text-xl font-bold">Date de création :</p>
               <p className="text-xl">{getDate()}</p>
             </div>
             <div>
-              <p className="text-xl pb-4">Personnes expertes*</p>
+              <p className="text-xl pb-4 font-bold">Personnes expertes*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
             <div className="expertPersons">
-              <p className="text-xl pb-4">Personnes expertes choisies</p>
+              <p className="text-xl pb-4 font-bold">
+                Personnes expertes choisies
+              </p>
               <ChoosenPerson />
             </div>
             <div>
-              <p className="text-xl pb-4">Personnes impactées*</p>
+              <p className="text-xl pb-4 font-bold">Personnes impactées*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
-            <div className="impactedPersons text-xl pb-4">
+            <div className="impactedPersons text-xl pb-4 font-bold">
               <p className="mb-2">Personnes impactées choisies</p>
               <ChoosenPerson />
             </div>
