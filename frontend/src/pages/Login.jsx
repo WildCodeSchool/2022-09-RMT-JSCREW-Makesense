@@ -2,10 +2,13 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 import User from "../contexts/User";
+import editMeta from "../services/seo";
 
 import Logo from "../assets/logo1.svg";
 
 function Login() {
+  editMeta("Connexion");
+
   const [connexion, setConnexion] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const userContext = useContext(User.UserContext);

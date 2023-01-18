@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
+
 import apiConnexion from "../services/apiConnexion";
+import editMeta from "../services/seo";
+
 import "react-toastify/dist/ReactToastify.css";
 
 function AdminNewUser() {
+  editMeta("Renseigner un nouvel utilisateur");
+
   const [user, setUser] = useState({
     user_username: "",
     user_firstname: "",
