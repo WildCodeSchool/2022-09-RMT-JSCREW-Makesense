@@ -93,7 +93,7 @@ export default function ShowOneDecision() {
             <p className="mb-5 text-lg ml-10">{oneDecision.description}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayImpactOrganisation}
             className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
@@ -118,7 +118,7 @@ export default function ShowOneDecision() {
             <p className="text-lg mb-5 ml-10">{oneDecision.impact}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayBenef}
             className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
@@ -143,7 +143,7 @@ export default function ShowOneDecision() {
             <p className="text-lg mb-5 ml-10">{oneDecision.profit}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayRisk}
             className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
@@ -168,7 +168,7 @@ export default function ShowOneDecision() {
             <p className="text-lg mb-5 ml-10">{oneDecision.risk}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayAvis}
             className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
@@ -191,7 +191,7 @@ export default function ShowOneDecision() {
           </button>
           {avis ? <p className="text-lg mb-5 ml-10">test</p> : null}
         </div>
-        <div className="border-b-2 ">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayPremiereDecision}
             className="text-2xl font-bold inline-flex items-center mt-5"
