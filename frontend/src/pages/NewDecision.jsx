@@ -41,7 +41,7 @@ function NewDecision() {
                         Titre de la prise de décision*
                       </p>
                       <input
-                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                        className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                         type="text"
                         id="decisionTitle"
                         name="title"
@@ -57,7 +57,7 @@ function NewDecision() {
                         Descriptif de la décision*
                       </p>
                       <textarea
-                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                        className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                         type="text"
                         id="decisionDetail"
                         name="description"
@@ -75,7 +75,7 @@ function NewDecision() {
                     Impacts sur l'organisation*
                   </p>
                   <textarea
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="impact"
                     name="impact"
@@ -89,7 +89,7 @@ function NewDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Bénéfices*</p>
                   <textarea
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="benefits"
                     name="benefits"
@@ -103,7 +103,7 @@ function NewDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Risques potentiels*</p>
                   <textarea
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="decisionTitle"
                     name="risk"
@@ -136,7 +136,7 @@ function NewDecision() {
               <p className="pr-5 text-xl font-bold">Date de création :</p>
               <p className="text-xl">{getDate()}</p>
             </div>
-            <div>
+            <div className="mb-5">
               <p className="text-xl pb-4 font-bold">Personnes expertes*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
@@ -146,7 +146,7 @@ function NewDecision() {
               </p>
               <ChoosenPerson />
             </div>
-            <div>
+            <div className="mb-5">
               <p className="text-xl pb-4 font-bold">Personnes impactées*</p>
               <SearchPerson SearchPerson={SearchPerson} />
             </div>

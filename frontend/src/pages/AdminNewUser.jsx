@@ -57,7 +57,7 @@ function AdminNewUser() {
         <h1 className="font-bold text-3xl py-8">
           Renseigner un nouvel utilisateur
         </h1>
-        <form action="">
+        <form>
           <div>
             <p className="pb-4 text-xl">Identifiant</p>
             <input
@@ -70,10 +70,10 @@ function AdminNewUser() {
             />
           </div>
           <div className="flex justify-start">
-            <div className="mb-8">
-              <p className="mb-2">Prénom</p>
+            <div className="pr-5">
+              <p className="pb-4 text-xl">Prénom</p>
               <input
-                className="border-2 border-500 rounded-lg mr-12"
+                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                 type="text"
                 name="user_firstname"
                 required="required"
@@ -94,7 +94,7 @@ function AdminNewUser() {
             </div>
           </div>
           <div>
-          <p className="pb-4 text-xl">Email</p>
+            <p className="pb-4 text-xl">Email</p>
             <input
               className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
               type="text"
@@ -127,21 +127,22 @@ function AdminNewUser() {
                 <option value="utilisateur">Utilisateur</option>
               </select>
             </div>
-        </div>
-        <div className="flex justify-center mb-5">
-          <Link
-            to="/users"
-            className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
-          >
-            Annuler
-          </Link>
-          <button
-            type="submit"
-            className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
-          >
-            Valider
-          </button>
-        </div>
+          </div>
+          <div className="flex justify-center mb-5">
+            <Link
+              to="/users"
+              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+            >
+              Annuler
+            </Link>
+            <button
+              type="submit"
+              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+              onClick={handleAddUser}
+            >
+              Valider
+            </button>
+          </div>
         </form>
       </div>
     </>
