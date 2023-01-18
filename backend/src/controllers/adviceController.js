@@ -17,9 +17,9 @@ const postAdvice = (req, res) => {
     .insert(req.body)
     .then(([result]) => {
       res
-        .location(`/decision/advice/${result.insertId}`)
+        .location(`/decisions/${req.params.id}/advice/${result.insertId}`)
         .status(201)
-        .send(result.insertId);
+        .json(result.insertId);
     })
     .catch((err) => {
       console.error(err);

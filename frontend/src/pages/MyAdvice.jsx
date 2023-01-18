@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 
 export default function MyAdvice() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [myAdviceText, setMyAdviceText] = useState({
     textAdvice: "",
     userId: 10,
@@ -18,7 +21,8 @@ export default function MyAdvice() {
 
   const handleSubmit = () => {
     apiConnexion
-      .post(`/decision/advice`, myAdviceText)
+      .post(`/decisions/${id}/advice`, myAdviceText)
+      .then((res) => navigate(`/decision/${id}`))
       .catch((err) => console.error(err));
   };
 
@@ -49,14 +53,13 @@ export default function MyAdvice() {
         >
           Annuler
         </Link>
-        <Link
-          to={`/decision/${id}`}
+        <button
           type="button"
           className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full mt-10 text-sm"
           onClick={handleSubmit}
         >
           Valider
-        </Link>
+        </button>
       </div>
     </div>
   );
