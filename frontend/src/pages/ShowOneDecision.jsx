@@ -56,7 +56,7 @@ export default function ShowOneDecision() {
   }
 
   return (
-    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] py-20">
+    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16">
       <div className="text-left w-4/5 py-8 mr-16">
         <p className="dark:text-[#0c3944] inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-5">
           {oneDecision.status}
@@ -87,7 +87,7 @@ export default function ShowOneDecision() {
                 clipRule="evenodd"
               />
             </svg>
-            Détail décision
+            Détails de la décision
           </button>
           {detailDecision ? (
             <p className="mb-5 text-lg ml-10">{oneDecision.description}</p>
@@ -112,7 +112,7 @@ export default function ShowOneDecision() {
                 clipRule="evenodd"
               />
             </svg>
-            Impact sur l'organisation
+            Impacts sur l'organisation
           </button>
           {impactOrganisation ? (
             <p className="text-lg mb-5 ml-10">{oneDecision.impact}</p>
@@ -250,7 +250,7 @@ export default function ShowOneDecision() {
               <div className="h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
               <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
               <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
+              <div className="h-8 w-0 border border-[#ced7da] align-middle mx-auto" />
               <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
             </div>
             <div className="w-2/5 font-bold text-xs">
