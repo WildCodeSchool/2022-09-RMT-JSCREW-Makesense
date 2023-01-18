@@ -27,10 +27,8 @@ function NewDecision() {
   };
 
   return (
-    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec]">
-      <h1 className="font-bold text-3xl px-12 py-8 ">
-        Créer une prise de décision
-      </h1>
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12 ">
+      <h1 className="font-bold text-3xl py-8 ">Créer une prise de décision</h1>
       <form action="" onSubmit={handleSubmit}>
         <div className="decision flex">
           <div className="writeDecision w-full">
@@ -39,11 +37,11 @@ function NewDecision() {
                 <div className="flex">
                   <div className="w-10/12">
                     <div className="w-full">
-                      <p className="px-12 pb-4 text-xl">
+                      <p className="pb-4 text-xl">
                         Titre de la prise de décision*
                       </p>
                       <input
-                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mx-12 mb-10 text-lg"
+                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                         type="text"
                         id="decisionTitle"
                         name="title"
@@ -55,11 +53,9 @@ function NewDecision() {
                       />
                     </div>
                     <div>
-                      <p className="px-12 pb-4 text-xl">
-                        Descriptif de la décision*
-                      </p>
+                      <p className="pb-4 text-xl">Descriptif de la décision*</p>
                       <textarea
-                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
+                        className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                         type="text"
                         id="decisionDetail"
                         name="description"
@@ -73,11 +69,9 @@ function NewDecision() {
                   </div>
                 </div>
                 <div>
-                  <p className="px-12 pb-4 text-xl">
-                    Impacts sur l'organisation*
-                  </p>
+                  <p className="pb-4 text-xl">Impacts sur l'organisation*</p>
                   <textarea
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="impact"
                     name="impact"
@@ -89,9 +83,9 @@ function NewDecision() {
                   />
                 </div>
                 <div>
-                  <p className="px-12 pb-4 text-xl">Bénéfices*</p>
+                  <p className="pb-4 text-xl">Bénéfices*</p>
                   <textarea
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="benefits"
                     name="benefits"
@@ -103,9 +97,9 @@ function NewDecision() {
                   />
                 </div>
                 <div>
-                  <p className="px-12 pb-4 text-xl">Risques potentiels*</p>
+                  <p className="pb-4 text-xl">Risques potentiels*</p>
                   <textarea
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mx-12 mb-10 text-lg"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="decisionTitle"
                     name="risk"
