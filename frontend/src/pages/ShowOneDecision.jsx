@@ -56,24 +56,22 @@ export default function ShowOneDecision() {
   }
 
   return (
-    <div className="flex w-full pt-20 mb-20">
-      <div className="text-left ml-20 w-4/5 pr-20">
-        <p className="border-2 border-solid border-black w-fit rounded-full px-2">
+    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] py-20">
+      <div className="text-left w-4/5 py-8 mr-16">
+        <p className="dark:text-[#0c3944] inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-5">
           {oneDecision.status}
         </p>
-        <h2 className="text-emerald-900 text-4xl font-bold mt-2">
-          {oneDecision.title}
-        </h2>
-        <div className="inline-flex mb-20 mt-2">
-          <img className="w-10 h-10" src={Avatar} alt="Avatar utilisateur" />
-          <p className="ml-5 mt-2 text-base text-sm">
+        <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
+        <div className="inline-flex mb-12 mt-2">
+          <img className="w-14 h-14" src={Avatar} alt="Avatar utilisateur" />
+          <p className="ml-5 mt-3.5 text-xl">
             Par {oneDecision.firstname} {oneDecision.lastname}
           </p>
         </div>
-        <div className="border-b-2 ml-10">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayDetailDecision}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center"
+            className="text-2xl font-bold inline-flex items-center mb-3"
             type="button"
           >
             <svg
@@ -92,13 +90,13 @@ export default function ShowOneDecision() {
             Détail décision
           </button>
           {detailDecision ? (
-            <p className="text-black ml-10 mb-5">{oneDecision.description}</p>
+            <p className="mb-5 text-lg ml-10">{oneDecision.description}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ml-10">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayImpactOrganisation}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
+            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
             type="button"
           >
             <svg
@@ -117,13 +115,13 @@ export default function ShowOneDecision() {
             Impact sur l'organisation
           </button>
           {impactOrganisation ? (
-            <p className="text-black ml-10 mb-5">{oneDecision.impact}</p>
+            <p className="text-lg mb-5 ml-10">{oneDecision.impact}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ml-10">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayBenef}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
+            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
             type="button"
           >
             <svg
@@ -142,13 +140,13 @@ export default function ShowOneDecision() {
             Bénéfices
           </button>
           {benef ? (
-            <p className="text-black ml-10 mb-5">{oneDecision.profit}</p>
+            <p className="text-lg mb-5 ml-10">{oneDecision.profit}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ml-10">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayRisk}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
+            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
             type="button"
           >
             <svg
@@ -167,13 +165,13 @@ export default function ShowOneDecision() {
             Risques Potentiels
           </button>
           {risk ? (
-            <p className="text-black ml-10 mb-5">{oneDecision.risk}</p>
+            <p className="text-lg mb-5 ml-10">{oneDecision.risk}</p>
           ) : null}
         </div>
-        <div className="border-b-2 ml-10">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayAvis}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
+            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
             type="button"
           >
             <svg
@@ -192,7 +190,7 @@ export default function ShowOneDecision() {
             Avis
           </button>
           {avis ? (
-            <p className="text-black ml-10 mb-5">
+            <p className="text-lg mb-5 ml-10">
               {oneDecision.advice.map((e) => (
                 <div className="mb-6">
                   <div className="mb-2">
@@ -204,10 +202,10 @@ export default function ShowOneDecision() {
             </p>
           ) : null}
         </div>
-        <div className="border-b-2 ml-10">
+        <div className="border-b-2">
           <button
             onClick={toggleDisplayPremiereDecision}
-            className="text-emerald-900 text-2xl font-bold inline-flex items-center mt-5"
+            className="text-2xl font-bold inline-flex items-center mt-5"
             type="button"
           >
             <svg
@@ -225,20 +223,16 @@ export default function ShowOneDecision() {
             </svg>
             Première Décision
           </button>
-          {premiereDecision ? (
-            <p className="text-black ml-10 mb-5">test</p>
-          ) : null}
+          {premiereDecision ? <p className="text-lg mb-5 ml-10">test</p> : null}
         </div>
       </div>
 
-      <div className="text-center w-1/5 border-l-2">
-        <div className="mb-16">
-          <h3 className="text-emerald-900 text-xl font-bold">
-            Dates à retenir
-          </h3>
+      <div className="text-center w-1/5 border-l-2 pl-2 py-8">
+        <div className="mb-10">
+          <h3 className="text-2xl font-bold">Dates à retenir</h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
-              <p className="">{`${dateCreate.toLocaleDateString()}`}</p>
+              <p className="text-lg">{`${dateCreate.toLocaleDateString()}`}</p>
               <p className="mt-6">{`${dateAdvice.toLocaleDateString()}`}</p>
               <p className="mt-6">
                 {`${dateFirstDecision.toLocaleDateString()}`}
@@ -249,15 +243,15 @@ export default function ShowOneDecision() {
               </p>
             </div>
             <div className="w-1/5">
-              <div className="h-4 w-4 mt-1 border border-black rounded-full bg-lime-400 align-middle mx-auto" />
-              <div className="h-8 w-0 border border-black align-middle mx-auto" />
-              <div className="h-4 w-4 border border-black rounded-full bg-lime-400 align-middle mx-auto" />
-              <div className="h-8 w-0 border border-black align-middle mx-auto" />
-              <div className="h-4 w-4 border border-black rounded-full bg-lime-400 align-middle mx-auto" />
-              <div className="h-8 w-0 border border-black align-middle mx-auto" />
-              <div className="h-4 w-4 border border-black rounded-full bg-slate-300 align-middle mx-auto" />
-              <div className="h-8 w-0 border border-black align-middle mx-auto" />
-              <div className="h-4 w-4 border border-black rounded-full bg-slate-300 align-middle mx-auto" />
+              <div className="h-4 w-4 mt-1 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
+              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
+              <div className="h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
+              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
+              <div className="h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
+              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
+              <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
+              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
+              <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
             </div>
             <div className="w-2/5 font-bold text-xs">
               <p>Prise de décision commencée</p>
@@ -269,10 +263,10 @@ export default function ShowOneDecision() {
           </div>
         </div>
         <div>
-          <h3 className="text-emerald-900 text-xl font-bold">
+          <h3 className="text-2xl font-bold text-center">
             Personnes impactées
           </h3>
-          <div className="flex justify-center mt-5">
+          <div className="flex justify-center mt-3">
             <img
               className="w-10 h-10 rounded-full mr-4"
               src={Avatar}
@@ -294,17 +288,15 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight">
+          <p className="text-end mt-3 ml-4 font-extralight">
             <button onClick={toggleDisplayAvis} type="button">
-              Voir Les avis
+              Consulter les avis
             </button>
           </p>
         </div>
         <div>
-          <h3 className="text-emerald-900 text-xl font-bold mt-5">
-            Personnes expertes
-          </h3>
-          <div className="flex justify-center mt-5">
+          <h3 className="text-2xl font-bold mt-8">Personnes expertes</h3>
+          <div className="flex justify-center mt-3">
             <img
               className="w-10 h-10 rounded-full mr-4"
               src={Avatar}
@@ -326,15 +318,15 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-left mt-8 ml-4 text-emerald-900 font-extralight mb-20">
+          <p className="text-end mt-3 ml-4 font-extralight mb-20">
             <button onClick={toggleDisplayAvis} type="button">
-              Voir Les avis
+              Consulter les avis
             </button>
           </p>
         </div>
         <Link
           to={`/decision/${id}/advice`}
-          className="bg-emerald-900 hover:bg-emerald-700 text-white py-2 px-16 rounded-full text-sm"
+          className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
         >
           Donner mon avis
         </Link>
