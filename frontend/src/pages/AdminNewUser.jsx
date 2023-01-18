@@ -96,7 +96,7 @@ function AdminNewUser() {
               type="text"
               name="user_email"
               required="required"
-              placeholder="Saisir l'Email"
+              placeholder="Saisir l'email"
               value={user.user_email}
               onChange={(e) => handleNewUser(e.target.name, e.target.value)}
             />
