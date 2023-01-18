@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
-import ChoosenPerson from "@components/ChoosenPerson";
 import ExportContextDecision from "../contexts/DecisionContext";
 
 function NewDecision() {
@@ -133,20 +132,7 @@ function NewDecision() {
               <p>{getDate()}</p>
             </div>
             <div className="mb-2 ">
-              <p className="mb-2">Personnes expertes*</p>
               <SearchPerson SearchPerson={SearchPerson} />
-            </div>
-            <div className="expertPersons mb-40">
-              <p className="mb-2">Personnes expertes choisies</p>
-              <ChoosenPerson />
-            </div>
-            <div className="mb-2">
-              <p className="mb-2">Personnes impactées*</p>
-              <SearchPerson SearchPerson={SearchPerson} />
-            </div>
-            <div className="impactedPersons mt-5">
-              <p className="mb-2">Personnes impactées choisies</p>
-              <ChoosenPerson />
             </div>
           </div>
         </div>
