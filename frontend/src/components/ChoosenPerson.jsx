@@ -5,7 +5,7 @@ function ChoosenPerson() {
     <div>
       <div className="choosenBar">
         <input
-          className="border-2 border-500 rounded-lg outline-[#c8c8c8] w-full h-64"
+          className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-10/12 h-64 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
           type="text"
         />
       </div>

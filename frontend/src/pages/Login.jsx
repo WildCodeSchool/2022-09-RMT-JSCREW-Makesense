@@ -34,17 +34,19 @@ function Login() {
     }
   };
   return (
-    <div>
-      <div className="flex justify-center h-100">
+    <div className="h-[100vh] dark:bg-[#0c3944] dark:text-[#e7ebec]">
+      <div className="flex justify-center py-10">
         <img src={Logo} alt="Logo" />
       </div>
       <div className="flex justify-center card rounded-none">
-        <form className="m-5">
-          <div className="group m-3">
-            <label htmlFor="login">Adresse email :</label>
+        <form>
+          <div className="group">
+            <label htmlFor="login" className="group font-bold text-2xl">
+              Adresse email
+            </label>
             <br />
             <input
-              className="border-2 border-500 w-80 rounded-lg outline-[#c8c8c8]"
+              className="mb-5 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="email-address"
               name="email"
               type="email"
@@ -57,11 +59,13 @@ function Login() {
               placeholder="Adresse email"
             />
           </div>
-          <div className="group m-3">
-            <label htmlFor="password">Mot de passe :</label>
+          <div className="group">
+            <label htmlFor="password" className="group font-bold text-2xl">
+              Mot de passe
+            </label>
             <br />
             <input
-              className="border-2 border-500 w-80 rounded-lg outline-[#c8c8c8]"
+              className="mb-8 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="password"
               type="password"
@@ -77,7 +81,7 @@ function Login() {
           <p>{message}</p>
           <div className="group m-3 flex justify-center">
             <button
-              className="mt-4 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+              className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
               type="button"
               onClick={handleSubmit}
             >

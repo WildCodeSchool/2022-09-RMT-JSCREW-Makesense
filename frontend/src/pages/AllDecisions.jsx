@@ -5,11 +5,11 @@ import Search from "../components/Search";
 
 function AllDecisions({ search, handleSearch }) {
   return (
-    <div className="h-[100vh]">
+    <div className="h-[120vh] dark:bg-[#0c3944]">
       <div className="flex justify-between">
         <Link
           to="/user/decision/new"
-          className="ml-10 mt-8 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+          className="ml-10 mt-8 bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
         >
           Créer une nouvelle prise de décision
         </Link>
