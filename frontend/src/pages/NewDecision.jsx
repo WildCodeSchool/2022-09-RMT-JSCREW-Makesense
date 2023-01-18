@@ -27,8 +27,8 @@ function NewDecision() {
   };
 
   return (
-    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12 ">
-      <h1 className="font-bold text-3xl py-8 ">Créer une prise de décision</h1>
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
+      <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
       <form action="" onSubmit={handleSubmit}>
         <div className="decision flex">
           <div className="writeDecision w-full">
