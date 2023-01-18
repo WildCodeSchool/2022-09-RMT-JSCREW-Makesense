@@ -24,4 +24,6 @@ router.post("/login", checkUser, UserController.validateUser);
 router.post("/users", checkAuth, UserController.add);
 router.delete("/users/:id", checkAuth, UserController.destroy);
 
+router.post("/decisions/:id/advice", AdviceController.postAdvice);
+
 module.exports = router;
