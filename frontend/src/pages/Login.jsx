@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 import User from "../contexts/User";
 
-import Logo from "../assets/logo1.svg";
-
 function Login() {
   const [connexion, setConnexion] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
@@ -23,7 +21,7 @@ function Login() {
       apiConnexion
         .post("/login", { ...connexion })
         .then((res) => {
-          navigate("/");
+          navigate("/home");
           userContext.handleUser(res.data);
         })
         .catch((err) => {
@@ -35,18 +33,14 @@ function Login() {
   };
   return (
     <div className="h-[100vh] dark:bg-[#0c3944] dark:text-[#e7ebec]">
-      <div className="flex justify-center py-10">
-        <img src={Logo} alt="Logo" />
-      </div>
+      <h1 className="flex justify-center font-bold text-3xl pt-20 py-8">
+        Connexion
+      </h1>
       <div className="flex justify-center card rounded-none">
         <form>
           <div className="group">
-            <label htmlFor="login" className="group font-bold text-2xl">
-              Adresse email
-            </label>
-            <br />
             <input
-              className="mb-5 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              className="mb-5 pl-3 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="email-address"
               name="email"
               type="email"
@@ -60,12 +54,8 @@ function Login() {
             />
           </div>
           <div className="group">
-            <label htmlFor="password" className="group font-bold text-2xl">
-              Mot de passe
-            </label>
-            <br />
             <input
-              className="mb-8 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              className="mb-8 pl-3 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="password"
               type="password"
