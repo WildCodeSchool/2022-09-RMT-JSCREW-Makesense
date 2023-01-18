@@ -25,7 +25,7 @@ function SearchPerson() {
     <div>
       <div className="searchBar">
         <input
-          className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7daa] text-lg"
           type="text"
           onChange={handleSearchUser}
           required
@@ -37,7 +37,7 @@ function SearchPerson() {
             return (
               <button
                 type="button"
-                className="searchResult flex w-full bg-gray-300 p-2"
+                className="searchResult flex w-full bg-[#e5e7eb] dark:text-[#e7ebec] p-3"
                 key={user.id}
               >
                 {user.firstname} {user.lastname}
