@@ -214,8 +214,8 @@ export default function ShowOneDecision() {
             </svg>
             Première Décision
           </button>
-          {premiereDecision ? (
-            <p className="text-black ml-10 mb-5">test</p>
+          {premiereDecision && oneDecision?.firstDecision ? (
+            <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
           ) : null}
         </div>
       </div>

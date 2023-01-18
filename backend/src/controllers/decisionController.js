@@ -12,6 +12,19 @@ const browse = (req, res) => {
     });
 };
 
+const postFirstDecision = (req, res) => {
+  models.decision
+    .insert(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
+  postFirstDecision,
 };

@@ -9,23 +9,6 @@ function UpdateDecision() {
 
   const [decision, setDecision] = useState([]);
 
-  const [updateDecision, setUpdateDecision] = useState({
-    decisionMaking_id: "",
-  });
-
-  const [updateStatus, setUpdateStatus] = useState({
-    status: "",
-  });
-
-  const putStatusDecision = () => {
-    apiConnexion
-      .put(`decisionsMaking/${id}`)
-      .then((res) => {
-        setUpdateStatus(res.data);
-        setTimeout(() => navigate(`/onedecision/${id}`), 2500);
-      })
-      .catch((err) => console.error(err));
-  };
   const getDecision = () => {
     apiConnexion
       .get(`decisionsMaking/${id}`)
@@ -34,29 +17,38 @@ function UpdateDecision() {
       })
       .catch((err) => console.error(err));
   };
+
+  useEffect(() => {
+    getDecision();
+  }, []);
+
+  const handleDecision = (position, value) => {
+    const newDecision = { ...decision };
+    newDecision[position] = value;
+    setDecision(newDecision);
+  };
   const postFirstDecision = () => {
     apiConnexion
       .post(`decisionsMaking/${id}`)
       .then((res) => {
-        setUpdateDecision(res.data);
+        setDecision(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
+  const putStatusDecision = () => {
+    apiConnexion
+      .put(`decisionsMaking/${id}`)
+      .then((res) => {
+        setDecision(res.data);
+        setTimeout(() => navigate(`/onedecision/${id}`), 2500);
       })
       .catch((err) => console.error(err));
   };
 
-  useEffect(() => {
-    getDecision();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     putStatusDecision();
     postFirstDecision();
-  }, []);
-
-  const handleUpdateStatus = () => {
-    const newStatus = { ...updateStatus };
-    setUpdateStatus(newStatus);
-  };
-
-  const handleUpdateDecision = () => {
-    const firstDecision = { ...updateDecision };
-    setUpdateDecision(firstDecision);
   };
 
   return (
@@ -85,7 +77,9 @@ function UpdateDecision() {
                   <div className=" mb-5">
                     <p className="mb-2">Modification status de la décision*</p>
                     <select
-                      onChange={(e) => handleUpdateStatus(e.target.value)}
+                      onChange={(e) =>
+                        handleDecision(e.target.name, e.target.value)
+                      }
                       className="border-2 border-500 h-10  w-5/12 rounded-lg outline-[#c8c8c8] resize-none"
                       type="text"
                       id="decisionStatus"
@@ -168,7 +162,7 @@ function UpdateDecision() {
                 </Link>
                 <button
                   type="button"
-                  onClick={(e) => handleUpdateDecision(e.target.value)}
+                  onClick={(e) => handleSubmit(e.target.value)}
                   className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
                 >
                   Valider

@@ -444,17 +444,23 @@ VALUES (
         1
     );
 
-DROP TABLE IF EXISTS decision;
-
 CREATE TABLE
-    decision (
+    firstDecision (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         decisionMaking_id INT NOT NULL,
-        CONSTRAINT fk_decision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
+        CONSTRAINT fk_firstDecision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
         textDecision LONGTEXT NOT NULL
     );
+    INSERT INTO firstDecision (id, decisionMaking_id, textDecision) VALUE (1, 1, "test de première décision");
 
-DROP TABLE IF EXISTS conflict;
+CREATE TABLE
+    finalDecision (
+        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        decisionMaking_id INT NOT NULL,
+        CONSTRAINT fk_finalDecision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
+        textDecision LONGTEXT NOT NULL
+    );
+    INSERT INTO finalDecision (id, decisionMaking_id, textDecision) VALUE (1, 1, "test de décision finale");
 
 CREATE TABLE
     conflict (
@@ -462,6 +468,6 @@ CREATE TABLE
         textConflict LONGTEXT NOT NULL,
         user_id INT NOT NULL,
         CONSTRAINT fk_conflict_user FOREIGN KEY (user_id) REFERENCES `user`(id),
-        decision_id INT NOT NULL,
-        CONSTRAINT fk_conflict_decision FOREIGN KEY (decision_id) REFERENCES decision(id)
+        firstDecision_id INT NOT NULL,
+        CONSTRAINT fk_conflict_firstDecision FOREIGN KEY (firstDecision_id) REFERENCES firstDecision(id)
     );
