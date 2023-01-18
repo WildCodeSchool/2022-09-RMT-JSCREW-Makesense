@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Login from "@pages/Login";
-import AdminUsersList from "@pages/AdminUsersList";
-import AdminNewUser from "@pages/AdminNewUser";
+import Login from "./pages/Login";
+import AdminUsersList from "./pages/AdminUsersList";
+import AdminNewUser from "./pages/AdminNewUser";
 import NewDecision from "./pages/NewDecision";
 import ArchivedDecisions from "./pages/ArchivedDecisions";
 import ShowOneDecision from "./pages/ShowOneDecision";
@@ -23,7 +22,6 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route
           path="/"
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
@@ -36,6 +34,7 @@ function App() {
           }
         />
         <Route path="/onedecision/:id" element={<ShowOneDecision />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/users" element={<AdminUsersList />} />
         <Route path="/users/creation" element={<AdminNewUser />} />
       </Routes>

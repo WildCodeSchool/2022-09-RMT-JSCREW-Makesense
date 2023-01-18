@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+
+import apiConnexion from "../services/apiConnexion";
 
 function AdminUsersList() {
   const [usersList, setUsersList] = useState();
 
   useEffect(() => {
-    axios
+    apiConnexion
       .get(`${import.meta.env.VITE_BACKEND_URL}users`)
       .then((res) => {
         setUsersList(res.data);
@@ -21,7 +22,7 @@ function AdminUsersList() {
   };
 
   const deleteUser = (user) => {
-    axios
+    apiConnexion
       .delete(`${import.meta.env.VITE_BACKEND_URL}users/${user.id}`)
       .then(() => handleDeleteUser(user));
   };

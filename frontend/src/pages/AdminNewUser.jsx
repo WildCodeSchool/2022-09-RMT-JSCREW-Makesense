@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
+import apiConnexion from "../services/apiConnexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminNewUser() {
   const [user, setUser] = useState({
     user_username: "",
     user_firstname: "",
     user_lastname: "",
-    user_mail: "",
+    user_email: "",
     user_password: "",
     user_role: "administrateur",
   });
@@ -17,85 +20,113 @@ function AdminNewUser() {
     setUser(newUser);
   };
 
-  const handleSubmit = (e) => {
+  const notify = (msg) => {
+    toast(msg);
+  };
+
+  const navigate = useNavigate();
+
+  const handleAddUser = (e) => {
     e.preventDefault();
+    apiConnexion
+      .post(`/users`, {
+        ...user,
+      })
+      .then(() => {
+        notify("Utilisateur ajouté!");
+        setTimeout(() => navigate("/users"), 4000);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
-    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12 ">
-      <h1 className="font-bold text-3xl py-8">
-        Renseigner un nouvel utilisateur
-      </h1>
-      <form action="" onSubmit={handleSubmit}>
-        <div>
-          <p className="pb-4 text-xl">Identifiant</p>
-          <input
-            className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
-            type="text"
-            name="user_username"
-            required="required"
-            value={user.user_username}
-            onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-          />
-        </div>
-        <div className="flex justify-start">
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12 ">
+        <h1 className="font-bold text-3xl py-8">
+          Renseigner un nouvel utilisateur
+        </h1>
+        <form action="">
           <div>
-            <p className="pb-4 text-xl">Prénom</p>
+            <p className="pb-4 text-xl">Identifiant</p>
             <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg mr-5"
+              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
               type="text"
-              name="user_firstname"
+              name="user_username"
               required="required"
-              value={user.user_firstname}
+              value={user.user_username}
               onChange={(e) => handleNewUser(e.target.name, e.target.value)}
             />
           </div>
-          <div>
-            <p className="pb-4 text-xl">Nom</p>
-            <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
-              type="text"
-              name="user_lastname"
-              required="required"
-              value={user.user_lastname}
-              onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-            />
+          <div className="flex justify-start">
+            <div className="mb-8">
+              <p className="mb-2">Prénom</p>
+              <input
+                className="border-2 border-500 rounded-lg mr-12"
+                type="text"
+                name="user_firstname"
+                required="required"
+                value={user.user_firstname}
+                onChange={(e) => handleNewUser(e.target.name, e.target.value)}
+              />
+            </div>
+            <div>
+              <p className="pb-4 text-xl">Nom</p>
+              <input
+                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                type="text"
+                name="user_lastname"
+                required="required"
+                value={user.user_lastname}
+                onChange={(e) => handleNewUser(e.target.name, e.target.value)}
+              />
+            </div>
           </div>
-        </div>
-        <div>
+          <div>
           <p className="pb-4 text-xl">Email</p>
-          <input
-            className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
-            type="text"
-            name="user_mail"
-            required="required"
-            value={user.user_mail}
-            onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-          />
-        </div>
-        <div>
-          <p className="pb-4 text-xl">Mot de passe</p>
-          <input
-            className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
-            type="text"
-            name="user_password"
-            required="required"
-            value={user.user_password}
-            onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-          />
-        </div>
-        <div>
-          <p className="pb-4 text-xl">Rôle</p>
-          <div className="relative w-1/4 lg:max-w-sm">
-            <select
-              className="p-2.5 text-[#3d6169] bg-white border rounded-md border-[#b6c4c7] shadow-sm outline-none dark:bg-[#e7ebec] mb-10"
-              name="user_role"
+            <input
+              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+              type="text"
+              name="user_email"
+              required="required"
+              value={user.user_email}
               onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-            >
-              <option value="administrateur">Administrateur</option>
-              <option value="utilisateur">Utilisateur</option>
-            </select>
+            />
           </div>
+          <div>
+            <p className="pb-4 text-xl">Mot de passe</p>
+            <input
+              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+              type="text"
+              name="user_password"
+              required="required"
+              value={user.user_password}
+              onChange={(e) => handleNewUser(e.target.name, e.target.value)}
+            />
+          </div>
+          <div>
+            <p className="pb-4 text-xl">Rôle</p>
+            <div className="relative w-52 lg:max-w-sm">
+              <select
+                className="p-2.5 text-[#3d6169] bg-white border rounded-md border-[#b6c4c7] shadow-sm outline-none dark:bg-[#e7ebec] mb-10"
+                name="user_role"
+                onChange={(e) => handleNewUser(e.target.name, e.target.value)}
+              >
+                <option value="administrateur">Administrateur</option>
+                <option value="utilisateur">Utilisateur</option>
+              </select>
+            </div>
         </div>
         <div className="flex justify-center mb-5">
           <Link
@@ -111,8 +142,9 @@ function AdminNewUser() {
             Valider
           </button>
         </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 }
 
