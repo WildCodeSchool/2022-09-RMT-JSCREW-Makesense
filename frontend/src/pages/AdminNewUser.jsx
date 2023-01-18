@@ -62,25 +62,25 @@ function AdminNewUser() {
             />
           </div>
         </div>
-        <div className="mb-8">
+       <div className="mb-8">
           <p className="mb-2">E-mail</p>
-          <input
-            className="w-72 border-2 border-500 rounded-lg"
-            type="text"
-            name="user_mail"
-            required="required"
-            value={user.user_email}
-            onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-          />
-        </div>
-        <div className="mb-8">
-          <p className="mb-2">Mot de Passe</p>
-          <input
-            className="w-72 border-2 border-500 rounded-lg"
-            type="text"
-            name="user_password"
-            required="required"
-            value={user.user_password}
+            <input
+              className="w-72 border-2 border-500 rounded-lg"
+              type="text"
+              name="user_email"
+              required="required"
+              value={user.user_email}
+              onChange={(e) => handleNewUser(e.target.name, e.target.value)}
+            />
+          </div>
+          <div className="mb-8">
+            <p className="mb-2">Mot de Passe</p>
+            <input
+              className="w-72 border-2 border-500 rounded-lg"
+              type="text"
+              name="user_password"
+              required="required"
+              value={user.user_password}
             onChange={(e) => handleNewUser(e.target.name, e.target.value)}
           />
         </div>

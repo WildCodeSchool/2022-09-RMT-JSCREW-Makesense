@@ -22,6 +22,13 @@ class UserManager extends AbstractManager {
       [user.email]
     );
   }
+
+  insert(user) {
+    return this.connection.query(
+      `insert into ${this.table} (username, firstname, lastname, password, email, role) values (?, ?, ?, ?, ?, ?)`,
+      [user.user_username, user.user_firstname, user.user_lastname, user.user_password, user.user_email, user.user_role]
+    ); 
+  }
 }
 
 module.exports = UserManager;

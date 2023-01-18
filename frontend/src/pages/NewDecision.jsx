@@ -23,7 +23,7 @@ function NewDecision() {
 
   const getDate = () => {
     const date = new Date();
-    return `${date.getDay() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
   return (
