@@ -227,13 +227,24 @@ export default function ShowOneDecision() {
             </svg>
             Première Décision
           </button>
-          {premiereDecision ? <p className="text-lg mb-5 ml-10">test</p> : null}
+          {premiereDecision && oneDecision?.firstDecision ? (
+            <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
+          ) : null}
         </div>
       </div>
-
-      <div className="text-center w-1/5 border-l-2 pl-2 py-8">
-        <div className="mb-10">
-          <h3 className="text-2xl font-bold">Dates à retenir</h3>
+      <div>
+        <Link
+          to={`/decision/${id}/update`}
+          className="ml-10 mt-8 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+        >
+          Modifier
+        </Link>
+      </div>
+      <div className="text-center w-1/5 border-l-2">
+        <div className="mb-16">
+          <h3 className="text-emerald-900 text-xl font-bold">
+            Dates à retenir
+          </h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
               <p className="text-lg">{`${dateCreate.toLocaleDateString()}`}</p>

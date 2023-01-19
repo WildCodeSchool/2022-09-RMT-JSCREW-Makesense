@@ -6,7 +6,6 @@ const checkUser = require("./services/user");
 const checkAuth = require("./middleware/auth");
 
 const DecisionMakingController = require("./controllers/decisionMakingController");
-const DecisionController = require("./controllers/decisionController");
 const DesignatedUserController = require("./controllers/designatedUserController");
 const AdviceController = require("./controllers/adviceController");
 const ConflictController = require("./controllers/conflictController");
@@ -14,7 +13,6 @@ const UserController = require("./controllers/userController");
 
 router.get("/decisionsMaking", checkAuth, DecisionMakingController.browse);
 router.get("/decisionsMaking/:id", checkAuth, DecisionMakingController.read);
-router.get("/decisions", checkAuth, DecisionController.browse);
 router.get("/roles", checkAuth, DesignatedUserController.browse);
 router.get("/advices", checkAuth, AdviceController.browse);
 router.get("/conflicts", checkAuth, ConflictController.browse);
