@@ -112,7 +112,7 @@ function AdminNewUser() {
             />
           </div>
           <div>
-            <p className="pb-4 text-xl">Mot de passe*</p>
+            <p className="pb-4 text-xl">Mot de passe* (8 caractères minimum)</p>
             <div className="flex flex-row">
               <div>
                 {hidePassword ? (
@@ -120,6 +120,7 @@ function AdminNewUser() {
                     className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                     type="password"
                     name="user_password"
+                    minLength={8}
                     required="required"
                     placeholder="Saisir le mot de passe"
                     value={user.user_password}
@@ -132,6 +133,7 @@ function AdminNewUser() {
                     className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                     type="text"
                     name="user_password"
+                    minLength={8}
                     required="required"
                     placeholder="Saisir le mot de passe"
                     value={user.user_password}
