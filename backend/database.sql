@@ -1,15 +1,24 @@
-DROP DATABASE IF EXISTS makesense;
-
-CREATE DATABASE makesense;
+CREATE DATABASE IF NOT EXISTS makesense;
 
 USE makesense;
 
+DROP TABLE IF EXISTS designatedUser;
+
+DROP TABLE IF EXISTS advice;
+
+DROP TABLE IF EXISTS conflict;
+
+DROP TABLE IF EXISTS decision;
+
+DROP TABLE IF EXISTS decisionMaking;
+
 DROP TABLE IF EXISTS `user`;
+
+DROP TABLE IF EXISTS decisionStatus;
 
 CREATE TABLE
     `user` (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        username VARCHAR (255) NOT NULL,
         firstname VARCHAR(255) NOT NULL,
         lastname VARCHAR(255) NOT NULL,
         `password` VARCHAR(255) NOT NULL,
@@ -20,7 +29,6 @@ CREATE TABLE
 INSERT INTO
     `user` (
         id,
-        username,
         firstname,
         lastname,
         `password`,
@@ -29,7 +37,6 @@ INSERT INTO
     )
 VALUES (
         1,
-        "arouxel",
         "Alexandre",
         "Rouxel",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -37,7 +44,6 @@ VALUES (
         "user"
     ), (
         2,
-        "ahakimi",
         "Amina",
         "Hakimi",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -45,7 +51,6 @@ VALUES (
         "user"
     ), (
         3,
-        "cpiancatelli",
         "Charlie",
         "Piancatelli",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -53,7 +58,6 @@ VALUES (
         "user"
     ), (
         4,
-        "cguichard",
         "Christopher",
         "Guichard",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -61,7 +65,6 @@ VALUES (
         "user"
     ), (
         5,
-        "emartinez",
         "Emmanuel",
         "Martinez",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -69,7 +72,6 @@ VALUES (
         "user"
     ), (
         6,
-        "glemoine",
         "Gaëtan",
         "Lemoine",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -77,7 +79,6 @@ VALUES (
         "user"
     ), (
         7,
-        "gwernert",
         "Guillaume",
         "Wernert",
         "$argon2id$v=19$m=65536,t=5,p=1$4c8hssuotK6/e5qCvtGvQw$BugMwutuOxrZCFr1ptEbmRDhMzT3RI08UrwcnJjXoL8",
@@ -85,7 +86,6 @@ VALUES (
         "administrator"
     ), (
         8,
-        "jvaxelaire",
         "Jordan",
         "Vaxelaire",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -93,7 +93,6 @@ VALUES (
         "user"
     ), (
         9,
-        "kaouadia",
         "Karim",
         "Aoudia",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -101,7 +100,6 @@ VALUES (
         "user"
     ), (
         10,
-        "stormo",
         "Sylvain",
         "Tormo",
         "$argon2id$v=19$m=65536,t=5,p=1$PPil+7D3GLyBQe7FuWUlXQ$O8qDWfl/YXfoIgHm4Rbvvf+0Xq5dmXs9TM4+LomAXwY",
@@ -109,7 +107,6 @@ VALUES (
         "user"
     ), (
         11,
-        "spetaccia",
         "Sébastien",
         "Petaccia",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -117,7 +114,6 @@ VALUES (
         "user"
     ), (
         12,
-        "tralambotsiro",
         "Tsiry",
         "Ralambotsirofo",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -125,7 +121,6 @@ VALUES (
         "user"
     ), (
         13,
-        "vpapadopoulos",
         "Vassili",
         "Papadopoulos",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -133,7 +128,6 @@ VALUES (
         "user"
     ), (
         14,
-        "yviot",
         "Yanis",
         "Viot",
         "$argon2id$v=19$m=65536,t=5,p=1$RuwKBZ6U4GyUp070M4VcsA$cBqYfvdyMbVfXUrGDwyh7R72qRI5Jas0VuicngzrHGs",
@@ -141,7 +135,6 @@ VALUES (
         "administrator"
     ), (
         15,
-        "jmarkarian",
         "Joy",
         "Markarian",
         "$argon2id$v=19$m=65536,t=5,p=1$HiWYJB4Y6/P9JRe908ksGQ$5IIIk7yVhigPkwXg8HOO8Q3YwixMNy/ax15Ta9ATkKI",
@@ -149,7 +142,6 @@ VALUES (
         "administrator"
     ), (
         16,
-        "jrichard",
         "Julien",
         "Richard",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -157,7 +149,6 @@ VALUES (
         "user"
     ), (
         17,
-        "klavigne",
         "Kevin",
         "Lavigne",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -165,7 +156,6 @@ VALUES (
         "user"
     ), (
         18,
-        "agorski",
         "Anthony",
         "Gorski",
         "$argon2id$v=19$m=65536,t=5,p=1$PtphdlePmHzgd8cA7siVQA$pd5RJxteeD8pfRKpe8AqcSStqRg5nR7rLCJC4agSBAE",
@@ -173,7 +163,6 @@ VALUES (
         "administrator"
     ), (
         19,
-        "jfmorin",
         "Jean-François",
         "Morin",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -181,7 +170,6 @@ VALUES (
         "user"
     ), (
         20,
-        "bvandanjon",
         "Benoît",
         "Vandanjon",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -189,7 +177,6 @@ VALUES (
         "user"
     ), (
         21,
-        "pdegee",
         "Pierre",
         "Degée",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -197,7 +184,6 @@ VALUES (
         "user"
     ), (
         22,
-        "rboe",
         "Rachel",
         "Boé",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -205,7 +191,6 @@ VALUES (
         "user"
     ), (
         23,
-        "alenne",
         "Adrien",
         "Lenne",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -213,7 +198,6 @@ VALUES (
         "user"
     ), (
         24,
-        "iboyer",
         "Iris",
         "Boyer",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -221,7 +205,6 @@ VALUES (
         "user"
     ), (
         25,
-        "edurand",
         "Elia",
         "Durand",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -229,7 +212,6 @@ VALUES (
         "user"
     ), (
         26,
-        "mfontaine",
         "Maxence",
         "Fontaine",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -237,7 +219,6 @@ VALUES (
         "user"
     ), (
         27,
-        "olefebvre",
         "Océane",
         "Lefebvre",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -245,7 +226,6 @@ VALUES (
         "user"
     ), (
         28,
-        "abrebion",
         "Antonin",
         "Brebion",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -253,7 +233,6 @@ VALUES (
         "user"
     ), (
         29,
-        "mbrunet",
         "Marcel",
         "Brunet",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -261,7 +240,6 @@ VALUES (
         "user"
     ), (
         30,
-        "jmercier",
         "Jean",
         "Mercier",
         "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
@@ -279,8 +257,6 @@ INSERT INTO
     decisionStatus (status) VALUE (
         "Prise de décision commencée"
     ), ("Première décision prise"), ("Décision archivée");
-
-DROP TABLE IF EXISTS decisionMaking;
 
 CREATE TABLE
     decisionMaking (
@@ -396,8 +372,6 @@ VALUES (
         "2023-04-12"
     );
 
-DROP TABLE IF EXISTS designatedUser;
-
 CREATE TABLE
     designatedUser (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -416,8 +390,6 @@ INSERT INTO
         `status`
     )
 VALUES (1, 25, 1, "Personne impactée"), (2, 6, 1, "Personne experte");
-
-DROP TABLE IF EXISTS advice;
 
 CREATE TABLE
     advice (
@@ -444,8 +416,6 @@ VALUES (
         1
     );
 
-DROP TABLE IF EXISTS decision;
-
 CREATE TABLE
     decision (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -453,8 +423,6 @@ CREATE TABLE
         CONSTRAINT fk_decision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
         textDecision LONGTEXT NOT NULL
     );
-
-DROP TABLE IF EXISTS conflict;
 
 CREATE TABLE
     conflict (

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import MyAdvice from "@pages/MyAdvice";
 import Login from "./pages/Login";
 import AdminUsersList from "./pages/AdminUsersList";
 import AdminNewUser from "./pages/AdminNewUser";
@@ -23,7 +25,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="/home"
           element={<AllDecisions search={search} handleSearch={handleSearch} />}
         />
         <Route path="/user/decision/new" element={<NewDecision />} />
@@ -33,8 +35,9 @@ function App() {
             <ArchivedDecisions search={search} handleSearch={handleSearch} />
           }
         />
-        <Route path="/onedecision/:id" element={<ShowOneDecision />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/decision/:id" element={<ShowOneDecision />} />
+        <Route path="/decision/:id/advice" element={<MyAdvice />} />
+        <Route path="/" element={<Login />} />
         <Route path="/users" element={<AdminUsersList />} />
         <Route path="/users/creation" element={<AdminNewUser />} />
       </Routes>

@@ -55,7 +55,7 @@ function SearchPerson() {
       <div className="expertPerson mb-40">
         <p className="mb-2">Personnes expertes*</p>
         <input
-          className="border-2 border-500 rounded-lg w-full outline-[#c8c8c8]"
+          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7daa] text-lg"
           type="text"
           onChange={handleSearchExpert}
           required

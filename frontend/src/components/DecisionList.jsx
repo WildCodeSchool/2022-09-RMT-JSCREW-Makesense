@@ -17,7 +17,7 @@ function DecisionList({ search, statusId, title }) {
   return (
     <div>
       <div>
-        <h1 className="text-start font-bold text-3xl px-12 pt-8 pb-4">
+        <h1 className="text-start font-bold text-3xl px-12 pt-8 pb-4 dark:text-[#e7ebec]">
           {title}
         </h1>
         <div className="px-2">

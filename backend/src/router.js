@@ -12,7 +12,6 @@ const AdviceController = require("./controllers/adviceController");
 const ConflictController = require("./controllers/conflictController");
 const UserController = require("./controllers/userController");
 
-
 router.get("/decisionsMaking", checkAuth, DecisionMakingController.browse);
 router.get("/decisionsMaking/:id", checkAuth, DecisionMakingController.read);
 router.get("/decisions", checkAuth, DecisionController.browse);
@@ -25,5 +24,6 @@ router.post("/login", checkUser, UserController.validateUser);
 router.post("/users", checkAuth, UserController.add);
 router.delete("/users/:id", checkAuth, UserController.destroy);
 
+router.post("/decisions/:id/advice", checkAuth, AdviceController.postAdvice);
 
 module.exports = router;

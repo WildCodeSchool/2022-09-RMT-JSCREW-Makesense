@@ -2,15 +2,15 @@ import React, { useState } from "react";
 
 import "./DarkMode.css";
 
-import PictoSun from "@assets/sun.svg";
-import PictoMoon from "@assets/moon.svg";
+import PictoSun from "../assets/sun.svg";
+import PictoMoon from "../assets/moon.svg";
 
 function DarkModeButton() {
   const [darkMode, setDarkMode] = useState(false);
 
   function handleToggle() {
     setDarkMode(!darkMode);
-    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("dark");
   }
 
   return (
