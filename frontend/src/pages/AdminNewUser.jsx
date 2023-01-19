@@ -102,7 +102,7 @@ function AdminNewUser() {
           <div>
             <p className="pb-4 text-xl">Email*</p>
             <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/5 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
               type="text"
               name="user_email"
               required="required"
@@ -120,7 +120,7 @@ function AdminNewUser() {
                     className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                     type="password"
                     name="user_password"
-                    minLength={8}
+                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
                     required="required"
                     placeholder="Saisir le mot de passe"
                     value={user.user_password}
@@ -133,7 +133,7 @@ function AdminNewUser() {
                     className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                     type="text"
                     name="user_password"
-                    minLength={8}
+                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
                     required="required"
                     placeholder="Saisir le mot de passe"
                     value={user.user_password}
