@@ -10,6 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 function AdminNewUser() {
   editMeta("Renseigner un nouvel utilisateur");
 
+  const [hidePassword, setHidePassword] = useState(true);
+
   const [user, setUser] = useState({
     user_firstname: "",
     user_lastname: "",
@@ -45,6 +47,10 @@ function AdminNewUser() {
       .catch((err) => console.error(err));
   };
 
+  function showPassword() {
+    setHidePassword(!hidePassword);
+  }
+
   return (
     <>
       <ToastContainer
@@ -65,7 +71,7 @@ function AdminNewUser() {
         </h1>
         <form onSubmit={handleAddUser}>
           <div>
-            <p className="pb-4 text-xs">* champs obligatoires</p>
+            <p className="pb-4 text-xs">* Champs obligatoires</p>
           </div>
           <div className="flex justify-start">
             <div className="pr-5">
@@ -96,7 +102,7 @@ function AdminNewUser() {
           <div>
             <p className="pb-4 text-xl">Email*</p>
             <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/5 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
               type="text"
               name="user_email"
               required="required"
@@ -107,15 +113,60 @@ function AdminNewUser() {
           </div>
           <div>
             <p className="pb-4 text-xl">Mot de passe*</p>
-            <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
-              type="text"
-              name="user_password"
-              required="required"
-              placeholder="Saisir le mot de passe"
-              value={user.user_password}
-              onChange={(e) => handleNewUser(e.target.name, e.target.value)}
-            />
+            <div className="flex flex-row">
+              <div>
+                {hidePassword ? (
+                  <input
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                    type="password"
+                    name="user_password"
+                    required="required"
+                    placeholder="Saisir le mot de passe"
+                    value={user.user_password}
+                    onChange={(e) =>
+                      handleNewUser(e.target.name, e.target.value)
+                    }
+                  />
+                ) : (
+                  <input
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                    type="text"
+                    name="user_password"
+                    required="required"
+                    placeholder="Saisir le mot de passe"
+                    value={user.user_password}
+                    onChange={(e) =>
+                      handleNewUser(e.target.name, e.target.value)
+                    }
+                  />
+                )}
+              </div>
+              <div>
+                {hidePassword ? (
+                  <button
+                    className="w-[20px] h-[20px] ml-2 mt-1.5"
+                    onClick={showPassword}
+                    type="button"
+                  >
+                    <img
+                      src="https://www.svgrepo.com/show/384356/close-cross-eye-hidden-vision.svg"
+                      alt="eyeCross"
+                    />
+                  </button>
+                ) : (
+                  <button
+                    className="w-[20px] h-[20px] ml-2 mt-1.5"
+                    onClick={showPassword}
+                    type="button"
+                  >
+                    <img
+                      src="https://www.svgrepo.com/show/384342/eye-look-show-view-visible-visiblity.svg"
+                      alt="eyeOpen"
+                    />
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
           <div>
             <p className="pb-4 text-xl">Rôle*</p>
