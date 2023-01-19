@@ -53,9 +53,9 @@ function SearchPerson() {
   return (
     <div>
       <div className="expertPerson mb-40">
-        <p className="mb-2">Personnes expertes*</p>
+        <p className="mb-2 font-semibold">Personnes expertes*</p>
         <input
-          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7daa] text-lg"
+          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da] text-lg"
           type="text"
           onChange={handleSearchExpert}
           required
@@ -76,13 +76,15 @@ function SearchPerson() {
             })}
         </div>
         <div className="choosenExpert">
-          <p className="mb-2 mt-5">Personnes expertes choisies</p>
-          <div className="experts border-2 border-500 w-full h-60 rounded-lg bg-red-300">
+          <p className="mb-2 mt-5 font-semibold">Personnes expertes choisies</p>
+          <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg">
             {experts &&
               experts.map((expert) => {
                 return (
-                  <div className="text-4xl">
-                    {expert.firstname} {expert.lastname}
+                  <div className="">
+                    <p className="">
+                      - {expert.firstname} {expert.lastname}
+                    </p>
                   </div>
                 );
               })}
@@ -90,9 +92,9 @@ function SearchPerson() {
         </div>
       </div>
       <div className="impactedPerson">
-        <p className="mb-2">Personnes impactées*</p>
+        <p className="mb-2 font-semibold">Personnes impactées*</p>
         <input
-          className="border-2 border-500 rounded-lg w-full outline-[#c8c8c8]"
+          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da] text-lg"
           type="text"
           onChange={handleSearchImpacted}
           required
@@ -113,8 +115,8 @@ function SearchPerson() {
             })}
         </div>
         <div className="choosenImpacted mt-5">
-          <p className="mb-2">Personnes impactées choisies</p>
-          <div className="experts border-2 border-500 w-full h-60 rounded-lg bg-green-300">
+          <p className="mb-2 font-semibold">Personnes impactées choisies</p>
+          <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg">
             {impacted &&
               impacted.map((impact) => {
                 return (
