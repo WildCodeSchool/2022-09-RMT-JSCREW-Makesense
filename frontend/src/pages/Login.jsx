@@ -38,7 +38,7 @@ function Login() {
   };
   return (
     <div className="h-[100vh] dark:bg-[#0c3944] dark:text-[#e7ebec]">
-      <div className="flex justify-center h-100 mt-10">
+      <div className="flex justify-center h-100 pt-10">
         <img src={Logo} alt="Logo" />
       </div>
       <h1 className="flex justify-center font-bold text-4xl pt-16 py-8">
