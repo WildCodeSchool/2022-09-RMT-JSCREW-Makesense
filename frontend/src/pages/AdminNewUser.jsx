@@ -66,18 +66,18 @@ function AdminNewUser() {
         theme="dark"
       />
       <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
-        <h1 className="font-bold text-3xl py-8">
+        <h1 className="font-bold text-3xl py-6">
           Renseigner un nouvel utilisateur
         </h1>
         <form onSubmit={handleAddUser}>
           <div>
-            <p className="pb-4 text-xs">* Champs obligatoires</p>
+            <p className="pb-3 text-xs">* Champs obligatoires</p>
           </div>
           <div className="flex justify-start">
             <div className="pr-5">
-              <p className="pb-4 text-xl">Prénom*</p>
+              <p className="pb-2 text-xl">Prénom*</p>
               <input
-                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
                 type="text"
                 name="user_firstname"
                 required="required"
@@ -87,9 +87,9 @@ function AdminNewUser() {
               />
             </div>
             <div>
-              <p className="pb-4 text-xl">Nom*</p>
+              <p className="pb-2 text-xl">Nom*</p>
               <input
-                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
                 type="text"
                 name="user_lastname"
                 required="required"
@@ -100,9 +100,9 @@ function AdminNewUser() {
             </div>
           </div>
           <div>
-            <p className="pb-4 text-xl">Email*</p>
+            <p className="pb-2 text-xl">Email*</p>
             <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
               type="text"
               name="user_email"
               required="required"
@@ -112,12 +112,12 @@ function AdminNewUser() {
             />
           </div>
           <div>
-            <p className="pb-4 text-xl">Mot de passe* (8 caractères minimum)</p>
+            <p className="pb-2 text-xl">Mot de passe*</p>
             <div className="flex flex-row">
               <div>
                 {hidePassword ? (
                   <input
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-2 text-lg"
                     type="password"
                     name="user_password"
                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
@@ -130,7 +130,7 @@ function AdminNewUser() {
                   />
                 ) : (
                   <input
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
+                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-2 text-lg"
                     type="text"
                     name="user_password"
                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
@@ -169,6 +169,10 @@ function AdminNewUser() {
                 )}
               </div>
             </div>
+            <p className="mb-4 text-xs">
+              Le mot de passe doit contenir au minimum 8 caractères, à savoir :
+              au moins une lettre minuscule, une lettre majuscule et un chiffre.
+            </p>
           </div>
           <div>
             <p className="pb-4 text-xl">Rôle*</p>
@@ -178,8 +182,8 @@ function AdminNewUser() {
                 name="user_role"
                 onChange={(e) => handleNewUser(e.target.name, e.target.value)}
               >
-                <option value="administrateur">Administrateur</option>
-                <option value="utilisateur">Utilisateur</option>
+                <option value="administrator">Administrateur</option>
+                <option value="user">Utilisateur</option>
               </select>
             </div>
           </div>

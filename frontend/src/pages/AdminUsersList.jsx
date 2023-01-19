@@ -11,6 +11,29 @@ function AdminUsersList() {
 
   const [usersList, setUsersList] = useState();
 
+  const notify = (msg) => {
+    toast(msg);
+  };
+
+  const editUserRole = (user) => {
+    apiConnexion
+      .put(`/users/${user.id}`, { role: user.role })
+      .then(() => {
+        notify(
+          `Le rôle de l'utilisateur "${user.firstname} ${user.lastname}" a été modifié.`
+        );
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleNewRole = (user, value) => {
+    const newUser = [...usersList];
+    const userToEdit = newUser.find((usr) => usr === user);
+    userToEdit.role = value;
+    setUsersList(newUser);
+    editUserRole(userToEdit);
+  };
+
   useEffect(() => {
     apiConnexion
       .get(`${import.meta.env.VITE_BACKEND_URL}users`)
@@ -24,10 +47,6 @@ function AdminUsersList() {
     const newUserList = [...usersList];
     newUserList.splice(newUserList.indexOf(user), 1);
     setUsersList(newUserList);
-  };
-
-  const notify = (msg) => {
-    toast(msg);
   };
 
   const deleteUser = (user) => {
@@ -89,8 +108,9 @@ function AdminUsersList() {
                         className="w-40 text-gray-500 border rounded-md shadow-sm outline-none"
                         name="user_role"
                         value={user.role}
+                        onChange={(e) => handleNewRole(user, e.target.value)}
                       >
-                        <option value="admin">Administrateur</option>
+                        <option value="administrator">Administrateur</option>
                         <option value="user">Utilisateur</option>
                       </select>
                     </div>
