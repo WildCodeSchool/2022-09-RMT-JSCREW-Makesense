@@ -60,12 +60,20 @@ export default function ShowOneDecision() {
   }
 
   return (
-    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16">
+    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-[100vh]">
       <div className="text-left w-4/5 py-8 mr-16">
         <p className="dark:text-[#0c3944] inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-5">
           {oneDecision.status}
         </p>
-        <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
+        <div className="flex flex-row">
+          <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
+          <Link
+            to={`/decision/${id}/update`}
+            className="ml-10 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+          >
+            Modifier
+          </Link>
+        </div>
         <div className="inline-flex mb-12 mt-2">
           <img className="w-14 h-14" src={Avatar} alt="Avatar utilisateur" />
           <p className="ml-5 mt-3.5 text-xl">
@@ -231,14 +239,6 @@ export default function ShowOneDecision() {
             <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
           ) : null}
         </div>
-      </div>
-      <div>
-        <Link
-          to={`/decision/${id}/update`}
-          className="ml-10 mt-8 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
-        >
-          Modifier
-        </Link>
       </div>
       <div className="text-center w-1/5 border-l-2">
         <div className="mb-16">
