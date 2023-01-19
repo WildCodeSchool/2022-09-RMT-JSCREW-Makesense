@@ -292,6 +292,8 @@ CREATE TABLE
         impact LONGTEXT NOT NULL,
         profit LONGTEXT NOT NULL,
         risk LONGTEXT NOT NULL,
+        firstDecision LONGTEXT,
+        finalDecision LONGTEXT,
         decisionStatus_id INT NOT NULL,
         CONSTRAINT fk_decisionMaking_decisionStatus FOREIGN KEY (decisionStatus_id) REFERENCES decisionStatus(id),
         dateCreate DATE NOT NULL,
@@ -396,6 +398,8 @@ VALUES (
         "2023-04-12"
     );
 
+UPDATE decisionMaking SET firstDecision = "test first decision", finalDecision = "test final decision" WHERE id = 1;
+
 DROP TABLE IF EXISTS designatedUser;
 
 CREATE TABLE
@@ -445,29 +449,11 @@ VALUES (
     );
 
 CREATE TABLE
-    firstDecision (
-        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        decisionMaking_id INT NOT NULL,
-        CONSTRAINT fk_firstDecision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
-        textDecision LONGTEXT NOT NULL
-    );
-    INSERT INTO firstDecision (id, decisionMaking_id, textDecision) VALUE (1, 1, "test de première décision");
-
-CREATE TABLE
-    finalDecision (
-        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        decisionMaking_id INT NOT NULL,
-        CONSTRAINT fk_finalDecision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
-        textDecision LONGTEXT NOT NULL
-    );
-    INSERT INTO finalDecision (id, decisionMaking_id, textDecision) VALUE (1, 1, "test de décision finale");
-
-CREATE TABLE
     conflict (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         textConflict LONGTEXT NOT NULL,
         user_id INT NOT NULL,
         CONSTRAINT fk_conflict_user FOREIGN KEY (user_id) REFERENCES `user`(id),
-        firstDecision_id INT NOT NULL,
-        CONSTRAINT fk_conflict_firstDecision FOREIGN KEY (firstDecision_id) REFERENCES firstDecision(id)
+        decisionMaking_id INT NOT NULL,
+        CONSTRAINT fk_conflict_firstDecision FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id)
     );

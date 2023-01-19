@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 
 function UpdateDecision() {
   const { id } = useParams();
-
-  const navigate = useNavigate();
 
   const [decision, setDecision] = useState([]);
 
@@ -27,28 +25,9 @@ function UpdateDecision() {
     newDecision[position] = value;
     setDecision(newDecision);
   };
-  const postFirstDecision = () => {
-    apiConnexion
-      .post(`decisionsMaking/${id}`)
-      .then((res) => {
-        setDecision(res.data);
-      })
-      .catch((err) => console.error(err));
-  };
-  const putStatusDecision = () => {
-    apiConnexion
-      .put(`decisionsMaking/${id}`)
-      .then((res) => {
-        setDecision(res.data);
-        setTimeout(() => navigate(`/onedecision/${id}`), 2500);
-      })
-      .catch((err) => console.error(err));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    putStatusDecision();
-    postFirstDecision();
   };
 
   return (
