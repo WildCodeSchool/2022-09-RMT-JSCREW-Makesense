@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import Logo from "@assets/logo1.svg";
 import PictoHome from "@assets/home.svg";
@@ -8,13 +9,20 @@ import PictoDecision from "@assets/decision.svg";
 import PictoNotification from "@assets/notification.svg";
 import PictoLogout from "@assets/logout.svg";
 import PictoUsers from "@assets/users.svg";
+import User from "../contexts/User";
 
 import DarkModeButton from "./DarkModeButton";
 
 function Navbar() {
+  const { user, handleUser } = useContext(User.UserContext);
+  const navigate = useNavigate();
+  const handleLogOut = (e) => {
+    handleUser({});
+    navigate("/");
+  };
   return (
     <div className="flex justify-between pb-1 bg-[#ced7da] dark:bg-[#6d888f] dark:text-[#e7ebec] font-bold">
-      <Link to="/home">
+      <Link to="/">
         <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
       </Link>
       <div className="mt-3">
@@ -22,7 +30,7 @@ function Navbar() {
       </div>
       <div>
         <div className="inline-block text-center place-content-center items-center mr-4">
-          <Link to="/home">
+          <Link to="/">
             <img
               className="inline place-content-center p-1 m-1"
               src={PictoHome}
@@ -67,14 +75,14 @@ function Navbar() {
           />
           <p>Notifications</p>
         </div>
-        <div className="inline-block text-center place-content-center mr-10">
-          <img
-            className="inline place-content-center p-1 m-1"
-            src={PictoLogout}
-            alt="logo6"
-          />
+        <button
+          type="button"
+          onClick={handleLogOut}
+          className="text-center place-content-center mr-10"
+        >
+          <img className="ml-9 p-1 m-1" src={PictoLogout} alt="logo6" />
           <p>Se déconnecter</p>
-        </div>
+        </button>
       </div>
     </div>
   );
