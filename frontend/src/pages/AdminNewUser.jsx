@@ -115,58 +115,35 @@ function AdminNewUser() {
             <p className="pb-2 text-xl">Mot de passe*</p>
             <div className="flex flex-row">
               <div>
-                {hidePassword ? (
-                  <input
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-2 text-lg"
-                    type="password"
-                    name="user_password"
-                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
-                    required="required"
-                    placeholder="Saisir le mot de passe"
-                    value={user.user_password}
-                    onChange={(e) =>
-                      handleNewUser(e.target.name, e.target.value)
-                    }
-                  />
-                ) : (
-                  <input
-                    className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-2 text-lg"
-                    type="text"
-                    name="user_password"
-                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
-                    required="required"
-                    placeholder="Saisir le mot de passe"
-                    value={user.user_password}
-                    onChange={(e) =>
-                      handleNewUser(e.target.name, e.target.value)
-                    }
-                  />
-                )}
+                <input
+                  className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-2 text-lg"
+                  type={hidePassword ? "password" : "text"}
+                  name="user_password"
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+                  required="required"
+                  placeholder="Saisir le mot de passe"
+                  value={user.user_password}
+                  onChange={(e) => handleNewUser(e.target.name, e.target.value)}
+                />
               </div>
               <div>
-                {hidePassword ? (
-                  <button
-                    className="w-[20px] h-[20px] ml-2 mt-1.5"
-                    onClick={showPassword}
-                    type="button"
-                  >
+                <button
+                  className="w-[20px] h-[20px] ml-2 mt-1.5"
+                  onClick={showPassword}
+                  type="button"
+                >
+                  {hidePassword ? (
                     <img
                       src="https://www.svgrepo.com/show/384356/close-cross-eye-hidden-vision.svg"
                       alt="eyeCross"
                     />
-                  </button>
-                ) : (
-                  <button
-                    className="w-[20px] h-[20px] ml-2 mt-1.5"
-                    onClick={showPassword}
-                    type="button"
-                  >
+                  ) : (
                     <img
                       src="https://www.svgrepo.com/show/384342/eye-look-show-view-visible-visiblity.svg"
                       alt="eyeOpen"
                     />
-                  </button>
-                )}
+                  )}
+                </button>
               </div>
             </div>
             <p className="mb-4 text-xs">
