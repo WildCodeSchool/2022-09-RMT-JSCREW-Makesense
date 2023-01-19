@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
-import ChoosenPerson from "@components/ChoosenPerson";
 import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
 
@@ -139,23 +138,8 @@ function NewDecision() {
               <p className="pr-5 text-xl font-bold">Date de création :</p>
               <p className="text-xl">{getDate()}</p>
             </div>
-            <div className="mb-5">
-              <p className="text-xl pb-4 font-bold">Personnes expertes*</p>
+            <div className="mb-2 ">
               <SearchPerson SearchPerson={SearchPerson} />
-            </div>
-            <div className="expertPersons">
-              <p className="text-xl pb-4 font-bold">
-                Personnes expertes choisies
-              </p>
-              <ChoosenPerson />
-            </div>
-            <div className="mb-5">
-              <p className="text-xl pb-4 font-bold">Personnes impactées*</p>
-              <SearchPerson SearchPerson={SearchPerson} />
-            </div>
-            <div className="impactedPersons text-xl pb-4 font-bold">
-              <p className="mb-2">Personnes impactées choisies</p>
-              <ChoosenPerson />
             </div>
           </div>
         </div>
