@@ -25,15 +25,21 @@ class UserManager extends AbstractManager {
 
   insert(user) {
     return this.connection.query(
-      `insert into ${this.table} (username, firstname, lastname, password, email, role) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname, lastname, password, email, role) values (?, ?, ?, ?, ?)`,
       [
-        user.user_username,
         user.user_firstname,
         user.user_lastname,
         user.user_password,
         user.user_email,
         user.user_role,
       ]
+    );
+  }
+
+  update(role, id) {
+    return this.connection.query(
+      `update ${this.table} set role = ? where id = ?`,
+      [role, id]
     );
   }
 }
