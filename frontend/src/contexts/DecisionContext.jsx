@@ -14,6 +14,16 @@ function DecisionProvider({ children }) {
   const [experts, setExperts] = useState([]);
   const [impacted, setImpacted] = useState([]);
 
+  const handleExpert = (addExpert) => {
+    const newExpert = [...experts, addExpert];
+    setExperts(newExpert);
+  };
+
+  const handleImpacted = (addImpacted) => {
+    const newImpacted = [...impacted, addImpacted];
+    setImpacted(newImpacted);
+  };
+
   const handleMainDecision = (position, value) => {
     const newDecision = { ...mainDecision };
     newDecision[position] = value;
@@ -26,9 +36,9 @@ function DecisionProvider({ children }) {
         mainDecision,
         handleMainDecision,
         experts,
-        setExperts,
+        handleExpert,
         impacted,
-        setImpacted,
+        handleImpacted,
       }}
     >
       {children}

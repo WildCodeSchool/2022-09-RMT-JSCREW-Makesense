@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import User from "./contexts/User";
+import MyAdvice from "@pages/MyAdvice";
 import Login from "./pages/Login";
 import AdminUsersList from "./pages/AdminUsersList";
 import AdminNewUser from "./pages/AdminNewUser";
@@ -44,6 +45,7 @@ function App() {
               }
             />
             <Route path="/onedecision/:id" element={<ShowOneDecision />} />
+            <Route path="/decision/:id/advice" element={<MyAdvice />} />
             <Route path="/users" element={<AdminUsersList />} />
             <Route path="/users/creation" element={<AdminNewUser />} />
           </>
