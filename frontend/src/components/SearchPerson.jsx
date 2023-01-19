@@ -120,8 +120,10 @@ function SearchPerson() {
             {impacted &&
               impacted.map((impact) => {
                 return (
-                  <div className="text-4xl">
-                    {impact.firstname} {impact.lastname}
+                  <div className="">
+                    <p className="">
+                      - {impact.firstname} {impact.lastname}
+                    </p>
                   </div>
                 );
               })}
