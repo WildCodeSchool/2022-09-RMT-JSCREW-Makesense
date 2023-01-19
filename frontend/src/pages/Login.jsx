@@ -4,6 +4,8 @@ import apiConnexion from "../services/apiConnexion";
 import User from "../contexts/User";
 import editMeta from "../services/seo";
 
+import Logo from "../assets/logo1.svg";
+
 function Login() {
   editMeta("Connexion");
 
@@ -36,7 +38,10 @@ function Login() {
   };
   return (
     <div className="h-[100vh] dark:bg-[#0c3944] dark:text-[#e7ebec]">
-      <h1 className="flex justify-center font-bold text-3xl pt-20 py-8">
+      <div className="flex justify-center h-100 pt-10">
+        <img src={Logo} alt="Logo" />
+      </div>
+      <h1 className="flex justify-center font-bold text-4xl pt-16 py-8">
         Connexion
       </h1>
       <div className="flex justify-center card rounded-none">

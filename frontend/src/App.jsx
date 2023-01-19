@@ -10,8 +10,8 @@ import ShowOneDecision from "./pages/ShowOneDecision";
 import AllDecisions from "./pages/AllDecisions";
 import Footer from "./components/Footer";
 import Private from "./layout/Private";
-import UpdateDecision from "@pages/UpdateDecision";
-import MyAdvice from "@pages/MyAdvice";
+import UpdateDecision from "./pages/UpdateDecision";
+import MyAdvice from "./pages/MyAdvice";
 
 import "./App.css";
 
