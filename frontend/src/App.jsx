@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import User from "./contexts/User";
 import Login from "./pages/Login";
 import AdminUsersList from "./pages/AdminUsersList";
 import AdminNewUser from "./pages/AdminNewUser";
@@ -13,6 +14,7 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
+  const { user } = useContext(User.UserContext);
   const [search, setSearch] = useState("");
   const handleSearch = (value) => {
     setSearch(value);
@@ -20,23 +22,32 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar user={user} handleUser={user} />
       <Routes>
-        <Route
-          path="/"
-          element={<AllDecisions search={search} handleSearch={handleSearch} />}
-        />
-        <Route path="/user/decision/new" element={<NewDecision />} />
-        <Route
-          path="/archives"
-          element={
-            <ArchivedDecisions search={search} handleSearch={handleSearch} />
-          }
-        />
-        <Route path="/onedecision/:id" element={<ShowOneDecision />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/users" element={<AdminUsersList />} />
-        <Route path="/users/creation" element={<AdminNewUser />} />
+        {(user?.role === "user" || user?.role === "administrator") && (
+          <>
+            <Route
+              path="/"
+              element={
+                <AllDecisions search={search} handleSearch={handleSearch} />
+              }
+            />
+            <Route path="/user/decision/new" element={<NewDecision />} />
+            <Route
+              path="/archives"
+              element={
+                <ArchivedDecisions
+                  search={search}
+                  handleSearch={handleSearch}
+                />
+              }
+            />
+            <Route path="/onedecision/:id" element={<ShowOneDecision />} />
+            <Route path="/users" element={<AdminUsersList />} />
+            <Route path="/users/creation" element={<AdminNewUser />} />
+          </>
+        )}
       </Routes>
       <Footer />
     </Router>
