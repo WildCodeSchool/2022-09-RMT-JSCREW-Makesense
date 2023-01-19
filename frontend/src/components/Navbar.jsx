@@ -21,11 +21,22 @@ function Navbar() {
     navigate("/");
   };
   return (
-    <div>
-      {user ? (
-        <div className="flex justify-between pb-1 bg-[#ced7da] dark:bg-[#6d888f] dark:text-[#e7ebec] font-bold">
-          <Link to="/">
-            <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
+    <div className="flex justify-between pb-1 bg-[#ced7da] dark:bg-[#6d888f] dark:text-[#e7ebec] font-bold">
+      <Link to="/home">
+        <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
+      </Link>
+      <div className="mt-3">
+        <DarkModeButton />
+      </div>
+      <div>
+        <div className="inline-block text-center place-content-center items-center mr-4">
+          <Link to="/home">
+            <img
+              className="inline place-content-center p-1 m-1"
+              src={PictoHome}
+              alt="logo1"
+            />
+            <p>Parcourir les décisions</p>
           </Link>
           <div className="mt-3">
             <DarkModeButton />

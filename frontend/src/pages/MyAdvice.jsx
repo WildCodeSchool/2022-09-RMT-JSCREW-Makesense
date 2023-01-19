@@ -2,7 +2,10 @@
 
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "../services/apiConnexion";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export default function MyAdvice() {
   const { id } = useParams();
@@ -12,6 +15,10 @@ export default function MyAdvice() {
     userId: 10,
     decisionMakingId: id,
   });
+
+  const notify = (msg) => {
+    toast(msg);
+  };
 
   const handleAdvice = (position, value) => {
     const newAdvice = { ...myAdviceText };
@@ -23,12 +30,27 @@ export default function MyAdvice() {
     e.preventDefault();
     apiConnexion
       .post(`/decisions/${id}/advice`, myAdviceText)
-      .then((res) => navigate(`/decision/${id}`))
+      .then((res) => {
+        notify("Votre avis a bien été ajouté");
+        setTimeout(() => navigate(`/decision/${id}`), 2000);
+      })
       .catch((err) => console.error(err));
   };
 
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] pb-80">
+      <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <div className="pt-20 w-[1000px] mx-auto">
         <div className="text-left">
           <h2 className="text-4xl font-bold mt-2">Soumettre un nouvel avis</h2>
@@ -36,7 +58,7 @@ export default function MyAdvice() {
         <div className="mb-10">
           <form onSubmit={handleSubmit}>
             <textarea
-              className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 h-80 w-full mt-20 border-[#e7ebec] rounded-lg outline-[#ced7da]"
+              className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 h-80 w-full mt-20 border-[#e7ebec] rounded-lg outline-[#ced7da] p-4"
               type="text"
               id="adviceText"
               name="textAdvice"
