@@ -31,8 +31,8 @@ function UpdateDecision() {
   };
 
   return (
-    <div className="w-11/12 ml-20">
-      <h1 className="font-bold mb-5 text-green-900 mt-5">
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
+      <h1 className="font-bold text-3xl py-8">
         Modifier une prise de décision
       </h1>
       <div className="decision flex">
@@ -41,10 +41,12 @@ function UpdateDecision() {
             <div className="w-full">
               <div className="flex">
                 <div className="w-7/12">
-                  <div className="mb-5 w-11/12">
-                    <p className="mb-2">Titre de la décision*</p>
+                  <div className="w-11/12">
+                    <p className="pb-4 text-xl font-bold">
+                      Titre de la décision
+                    </p>
                     <input
-                      className="border-2 w-8/12 rounded-lg outline-[#c8c8c8] bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
+                      className="p-2 cursor-not-allowed text-[#a2a5a5] border-2  w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                       type="text"
                       id="decisionTitle"
                       name="title"
@@ -53,13 +55,15 @@ function UpdateDecision() {
                       value={decision.title}
                     />
                   </div>
-                  <div className=" mb-5">
-                    <p className="mb-2">Modification status de la décision*</p>
+                  <div>
+                    <p className="pb-4 text-xl font-bold">
+                      Statut de la décision
+                    </p>
                     <select
                       onChange={(e) =>
                         handleDecision(e.target.name, e.target.value)
                       }
-                      className="border-2 border-500 h-10  w-5/12 rounded-lg outline-[#c8c8c8] resize-none"
+                      className="p-2.5 text-[#3d6169] bg-white border rounded-md border-[#b6c4c7] shadow-sm outline-none dark:bg-[#e7ebec] mb-10"
                       type="text"
                       id="decisionStatus"
                       name="status"
@@ -71,10 +75,12 @@ function UpdateDecision() {
                       <option value="3">Décision archivée</option>
                     </select>
                   </div>
-                  <div className="mb-5">
-                    <p className="mb-2">Prise de la première décision*</p>
+                  <div>
+                    <p className="pb-4 text-xl font-bold">
+                      Prise de la première décision
+                    </p>
                     <textarea
-                      className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] resize-none text-[#7a7a7a]"
+                      className="p-2 dark:text-[#0c3944] dark:bg-[#e7ebec] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                       type="text"
                       id="decisionDetail"
                       name="decision_description"
@@ -82,10 +88,12 @@ function UpdateDecision() {
                       value={decision.premiereDecision}
                     />
                   </div>
-                  <div className="mb-5">
-                    <p className="mb-2">Descriptif de la décision*</p>
+                  <div>
+                    <p className="pb-4 text-xl font-bold">
+                      Descriptif de la décision
+                    </p>
                     <textarea
-                      className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] bg-gray-200 resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
+                      className="p-2 cursor-not-allowed text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                       type="text"
                       id="decisionDetail"
                       name="decision_description"
@@ -96,10 +104,12 @@ function UpdateDecision() {
                   </div>
                 </div>
               </div>
-              <div className="mb-5 w-full">
-                <p className="mb-2">Impact sur l'organisation*</p>
+              <div>
+                <p className="pb-4 text-xl font-bold">
+                  Impacts sur l'organisation
+                </p>
                 <textarea
-                  className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
+                  className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                   type="text"
                   id="impact"
                   name="decision_impact"
@@ -108,10 +118,10 @@ function UpdateDecision() {
                   value={decision.impact}
                 />
               </div>
-              <div className="mb-5">
-                <p className="mb-2">Bénéfices*</p>
+              <div>
+                <p className="pb-4 text-xl font-bold">Bénéfices</p>
                 <textarea
-                  className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
+                  className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                   type="text"
                   id="benefits"
                   name="decision_benefits"
@@ -120,10 +130,10 @@ function UpdateDecision() {
                   value={decision.profit}
                 />
               </div>
-              <div className=" mb-5">
-                <p className="mb-2">Risques potentiels*</p>
+              <div>
+                <p className="pb-4 text-xl font-bold">Risques potentiels</p>
                 <textarea
-                  className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none bg-[#eeeeee] text-[#7a7a7a] cursor-not-allowed"
+                  className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                   type="text"
                   id="decisionTitle"
                   name="decision_risk"
@@ -135,14 +145,14 @@ function UpdateDecision() {
               <div className="flex justify-end w-7/12 mb-5">
                 <Link
                   to={`/decision/${id}`}
-                  className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                  className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                 >
                   Annuler
                 </Link>
                 <button
                   type="button"
                   onClick={(e) => handleSubmit(e.target.value)}
-                  className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                  className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                 >
                   Valider
                 </button>

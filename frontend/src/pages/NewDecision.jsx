@@ -38,7 +38,7 @@ function NewDecision() {
       <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
       <form onSubmit={sendFormDecision}>
         <div className="decision flex">
-          <div className="writeDecision w-full">
+          <div className="writeDecision w-full dark:text-[#e7ebec]">
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
@@ -123,7 +123,7 @@ function NewDecision() {
                 </div>
                 <div className="flex justify-end w-10/12 mb-5">
                   <Link
-                    to="/"
+                    to="/home"
                     className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Annuler
@@ -139,11 +139,11 @@ function NewDecision() {
             </div>
           </div>
           <div className="decisionByUser w-6/12">
-            <div className="flex justify-start mb-5">
+            <div className="flex justify-start mb-5 dark:text-[#e7ebec]">
               <p className="pr-5 text-xl font-bold">Date de création :</p>
               <p className="text-xl">{getDate()}</p>
             </div>
-            <div className="mb-2 ">
+            <div className="mb-2">
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
           </div>
