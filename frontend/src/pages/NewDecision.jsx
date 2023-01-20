@@ -137,7 +137,7 @@ function NewDecision() {
           </div>
           <div className="decisionByUser w-6/12">
             <div className="flex justify-start mb-5 dark:text-[#e7ebec]">
-              <p className="pr-5 text-xl font-bold ">Date de création :</p>
+              <p className="pr-5 text-xl font-bold">Date de création :</p>
               <p className="text-xl">{getDate()}</p>
             </div>
             <div className="mb-2">
