@@ -30,7 +30,7 @@ function Navbar() {
       </div>
       <div>
         <div className="inline-block text-center place-content-center items-center mr-4">
-          <Link to="/">
+          <Link to="/home">
             <img
               className="inline place-content-center p-1 m-1"
               src={PictoHome}
