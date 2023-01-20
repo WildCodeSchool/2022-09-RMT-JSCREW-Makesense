@@ -53,9 +53,11 @@ function SearchPerson() {
   return (
     <div>
       <div className="expertPerson mb-40">
-        <p className="mb-2 font-semibold">Personnes expertes*</p>
+        <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
+          Personnes expertes*
+        </p>
         <input
-          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da] text-lg"
+          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchExpert}
           required
@@ -76,7 +78,9 @@ function SearchPerson() {
             })}
         </div>
         <div className="choosenExpert">
-          <p className="mb-2 mt-5 font-semibold">Personnes expertes choisies</p>
+          <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
+            Personnes expertes choisies
+          </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg">
             {experts &&
               experts.map((expert) => {
@@ -92,9 +96,11 @@ function SearchPerson() {
         </div>
       </div>
       <div className="impactedPerson">
-        <p className="mb-2 font-semibold">Personnes impactées*</p>
+        <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
+          Personnes impactées*
+        </p>
         <input
-          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da] text-lg"
+          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da] "
           type="text"
           onChange={handleSearchImpacted}
           required
@@ -115,7 +121,9 @@ function SearchPerson() {
             })}
         </div>
         <div className="choosenImpacted mt-5">
-          <p className="mb-2 font-semibold">Personnes impactées choisies</p>
+          <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
+            Personnes impactées choisies
+          </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg">
             {impacted &&
               impacted.map((impact) => {
