@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
 import ExportContextDecision from "../contexts/DecisionContext";
@@ -8,6 +8,7 @@ import editMeta from "../services/seo";
 
 function NewDecision() {
   editMeta("Créer une prise de décision");
+  const navigate = useNavigate();
 
   const { mainDecision, handleMainDecision, createNewDecision } = useContext(
     ExportContextDecision.DecisionContext
@@ -24,9 +25,12 @@ function NewDecision() {
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
-  const sendFormDecision = (e) => {
+  const sendFormDecision = async (e) => {
     e.preventDefault();
-    createNewDecision();
+    const respons = await createNewDecision();
+    if (respons.status === 201) {
+      navigate(`/onedecision/${respons.data.id}`);
+    }
   };
 
   return (

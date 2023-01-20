@@ -32,14 +32,14 @@ function DecisionProvider({ children }) {
   };
 
   const createNewDecision = () => {
-    apiConnexion
+    return apiConnexion
       .post("/decisionsMaking", {
         ...mainDecision,
         experts,
         impacted,
       })
-      .then((res) => console.error(res))
-      .catch((error) => console.error(error));
+      .then((res) => res)
+      .catch((error) => error);
   };
 
   return (
