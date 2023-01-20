@@ -3,10 +3,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
-import ChoosenPerson from "@components/ChoosenPerson";
 import ExportContextDecision from "../contexts/DecisionContext";
+import editMeta from "../services/seo";
 
 function NewDecision() {
+  editMeta("Créer une prise de décision");
+
   const { mainDecision, handleMainDecision } = useContext(
     ExportContextDecision.DecisionContext
   );
@@ -23,25 +25,27 @@ function NewDecision() {
 
   const getDate = () => {
     const date = new Date();
-    return `${date.getDay() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
   return (
-    <div className="w-11/12 ml-20">
-      <h1 className="font-bold mb-5 text-green-900 mt-5">
+    <div className="dark:bg-[#0c3944] px-12">
+      <h1 className="font-bold text-3xl py-8 dark:text-[#e7ebec]">
         Créer une prise de décision
       </h1>
       <form action="" onSubmit={handleSubmit}>
         <div className="decision flex">
-          <div className="writeDecision w-full">
+          <div className="writeDecision w-full dark:text-[#e7ebec]">
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
-                  <div className="w-7/12">
-                    <div className="mb-5 w-full">
-                      <p className="mb-2">Titre de la décision*</p>
+                  <div className="w-10/12">
+                    <div className="w-full">
+                      <p className="pb-4 text-xl font-bold">
+                        Titre de la prise de décision*
+                      </p>
                       <input
-                        className="border-2 w-full rounded-lg outline-[#c8c8c8]"
+                        className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-10 text-lg"
                         type="text"
                         id="decisionTitle"
                         name="title"
@@ -52,10 +56,12 @@ function NewDecision() {
                         }
                       />
                     </div>
-                    <div className=" mb-5">
-                      <p className="mb-2">Descriptif de la décision*</p>
+                    <div>
+                      <p className="pb-4 text-xl font-bold">
+                        Descriptif de la décision*
+                      </p>
                       <textarea
-                        className="border-2 border-500 h-80 w-full rounded-lg outline-[#c8c8c8] resize-none"
+                        className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-full border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                         type="text"
                         id="decisionDetail"
                         name="description"
@@ -68,10 +74,12 @@ function NewDecision() {
                     </div>
                   </div>
                 </div>
-                <div className="mb-5 w-full">
-                  <p className="mb-2">Impact sur l'organisation*</p>
+                <div>
+                  <p className="pb-4 text-xl font-bold">
+                    Impacts sur l'organisation*
+                  </p>
                   <textarea
-                    className="border-2 border-500 h-80 w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="impact"
                     name="impact"
@@ -82,10 +90,10 @@ function NewDecision() {
                     }
                   />
                 </div>
-                <div className=" mb-5">
-                  <p className="mb-2">Bénéfices*</p>
+                <div>
+                  <p className="pb-4 text-xl font-bold">Bénéfices*</p>
                   <textarea
-                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="benefits"
                     name="benefits"
@@ -96,10 +104,10 @@ function NewDecision() {
                     }
                   />
                 </div>
-                <div className=" mb-5">
-                  <p className="mb-2">Risques potentiels*</p>
+                <div>
+                  <p className="pb-4 text-xl font-bold">Risques potentiels*</p>
                   <textarea
-                    className="border-2 border-500 h-80  w-7/12 rounded-lg outline-[#c8c8c8] resize-none"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="decisionTitle"
                     name="risk"
@@ -110,16 +118,16 @@ function NewDecision() {
                     }
                   />
                 </div>
-                <div className="flex justify-end w-7/12 mb-5">
+                <div className="flex justify-end w-10/12 mb-5">
                   <Link
-                    to="/user/decision"
-                    className="text-center w-28  bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                    to="/home"
+                    className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Annuler
                   </Link>
                   <Link
                     to="/user/decision"
-                    className="text-center w-28 bg-green-900 hover:bg-green-700 px-5 py-2 ml-10 rounded-lg text-white"
+                    className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Valider
                   </Link>
@@ -127,28 +135,13 @@ function NewDecision() {
               </div>
             </div>
           </div>
-          <div className="decisionByUser w-4/12 text-center">
-            <div className="mb-20">
-              <p className="mb-2">Date de création</p>
-              <p className="border-2 border-500 w-8/12 rounded-lg outline-[#c8c8c8]">
-                {getDate()}
-              </p>
-            </div>
-            <div className="mb-2 ">
-              <p className="mb-2">Personnes expertes*</p>
-              <SearchPerson SearchPerson={SearchPerson} />
+          <div className="decisionByUser w-6/12">
+            <div className="flex justify-start mb-5 dark:text-[#e7ebec]">
+              <p className="pr-5 text-xl font-bold">Date de création :</p>
+              <p className="text-xl">{getDate()}</p>
             </div>
             <div className="mb-2">
-              <p className="mb-2">Personnes impactées*</p>
               <SearchPerson SearchPerson={SearchPerson} />
-            </div>
-            <div className="expertPersons mt-52">
-              <p className="mb-2">Personnes expertes choisies</p>
-              <ChoosenPerson />
-            </div>
-            <div className="impactedPersons mt-5">
-              <p className="mb-2">Personnes impactées choisies</p>
-              <ChoosenPerson />
             </div>
           </div>
         </div>

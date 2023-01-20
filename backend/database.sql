@@ -1,270 +1,248 @@
-DROP DATABASE IF EXISTS makesense;
-
-CREATE DATABASE makesense;
+CREATE DATABASE IF NOT EXISTS makesense;
 
 USE makesense;
 
+DROP TABLE IF EXISTS designatedUser;
+
+DROP TABLE IF EXISTS advice;
+
+DROP TABLE IF EXISTS conflict;
+
+DROP TABLE IF EXISTS decision;
+
+DROP TABLE IF EXISTS decisionMaking;
+
 DROP TABLE IF EXISTS `user`;
+
+DROP TABLE IF EXISTS decisionStatus;
 
 CREATE TABLE
     `user` (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        username VARCHAR (255) NOT NULL,
         firstname VARCHAR(255) NOT NULL,
         lastname VARCHAR(255) NOT NULL,
         `password` VARCHAR(255) NOT NULL,
-        mail VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
         `role` VARCHAR(255) NOT NULL
     );
 
 INSERT INTO
     `user` (
         id,
-        username,
         firstname,
         lastname,
         `password`,
-        mail,
+        email,
         `role`
     )
 VALUES (
         1,
-        "arouxel",
         "Alexandre",
         "Rouxel",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "alexandrerouxel@mail.com",
         "user"
     ), (
         2,
-        "ahakimi",
         "Amina",
         "Hakimi",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "aminahakimi@mail.com",
         "user"
     ), (
         3,
-        "cpiancatelli",
         "Charlie",
         "Piancatelli",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "charliepiancatelli@mail.com",
         "user"
     ), (
         4,
-        "cguichard",
         "Christopher",
         "Guichard",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "christopherguichard44@gmail.com",
         "user"
     ), (
         5,
-        "emartinez",
         "Emmanuel",
         "Martinez",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "emmanuelmartinez@mail.com",
         "user"
     ), (
         6,
-        "glemoine",
         "Gaëtan",
         "Lemoine",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "gaetanlemoine@mail.com",
         "user"
     ), (
         7,
-        "gwernert",
         "Guillaume",
         "Wernert",
-        "MakeSenseProjet3!",
+        "$argon2id$v=19$m=65536,t=5,p=1$4c8hssuotK6/e5qCvtGvQw$BugMwutuOxrZCFr1ptEbmRDhMzT3RI08UrwcnJjXoL8",
         "guillaumewernert@mail.com",
         "administrator"
     ), (
         8,
-        "jvaxelaire",
         "Jordan",
         "Vaxelaire",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "jordanvaxelaire@mail.com",
         "user"
     ), (
         9,
-        "kaouadia",
         "Karim",
         "Aoudia",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "karimaoudia@mail.com",
         "user"
     ), (
         10,
-        "stormo",
         "Sylvain",
         "Tormo",
-        "LeToulousain11",
+        "$argon2id$v=19$m=65536,t=5,p=1$PPil+7D3GLyBQe7FuWUlXQ$O8qDWfl/YXfoIgHm4Rbvvf+0Xq5dmXs9TM4+LomAXwY",
         "sylvain.tormo11@gmail.com",
         "user"
     ), (
         11,
-        "spetaccia",
         "Sébastien",
         "Petaccia",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "sebastienpetaccia@mail.com",
         "user"
     ), (
         12,
-        "tralambotsiro",
         "Tsiry",
         "Ralambotsirofo",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "tsiryralambotsirofo@mail.com",
         "user"
     ), (
         13,
-        "vpapadopoulos",
         "Vassili",
         "Papadopoulos",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "vassilipapadopoulos@mail.com",
         "user"
     ), (
         14,
-        "yviot",
         "Yanis",
         "Viot",
-        "jesuisunnez",
+        "$argon2id$v=19$m=65536,t=5,p=1$RuwKBZ6U4GyUp070M4VcsA$cBqYfvdyMbVfXUrGDwyh7R72qRI5Jas0VuicngzrHGs",
         "yayav.yaya@gmail.com",
         "administrator"
     ), (
         15,
-        "jmarkarian",
         "Joy",
         "Markarian",
-        "WCS2022!",
+        "$argon2id$v=19$m=65536,t=5,p=1$HiWYJB4Y6/P9JRe908ksGQ$5IIIk7yVhigPkwXg8HOO8Q3YwixMNy/ax15Ta9ATkKI",
         "jmarkarian@hotmail.fr",
         "administrator"
     ), (
         16,
-        "jrichard",
         "Julien",
         "Richard",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "julienrichard@mail.com",
         "user"
     ), (
         17,
-        "klavigne",
         "Kevin",
         "Lavigne",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "kevinlavigne@mail.com",
         "user"
     ), (
         18,
-        "agorski",
         "Anthony",
         "Gorski",
-        "Crewstillant!",
+        "$argon2id$v=19$m=65536,t=5,p=1$PtphdlePmHzgd8cA7siVQA$pd5RJxteeD8pfRKpe8AqcSStqRg5nR7rLCJC4agSBAE",
         "anthonygorski@mail.com",
         "administrator"
     ), (
         19,
-        "jfmorin",
         "Jean-François",
         "Morin",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "jeanfrançoismorin@gmail.com",
         "user"
     ), (
         20,
-        "bvandanjon",
         "Benoît",
         "Vandanjon",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "benoitvandanjon@mail.com",
         "user"
     ), (
         21,
-        "pdegee",
         "Pierre",
         "Degée",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "pierredegée@mail.com",
         "user"
     ), (
         22,
-        "rboe",
         "Rachel",
         "Boé",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "rachelboé@mail.com",
         "user"
     ), (
         23,
-        "alenne",
         "Adrien",
         "Lenne",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "adrienlenne@mail.com",
         "user"
     ), (
         24,
-        "iboyer",
         "Iris",
         "Boyer",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "irisboyer@mail.com",
         "user"
     ), (
         25,
-        "edurand",
         "Elia",
         "Durand",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "eliadurand@mail.com",
         "user"
     ), (
         26,
-        "mfontaine",
         "Maxence",
         "Fontaine",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "maxencefontaine@mail.com",
         "user"
     ), (
         27,
-        "olefebvre",
         "Océane",
         "Lefebvre",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "océanelefebvre@mail.com",
         "user"
     ), (
         28,
-        "abrebion",
         "Antonin",
         "Brebion",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "antoninbrebion@mail.com",
         "user"
     ), (
         29,
-        "mbrunet",
         "Marcel",
         "Brunet",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "marcelbrunet@gmail.com",
         "user"
     ), (
         30,
-        "jmercier",
         "Jean",
         "Mercier",
-        "Azerty123",
+        "$argon2id$v=19$m=65536,t=5,p=1$ZRxlTcN9qjDQqke6R5khjA$HF++7a2yPb9MUtWSiwHow+bXxC45xu9cN0YDlEg3VqQ",
         "jeanmercier@hotmail.fr",
         "user"
     );
@@ -280,8 +258,6 @@ INSERT INTO
         "Prise de décision commencée"
     ), ("Première décision prise"), ("Décision archivée");
 
-DROP TABLE IF EXISTS decisionMaking;
-
 CREATE TABLE
     decisionMaking (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -292,6 +268,8 @@ CREATE TABLE
         impact LONGTEXT NOT NULL,
         profit LONGTEXT NOT NULL,
         risk LONGTEXT NOT NULL,
+        firstDecision LONGTEXT,
+        finalDecision LONGTEXT,
         decisionStatus_id INT NOT NULL,
         CONSTRAINT fk_decisionMaking_decisionStatus FOREIGN KEY (decisionStatus_id) REFERENCES decisionStatus(id),
         dateCreate DATE NOT NULL,
@@ -396,6 +374,8 @@ VALUES (
         "2023-04-12"
     );
 
+UPDATE decisionMaking SET firstDecision = "test first decision", finalDecision = "test final decision" WHERE id = 1;
+
 DROP TABLE IF EXISTS designatedUser;
 
 CREATE TABLE
@@ -416,8 +396,6 @@ INSERT INTO
         `status`
     )
 VALUES (1, 25, 1, "Personne impactée"), (2, 6, 1, "Personne experte");
-
-DROP TABLE IF EXISTS advice;
 
 CREATE TABLE
     advice (
@@ -444,24 +422,12 @@ VALUES (
         1
     );
 
-DROP TABLE IF EXISTS decision;
-
-CREATE TABLE
-    decision (
-        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        decisionMaking_id INT NOT NULL,
-        CONSTRAINT fk_decision_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
-        textDecision LONGTEXT NOT NULL
-    );
-
-DROP TABLE IF EXISTS conflict;
-
 CREATE TABLE
     conflict (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         textConflict LONGTEXT NOT NULL,
         user_id INT NOT NULL,
         CONSTRAINT fk_conflict_user FOREIGN KEY (user_id) REFERENCES `user`(id),
-        decision_id INT NOT NULL,
-        CONSTRAINT fk_conflict_decision FOREIGN KEY (decision_id) REFERENCES decision(id)
+        decisionMaking_id INT NOT NULL,
+        CONSTRAINT fk_conflict_firstDecision FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id)
     );

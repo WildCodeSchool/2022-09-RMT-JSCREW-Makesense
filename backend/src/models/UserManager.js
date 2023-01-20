@@ -15,6 +15,33 @@ class UserManager extends AbstractManager {
     query += "limit 5";
     return this.connection.query(query, value);
   }
+
+  findOne(user) {
+    return this.connection.query(
+      `select * from  ${this.table} where email = ?`,
+      [user.email]
+    );
+  }
+
+  insert(user) {
+    return this.connection.query(
+      `insert into ${this.table} (firstname, lastname, password, email, role) values (?, ?, ?, ?, ?)`,
+      [
+        user.user_firstname,
+        user.user_lastname,
+        user.user_password,
+        user.user_email,
+        user.user_role,
+      ]
+    );
+  }
+
+  update(role, id) {
+    return this.connection.query(
+      `update ${this.table} set role = ? where id = ?`,
+      [role, id]
+    );
+  }
 }
 
 module.exports = UserManager;
