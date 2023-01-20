@@ -6,7 +6,7 @@ class UserManager extends AbstractManager {
   }
 
   findByName(searchPerson) {
-    let query = `select firstname, lastname from ${this.table}`;
+    let query = `select id, firstname, lastname from ${this.table}`;
     const value = [];
     if (searchPerson) {
       query += " where firstname like ? or lastname like ?";
