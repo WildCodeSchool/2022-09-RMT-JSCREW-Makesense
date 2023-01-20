@@ -34,15 +34,15 @@ function App() {
             }
           />
           <Route path="user/decision/new" element={<NewDecision />} />
-          <Route path="/decision/:id/update" element={<UpdateDecision />} />
+          <Route path="decision/:id/update" element={<UpdateDecision />} />
           <Route
             path="archives"
             element={
               <ArchivedDecisions search={search} handleSearch={handleSearch} />
             }
           />
-          <Route path="onedecision/:id" element={<ShowOneDecision />} />
-          <Route path="/decision/:id/advice" element={<MyAdvice />} />
+          <Route path="decision/:id" element={<ShowOneDecision />} />
+          <Route path="decision/:id/advice" element={<MyAdvice />} />
           <Route path="users" element={<AdminUsersList />} />
           <Route path="users/creation" element={<AdminNewUser />} />
         </Route>

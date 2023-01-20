@@ -118,7 +118,7 @@ function NewDecision() {
                 </div>
                 <div className="flex justify-end w-10/12 mb-5">
                   <Link
-                    to="/"
+                    to="/home"
                     className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Annuler
