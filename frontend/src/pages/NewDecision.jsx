@@ -9,7 +9,7 @@ import editMeta from "../services/seo";
 function NewDecision() {
   editMeta("Créer une prise de décision");
 
-  const { mainDecision, handleMainDecision } = useContext(
+  const { mainDecision, handleMainDecision, createNewDecision } = useContext(
     ExportContextDecision.DecisionContext
   );
 
@@ -19,19 +19,20 @@ function NewDecision() {
    * @param {string} value
    */
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const getDate = () => {
     const date = new Date();
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
+  const sendFormDecision = (e) => {
+    e.preventDefault();
+    createNewDecision();
+  };
+
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
       <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={sendFormDecision}>
         <div className="decision flex">
           <div className="writeDecision w-full">
             <div className="flex">
@@ -123,12 +124,12 @@ function NewDecision() {
                   >
                     Annuler
                   </Link>
-                  <Link
-                    to="/user/decision"
+                  <button
+                    type="submit"
                     className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Valider
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

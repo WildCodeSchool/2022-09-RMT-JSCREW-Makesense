@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import apiConnexion from "@services/apiConnexion";
 
 const DecisionContext = createContext();
 
@@ -30,6 +31,17 @@ function DecisionProvider({ children }) {
     setMainDecision(newDecision);
   };
 
+  const createNewDecision = () => {
+    apiConnexion
+      .post("/decisionsMaking", {
+        ...mainDecision,
+        experts,
+        impacted,
+      })
+      .then((res) => console.error(res))
+      .catch((error) => console.error(error));
+  };
+
   return (
     <DecisionContext.Provider
       value={{
@@ -39,6 +51,7 @@ function DecisionProvider({ children }) {
         handleExpert,
         impacted,
         handleImpacted,
+        createNewDecision,
       }}
     >
       {children}
