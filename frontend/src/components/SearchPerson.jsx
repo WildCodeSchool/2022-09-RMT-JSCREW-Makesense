@@ -100,7 +100,7 @@ function SearchPerson() {
           Personnes impactées*
         </p>
         <input
-          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da] "
+          className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchImpacted}
           required
