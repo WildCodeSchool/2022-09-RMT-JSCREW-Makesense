@@ -18,7 +18,7 @@ function DecisionProvider({ children }) {
   });
 
   /**
-   *maj du state en fonction de son statut
+   *state en fonction de son statut
    * @param {string} position
    * @param {string} value
    */
@@ -33,6 +33,24 @@ function DecisionProvider({ children }) {
   const handleExpert = (addExpert) => {
     const newExpert = [...experts, addExpert];
     setExperts(newExpert);
+  };
+
+  /**
+   *maj à la suppression personnes expertes choisies
+   * @param {string} position
+   * @param {string} value
+   */
+  const deleteExpert = (value) => {
+    setExperts(value);
+  };
+
+  /**
+   *maj à la suppression personnes expertes choisies
+   * @param {string} position
+   * @param {string} value
+   */
+  const deleteImpacted = (value) => {
+    setImpacted(value);
   };
 
   /**
@@ -77,6 +95,8 @@ function DecisionProvider({ children }) {
         impacted,
         handleImpacted,
         createNewDecision,
+        deleteExpert,
+        deleteImpacted,
       }}
     >
       {children}
