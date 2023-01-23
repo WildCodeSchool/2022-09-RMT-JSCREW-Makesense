@@ -19,9 +19,6 @@ function NewDecision() {
    * @param {string} position
    * @param {string} value
    */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   /**
    *maj de la date du jour
