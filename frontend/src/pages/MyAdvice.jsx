@@ -1,18 +1,21 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "../services/apiConnexion";
+
+import User from "../contexts/User";
 
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MyAdvice() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const userContext = useContext(User.UserContext);
   const [myAdviceText, setMyAdviceText] = useState({
     textAdvice: "",
-    userId: 10,
+    userId: userContext.user.id,
     decisionMakingId: id,
   });
 
