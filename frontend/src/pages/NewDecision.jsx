@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
 import ExportContextDecision from "../contexts/DecisionContext";
@@ -8,8 +8,9 @@ import editMeta from "../services/seo";
 
 function NewDecision() {
   editMeta("Créer une prise de décision");
+  const navigate = useNavigate();
 
-  const { mainDecision, handleMainDecision } = useContext(
+  const { mainDecision, handleMainDecision, createNewDecision } = useContext(
     ExportContextDecision.DecisionContext
   );
 
@@ -29,15 +30,21 @@ function NewDecision() {
    */
   const getDate = () => {
     const date = new Date();
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    return `${date.toLocaleDateString()}`;
+  };
+
+  const sendFormDecision = async (e) => {
+    e.preventDefault();
+    const respons = await createNewDecision();
+    if (respons.status === 201) {
+      navigate(`/onedecision/${respons.data.id}`);
+    }
   };
 
   return (
-    <div className="dark:bg-[#0c3944] px-12">
-      <h1 className="font-bold text-3xl py-8 dark:text-[#e7ebec]">
-        Créer une prise de décision
-      </h1>
-      <form action="" onSubmit={handleSubmit}>
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
+      <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
+      <form onSubmit={sendFormDecision}>
         <div className="decision flex">
           <div className="writeDecision w-full dark:text-[#e7ebec]">
             <div className="flex">
@@ -129,12 +136,12 @@ function NewDecision() {
                   >
                     Annuler
                   </Link>
-                  <Link
-                    to="/user/decision"
+                  <button
+                    type="submit"
                     className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
                   >
                     Valider
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

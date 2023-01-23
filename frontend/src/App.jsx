@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import UpdateDecision from "@pages/UpdateDecision";
+import MyAdvice from "@pages/MyAdvice";
 import Login from "./pages/Login";
 import AdminUsersList from "./pages/AdminUsersList";
 import AdminNewUser from "./pages/AdminNewUser";
@@ -10,8 +12,6 @@ import ShowOneDecision from "./pages/ShowOneDecision";
 import AllDecisions from "./pages/AllDecisions";
 import Footer from "./components/Footer";
 import Private from "./layout/Private";
-import UpdateDecision from "./pages/UpdateDecision";
-import MyAdvice from "./pages/MyAdvice";
 
 import "./App.css";
 
