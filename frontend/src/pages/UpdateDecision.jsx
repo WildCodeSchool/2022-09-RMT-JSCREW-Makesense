@@ -5,8 +5,10 @@ import apiConnexion from "../services/apiConnexion";
 function UpdateDecision() {
   const { id } = useParams();
 
+  /** maj du state en fonction de sa propriété */
   const [decision, setDecision] = useState([]);
 
+  /** Axios pour récupérer la data de la décision lorsqu'on clique sur modifier */
   const getDecision = () => {
     apiConnexion
       .get(`decisionsMaking/${id}`)
@@ -20,12 +22,14 @@ function UpdateDecision() {
     getDecision();
   }, []);
 
+  /** Fonction pour mettre à jour le state lors de l'update */
   const handleDecision = (position, value) => {
     const newDecision = { ...decision };
     newDecision[position] = value;
     setDecision(newDecision);
   };
 
+  /** Fonction pour le bouton valider */
   const handleSubmit = (e) => {
     e.preventDefault();
   };
