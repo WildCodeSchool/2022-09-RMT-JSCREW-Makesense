@@ -24,5 +24,6 @@ router.put("/users/:id", checkAuth, UserController.edit);
 router.delete("/users/:id", checkAuth, UserController.destroy);
 
 router.post("/decisions/:id/advice", checkAuth, AdviceController.postAdvice);
+router.post("/decisionsMaking", checkAuth, DecisionMakingController.add);
 
 module.exports = router;
