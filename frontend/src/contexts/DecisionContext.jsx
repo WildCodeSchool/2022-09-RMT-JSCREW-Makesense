@@ -26,7 +26,7 @@ function DecisionProvider({ children }) {
   const [impacted, setImpacted] = useState([]);
 
   /**
-   *maj du state personnes experts choisi
+   *maj du state personnes experts choisies
    * @param {string} position
    * @param {string} value
    */
@@ -36,7 +36,7 @@ function DecisionProvider({ children }) {
   };
 
   /**
-   *maj du state personnes impactées choisi
+   *maj du state personnes impactées choisies
    * @param {string} position
    * @param {string} value
    */
