@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 import apiConnexion from "../services/apiConnexion";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,6 +61,22 @@ function AdminUsersList() {
         );
       })
       .catch((err) => console.error(err));
+  };
+
+  const submit = (user) => {
+    confirmAlert({
+      title: "Confirm to delete",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => deleteUser(user),
+        },
+        {
+          label: "No",
+        },
+      ],
+    });
   };
 
   return (
@@ -120,7 +138,7 @@ function AdminUsersList() {
                       <button
                         className="font-bold text-xl"
                         type="button"
-                        onClick={() => deleteUser(user)}
+                        onClick={() => submit(user)}
                       >
                         X
                       </button>
