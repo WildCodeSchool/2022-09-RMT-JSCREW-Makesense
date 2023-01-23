@@ -5,7 +5,7 @@ import apiConnexion from "../services/apiConnexion";
 function UpdateDecision() {
   const { id } = useParams();
 
-  /** maj du state en fonction de sa propriété */
+  /** Mise à jour du state en fonction de sa propriété */
   const [decision, setDecision] = useState([]);
 
   /** Axios pour récupérer la data de la décision lorsqu'on clique sur modifier */
