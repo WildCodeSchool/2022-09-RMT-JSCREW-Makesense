@@ -19,6 +19,7 @@ function Navbar() {
   const handleLogOut = (e) => {
     handleUser({});
     navigate("/");
+    window.location.reload();
   };
   return (
     <div className="flex justify-between pb-1 bg-[#ced7da] dark:bg-[#6d888f] dark:text-[#e7ebec] font-bold">
