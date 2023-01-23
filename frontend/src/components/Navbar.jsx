@@ -17,11 +17,14 @@ function Navbar() {
   const { user, handleUser } = useContext(User.UserContext);
   const navigate = useNavigate();
   const handleLogOut = (e) => {
-    handleUser({});
+    handleUser(null);
     navigate("/");
   };
   return (
-    <div className="flex justify-between pb-1 bg-[#ced7da] dark:bg-[#6d888f] dark:text-[#e7ebec] font-bold">
+    <div
+      id="navbar"
+      className="flex justify-between pb-1 bg-[#ced7da] dark:bg-[#6d888f] dark:text-[#e7ebec] font-bold"
+    >
       <Link to="/home">
         <img className="ml-10 mt-3 aspect-auto" src={Logo} alt="logo" />
       </Link>
