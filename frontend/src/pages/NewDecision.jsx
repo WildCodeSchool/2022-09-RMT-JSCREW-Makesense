@@ -19,7 +19,15 @@ function NewDecision() {
    * @param {string} position
    * @param {string} value
    */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
+  /**
+   *maj de la date du jour
+   * @param {string} position
+   * @param {string} value
+   */
   const getDate = () => {
     const date = new Date();
     return `${date.toLocaleDateString()}`;
