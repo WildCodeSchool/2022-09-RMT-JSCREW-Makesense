@@ -61,7 +61,7 @@ function Navbar() {
         </div>
         {user?.role === "administrator" && (
           <div className="inline-block text-center place-content-center mr-4">
-            <Link to="/users">
+            <Link to="/admin/users">
               <img
                 className="inline place-content-center m-1"
                 src={PictoUsers}

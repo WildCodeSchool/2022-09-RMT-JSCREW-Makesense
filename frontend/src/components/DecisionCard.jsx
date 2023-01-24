@@ -5,7 +5,7 @@ import { Avatar } from "@assets/";
 function DecisionCard({ decisionsMaking }) {
   return (
     <Link
-      className="max-w-sm flex flex-col rounded-lg border-2 border-[#e7ebec] overflow-hidden ml-10 my-2 w-1/3 px-2"
+      className="max-w-sm flex flex-col rounded-lg border-2 border-[#e7ebec] overflow-hidden ml-10 my-2 w-1/1 lg:w-1/3 px-2"
       to={`/decision/${decisionsMaking.id}`}
     >
       <div className="px-6 pt-4">

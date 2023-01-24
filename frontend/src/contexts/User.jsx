@@ -3,8 +3,9 @@ import { createContext, useState } from "react";
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
   const handleUser = (data) => {
+    sessionStorage.setItem("user", JSON.stringify(data));
     setUser(data);
   };
 
