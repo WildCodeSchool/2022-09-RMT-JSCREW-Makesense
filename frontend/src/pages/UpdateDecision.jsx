@@ -37,8 +37,8 @@ function UpdateDecision() {
         finalDecision: decision.finalDecision,
       })
       .then(() => {
-        toast.success("New first decision succesfully added");
-        setTimeout(() => navigate(`/decision/${id}`), 4000);
+        toast.success("Première décision ajoutée");
+        setTimeout(() => navigate(`/decision/${id}`), 2500);
       })
       .catch((err) => {
         console.warn(err);
@@ -122,7 +122,7 @@ function UpdateDecision() {
                         value={decision.firstDecision}
                       />
                       <p className="pb-4 text-xl font-bold">
-                        Prise de la décision final
+                        Prise de la décision finale
                       </p>
                       <textarea
                         onChange={(e) => {
