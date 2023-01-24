@@ -12,6 +12,7 @@ import ShowOneDecision from "./pages/ShowOneDecision";
 import AllDecisions from "./pages/AllDecisions";
 import Footer from "./components/Footer";
 import Private from "./layout/Private";
+import Admin from "./layout/Admin";
 
 import "./App.css";
 
@@ -43,8 +44,10 @@ function App() {
           />
           <Route path="decision/:id" element={<ShowOneDecision />} />
           <Route path="decision/:id/advice" element={<MyAdvice />} />
-          <Route path="users" element={<AdminUsersList />} />
-          <Route path="users/creation" element={<AdminNewUser />} />
+          <Route path="admin/" element={<Admin />}>
+            <Route path="users" element={<AdminUsersList />} />
+            <Route path="users/creation" element={<AdminNewUser />} />
+          </Route>
         </Route>
       </Routes>
       <Footer />
