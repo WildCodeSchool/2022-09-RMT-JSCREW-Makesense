@@ -28,6 +28,15 @@ export default function ShowOneDecision() {
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
 
+  /**
+   *maj de la date du jour
+   */
+
+  const dateOfTheDay = () => {
+    const date = new Date();
+    return `${date.getTime()}`;
+  };
+  
   return (
     <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-[100vh]">
       <div className="text-left w-4/5 py-8 mr-16">
@@ -113,15 +122,69 @@ export default function ShowOneDecision() {
               </p>
             </div>
             <div className="w-1/5">
-              <div className="h-4 w-4 mt-1 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#ced7da] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
+              <div
+                className={
+                  dateOfTheDay() >= dateCreate.getTime()
+                    ? "h-4 w-4 mt-1 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 mt-1 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateCreate.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateAdvice.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateAdvice.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateFirstDecision.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateFirstDecision.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateConflict.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateConflict.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateFinalDecision.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
             </div>
             <div className="w-2/5 font-bold text-xs">
               <p>Prise de décision commencée</p>

@@ -15,15 +15,6 @@ function NewDecision() {
   );
 
   /**
-   *maj du state en fonction de sa propriété
-   * @param {string} position
-   * @param {string} value
-   */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  /**
    *maj de la date du jour
    * @param {string} position
    * @param {string} value
