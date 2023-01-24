@@ -71,16 +71,16 @@ export default function ShowOneDecision() {
   }
 
   return (
-    <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-[100vh]">
-      <div className="text-left w-4/5 py-8 mr-16">
-        <p className="dark:text-[#0c3944] inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-5">
+    <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
+      <div className="text-left w-full sm:w-4/5 py-8 mr-16">
+        <p className="dark:text-[#0c3944] text-center inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-5">
           {oneDecision.status}
         </p>
-        <div className="flex flex-row">
+        <div className="flex flex-col sm:flex-row">
           <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
           <Link
             to={`/decision/${id}/update`}
-            className="ml-10 bg-gray-200 rounded-xl px-5 py-2 text-ml font-semibold text-gray-700 mr-2 mb-2"
+            className="text-center sm:ml-10 bg-[#ced7da] rounded-xl px-5 py-2 text-ml mx-20 font-semibold  my-2 sm:mt-0"
           >
             Modifier
           </Link>
@@ -113,7 +113,7 @@ export default function ShowOneDecision() {
             Détails de la décision
           </button>
           {detailDecision ? (
-            <p className="mb-5 text-lg ml-10">{oneDecision.description}</p>
+            <p className="mb-5 text-lg sm:ml-10">{oneDecision.description}</p>
           ) : null}
         </div>
         <div className="border-b-2">
@@ -138,7 +138,7 @@ export default function ShowOneDecision() {
             Impacts sur l'organisation
           </button>
           {impactOrganisation ? (
-            <p className="text-lg mb-5 ml-10">{oneDecision.impact}</p>
+            <p className="text-lg mb-5 sm:ml-10">{oneDecision.impact}</p>
           ) : null}
         </div>
         <div className="border-b-2">
@@ -163,7 +163,7 @@ export default function ShowOneDecision() {
             Bénéfices
           </button>
           {benef ? (
-            <p className="text-lg mb-5 ml-10">{oneDecision.profit}</p>
+            <p className="text-lg mb-5 sm:ml-10">{oneDecision.profit}</p>
           ) : null}
         </div>
         <div className="border-b-2">
@@ -188,7 +188,7 @@ export default function ShowOneDecision() {
             Risques Potentiels
           </button>
           {risk ? (
-            <p className="text-lg mb-5 ml-10">{oneDecision.risk}</p>
+            <p className="text-lg mb-5 sm:ml-10">{oneDecision.risk}</p>
           ) : null}
         </div>
         <div className="border-b-2">
@@ -213,7 +213,7 @@ export default function ShowOneDecision() {
             Avis
           </button>
           {avis ? (
-            <p className="text-lg mb-5 ml-10">
+            <p className="text-lg mb-5 sm:ml-10">
               {oneDecision.advice.map((e) => (
                 <div className="mb-6">
                   <div className="mb-2">
@@ -244,18 +244,16 @@ export default function ShowOneDecision() {
                 clipRule="evenodd"
               />
             </svg>
-            Première Décision
+            Première décision
           </button>
           {premiereDecision && oneDecision?.firstDecision ? (
-            <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
+            <p className="ml-10 mb-5">{oneDecision.firstDecision}</p>
           ) : null}
         </div>
       </div>
-      <div className="text-center w-1/5 border-l-2">
-        <div className="mb-16">
-          <h3 className="text-emerald-900 text-xl font-bold">
-            Dates à retenir
-          </h3>
+      <div className="text-center sm:w-1/5 sm:border-l-2">
+        <div className="mb-8 sm:mb-16">
+          <h3 className="text-2xl font-bold">Dates à retenir</h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
               <p className="text-lg">{`${dateCreate.toLocaleDateString()}`}</p>
@@ -398,7 +396,7 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-end mt-3 ml-4 font-extralight mb-20">
+          <p className="text-end mt-3 ml-4 font-extralight mb-8 sm:mb-20">
             <button onClick={toggleDisplayAvis} type="button">
               Consulter les avis
             </button>
