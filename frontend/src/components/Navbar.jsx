@@ -6,7 +6,6 @@ import Logo from "@assets/logo1.svg";
 import PictoHome from "@assets/home.svg";
 import PictoArchive from "@assets/archive.svg";
 import PictoDecision from "@assets/decision.svg";
-import PictoNotification from "@assets/notification.svg";
 import PictoLogout from "@assets/logout.svg";
 import PictoUsers from "@assets/users.svg";
 import User from "../contexts/User";
