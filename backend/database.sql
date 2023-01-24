@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE DATABASE IF NOT EXISTS makesense;
 
 USE makesense;

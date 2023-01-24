@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { Avatar } from "@assets/";
+
 function DecisionCard({ decisionsMaking }) {
   return (
     <Link
@@ -19,7 +21,7 @@ function DecisionCard({ decisionsMaking }) {
           <div className="flex items-center">
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar of user"
             />
             <p className="text-gray-700 text-base text-sm dark:text-[#e7ebec]">
