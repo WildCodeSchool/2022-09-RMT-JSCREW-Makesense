@@ -60,24 +60,18 @@ function Navbar() {
             <p>Archives</p>
           </Link>
         </div>
-        <div className="inline-block text-center place-content-center mr-4">
-          <Link to="/users">
-            <img
-              className="inline place-content-center m-1"
-              src={PictoUsers}
-              alt="users"
-            />
-            <p>Gestion des utilisateurs</p>
-          </Link>
-        </div>
-        <div className="inline-block text-center place-content-center mr-4">
-          <img
-            className="inline place-content-center m-1"
-            src={PictoNotification}
-            alt="logo5"
-          />
-          <p>Notifications</p>
-        </div>
+        {user?.role === "administrator" && (
+          <div className="inline-block text-center place-content-center mr-4">
+            <Link to="/users">
+              <img
+                className="inline place-content-center m-1"
+                src={PictoUsers}
+                alt="users"
+              />
+              <p>Gestion des utilisateurs</p>
+            </Link>
+          </div>
+        )}
         <button
           type="button"
           onClick={handleLogOut}
