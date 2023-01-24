@@ -17,6 +17,7 @@ function AdminUsersList() {
     toast(msg);
   };
 
+  /** Fonction pour éditer le rôle de l'utilisateur */
   const editUserRole = (user) => {
     apiConnexion
       .put(`/users/${user.id}`, { role: user.role })
@@ -28,6 +29,7 @@ function AdminUsersList() {
       .catch((err) => console.error(err));
   };
 
+  /** Fonction pour modifier le rôle de l'utilisateur */
   const handleNewRole = (user, value) => {
     const newUser = [...usersList];
     const userToEdit = newUser.find((usr) => usr === user);
@@ -36,6 +38,7 @@ function AdminUsersList() {
     editUserRole(userToEdit);
   };
 
+  /** Fonction qui récupère tous les utilisateurs de la base de donnée */
   useEffect(() => {
     apiConnexion
       .get(`${import.meta.env.VITE_BACKEND_URL}users`)
@@ -51,6 +54,7 @@ function AdminUsersList() {
     setUsersList(newUserList);
   };
 
+  /**  Fonction pour supprimer un utilisateur avec notification par toastify */
   const deleteUser = (user) => {
     apiConnexion
       .delete(`${import.meta.env.VITE_BACKEND_URL}users/${user.id}`)
@@ -63,17 +67,21 @@ function AdminUsersList() {
       .catch((err) => console.error(err));
   };
 
-  const submit = (user) => {
+  /** Fonction qui alerte par un modal de confirmation la suppression ou le changement de rôle */
+  const submit = (user, value = null) => {
     confirmAlert({
-      title: "Confirm to delete",
-      message: "Are you sure to do this.",
+      title:
+        value === null
+          ? "Confirmer la suppression"
+          : "Confirmer le changement de rôle",
       buttons: [
         {
-          label: "Yes",
-          onClick: () => deleteUser(user),
+          label: "Oui",
+          onClick: () =>
+            value === null ? deleteUser(user) : handleNewRole(user, value),
         },
         {
-          label: "No",
+          label: "Non",
         },
       ],
     });
@@ -83,7 +91,7 @@ function AdminUsersList() {
     <>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -126,7 +134,7 @@ function AdminUsersList() {
                         className="w-40 text-gray-500 border rounded-md shadow-sm outline-none"
                         name="user_role"
                         value={user.role}
-                        onChange={(e) => handleNewRole(user, e.target.value)}
+                        onChange={(e) => submit(user, e.target.value)}
                       >
                         <option value="administrator">Administrateur</option>
                         <option value="user">Utilisateur</option>
