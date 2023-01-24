@@ -185,7 +185,7 @@ export default function ShowOneDecision() {
                 clipRule="evenodd"
               />
             </svg>
-            Risques Potentiels
+            Risques potentiels
           </button>
           {risk ? (
             <p className="text-lg mb-5 sm:ml-10">{oneDecision.risk}</p>
