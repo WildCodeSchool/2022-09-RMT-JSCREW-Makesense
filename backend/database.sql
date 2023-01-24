@@ -256,7 +256,7 @@ CREATE TABLE
 INSERT INTO
     decisionStatus (status) VALUE (
         "Prise de décision commencée"
-    ), ("Première décision prise"), ("Décision archivée");
+    ), ("Première décision prise"), ("Décision définitive"), ("Décision définitive");
 
 CREATE TABLE
     decisionMaking (

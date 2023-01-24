@@ -28,8 +28,33 @@ const read = (req, res) => {
       res.sendStatus(500);
     });
 };
+const update = (req, res) => {
+  const decision = req.body;
+  const { id } = req.params;
+
+  const targetedEdit = () => {
+    if (decision.decisionStatus_id === 1)
+      return { firstDecision: decision.firstDecision, decisionStatus_id: 2 };
+    return { finalDecision: decision.finalDecision, decisionStatus_id: 3 };
+  };
+
+  models.decisionMaking
+    .update(targetedEdit(), parseInt(id, 10))
+    .then(([decisionMaking]) => {
+      if (decisionMaking.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   browse,
   read,
+  update,
 };
