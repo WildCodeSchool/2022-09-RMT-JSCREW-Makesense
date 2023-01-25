@@ -36,7 +36,7 @@ export default function ShowOneDecision() {
     const date = new Date();
     return `${date.getTime()}`;
   };
-  
+
   return (
     <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-[100vh]">
       <div className="text-left w-4/5 py-8 mr-16">

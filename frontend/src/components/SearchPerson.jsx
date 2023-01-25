@@ -60,7 +60,6 @@ function SearchPerson() {
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchExpert}
-          required
         />
         <div className="searchResults absolute">
           {searchExpert &&
@@ -86,7 +85,7 @@ function SearchPerson() {
               experts.map((expert) => {
                 return (
                   <div className="">
-                    <p className="">
+                    <p className="" required="required">
                       - {expert.firstname} {expert.lastname}
                     </p>
                   </div>
@@ -103,7 +102,6 @@ function SearchPerson() {
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchImpacted}
-          required
         />
         <div className="searchResults absolute">
           {searchImpacted &&
@@ -129,7 +127,7 @@ function SearchPerson() {
               impacted.map((impact) => {
                 return (
                   <div className="">
-                    <p className="">
+                    <p className="" required="required">
                       - {impact.firstname} {impact.lastname}
                     </p>
                   </div>

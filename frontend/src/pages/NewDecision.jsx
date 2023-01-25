@@ -24,18 +24,18 @@ function NewDecision() {
     return `${date.toLocaleDateString()}`;
   };
 
-  const sendFormDecision = async (e) => {
+  const sendForm = async (e) => {
     e.preventDefault();
     const respons = await createNewDecision();
     if (respons.status === 201) {
-      navigate(`/onedecision/${respons.data.id}`);
+      navigate(`/decision/${respons.data.id}`);
     }
   };
 
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
       <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
-      <form onSubmit={sendFormDecision}>
+      <form onSubmit={sendForm}>
         <div className="decision flex">
           <div className="writeDecision w-full dark:text-[#e7ebec]">
             <div className="flex">
@@ -51,7 +51,7 @@ function NewDecision() {
                         type="text"
                         id="decisionTitle"
                         name="title"
-                        required
+                        required="required"
                         value={mainDecision.title}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -67,7 +67,7 @@ function NewDecision() {
                         type="text"
                         id="decisionDetail"
                         name="description"
-                        required
+                        required="required"
                         value={mainDecision.description}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -85,7 +85,7 @@ function NewDecision() {
                     type="text"
                     id="impact"
                     name="impact"
-                    required
+                    required="required"
                     value={mainDecision.impact}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
@@ -97,10 +97,10 @@ function NewDecision() {
                   <textarea
                     className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
-                    id="benefits"
-                    name="benefits"
-                    required
-                    value={mainDecision.benefits}
+                    id="profit"
+                    name="profit"
+                    required="required"
+                    value={mainDecision.profit}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
                     }
@@ -113,7 +113,7 @@ function NewDecision() {
                     type="text"
                     id="decisionTitle"
                     name="risk"
-                    required
+                    required="required"
                     value={mainDecision.risk}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
