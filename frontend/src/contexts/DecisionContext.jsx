@@ -36,24 +36,6 @@ function DecisionProvider({ children }) {
   };
 
   /**
-   *maj à la suppression personnes expertes choisies
-   * @param {string} position
-   * @param {string} value
-   */
-  const deleteExpert = (value) => {
-    setExperts(value);
-  };
-
-  /**
-   *maj à la suppression personnes expertes choisies
-   * @param {string} position
-   * @param {string} value
-   */
-  const deleteImpacted = (value) => {
-    setImpacted(value);
-  };
-
-  /**
    *maj du state personnes impactées choisies
    * @param {string} position
    * @param {string} value
@@ -72,6 +54,18 @@ function DecisionProvider({ children }) {
     const newDecision = { ...mainDecision };
     newDecision[position] = value;
     setMainDecision(newDecision);
+  };
+
+  const handleDeleteExperts = (expert) => {
+    const newExpertList = [...experts];
+    newExpertList.splice(newExpertList.indexOf(expert), 1);
+    setExperts(newExpertList);
+  };
+
+  const handleDeleteImpacted = (impact) => {
+    const newImpactedList = [...impacted];
+    newImpactedList.splice(newImpactedList.indexOf(impact), 1);
+    setImpacted(newImpactedList);
   };
 
   const createNewDecision = () => {
@@ -95,8 +89,8 @@ function DecisionProvider({ children }) {
         impacted,
         handleImpacted,
         createNewDecision,
-        deleteExpert,
-        deleteImpacted,
+        handleDeleteExperts,
+        handleDeleteImpacted,
       }}
     >
       {children}

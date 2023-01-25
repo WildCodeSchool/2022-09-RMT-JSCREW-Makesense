@@ -12,8 +12,8 @@ function SearchPerson() {
     handleExpert,
     impacted,
     handleImpacted,
-    deleteExpert,
-    deleteImpacted,
+    handleDeleteExperts,
+    handleDeleteImpacted,
   } = useContext(ExportContextDecision.DecisionContext);
 
   const getUser = (value, callback) => {
@@ -53,18 +53,6 @@ function SearchPerson() {
   const handleImpactedAdd = (user) => {
     handleImpacted(user);
     setSearchImpacted();
-  };
-
-  const handleDeleteExperts = (expert) => {
-    const newExpertList = [...experts];
-    newExpertList.splice(newExpertList.indexOf(expert), 1);
-    deleteExpert(newExpertList);
-  };
-
-  const handleDeleteImpacted = (impact) => {
-    const newImpactedList = [...impacted];
-    newImpactedList.splice(newImpactedList.indexOf(impact), 1);
-    deleteImpacted(newImpactedList);
   };
 
   return (
