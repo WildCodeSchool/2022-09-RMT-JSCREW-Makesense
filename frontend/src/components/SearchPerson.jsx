@@ -59,7 +59,7 @@ function SearchPerson() {
     <div>
       <div className="expertPerson mb-8">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personne(s) expertes)*
+          Personne(s) experte(s)*
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
