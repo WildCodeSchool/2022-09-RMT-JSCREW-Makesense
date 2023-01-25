@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import { useNavigate, Link } from "react-router-dom";
 
 import apiConnexion from "../services/apiConnexion";
@@ -42,7 +43,7 @@ function AdminNewUser() {
         notify(
           `L'utilisateur "${user.user_firstname} ${user.user_lastname}" a été ajouté.`
         );
-        setTimeout(() => navigate("/users"), 3000);
+        setTimeout(() => navigate("/admin/users"), 3000);
       })
       .catch((err) => console.error(err));
   };
@@ -53,18 +54,7 @@ function AdminNewUser() {
 
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <Toast />
       <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12 min-h-[100vh]">
         <h1 className="font-bold text-3xl py-6">
           Renseigner un nouvel utilisateur
