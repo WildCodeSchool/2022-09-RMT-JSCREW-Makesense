@@ -75,7 +75,7 @@ function AdminUsersList() {
         pauseOnHover
         theme="dark"
       />
-      <div className="h-min-screen dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 py-8">
+      <div className="h-min-screen dark:bg-[#0c3944] dark:text-[#e7ebec] py-8">
         <h1 className="flex justify-center font-bold text-3xl sm:px-12 pb-6">
           Gestion des utilisateurs
         </h1>
@@ -90,9 +90,9 @@ function AdminUsersList() {
         <div className="flex justify-center">
           <table className="userslist">
             <tr className="border bg-[#e7ebec] dark:text-[#0c3944] font-bold">
-              <th className="w-48">UTILISATEUR</th>
-              <th className="w-48 hidden sm:inline-block">EMAIL</th>
-              <th className="w-48 hidden sm:inline-block">RÔLE</th>
+              <th className="w-48">UTILISATEURS</th>
+              <th className="w-48 hidden sm:inline-table">EMAIL</th>
+              <th className="sm:w-48">RÔLE</th>
               <th className="w-32">SUPPRIMER</th>
             </tr>
             {usersList &&
@@ -101,11 +101,11 @@ function AdminUsersList() {
                   <td className="p-1.5">
                     {user.firstname} {user.lastname}
                   </td>
-                  <td className="hidden sm:inline-block">{user.email}</td>
-                  <td className="hidden sm:inline-block">
-                    <div className="flex justify-center w-52">
+                  <td className="hidden sm:inline-table">{user.email}</td>
+                  <td>
+                    <div className="flex justify-center sm:w-52">
                       <select
-                        className="w-40 text-gray-500 border rounded-md shadow-sm outline-none"
+                        className="sm:w-40 text-gray-500 border rounded-md shadow-sm outline-none"
                         name="user_role"
                         value={user.role}
                         onChange={(e) => handleNewRole(user, e.target.value)}
