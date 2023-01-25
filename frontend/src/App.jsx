@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UpdateDecision from "@pages/UpdateDecision";
 import MyAdvice from "@pages/MyAdvice";
 import Login from "./pages/Login";
+import MyDecisions from "./pages/MyDecisions";
 import AdminUsersList from "./pages/AdminUsersList";
 import AdminNewUser from "./pages/AdminNewUser";
 import NewDecision from "./pages/NewDecision";
@@ -36,6 +37,12 @@ function App() {
           />
           <Route path="user/decision/new" element={<NewDecision />} />
           <Route path="decision/:id/update" element={<UpdateDecision />} />
+          <Route
+            path="decisions"
+            element={
+              <MyDecisions search={search} handleSearch={handleSearch} />
+            }
+          />
           <Route
             path="archives"
             element={

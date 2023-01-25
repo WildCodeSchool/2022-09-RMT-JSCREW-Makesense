@@ -47,12 +47,14 @@ function Navbar() {
             </Link>
           </div>
           <div className="inline-block text-center place-content-center mr-4">
-            <img
-              className="inline place-content-center p-1 m-1"
-              src={PictoDecision}
-              alt="logo2"
-            />
-            <p>Mes décisions</p>
+            <Link to="/decisions">
+              <img
+                className="inline place-content-center p-1 m-1"
+                src={PictoDecision}
+                alt="logo2"
+              />
+              <p>Mes décisions</p>
+            </Link>
           </div>
           <div className="inline-block text-center place-content-center mr-4">
             <Link to="/archives">
@@ -130,7 +132,9 @@ function Navbar() {
                   Parcourir les décisions
                 </p>
               </Link>
-              <p className="text-xl font-bold py-2">Mes décisions</p>
+              <Link to="/decisions">
+                <p className="text-xl font-bold py-2">Mes décisions</p>
+              </Link>
               <Link to="/archives">
                 <p className="text-xl font-bold py-2">Archives</p>
               </Link>
