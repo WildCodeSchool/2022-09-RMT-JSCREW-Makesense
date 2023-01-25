@@ -52,7 +52,7 @@ function SearchPerson() {
 
   return (
     <div>
-      <div className="expertPerson mb-40">
+      <div className="expertPerson mb-8">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
           Personnes expertes*
         </p>
@@ -120,7 +120,7 @@ function SearchPerson() {
               );
             })}
         </div>
-        <div className="choosenImpacted mt-5">
+        <div className="choosenImpacted my-5">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
             Personnes impactées choisies
           </p>
