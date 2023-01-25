@@ -34,7 +34,7 @@ class DecisionMakingManager extends AbstractManager {
       firstDecision,
       id,
     ]);
-
+  }
 
   insert(decisionMaking, id) {
     return this.connection.query(
