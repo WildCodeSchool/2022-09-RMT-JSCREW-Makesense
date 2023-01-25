@@ -6,13 +6,6 @@ import apiConnexion from "../services/apiConnexion";
 import editMeta from "../services/seo";
 
 export default function ShowOneDecision() {
-  const [detailDecision, setDetailDecision] = useState(false);
-  const [impactOrganisation, setImpactOrganisation] = useState(false);
-  const [benef, setBenef] = useState(false);
-  const [risk, setRisk] = useState(false);
-  const [avis, setAvis] = useState(false);
-  const [premiereDecision, setPremiereDecision] = useState(false);
-
   const [oneDecision, setOneDecision] = useState([]);
   const { id } = useParams();
 
@@ -37,39 +30,13 @@ export default function ShowOneDecision() {
 
   /**
    *maj de la date du jour
-   * @param {string} position
-   * @param {string} value
    */
 
   const dateOfTheDay = () => {
     const date = new Date();
     return `${date.getTime()}`;
   };
-
-  function toggleDisplayDetailDecision() {
-    setDetailDecision(!detailDecision);
-  }
-
-  function toggleDisplayImpactOrganisation() {
-    setImpactOrganisation(!impactOrganisation);
-  }
-
-  function toggleDisplayBenef() {
-    setBenef(!benef);
-  }
-
-  function toggleDisplayRisk() {
-    setRisk(!risk);
-  }
-
-  function toggleDisplayAvis() {
-    setAvis(!avis);
-  }
-
-  function toggleDisplayPremiereDecision() {
-    setPremiereDecision(!premiereDecision);
-  }
-
+  
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
       <div className="text-left w-full sm:w-4/5 py-8 mr-16">
@@ -91,165 +58,51 @@ export default function ShowOneDecision() {
             Par {oneDecision.firstname} {oneDecision.lastname}
           </p>
         </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayDetailDecision}
-            className="text-2xl font-bold inline-flex items-center mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mb-3">
             Détails de la décision
-          </button>
-          {detailDecision ? (
-            <p className="mb-5 text-lg sm:ml-10">{oneDecision.description}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayImpactOrganisation}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="mb-5 text-lg sm:ml-10">{oneDecision.description}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Impacts sur l'organisation
-          </button>
-          {impactOrganisation ? (
-            <p className="text-lg mb-5 sm:ml-10">{oneDecision.impact}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayBenef}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="text-lg mb-5 sm:ml-10">{oneDecision.impact}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Bénéfices
-          </button>
-          {benef ? (
-            <p className="text-lg mb-5 sm:ml-10">{oneDecision.profit}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayRisk}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="text-lg mb-5 sm:ml-10">{oneDecision.profit}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Risques potentiels
-          </button>
-          {risk ? (
-            <p className="text-lg mb-5 sm:ml-10">{oneDecision.risk}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayAvis}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="text-lg mb-5 sm:ml-10">{oneDecision.risk}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Avis
-          </button>
-          {avis ? (
-            <p className="text-lg mb-5 sm:ml-10">
-              {oneDecision.advice.map((e) => (
-                <div className="mb-6">
-                  <div className="mb-2">
-                    Avis de {e.firstname} {e.lastname} :
-                  </div>
-                  <div>{e.textAdvice}</div>
+          </summary>
+          <p className="text-lg mb-5 sm:ml-10">
+            {oneDecision.advice?.map((e) => (
+              <div className="mb-6">
+                <div className="mb-2">
+                  Avis de {e.firstname} {e.lastname} :
                 </div>
-              ))}
-            </p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayPremiereDecision}
-            className="text-2xl font-bold inline-flex items-center mt-5"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+                <div>{e.textAdvice}</div>
+              </div>
+            ))}
+          </p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Première décision
-          </button>
-          {premiereDecision && oneDecision?.firstDecision ? (
-            <p className="ml-10 mb-5">{oneDecision.firstDecision}</p>
-          ) : null}
-        </div>
+          </summary>
+          <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
+        </details>
       </div>
       <div className="text-center sm:w-1/5 sm:border-l-2">
         <div className="mb-8 sm:mb-16">
@@ -366,13 +219,8 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-end mt-3 ml-4 font-extralight">
-            <button onClick={toggleDisplayAvis} type="button">
-              Consulter les avis
-            </button>
-          </p>
         </div>
-        <div>
+        <div className="mb-20">
           <h3 className="text-2xl font-bold mt-8">Personnes expertes</h3>
           <div className="flex justify-center mt-3">
             <img
