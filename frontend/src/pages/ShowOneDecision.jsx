@@ -36,7 +36,6 @@ export default function ShowOneDecision() {
     const date = new Date();
     return `${date.getTime()}`;
   };
-  
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
       <div className="text-left w-full sm:w-4/5 py-8 mr-16">
@@ -244,11 +243,6 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-end mt-3 ml-4 font-extralight mb-8 sm:mb-20">
-            <button onClick={toggleDisplayAvis} type="button">
-              Consulter les avis
-            </button>
-          </p>
         </div>
         <Link
           to={`/decision/${id}/advice`}
