@@ -6,7 +6,7 @@ function ArchivedDecisions({ search, handleSearch }) {
   editMeta("Archives");
 
   return (
-    <div className="h-[120vh] dark:bg-[#0c3944]">
+    <div className="min-h-screen dark:bg-[#0c3944]">
       <Search search={search} handleSearch={handleSearch} />
       <DecisionList statusId={3} title="Décisions archivées" search={search} />
     </div>

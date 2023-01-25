@@ -103,7 +103,7 @@ function Login() {
           <p>{message}</p>
           <div className="group m-3 flex justify-center">
             <button
-              className="bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+              className="bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-4 mb-2"
               type="button"
               onClick={handleSubmit}
             >

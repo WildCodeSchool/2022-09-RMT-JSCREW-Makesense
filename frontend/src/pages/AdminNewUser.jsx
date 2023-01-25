@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import { useNavigate, Link } from "react-router-dom";
 
 import apiConnexion from "../services/apiConnexion";
@@ -42,7 +43,7 @@ function AdminNewUser() {
         notify(
           `L'utilisateur "${user.user_firstname} ${user.user_lastname}" a été ajouté.`
         );
-        setTimeout(() => navigate("/users"), 3000);
+        setTimeout(() => navigate("/admin/users"), 3000);
       })
       .catch((err) => console.error(err));
   };
@@ -53,19 +54,8 @@ function AdminNewUser() {
 
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12 min-h-[100vh]">
+      <Toast />
+      <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12 min-h-screen">
         <h1 className="font-bold text-3xl py-6">
           Renseigner un nouvel utilisateur
         </h1>
@@ -73,11 +63,11 @@ function AdminNewUser() {
           <div>
             <p className="pb-3 text-xs">* Champs obligatoires</p>
           </div>
-          <div className="flex justify-start">
+          <div className="sm:flex justify-start">
             <div className="pr-5">
               <p className="pb-2 text-xl">Prénom*</p>
               <input
-                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
+                className="px-2 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
                 type="text"
                 name="user_firstname"
                 required="required"
@@ -89,7 +79,7 @@ function AdminNewUser() {
             <div>
               <p className="pb-2 text-xl">Nom*</p>
               <input
-                className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
+                className="px-2 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-9/10 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
                 type="text"
                 name="user_lastname"
                 required="required"
@@ -102,7 +92,7 @@ function AdminNewUser() {
           <div>
             <p className="pb-2 text-xl">Email*</p>
             <input
-              className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
+              className="px-2 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 sm:w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
               type="text"
               name="user_email"
               required="required"
@@ -116,7 +106,7 @@ function AdminNewUser() {
             <div className="flex flex-row">
               <div>
                 <input
-                  className="dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-2 text-lg"
+                  className="px-2 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 w-full rounded-lg border-[#e7ebec] outline-[#ced7da] mb-2 text-lg"
                   type={hidePassword ? "password" : "text"}
                   name="user_password"
                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
@@ -147,8 +137,8 @@ function AdminNewUser() {
               </div>
             </div>
             <p className="mb-4 text-xs">
-              Le mot de passe doit contenir au minimum 8 caractères, à savoir :
-              au moins une lettre minuscule, une lettre majuscule et un chiffre.
+              Le mot de passe doit contenir au minimum 8 caractères dont au
+              moins une lettre minuscule, une lettre majuscule et un chiffre.
             </p>
           </div>
           <div>

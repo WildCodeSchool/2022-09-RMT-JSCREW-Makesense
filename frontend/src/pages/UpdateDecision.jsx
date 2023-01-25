@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 
@@ -46,19 +47,8 @@ function UpdateDecision() {
   };
 
   return (
-    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
-      <ToastContainer
-        position="top-center"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
+      <Toast />
       <h1 className="font-bold text-3xl py-8">
         Modifier une prise de décision
       </h1>
@@ -68,13 +58,22 @@ function UpdateDecision() {
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
-                  <div className="w-7/12">
-                    <div className="w-11/12">
+                  <div className="w-full sm:w-7/12">
+                    <div className="sm:w-11/12">
                       <p className="pb-4 text-xl font-bold">
                         Titre de la décision
                       </p>
+                      <textarea
+                        className="sm:hidden p-2 cursor-not-allowed text-[#a2a5a5] border-2 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                        type="text"
+                        id="decisionTitle"
+                        name="title"
+                        disabled="disabled"
+                        required
+                        value={decision.title}
+                      />
                       <input
-                        className="p-2 cursor-not-allowed text-[#a2a5a5] border-2  w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                        className="hidden sm:inline-block p-2 cursor-not-allowed text-[#a2a5a5] border-2 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                         type="text"
                         id="decisionTitle"
                         name="title"
@@ -103,7 +102,7 @@ function UpdateDecision() {
                     </div>
                     <div>
                       <p className="pb-4 text-xl font-bold">
-                        Prise de la première décision
+                        Première décision
                       </p>
                       <textarea
                         onChange={(e) => {
@@ -121,9 +120,7 @@ function UpdateDecision() {
                         required
                         value={decision.firstDecision}
                       />
-                      <p className="pb-4 text-xl font-bold">
-                        Prise de la décision finale
-                      </p>
+                      <p className="pb-4 text-xl font-bold">Décision finale</p>
                       <textarea
                         onChange={(e) => {
                           if (decision.decisionStatus_id === 2)
@@ -162,7 +159,7 @@ function UpdateDecision() {
                     Impacts sur l'organisation
                   </p>
                   <textarea
-                    className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="p-2 cursor-not-allowed sm:w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="impact"
                     name="decision_impact"
@@ -174,7 +171,7 @@ function UpdateDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Bénéfices</p>
                   <textarea
-                    className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="p-2 cursor-not-allowed sm:w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="benefits"
                     name="decision_benefits"
@@ -186,7 +183,7 @@ function UpdateDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Risques potentiels</p>
                   <textarea
-                    className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="p-2 cursor-not-allowed sm:w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="decisionTitle"
                     name="decision_risk"
@@ -195,7 +192,7 @@ function UpdateDecision() {
                     value={decision.risk}
                   />
                 </div>
-                <div className="flex justify-end w-7/12 mb-5">
+                <div className="flex justify-end sm:w-7/12 mb-5">
                   <Link
                     to={`/decision/${id}`}
                     className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
