@@ -90,7 +90,7 @@ function SearchPerson() {
               experts.map((expert) => {
                 return (
                   <div className="flex">
-                    <p className="w-8/12" required = "required">
+                    <p className="w-8/12" required="required">
                       - {expert.firstname} {expert.lastname}
                     </p>
                     <button
@@ -139,7 +139,7 @@ function SearchPerson() {
               impacted.map((impact) => {
                 return (
                   <div className="flex">
-                    <p className="w-8/12" required = "required">
+                    <p className="w-8/12" required="required">
                       - {impact.firstname} {impact.lastname}
                     </p>
                     <button
