@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 import apiConnexion from "../services/apiConnexion";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +17,7 @@ function AdminUsersList() {
     toast(msg);
   };
 
+  /** Fonction pour éditer le rôle de l'utilisateur */
   const editUserRole = (user) => {
     apiConnexion
       .put(`/users/${user.id}`, { role: user.role })
@@ -26,6 +29,7 @@ function AdminUsersList() {
       .catch((err) => console.error(err));
   };
 
+  /** Fonction pour modifier le rôle de l'utilisateur */
   const handleNewRole = (user, value) => {
     const newUser = [...usersList];
     const userToEdit = newUser.find((usr) => usr === user);
@@ -34,6 +38,7 @@ function AdminUsersList() {
     editUserRole(userToEdit);
   };
 
+  /** Fonction qui récupère tous les utilisateurs de la base de donnée */
   useEffect(() => {
     apiConnexion
       .get(`${import.meta.env.VITE_BACKEND_URL}users`)
@@ -49,6 +54,7 @@ function AdminUsersList() {
     setUsersList(newUserList);
   };
 
+  /**  Fonction pour supprimer un utilisateur avec notification par toastify */
   const deleteUser = (user) => {
     apiConnexion
       .delete(`${import.meta.env.VITE_BACKEND_URL}users/${user.id}`)
@@ -61,11 +67,31 @@ function AdminUsersList() {
       .catch((err) => console.error(err));
   };
 
+  /** Fonction qui alerte par un modal de confirmation la suppression ou le changement de rôle */
+  const submit = (user, value = null) => {
+    confirmAlert({
+      title:
+        value === null
+          ? "Confirmer la suppression"
+          : "Confirmer le changement de rôle",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () =>
+            value === null ? deleteUser(user) : handleNewRole(user, value),
+        },
+        {
+          label: "Non",
+        },
+      ],
+    });
+  };
+
   return (
     <>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -81,7 +107,7 @@ function AdminUsersList() {
         </h1>
         <div className="flex justify-center pb-6">
           <Link
-            to="/users/creation"
+            to="/admin/users/creation"
             className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
           >
             Ajouter un utilisateur
@@ -108,7 +134,7 @@ function AdminUsersList() {
                         className="w-40 text-gray-500 border rounded-md shadow-sm outline-none"
                         name="user_role"
                         value={user.role}
-                        onChange={(e) => handleNewRole(user, e.target.value)}
+                        onChange={(e) => submit(user, e.target.value)}
                       >
                         <option value="administrator">Administrateur</option>
                         <option value="user">Utilisateur</option>
@@ -120,7 +146,7 @@ function AdminUsersList() {
                       <button
                         className="font-bold text-xl"
                         type="button"
-                        onClick={() => deleteUser(user)}
+                        onClick={() => submit(user)}
                       >
                         X
                       </button>

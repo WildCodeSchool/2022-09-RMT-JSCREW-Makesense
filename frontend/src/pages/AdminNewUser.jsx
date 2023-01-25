@@ -166,7 +166,7 @@ function AdminNewUser() {
           </div>
           <div className="flex justify-center pb-5">
             <Link
-              to="/users"
+              to="/admin/users"
               className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2"
             >
               Annuler

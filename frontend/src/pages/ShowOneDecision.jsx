@@ -6,13 +6,6 @@ import apiConnexion from "../services/apiConnexion";
 import editMeta from "../services/seo";
 
 export default function ShowOneDecision() {
-  const [detailDecision, setDetailDecision] = useState(false);
-  const [impactOrganisation, setImpactOrganisation] = useState(false);
-  const [benef, setBenef] = useState(false);
-  const [risk, setRisk] = useState(false);
-  const [avis, setAvis] = useState(false);
-  const [premiereDecision, setPremiereDecision] = useState(false);
-
   const [oneDecision, setOneDecision] = useState([]);
   const { id } = useParams();
 
@@ -35,30 +28,15 @@ export default function ShowOneDecision() {
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
 
-  function toggleDisplayDetailDecision() {
-    setDetailDecision(!detailDecision);
-  }
+  /**
+   *maj de la date du jour
+   */
 
-  function toggleDisplayImpactOrganisation() {
-    setImpactOrganisation(!impactOrganisation);
-  }
-
-  function toggleDisplayBenef() {
-    setBenef(!benef);
-  }
-
-  function toggleDisplayRisk() {
-    setRisk(!risk);
-  }
-
-  function toggleDisplayAvis() {
-    setAvis(!avis);
-  }
-
-  function toggleDisplayPremiereDecision() {
-    setPremiereDecision(!premiereDecision);
-  }
-
+  const dateOfTheDay = () => {
+    const date = new Date();
+    return `${date.getTime()}`;
+  };
+  
   return (
     <div className="flex w-full px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-[100vh]">
       <div className="text-left w-4/5 py-8 mr-16">
@@ -80,165 +58,51 @@ export default function ShowOneDecision() {
             Par {oneDecision.firstname} {oneDecision.lastname}
           </p>
         </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayDetailDecision}
-            className="text-2xl font-bold inline-flex items-center mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mb-3">
             Détails de la décision
-          </button>
-          {detailDecision ? (
-            <p className="mb-5 text-lg ml-10">{oneDecision.description}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayImpactOrganisation}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="mb-5 text-lg ml-10">{oneDecision.description}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Impacts sur l'organisation
-          </button>
-          {impactOrganisation ? (
-            <p className="text-lg mb-5 ml-10">{oneDecision.impact}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayBenef}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="text-lg mb-5 ml-10">{oneDecision.impact}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Bénéfices
-          </button>
-          {benef ? (
-            <p className="text-lg mb-5 ml-10">{oneDecision.profit}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayRisk}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="text-lg mb-5 ml-10">{oneDecision.profit}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Risques Potentiels
-          </button>
-          {risk ? (
-            <p className="text-lg mb-5 ml-10">{oneDecision.risk}</p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayAvis}
-            className="text-2xl font-bold inline-flex items-center mt-5 mb-3"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          </summary>
+          <p className="text-lg mb-5 ml-10">{oneDecision.risk}</p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Avis
-          </button>
-          {avis ? (
-            <p className="text-lg mb-5 ml-10">
-              {oneDecision.advice.map((e) => (
-                <div className="mb-6">
-                  <div className="mb-2">
-                    Avis de {e.firstname} {e.lastname} :
-                  </div>
-                  <div>{e.textAdvice}</div>
+          </summary>
+          <p className="text-lg mb-5 ml-10">
+            {oneDecision.advice?.map((e) => (
+              <div className="mb-6">
+                <div className="mb-2">
+                  Avis de {e.firstname} {e.lastname} :
                 </div>
-              ))}
-            </p>
-          ) : null}
-        </div>
-        <div className="border-b-2">
-          <button
-            onClick={toggleDisplayPremiereDecision}
-            className="text-2xl font-bold inline-flex items-center mt-5"
-            type="button"
-          >
-            <svg
-              className="mr-2 w-8 h-8"
-              aria-hidden
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+                <div>{e.textAdvice}</div>
+              </div>
+            ))}
+          </p>
+        </details>
+        <details className="border-b-2 ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Première Décision
-          </button>
-          {premiereDecision && oneDecision?.firstDecision ? (
-            <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
-          ) : null}
-        </div>
+          </summary>
+          <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
+        </details>
       </div>
       <div className="text-center w-1/5 border-l-2">
         <div className="mb-16">
@@ -258,15 +122,69 @@ export default function ShowOneDecision() {
               </p>
             </div>
             <div className="w-1/5">
-              <div className="h-4 w-4 mt-1 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#3d6169] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
-              <div className="h-8 w-0 border border-[#ced7da] align-middle mx-auto" />
-              <div className="h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto" />
+              <div
+                className={
+                  dateOfTheDay() >= dateCreate.getTime()
+                    ? "h-4 w-4 mt-1 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 mt-1 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateCreate.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateAdvice.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateAdvice.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateFirstDecision.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateFirstDecision.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateConflict.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateConflict.getTime()
+                    ? "h-8 w-0 border border-[#3d6169] align-middle mx-auto"
+                    : "h-8 w-0 border border-[#ced7da] align-middle mx-auto"
+                }
+              />
+              <div
+                className={
+                  dateOfTheDay() >= dateFinalDecision.getTime()
+                    ? "h-4 w-4 border border-[#3d6169] rounded-full bg-[#3d6169] align-middle mx-auto"
+                    : "h-4 w-4 border border-[#ced7da] rounded-full bg-[#ced7da] align-middle mx-auto"
+                }
+              />
             </div>
             <div className="w-2/5 font-bold text-xs">
               <p>Prise de décision commencée</p>
@@ -303,13 +221,8 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-end mt-3 ml-4 font-extralight">
-            <button onClick={toggleDisplayAvis} type="button">
-              Consulter les avis
-            </button>
-          </p>
         </div>
-        <div>
+        <div className="mb-20">
           <h3 className="text-2xl font-bold mt-8">Personnes expertes</h3>
           <div className="flex justify-center mt-3">
             <img
@@ -333,11 +246,6 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-end mt-3 ml-4 font-extralight mb-20">
-            <button onClick={toggleDisplayAvis} type="button">
-              Consulter les avis
-            </button>
-          </p>
         </div>
         <Link
           to={`/decision/${id}/advice`}

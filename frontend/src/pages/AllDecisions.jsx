@@ -18,7 +18,7 @@ function AllDecisions({ search, handleSearch }) {
         </Link>
         <Search search={search} handleSearch={handleSearch} />
       </div>
-      <DecisionList statusId={1} title="Décision en cours" search={search} />
+      <DecisionList statusId={1} title="Décisions en cours" search={search} />
       <DecisionList
         statusId={2}
         title="Première décision prise"
