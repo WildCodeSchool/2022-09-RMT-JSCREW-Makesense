@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 
@@ -47,18 +48,7 @@ function UpdateDecision() {
 
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
-      <ToastContainer
-        position="top-center"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <Toast />
       <h1 className="font-bold text-3xl py-8">
         Modifier une prise de décision
       </h1>
