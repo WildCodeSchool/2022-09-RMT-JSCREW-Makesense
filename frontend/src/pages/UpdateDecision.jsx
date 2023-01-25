@@ -45,7 +45,7 @@ function UpdateDecision() {
                     <p className="pb-4 text-xl font-bold">
                       Titre de la décision
                     </p>
-                    <input
+                    <textarea
                       className="p-2 cursor-not-allowed text-[#a2a5a5] border-2 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                       type="text"
                       id="decisionTitle"
