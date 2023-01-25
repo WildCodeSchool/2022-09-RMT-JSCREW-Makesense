@@ -37,7 +37,7 @@ function NewDecision() {
   function sendFormDecision(e) {
     e.preventDefault();
     confirmAlert({
-      title: "Etes-vous sûr de vouloir créer une nouvelle décision?",
+      title: "Êtes-vous sûr de vouloir créer une nouvelle décision ?",
       buttons: [
         {
           label: "Oui",
