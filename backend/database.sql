@@ -371,8 +371,8 @@ VALUES (
         "Aborder les vacances scolaires plus sereinement pour les parents.",
         "Minimiser les conflits",
         "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
-        3,
-        "2023-04-12"
+        4,
+        "2022-04-12"
     );
 
 UPDATE decisionMaking SET firstDecision = "test first decision", finalDecision = "test final decision" WHERE id = 1;

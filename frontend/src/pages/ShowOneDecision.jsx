@@ -11,6 +11,15 @@ export default function ShowOneDecision() {
 
   editMeta(oneDecision.title);
 
+  /* récupération de la date du jour */
+
+  const dateOfTheDay = () => {
+    const date = new Date();
+    return `${date.getTime()}`;
+  };
+
+  /* récupération des informations de la décision en fonction de l'id */
+
   useEffect(() => {
     apiConnexion
       .get(`decisionsMaking/${id}`)
@@ -20,6 +29,10 @@ export default function ShowOneDecision() {
       .catch((err) => console.error(err));
   }, [id]);
 
+  /** récupération de la date de création et génération des dates en conséquences 
+  @params (array) oneDecision
+  */
+
   const dateCreate = new Date(oneDecision.dateCreate);
   const timeDate = dateCreate.getTime();
 
@@ -28,14 +41,16 @@ export default function ShowOneDecision() {
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
 
-  /**
-   *maj de la date du jour
-   */
+  /* logique d'actualisation pour archivage de la décision en fonction de la date du jour */
 
-  const dateOfTheDay = () => {
-    const date = new Date();
-    return `${date.getTime()}`;
-  };
+  useEffect(() => {
+    if (dateOfTheDay() >= dateFinalDecision.getTime()) {
+      apiConnexion.put(`/decision/${id}/update`, {
+        decisionStatus_id: 3,
+      });
+    }
+  });
+
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
       <div className="text-left w-full sm:w-4/5 py-8 mr-16">
