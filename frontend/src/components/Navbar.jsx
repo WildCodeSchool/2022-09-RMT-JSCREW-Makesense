@@ -124,7 +124,7 @@ function Navbar() {
             >
               X
             </button>
-            <div className="p-10 ">
+            <div className="p-10">
               <Link to="/home">
                 <p className="text-xl font-bold py-2">
                   Parcourir les décisions
