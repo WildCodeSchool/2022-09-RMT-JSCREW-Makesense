@@ -3,8 +3,10 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
+import { confirmAlert } from "react-confirm-alert";
 import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function NewDecision() {
   editMeta("Créer une prise de décision");
@@ -24,18 +26,33 @@ function NewDecision() {
     return `${date.toLocaleDateString()}`;
   };
 
-  const sendForm = async (e) => {
-    e.preventDefault();
+  const sendForm = async () => {
     const respons = await createNewDecision();
     if (respons.status === 201) {
       navigate(`/decision/${respons.data.id}`);
     }
   };
 
+  /** Fonction qui alerte par un modal de confirmation de la création d'une nouvelle décision */
+  function sendFormDecision(e) {
+    e.preventDefault();
+    confirmAlert({
+      title: "Etes-vous sûr de vouloir créer une nouvelle décision?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () => sendForm(),
+        },
+        {
+          label: "Non",
+        },
+      ],
+    });
+  }
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
       <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
-      <form onSubmit={sendForm}>
+      <form onSubmit={sendFormDecision}>
         <div className="decision flex">
           <div className="writeDecision w-full dark:text-[#e7ebec]">
             <div className="flex">
