@@ -46,7 +46,7 @@ export default function ShowOneDecision() {
           <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
           <Link
             to={`/decision/${id}/update`}
-            className="text-center sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-5 py-2 text-ml mx-20 font-semibold  my-2 sm:mt-0"
+            className="text-center sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-5 py-2 text-ml mx-20 font-semibold my-2 sm:mt-0"
           >
             Modifier
           </Link>
