@@ -7,9 +7,14 @@ function SearchPerson() {
   const [searchImpactedInput, setSearchImpactedInput] = useState();
   const [searchExpert, setSearchExpert] = useState();
   const [searchImpacted, setSearchImpacted] = useState();
-  const { experts, handleExpert, impacted, handleImpacted } = useContext(
-    ExportContextDecision.DecisionContext
-  );
+  const {
+    experts,
+    handleExpert,
+    impacted,
+    handleImpacted,
+    handleDeleteExperts,
+    handleDeleteImpacted,
+  } = useContext(ExportContextDecision.DecisionContext);
 
   const getUser = (value, callback) => {
     apiConnexion
@@ -81,14 +86,21 @@ function SearchPerson() {
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
             Personnes expertes choisies
           </p>
-          <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg">
+          <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {experts &&
               experts.map((expert) => {
                 return (
-                  <div className="">
-                    <p className="">
+                  <div className="flex">
+                    <p className="w-8/12">
                       - {expert.firstname} {expert.lastname}
                     </p>
+                    <button
+                      className="font-bold"
+                      type="button"
+                      onClick={() => handleDeleteExperts(expert)}
+                    >
+                      X
+                    </button>
                   </div>
                 );
               })}
@@ -124,14 +136,21 @@ function SearchPerson() {
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
             Personnes impactées choisies
           </p>
-          <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg">
+          <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {impacted &&
               impacted.map((impact) => {
                 return (
-                  <div className="">
-                    <p className="">
+                  <div className="flex">
+                    <p className="w-8/12">
                       - {impact.firstname} {impact.lastname}
                     </p>
+                    <button
+                      className="font-bold"
+                      type="button"
+                      onClick={() => handleDeleteImpacted(impact)}
+                    >
+                      X
+                    </button>
                   </div>
                 );
               })}

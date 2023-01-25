@@ -18,7 +18,7 @@ function DecisionProvider({ children }) {
   });
 
   /**
-   *maj du state en fonction de son statut
+   *state en fonction de son statut
    * @param {string} position
    * @param {string} value
    */
@@ -56,6 +56,18 @@ function DecisionProvider({ children }) {
     setMainDecision(newDecision);
   };
 
+  const handleDeleteExperts = (expert) => {
+    const newExpertList = [...experts];
+    newExpertList.splice(newExpertList.indexOf(expert), 1);
+    setExperts(newExpertList);
+  };
+
+  const handleDeleteImpacted = (impact) => {
+    const newImpactedList = [...impacted];
+    newImpactedList.splice(newImpactedList.indexOf(impact), 1);
+    setImpacted(newImpactedList);
+  };
+
   const createNewDecision = () => {
     return apiConnexion
       .post("/decisionsMaking", {
@@ -77,6 +89,8 @@ function DecisionProvider({ children }) {
         impacted,
         handleImpacted,
         createNewDecision,
+        handleDeleteExperts,
+        handleDeleteImpacted,
       }}
     >
       {children}
