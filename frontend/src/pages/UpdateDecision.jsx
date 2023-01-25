@@ -47,7 +47,7 @@ function UpdateDecision() {
   };
 
   return (
-    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-12">
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
       <Toast />
       <h1 className="font-bold text-3xl py-8">
         Modifier une prise de décision
@@ -58,8 +58,8 @@ function UpdateDecision() {
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
-                  <div className="w-7/12">
-                    <div className="w-11/12">
+                  <div className="sm:w-7/12">
+                    <div className="sm:w-11/12">
                       <p className="pb-4 text-xl font-bold">
                         Titre de la décision
                       </p>
@@ -152,7 +152,7 @@ function UpdateDecision() {
                     Impacts sur l'organisation
                   </p>
                   <textarea
-                    className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="p-2 cursor-not-allowed sm:w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="impact"
                     name="decision_impact"
@@ -164,7 +164,7 @@ function UpdateDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Bénéfices</p>
                   <textarea
-                    className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="p-2 cursor-not-allowed sm:w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="benefits"
                     name="decision_benefits"
@@ -176,7 +176,7 @@ function UpdateDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Risques potentiels</p>
                   <textarea
-                    className="p-2 cursor-not-allowed w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="p-2 cursor-not-allowed sm:w-7/12 text-[#a2a5a5] border-2 h-80 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="decisionTitle"
                     name="decision_risk"
@@ -185,7 +185,7 @@ function UpdateDecision() {
                     value={decision.risk}
                   />
                 </div>
-                <div className="flex justify-end w-7/12 mb-5">
+                <div className="flex justify-end sm:w-7/12 mb-5">
                   <Link
                     to={`/decision/${id}`}
                     className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"

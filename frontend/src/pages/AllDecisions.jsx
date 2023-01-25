@@ -8,11 +8,11 @@ function AllDecisions({ search, handleSearch }) {
   editMeta("Parcourir les décisions");
 
   return (
-    <div className="h-[120vh] dark:bg-[#0c3944]">
-      <div className="flex justify-between">
+    <div className="min-h-screen dark:bg-[#0c3944]">
+      <div className="flex flex-col sm:flex-row justify-between">
         <Link
           to="/user/decision/new"
-          className="ml-10 mt-8 bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+          className="text-center ml-6 mr-28 sm:ml-10 mt-4 sm:mt-8 bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 sm:mb-2"
         >
           Créer une prise de décision
         </Link>

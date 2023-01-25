@@ -42,9 +42,9 @@ export default function MyAdvice() {
   };
 
   return (
-    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] pb-80">
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] min-h-screen">
       <Toast />
-      <div className="pt-10 w-[1000px] mx-auto">
+      <div className="pt-6 sm:pt-10 px-6 sm:px-12">
         <div className="text-left">
           <h2 className="text-4xl font-bold mt-2">Soumettre un nouvel avis</h2>
         </div>
