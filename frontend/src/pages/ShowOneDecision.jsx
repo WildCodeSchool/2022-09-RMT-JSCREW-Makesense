@@ -36,7 +36,6 @@ export default function ShowOneDecision() {
     const date = new Date();
     return `${date.getTime()}`;
   };
-  
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
       <div className="text-left w-full sm:w-4/5 py-8 mr-16">
@@ -47,7 +46,7 @@ export default function ShowOneDecision() {
           <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
           <Link
             to={`/decision/${id}/update`}
-            className="text-center sm:ml-10 bg-[#ced7da] rounded-xl px-5 py-2 text-ml mx-20 font-semibold  my-2 sm:mt-0"
+            className="text-center sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-5 py-2 text-ml mx-20 font-semibold my-2 sm:mt-0"
           >
             Modifier
           </Link>
@@ -58,31 +57,31 @@ export default function ShowOneDecision() {
             Par {oneDecision.firstname} {oneDecision.lastname}
           </p>
         </div>
-        <details className="border-b-2 ml-8">
+        <details className="border-b-2 sm:ml-8">
           <summary className="text-2xl font-bold items-center mb-3">
             Détails de la décision
           </summary>
           <p className="mb-5 text-lg sm:ml-10">{oneDecision.description}</p>
         </details>
-        <details className="border-b-2 ml-8">
+        <details className="border-b-2 sm:ml-8">
           <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Impacts sur l'organisation
           </summary>
           <p className="text-lg mb-5 sm:ml-10">{oneDecision.impact}</p>
         </details>
-        <details className="border-b-2 ml-8">
+        <details className="border-b-2 sm:ml-8">
           <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Bénéfices
           </summary>
           <p className="text-lg mb-5 sm:ml-10">{oneDecision.profit}</p>
         </details>
-        <details className="border-b-2 ml-8">
+        <details className="border-b-2 sm:ml-8">
           <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Risques potentiels
           </summary>
           <p className="text-lg mb-5 sm:ml-10">{oneDecision.risk}</p>
         </details>
-        <details className="border-b-2 ml-8">
+        <details className="border-b-2 sm:ml-8">
           <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Avis
           </summary>
@@ -97,7 +96,7 @@ export default function ShowOneDecision() {
             ))}
           </p>
         </details>
-        <details className="border-b-2 ml-8">
+        <details className="border-b-2 sm:ml-8">
           <summary className="text-2xl font-bold items-center mt-5 mb-3">
             Première décision
           </summary>
@@ -106,7 +105,7 @@ export default function ShowOneDecision() {
       </div>
       <div className="text-center sm:w-1/5 sm:border-l-2">
         <div className="mb-8 sm:mb-16">
-          <h3 className="text-2xl font-bold">Dates à retenir</h3>
+          <h3 className="text-2xl font-bold sm:mt-8">Dates à retenir</h3>
           <div className="inline-flex mt-8">
             <div className="w-2/5">
               <p className="text-lg">{`${dateCreate.toLocaleDateString()}`}</p>
@@ -244,11 +243,6 @@ export default function ShowOneDecision() {
               alt="Avatar utilisateur"
             />
           </div>
-          <p className="text-end mt-3 ml-4 font-extralight mb-8 sm:mb-20">
-            <button onClick={toggleDisplayAvis} type="button">
-              Consulter les avis
-            </button>
-          </p>
         </div>
         <Link
           to={`/decision/${id}/advice`}

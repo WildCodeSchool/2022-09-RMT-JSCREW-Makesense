@@ -58,13 +58,22 @@ function UpdateDecision() {
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
-                  <div className="sm:w-7/12">
+                  <div className="w-full sm:w-7/12">
                     <div className="sm:w-11/12">
                       <p className="pb-4 text-xl font-bold">
                         Titre de la décision
                       </p>
+                      <textarea
+                        className="sm:hidden p-2 cursor-not-allowed text-[#a2a5a5] border-2 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                        type="text"
+                        id="decisionTitle"
+                        name="title"
+                        disabled="disabled"
+                        required
+                        value={decision.title}
+                      />
                       <input
-                        className="p-2 cursor-not-allowed text-[#a2a5a5] border-2  w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                        className="hidden sm:inline-block p-2 cursor-not-allowed text-[#a2a5a5] border-2 w-full rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                         type="text"
                         id="decisionTitle"
                         name="title"
@@ -93,7 +102,7 @@ function UpdateDecision() {
                     </div>
                     <div>
                       <p className="pb-4 text-xl font-bold">
-                        Prise de la première décision
+                        Première décision
                       </p>
                       <textarea
                         onChange={(e) => {
@@ -111,9 +120,7 @@ function UpdateDecision() {
                         required
                         value={decision.firstDecision}
                       />
-                      <p className="pb-4 text-xl font-bold">
-                        Prise de la décision finale
-                      </p>
+                      <p className="pb-4 text-xl font-bold">Décision finale</p>
                       <textarea
                         onChange={(e) => {
                           if (decision.decisionStatus_id === 2)
