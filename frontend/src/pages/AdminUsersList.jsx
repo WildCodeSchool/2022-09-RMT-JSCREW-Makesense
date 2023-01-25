@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -89,18 +90,7 @@ function AdminUsersList() {
 
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <Toast />
       <div className="h-[200vh] dark:bg-[#0c3944] dark:text-[#e7ebec]">
         <h1 className="flex justify-center font-bold text-3xl px-12 py-8 ">
           Gestion des utilisateurs

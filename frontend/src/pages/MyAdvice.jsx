@@ -2,7 +2,8 @@
 
 import React, { useState, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import apiConnexion from "../services/apiConnexion";
 
 import User from "../contexts/User";
@@ -42,18 +43,7 @@ export default function MyAdvice() {
 
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] pb-80">
-      <ToastContainer
-        position="top-center"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <Toast />
       <div className="pt-10 w-[1000px] mx-auto">
         <div className="text-left">
           <h2 className="text-4xl font-bold mt-2">Soumettre un nouvel avis</h2>
