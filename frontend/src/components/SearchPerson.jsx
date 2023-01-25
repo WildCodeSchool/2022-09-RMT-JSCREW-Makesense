@@ -59,13 +59,12 @@ function SearchPerson() {
     <div>
       <div className="expertPerson mb-8">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personnes expertes*
+          Personne(s) experte(s)*
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchExpert}
-          required
         />
         <div className="searchResults absolute">
           {searchExpert &&
@@ -84,14 +83,14 @@ function SearchPerson() {
         </div>
         <div className="choosenExpert">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personnes expertes choisies
+            Personne(s) experte(s) choisie(s)
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {experts &&
               experts.map((expert) => {
                 return (
                   <div className="flex">
-                    <p className="w-8/12">
+                    <p className="w-8/12" required="required">
                       - {expert.firstname} {expert.lastname}
                     </p>
                     <button
@@ -109,13 +108,12 @@ function SearchPerson() {
       </div>
       <div className="impactedPerson">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personnes impactées*
+          Personne(s) impactée(s)*
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchImpacted}
-          required
         />
         <div className="searchResults absolute">
           {searchImpacted &&
@@ -134,14 +132,14 @@ function SearchPerson() {
         </div>
         <div className="choosenImpacted my-5">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personnes impactées choisies
+            Personne(s) impactée(s) choisie(s)
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {impacted &&
               impacted.map((impact) => {
                 return (
                   <div className="flex">
-                    <p className="w-8/12">
+                    <p className="w-8/12" required="required">
                       - {impact.firstname} {impact.lastname}
                     </p>
                     <button

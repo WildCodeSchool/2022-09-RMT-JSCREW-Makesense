@@ -3,8 +3,10 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
+import { confirmAlert } from "react-confirm-alert";
 import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function NewDecision() {
   editMeta("Créer une prise de décision");
@@ -24,14 +26,29 @@ function NewDecision() {
     return `${date.toLocaleDateString()}`;
   };
 
-  const sendFormDecision = async (e) => {
-    e.preventDefault();
+  const sendForm = async () => {
     const respons = await createNewDecision();
     if (respons.status === 201) {
-      navigate(`/onedecision/${respons.data.id}`);
+      navigate(`/decision/${respons.data.id}`);
     }
   };
 
+  /** Fonction qui alerte par un modal de confirmation de la création d'une nouvelle décision */
+  function sendFormDecision(e) {
+    e.preventDefault();
+    confirmAlert({
+      title: "Êtes-vous sûr de vouloir créer une nouvelle décision ?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () => sendForm(),
+        },
+        {
+          label: "Non",
+        },
+      ],
+    });
+  }
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
       <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
@@ -51,7 +68,7 @@ function NewDecision() {
                         type="text"
                         id="decisionTitle"
                         name="title"
-                        required
+                        required="required"
                         value={mainDecision.title}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -67,7 +84,7 @@ function NewDecision() {
                         type="text"
                         id="decisionDetail"
                         name="description"
-                        required
+                        required="required"
                         value={mainDecision.description}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -85,7 +102,7 @@ function NewDecision() {
                     type="text"
                     id="impact"
                     name="impact"
-                    required
+                    required="required"
                     value={mainDecision.impact}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
@@ -97,10 +114,10 @@ function NewDecision() {
                   <textarea
                     className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-full sm:w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
-                    id="benefits"
-                    name="benefits"
-                    required
-                    value={mainDecision.benefits}
+                    id="profit"
+                    name="profit"
+                    required="required"
+                    value={mainDecision.profit}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
                     }
@@ -113,7 +130,7 @@ function NewDecision() {
                     type="text"
                     id="decisionTitle"
                     name="risk"
-                    required
+                    required="required"
                     value={mainDecision.risk}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
