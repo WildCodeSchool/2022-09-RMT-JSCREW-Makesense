@@ -6,17 +6,19 @@ import apiConnexion from "../services/apiConnexion";
 
 function UpdateDecision() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id, userId } = useParams();
 
   const [decision, setDecision] = useState([]);
-
   const getDecision = () => {
     apiConnexion
-      .get(`decisionsMaking/${id}`)
+      .get(`/user/${userId}/decisions/${id}`)
       .then((res) => {
         setDecision(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        navigate("/home");
+      });
   };
 
   useEffect(() => {
