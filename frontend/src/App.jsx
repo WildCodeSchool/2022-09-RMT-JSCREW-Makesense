@@ -36,7 +36,10 @@ function App() {
             }
           />
           <Route path="user/decision/new" element={<NewDecision />} />
-          <Route path="decision/:id/update" element={<UpdateDecision />} />
+          <Route
+            path="user/:userId/decisions/:id"
+            element={<UpdateDecision />}
+          />
           <Route
             path="decisions"
             element={

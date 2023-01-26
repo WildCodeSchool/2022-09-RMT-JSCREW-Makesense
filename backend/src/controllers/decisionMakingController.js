@@ -28,6 +28,42 @@ const read = (req, res) => {
       res.sendStatus(500);
     });
 };
+
+const readByUser = (req, res) => {
+  const { id, userId } = req.params;
+  if (
+    parseInt(userId, 10) === req.auth.id ||
+    req.auth.role === "administrator"
+  ) {
+    models.decisionMaking
+      .findOne(id)
+      .then(([decisionMaking]) => {
+        if (
+          parseInt(userId, 10) === decisionMaking[0].user_id ||
+          req.auth.role === "administrator"
+        ) {
+          models.advice
+            .findOne(id)
+            .then(([rows]) => {
+              res.status(200).send({ ...decisionMaking[0], advice: rows });
+            })
+            .catch((error) => {
+              console.error(error);
+              res.sendStatus(500);
+            });
+        } else {
+          res.sendStatus(401);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(401);
+  }
+};
+
 const update = (req, res) => {
   const decision = req.body;
   const { id } = req.params;
@@ -98,6 +134,7 @@ const add = (req, res) => {
 module.exports = {
   browse,
   read,
+  readByUser,
   update,
   add,
 };
