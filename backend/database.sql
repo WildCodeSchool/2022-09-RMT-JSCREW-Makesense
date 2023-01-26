@@ -290,7 +290,8 @@ INSERT INTO
         profit,
         risk,
         decisionStatus_id,
-        dateCreate
+        dateCreate,
+        dateFinalDecision
     )
 VALUES (
         1,
@@ -300,8 +301,9 @@ VALUES (
         "Les impacts pour l’organisation sont de deux ordres : 1 : Financier :  La baisse du tarif du café sera compensée par une hausse de sa consommation. Les pertes seront donc nulles pour l’entreprise qui pourra même espérer des bénéfices.  2 : Vision positive de l’entreprise : Les salariés seront sensibles à cette baisse significative, particulièrement en cette période d’inflation.",
         "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
         "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
-        2,
-        "2022-12-08"
+        3,
+        "2022-12-08",
+        "2023-01-21"
     ), (
         2,
         17,
@@ -311,7 +313,8 @@ VALUES (
         "Les collaborateurs étant forcés à prendre leurs pauses à l'extérieur de la société pourront bénéficier d'un menu au sein de nos cantines",
         "Certains risques, liés aux allergènes, peuvent être prévenu dès lors de l'entrée de la cantine, il suffira de prévenir le chef cuisinier qui se tiendra à votre disposition, pour qu'il prenne en compte votre demande.",
         1,
-        "2023-04-12"
+        "2023-04-12",
+        "2023-06-21"
     ), (
         3,
         14,
@@ -321,7 +324,8 @@ VALUES (
         "Meilleur environnement pour une meilleure rentabilité, ces fauteuils éco-responsable seront changés tous les 5 ans et remis à diverses associations pour être réutilisés dans les pays les plus nécessiteux.",
         "Date de livraison indéterminée, certains open-space seront livrés plusieurs semaines avant d'autres",
         1,
-        "2023-01-02"
+        "2023-01-02",
+        "2023-03-13"
     ), (
         4,
         12,
@@ -359,7 +363,8 @@ VALUES (
         "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
         bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
         2,
-        "2023-03-02"
+        "2023-03-02",
+        "2023-05-11"
     ), (
         5,
         18,
@@ -371,8 +376,9 @@ VALUES (
         "Aborder les vacances scolaires plus sereinement pour les parents.",
         "Minimiser les conflits",
         "Abus sur le nombre de jours de CA posés, démotivation pour les personnes les plus ancienne de l’entreprise.",
-        4,
-        "2022-04-12"
+        3,
+        "2022-04-12",
+        "2022-08-12"
     );
 
 UPDATE decisionMaking SET firstDecision = "test first decision", finalDecision = "test final decision" WHERE id = 1;

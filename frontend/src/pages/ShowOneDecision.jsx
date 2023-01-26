@@ -46,10 +46,10 @@ export default function ShowOneDecision() {
   useEffect(() => {
     if (dateOfTheDay() >= dateFinalDecision.getTime()) {
       apiConnexion.put(`/decision/${id}/update`, {
-        decisionStatus_id: 3,
+        decisionStatus_id: 4,
       });
     }
-  });
+  }, []);
 
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
