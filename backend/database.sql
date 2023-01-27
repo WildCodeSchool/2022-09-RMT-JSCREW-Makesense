@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE DATABASE IF NOT EXISTS makesense;
 
 USE makesense;
@@ -256,7 +257,7 @@ CREATE TABLE
 INSERT INTO
     decisionStatus (status) VALUE (
         "Prise de décision commencée"
-    ), ("Première décision prise"), ("Décision archivée");
+    ), ("Première décision prise"), ("Décision définitive"), ("Décision archivée");
 
 CREATE TABLE
     decisionMaking (

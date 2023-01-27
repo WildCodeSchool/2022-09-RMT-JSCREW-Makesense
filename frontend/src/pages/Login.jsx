@@ -11,8 +11,13 @@ function Login() {
 
   const [connexion, setConnexion] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
   const userContext = useContext(User.UserContext);
   const navigate = useNavigate();
+
+  function showPassword() {
+    setHidePassword(!hidePassword);
+  }
 
   const handleSubmit = () => {
     setMessage("");
@@ -44,7 +49,7 @@ function Login() {
       <h1 className="flex justify-center font-bold text-4xl pt-16 py-8">
         Connexion
       </h1>
-      <div className="flex justify-center card rounded-none">
+      <div className="flex justify-center card rounded-none ml-8">
         <form>
           <div className="group">
             <input
@@ -61,12 +66,12 @@ function Login() {
               placeholder="Adresse email"
             />
           </div>
-          <div className="group">
+          <div className="group flex flex-row">
             <input
               className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="password"
-              type="password"
+              type={hidePassword ? "password" : "text"}
               value={connexion.password}
               onChange={(e) =>
                 setConnexion({ ...connexion, password: e.target.value })
@@ -75,11 +80,30 @@ function Login() {
               required
               placeholder="Mot de passe"
             />
+            <div>
+              <button
+                className="w-[20px] h-[20px] ml-2 mt-1.5"
+                onClick={showPassword}
+                type="button"
+              >
+                {hidePassword ? (
+                  <img
+                    src="https://www.svgrepo.com/show/384356/close-cross-eye-hidden-vision.svg"
+                    alt="eyeCross"
+                  />
+                ) : (
+                  <img
+                    src="https://www.svgrepo.com/show/384342/eye-look-show-view-visible-visiblity.svg"
+                    alt="eyeOpen"
+                  />
+                )}
+              </button>
+            </div>
           </div>
           <p>{message}</p>
           <div className="group m-3 flex justify-center">
             <button
-              className="bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+              className="bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-4 mb-2"
               type="button"
               onClick={handleSubmit}
             >

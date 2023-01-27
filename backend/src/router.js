@@ -18,11 +18,18 @@ router.get("/advices", checkAuth, AdviceController.browse);
 router.get("/conflicts", checkAuth, ConflictController.browse);
 router.get("/users", checkAuth, UserController.browse);
 router.get("/users/list", checkAuth, UserController.read);
+router.get(
+  "/user/:userId/decisions/:id",
+  checkAuth,
+  DecisionMakingController.readByUser
+);
 router.post("/login", checkUser, UserController.validateUser);
 router.post("/users", checkAuth, UserController.add);
 router.put("/users/:id", checkAuth, UserController.edit);
+router.put("/decision/:id/update", checkAuth, DecisionMakingController.update);
 router.delete("/users/:id", checkAuth, UserController.destroy);
 
 router.post("/decisions/:id/advice", checkAuth, AdviceController.postAdvice);
+router.post("/decisionsMaking", checkAuth, DecisionMakingController.add);
 
 module.exports = router;

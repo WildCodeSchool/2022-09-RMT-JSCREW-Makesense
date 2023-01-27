@@ -1,45 +1,64 @@
 import React, { useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
+import { confirmAlert } from "react-confirm-alert";
 import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function NewDecision() {
   editMeta("Créer une prise de décision");
+  const navigate = useNavigate();
 
-  const { mainDecision, handleMainDecision } = useContext(
+  const { mainDecision, handleMainDecision, createNewDecision } = useContext(
     ExportContextDecision.DecisionContext
   );
 
   /**
-   *maj du state en fonction de sa propriété
+   *maj de la date du jour
    * @param {string} position
    * @param {string} value
    */
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const getDate = () => {
     const date = new Date();
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    return `${date.toLocaleDateString()}`;
   };
 
+  const sendForm = async () => {
+    const respons = await createNewDecision();
+    if (respons.status === 201) {
+      navigate(`/decision/${respons.data.id}`);
+    }
+  };
+
+  /** Fonction qui alerte par un modal de confirmation de la création d'une nouvelle décision */
+  function sendFormDecision(e) {
+    e.preventDefault();
+    confirmAlert({
+      title: "Êtes-vous sûr de vouloir créer une nouvelle décision ?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () => sendForm(),
+        },
+        {
+          label: "Non",
+        },
+      ],
+    });
+  }
   return (
-    <div className="dark:bg-[#0c3944] px-12">
-      <h1 className="font-bold text-3xl py-8 dark:text-[#e7ebec]">
-        Créer une prise de décision
-      </h1>
-      <form action="" onSubmit={handleSubmit}>
-        <div className="decision flex">
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
+      <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
+      <form onSubmit={sendFormDecision}>
+        <div className="decision sm:flex">
           <div className="writeDecision w-full dark:text-[#e7ebec]">
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
-                  <div className="w-10/12">
+                  <div className="w-full sm:w-10/12">
                     <div className="w-full">
                       <p className="pb-4 text-xl font-bold">
                         Titre de la prise de décision*
@@ -49,7 +68,7 @@ function NewDecision() {
                         type="text"
                         id="decisionTitle"
                         name="title"
-                        required
+                        required="required"
                         value={mainDecision.title}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -65,7 +84,7 @@ function NewDecision() {
                         type="text"
                         id="decisionDetail"
                         name="description"
-                        required
+                        required="required"
                         value={mainDecision.description}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -79,11 +98,11 @@ function NewDecision() {
                     Impacts sur l'organisation*
                   </p>
                   <textarea
-                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-full sm:w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="impact"
                     name="impact"
-                    required
+                    required="required"
                     value={mainDecision.impact}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
@@ -93,12 +112,12 @@ function NewDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Bénéfices*</p>
                   <textarea
-                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-full sm:w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
-                    id="benefits"
-                    name="benefits"
-                    required
-                    value={mainDecision.benefits}
+                    id="profit"
+                    name="profit"
+                    required="required"
+                    value={mainDecision.profit}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
                     }
@@ -107,35 +126,21 @@ function NewDecision() {
                 <div>
                   <p className="pb-4 text-xl font-bold">Risques potentiels*</p>
                   <textarea
-                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
+                    className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-full sm:w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                     type="text"
                     id="decisionTitle"
                     name="risk"
-                    required
+                    required="required"
                     value={mainDecision.risk}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
                     }
                   />
                 </div>
-                <div className="flex justify-end w-10/12 mb-5">
-                  <Link
-                    to="/home"
-                    className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
-                  >
-                    Annuler
-                  </Link>
-                  <Link
-                    to="/user/decision"
-                    className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
-                  >
-                    Valider
-                  </Link>
-                </div>
               </div>
             </div>
           </div>
-          <div className="decisionByUser w-6/12">
+          <div className="decisionByUser sm:w-6/12">
             <div className="flex justify-start mb-5 dark:text-[#e7ebec]">
               <p className="pr-5 text-xl font-bold">Date de création :</p>
               <p className="text-xl">{getDate()}</p>
@@ -144,6 +149,20 @@ function NewDecision() {
               <SearchPerson SearchPerson={SearchPerson} />
             </div>
           </div>
+        </div>
+        <div className="flex justify-end w-10/12 mb-5">
+          <Link
+            to="/home"
+            className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+          >
+            Annuler
+          </Link>
+          <button
+            type="submit"
+            className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
+          >
+            Valider
+          </button>
         </div>
       </form>
     </div>

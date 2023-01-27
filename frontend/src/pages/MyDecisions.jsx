@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-import DecisionList from "../components/DecisionList";
+import MyDecisionList from "../components/MyDecisionList";
 import Search from "../components/Search";
 import editMeta from "../services/seo";
 
-function AllDecisions({ search, handleSearch }) {
-  editMeta("Parcourir les décisions");
+function MyDecisions({ search, handleSearch }) {
+  editMeta("Mes décisions");
 
   return (
     <div className="min-h-screen dark:bg-[#0c3944]">
@@ -18,8 +18,8 @@ function AllDecisions({ search, handleSearch }) {
         </Link>
         <Search search={search} handleSearch={handleSearch} />
       </div>
-      <DecisionList statusId={1} title="Décisions en cours" search={search} />
-      <DecisionList
+      <MyDecisionList statusId={1} title="Décisions en cours" search={search} />
+      <MyDecisionList
         statusId={2}
         title="Première décision prise"
         search={search}
@@ -28,4 +28,4 @@ function AllDecisions({ search, handleSearch }) {
   );
 }
 
-export default AllDecisions;
+export default MyDecisions;

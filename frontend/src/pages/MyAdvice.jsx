@@ -1,18 +1,22 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import apiConnexion from "../services/apiConnexion";
+
+import User from "../contexts/User";
 
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MyAdvice() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const userContext = useContext(User.UserContext);
   const [myAdviceText, setMyAdviceText] = useState({
     textAdvice: "",
-    userId: 10,
+    userId: userContext.user.id,
     decisionMakingId: id,
   });
 
@@ -38,20 +42,9 @@ export default function MyAdvice() {
   };
 
   return (
-    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] pb-80">
-      <ToastContainer
-        position="top-center"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      <div className="pt-10 w-[1000px] mx-auto">
+    <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] min-h-screen">
+      <Toast />
+      <div className="pt-6 sm:pt-10 px-6 sm:px-12">
         <div className="text-left">
           <h2 className="text-4xl font-bold mt-2">Soumettre un nouvel avis</h2>
         </div>

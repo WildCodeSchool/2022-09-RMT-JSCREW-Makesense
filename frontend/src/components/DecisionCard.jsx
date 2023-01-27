@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 
+import { Avatar } from "@assets/";
+
 function DecisionCard({ decisionsMaking }) {
   return (
     <Link
-      className="max-w-sm flex flex-col rounded-lg border-2 border-[#e7ebec] overflow-hidden ml-10 my-2 w-1/3 px-2"
+      className="max-w-sm flex flex-col rounded-lg border-2 border-[#e7ebec] overflow-hidden ml-6 sm:ml-10 my-2 w-5/6 sm:w-1/3 px-2"
       to={`/decision/${decisionsMaking.id}`}
     >
       <div className="px-6 pt-4">
@@ -19,7 +21,7 @@ function DecisionCard({ decisionsMaking }) {
           <div className="flex items-center">
             <img
               className="w-10 h-10 rounded-full mr-4"
-              src="./src/assets/Avatar.png"
+              src={Avatar}
               alt="Avatar of user"
             />
             <p className="text-gray-700 text-base text-sm dark:text-[#e7ebec]">
