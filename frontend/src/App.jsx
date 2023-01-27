@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import UpdateDecision from "@pages/UpdateDecision";
 import MyAdvice from "@pages/MyAdvice";
+import NotFound from "@pages/NotFound";
 import Login from "./pages/Login";
 import MyDecisions from "./pages/MyDecisions";
 import AdminUsersList from "./pages/AdminUsersList";
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/" element={<Private />}>
+          <Route path="*" element={<NotFound />} />
           <Route
             path="home"
             element={
