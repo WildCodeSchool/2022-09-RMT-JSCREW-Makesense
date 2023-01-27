@@ -9,8 +9,8 @@ function SearchPerson() {
   const [searchImpacted, setSearchImpacted] = useState();
   const {
     experts,
-    handleExpert,
     impacted,
+    handleExpert,
     handleImpacted,
     handleDeleteExperts,
     handleDeleteImpacted,
@@ -31,6 +31,7 @@ function SearchPerson() {
     }
   }, [searchExpertInput, searchImpactedInput]);
 
+  /** Fonction de recherche personnes expertes */
   const handleSearchExpert = (e) => {
     const { value } = e.target;
     setSearchImpactedInput();
@@ -38,6 +39,7 @@ function SearchPerson() {
     setSearchExpertInput(value);
   };
 
+  /** Fonction de recherche personnes impactées */
   const handleSearchImpacted = (e) => {
     const { value } = e.target;
     setSearchExpertInput();
@@ -45,11 +47,13 @@ function SearchPerson() {
     setSearchImpactedInput(value);
   };
 
+  /** Fonction d'ajout personnes expertes */
   const handleExpertAdd = (user) => {
     handleExpert(user);
     setSearchExpert();
   };
 
+  /** Fonction d'ajout personnes impactées */
   const handleImpactedAdd = (user) => {
     handleImpacted(user);
     setSearchImpacted();
@@ -90,7 +94,7 @@ function SearchPerson() {
               experts.map((expert) => {
                 return (
                   <div className="flex">
-                    <p className="w-8/12" required="required">
+                    <p className="w-8/12">
                       - {expert.firstname} {expert.lastname}
                     </p>
                     <button
@@ -139,7 +143,7 @@ function SearchPerson() {
               impacted.map((impact) => {
                 return (
                   <div className="flex">
-                    <p className="w-8/12" required="required">
+                    <p className="w-8/12">
                       - {impact.firstname} {impact.lastname}
                     </p>
                     <button
