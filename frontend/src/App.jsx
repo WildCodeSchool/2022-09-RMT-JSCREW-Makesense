@@ -15,6 +15,7 @@ import AllDecisions from "./pages/AllDecisions";
 import Footer from "./components/Footer";
 import Private from "./layout/Private";
 import Admin from "./layout/Admin";
+import BackToTopButton from "./components/BackToTopButton";
 
 import "./App.css";
 
@@ -62,6 +63,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
+      <BackToTopButton />
       <Footer />
     </Router>
   );
