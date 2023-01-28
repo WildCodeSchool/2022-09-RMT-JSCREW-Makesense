@@ -73,16 +73,16 @@ function AdminUsersList() {
     confirmAlert({
       title:
         value === null
-          ? "Confirmer la suppression"
-          : "Confirmer le changement de rôle",
+          ? `Confirmez-vous la suppression de l'utilisateur "${user.firstname} ${user.lastname}" ?`
+          : `Confirmez-vous le changement de rôle de l'utilisateur "${user.firstname} ${user.lastname}" ?`,
       buttons: [
+        {
+          label: "Non",
+        },
         {
           label: "Oui",
           onClick: () =>
             value === null ? deleteUser(user) : handleNewRole(user, value),
-        },
-        {
-          label: "Non",
         },
       ],
     });
