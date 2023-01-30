@@ -88,7 +88,8 @@ export default function ShowOneDecision() {
               </h2>
               {(user.role === "administrator" ||
                 user.id === oneDecision.user_id) &&
-                (oneDecision.decisionStatus_id === 1 || oneDecision.decisionStatus_id === 2) && (
+                (oneDecision.decisionStatus_id === 1 ||
+                  oneDecision.decisionStatus_id === 2) && (
                   <div className="flex justify-center">
                     <button
                       type="button"
@@ -178,7 +179,9 @@ export default function ShowOneDecision() {
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
                 Décision Définitive
               </summary>
-              <p className="text-black ml-10 mb-5">{oneDecision.finalDecision}</p>
+              <p className="text-black ml-10 mb-5">
+                {oneDecision.finalDecision}
+              </p>
             </details>
           </div>
           <div className="text-center sm:w-1/5 sm:border-l-2">

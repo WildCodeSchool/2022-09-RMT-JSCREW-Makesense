@@ -15,6 +15,13 @@ class DesignatedUserManager extends AbstractManager {
       [pers.user_id, pers.decisionMaking_id, pers.status_id]
     );
   }
+
+  delete(id) {
+    return this.connection.query(
+      `delete from ${this.table} where decisionMaking_id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = DesignatedUserManager;
