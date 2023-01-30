@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const models = require("../models");
 
 const browse = (req, res) => {
@@ -137,17 +138,25 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.decisionMaking
+  models.designatedUser
     .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
+    .then(([row]) => {
+      models.decisionMaking
+        .delete(req.params.id)
+        .then(([result]) => {
+          if (result.affectedRows === 0) {
+            res.sendStatus(404);
+          } else {
+            res.sendStatus(204);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     })
-    .catch((err) => {
-      console.error(err);
+    .catch((error) => {
+      console.error(error);
       res.sendStatus(500);
     });
 };
