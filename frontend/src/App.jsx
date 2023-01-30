@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import Private from "./layout/Private";
 import Admin from "./layout/Admin";
 import BackToTopButton from "./components/BackToTopButton";
+import EditPassword from "./components/UpdatePassword";
 
 import "./App.css";
 
@@ -30,6 +31,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="edit/password" element={<EditPassword />} />
         <Route path="/" element={<Private />}>
           <Route path="*" element={<NotFound />} />
           <Route
