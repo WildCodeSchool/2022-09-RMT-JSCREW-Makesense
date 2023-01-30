@@ -9,7 +9,7 @@ import Logo from "../assets/logo1.svg";
 function UpdatePassword() {
   editMeta("Connexion");
 
-  const [connexion, setConnexion] = useState({ password: "" });
+  const [password, setPassword] = useState({ password: "" });
   const [message, setMessage] = useState("");
   const [hidePassword, setHidePassword] = useState(true);
   const userContext = useContext(User.UserContext);
@@ -19,15 +19,21 @@ function UpdatePassword() {
     setHidePassword(!hidePassword);
   }
 
+  const handleNewPassword = (position, value) => {
+    const newPassword = { ...password };
+    newPassword[position] = value;
+    setPassword(newPassword);
+  };
+
   const handleSubmit = () => {
     setMessage("");
     const pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-    if (pwdPattern.test(connexion.password)) {
+    if (pwdPattern.test(password.password)) {
       apiConnexion
-        .post("/login", { ...connexion })
+        .post("/login", { ...password })
         .then((res) => {
           navigate("/home");
-          userContext.handleUser(res.data);
+          userContext.handleNewPassword(res.data);
         })
         .catch((err) => {
           setMessage(err.response.data);
@@ -52,9 +58,9 @@ function UpdatePassword() {
               id="password"
               name="password"
               type={hidePassword ? "password" : "text"}
-              value={connexion.password}
+              value={password.password}
               onChange={(e) =>
-                setConnexion({ ...connexion, password: e.target.value })
+                handleNewPassword({ ...password, password: e.target.value })
               }
               autoComplete="current-password"
               required
@@ -86,9 +92,9 @@ function UpdatePassword() {
               id="password"
               name="password"
               type={hidePassword ? "password" : "text"}
-              value={connexion.password}
+              value={password.password}
               onChange={(e) =>
-                setConnexion({ ...connexion, password: e.target.value })
+                handleNewPassword({ ...password, password: e.target.value })
               }
               autoComplete="current-password"
               required
