@@ -4,11 +4,7 @@ import apiConnexion from "@services/apiConnexion";
 const DecisionContext = createContext();
 
 function DecisionProvider({ children }) {
-  /**
-   *maj state creation nouvelle decision
-   * @param {string} position
-   * @param {string} value
-   */
+  /** Maj state creation nouvelle decision */
   const [mainDecision, setMainDecision] = useState({
     title: "",
     description: "",
@@ -19,36 +15,34 @@ function DecisionProvider({ children }) {
     dateFinalDecision: "",
   });
 
-  /**
-   *state en fonction de son statut
-   * @param {string} position
-   * @param {string} value
-   */
+  /** State en fonction du statut */
   const [experts, setExperts] = useState([]);
   const [impacted, setImpacted] = useState([]);
 
   /**
-   *maj du state personnes expertes choisies
-   * @param {string} position
-   * @param {string} value
+   * Maj du state personnes expertes choisies
+   * @param {object} addExpert
    */
   const handleExpert = (addExpert) => {
-    const newExpert = [...experts, addExpert];
-    setExperts(newExpert);
+    if (!experts.some((exp) => exp.id === addExpert.id)) {
+      const newExpert = [...experts, addExpert];
+      setExperts(newExpert);
+    }
   };
 
   /**
-   *maj du state personnes impactées choisies
-   * @param {string} position
-   * @param {string} value
+   * Maj du state personnes impactées choisies
+   * @param {object} addImpacted
    */
   const handleImpacted = (addImpacted) => {
-    const newImpacted = [...impacted, addImpacted];
-    setImpacted(newImpacted);
+    if (!impacted.some((imp) => imp.id === addImpacted.id)) {
+      const newImpacted = [...impacted, addImpacted];
+      setImpacted(newImpacted);
+    }
   };
 
   /**
-   *maj du state en fonction de la saisie
+   * Maj du state en fonction de la saisie
    * @param {string} position
    * @param {string} value
    */
@@ -58,18 +52,27 @@ function DecisionProvider({ children }) {
     setMainDecision(newDecision);
   };
 
+  /**
+   * Fonction suppression d'un expert choisi
+   * @param {array} expert
+   */
   const handleDeleteExperts = (expert) => {
     const newExpertList = [...experts];
     newExpertList.splice(newExpertList.indexOf(expert), 1);
     setExperts(newExpertList);
   };
 
+  /**
+   * Fonction suppression d'une personne impactée choisie
+   * @param {array} impact
+   */
   const handleDeleteImpacted = (impact) => {
     const newImpactedList = [...impacted];
     newImpactedList.splice(newImpactedList.indexOf(impact), 1);
     setImpacted(newImpactedList);
   };
 
+  /** Fonction création d'une nouvelle décision */
   const createNewDecision = () => {
     return apiConnexion
       .post("/decisionsMaking", {

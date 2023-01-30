@@ -5,8 +5,10 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import SearchPerson from "@components/SearchPerson";
+import { confirmAlert } from "react-confirm-alert";
 import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function NewDecision() {
   editMeta("Créer une prise de décision");
@@ -16,11 +18,7 @@ function NewDecision() {
     ExportContextDecision.DecisionContext
   );
 
-  /**
-   *maj de la date du jour
-   * @param {string} position
-   * @param {string} value
-   */
+  /** maj de la date du jour */
   const getDate = () => {
     const date = new Date();
     return `${date.toISOString().split("T")[0]}`;
@@ -33,14 +31,30 @@ function NewDecision() {
     return `${theFinalDate.toISOString().split("T")[0]}`;
   };
 
-  const sendFormDecision = async (e) => {
-    e.preventDefault();
+  /** Envoie du formulaire */
+  const sendForm = async () => {
     const respons = await createNewDecision();
     if (respons.status === 201) {
       navigate(`/decision/${respons.data.id}`);
     }
   };
 
+  /** Fonction qui alerte par un modal de confirmation de la création d'une nouvelle décision */
+  function sendFormDecision(e) {
+    e.preventDefault();
+    confirmAlert({
+      title: "Confirmez-vous la création d'une nouvelle prise de décision ?",
+      buttons: [
+        {
+          label: "Non",
+        },
+        {
+          label: "Oui",
+          onClick: () => sendForm(),
+        },
+      ],
+    });
+  }
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
       <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
@@ -60,7 +74,7 @@ function NewDecision() {
                         type="text"
                         id="decisionTitle"
                         name="title"
-                        required
+                        required="required"
                         value={mainDecision.title}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -76,7 +90,7 @@ function NewDecision() {
                         type="text"
                         id="decisionDetail"
                         name="description"
-                        required
+                        required="required"
                         value={mainDecision.description}
                         onChange={(e) =>
                           handleMainDecision(e.target.name, e.target.value)
@@ -94,7 +108,7 @@ function NewDecision() {
                     type="text"
                     id="impact"
                     name="impact"
-                    required
+                    required="required"
                     value={mainDecision.impact}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
@@ -108,7 +122,7 @@ function NewDecision() {
                     type="text"
                     id="profit"
                     name="profit"
-                    required
+                    required="required"
                     value={mainDecision.profit}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)
@@ -122,7 +136,7 @@ function NewDecision() {
                     type="text"
                     id="decisionTitle"
                     name="risk"
-                    required
+                    required="required"
                     value={mainDecision.risk}
                     onChange={(e) =>
                       handleMainDecision(e.target.name, e.target.value)

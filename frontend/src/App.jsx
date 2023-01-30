@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import UpdateDecision from "@pages/UpdateDecision";
 import MyAdvice from "@pages/MyAdvice";
+import NotFound from "@pages/NotFound";
 import Login from "./pages/Login";
+import MyDecisions from "./pages/MyDecisions";
 import AdminUsersList from "./pages/AdminUsersList";
 import AdminNewUser from "./pages/AdminNewUser";
 import NewDecision from "./pages/NewDecision";
@@ -13,6 +15,7 @@ import AllDecisions from "./pages/AllDecisions";
 import Footer from "./components/Footer";
 import Private from "./layout/Private";
 import Admin from "./layout/Admin";
+import BackToTopButton from "./components/BackToTopButton";
 
 import "./App.css";
 
@@ -28,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/" element={<Private />}>
+          <Route path="*" element={<NotFound />} />
           <Route
             path="home"
             element={
@@ -35,7 +39,16 @@ function App() {
             }
           />
           <Route path="user/decision/new" element={<NewDecision />} />
-          <Route path="decision/:id/update" element={<UpdateDecision />} />
+          <Route
+            path="user/:userId/decisions/:id"
+            element={<UpdateDecision />}
+          />
+          <Route
+            path="decisions"
+            element={
+              <MyDecisions search={search} handleSearch={handleSearch} />
+            }
+          />
           <Route
             path="archives"
             element={
@@ -50,6 +63,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
+      <BackToTopButton />
       <Footer />
     </Router>
   );

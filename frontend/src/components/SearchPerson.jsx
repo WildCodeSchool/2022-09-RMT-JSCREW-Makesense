@@ -9,8 +9,8 @@ function SearchPerson() {
   const [searchImpacted, setSearchImpacted] = useState();
   const {
     experts,
-    handleExpert,
     impacted,
+    handleExpert,
     handleImpacted,
     handleDeleteExperts,
     handleDeleteImpacted,
@@ -31,6 +31,7 @@ function SearchPerson() {
     }
   }, [searchExpertInput, searchImpactedInput]);
 
+  /** Fonction de recherche personnes expertes */
   const handleSearchExpert = (e) => {
     const { value } = e.target;
     setSearchImpactedInput();
@@ -38,6 +39,7 @@ function SearchPerson() {
     setSearchExpertInput(value);
   };
 
+  /** Fonction de recherche personnes impactées */
   const handleSearchImpacted = (e) => {
     const { value } = e.target;
     setSearchExpertInput();
@@ -45,11 +47,13 @@ function SearchPerson() {
     setSearchImpactedInput(value);
   };
 
+  /** Fonction d'ajout personnes expertes */
   const handleExpertAdd = (user) => {
     handleExpert(user);
     setSearchExpert();
   };
 
+  /** Fonction d'ajout personnes impactées */
   const handleImpactedAdd = (user) => {
     handleImpacted(user);
     setSearchImpacted();
@@ -59,13 +63,12 @@ function SearchPerson() {
     <div>
       <div className="expertPerson mb-8">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personnes expertes*
+          Personne(s) experte(s)*
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchExpert}
-          required
         />
         <div className="searchResults absolute">
           {searchExpert &&
@@ -73,7 +76,7 @@ function SearchPerson() {
               return (
                 <button
                   type="button"
-                  className="searchResult flex w-full bg-gray-300 p-2"
+                  className="searchResult flex w-full bg-gray-300 p-2 dark:text-[#0c3944]"
                   key={user.id}
                   onClick={() => handleExpertAdd(user)}
                 >
@@ -84,7 +87,7 @@ function SearchPerson() {
         </div>
         <div className="choosenExpert">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personnes expertes choisies
+            Personne(s) experte(s) choisie(s)
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {experts &&
@@ -109,13 +112,12 @@ function SearchPerson() {
       </div>
       <div className="impactedPerson">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personnes impactées*
+          Personne(s) impactée(s)*
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
           onChange={handleSearchImpacted}
-          required
         />
         <div className="searchResults absolute">
           {searchImpacted &&
@@ -123,7 +125,7 @@ function SearchPerson() {
               return (
                 <button
                   type="button"
-                  className="searchResult flex w-full bg-gray-300 p-2"
+                  className="searchResult flex w-full bg-gray-300 dark:text-[#0c3944] p-2"
                   key={user.id}
                   onClick={() => handleImpactedAdd(user)}
                 >
@@ -134,7 +136,7 @@ function SearchPerson() {
         </div>
         <div className="choosenImpacted my-5">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personnes impactées choisies
+            Personne(s) impactée(s) choisie(s)
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {impacted &&
