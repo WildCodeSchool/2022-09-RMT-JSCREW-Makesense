@@ -20,6 +20,15 @@ export default function ShowOneDecision() {
   };
   editMeta(oneDecision.title);
 
+  /* récupération de la date du jour */
+
+  const dateOfTheDay = () => {
+    const date = new Date();
+    return `${date.getTime()}`;
+  };
+
+  /* récupération des informations de la décision en fonction de l'id */
+
   useEffect(() => {
     apiConnexion
       .get(`decisionsMaking/${id}`)
@@ -29,6 +38,10 @@ export default function ShowOneDecision() {
       .catch((err) => console.error(err));
   }, [id]);
 
+  /** récupération de la date de création et génération des dates en conséquences 
+  @params (array) oneDecision
+  */
+
   const dateCreate = new Date(oneDecision.dateCreate);
   const timeDate = dateCreate.getTime();
 
@@ -36,15 +49,6 @@ export default function ShowOneDecision() {
   const dateFirstDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 4);
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
-
-  /**
-   *maj de la date du jour
-   */
-
-  const dateOfTheDay = () => {
-    const date = new Date();
-    return `${date.getTime()}`;
-  };
 
   const deleteOneDecision = () => {
     apiConnexion
@@ -164,6 +168,18 @@ export default function ShowOneDecision() {
               <p className="text-black ml-10 mb-5">
                 {oneDecision.firstDecision}
               </p>
+            </details>
+            <details className="border-b-2 sm:ml-8">
+              <summary className="text-2xl font-bold items-center mt-5 mb-3">
+                Conflits
+              </summary>
+              <p className="text-lg mb-5 sm:ml-10">test</p>
+            </details>
+            <details className="border-b-2 sm:ml-8">
+              <summary className="text-2xl font-bold items-center mt-5 mb-3">
+                Décision Définitive
+              </summary>
+              <p className="text-black ml-10 mb-5">{oneDecision.finalDecision}</p>
             </details>
           </div>
           <div className="text-center sm:w-1/5 sm:border-l-2">

@@ -3,7 +3,7 @@ import apiConnexion from "../services/apiConnexion";
 
 import DecisionCard from "./DecisionCard";
 
-function DecisionList({ search, statusId, title }) {
+function DecisionList({ search, statusId, title, definitive }) {
   const [decisionList, setDecisionList] = useState();
 
   useEffect(() => {
@@ -27,6 +27,7 @@ function DecisionList({ search, statusId, title }) {
                 <DecisionCard
                   key={decisionsMaking.id}
                   decisionsMaking={decisionsMaking}
+                  definitive={definitive}
                 />
               ))}
           </div>

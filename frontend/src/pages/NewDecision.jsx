@@ -1,3 +1,5 @@
+/* eslint no-return-assign: "error" */
+
 import React, { useContext } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -19,7 +21,14 @@ function NewDecision() {
   /** maj de la date du jour */
   const getDate = () => {
     const date = new Date();
-    return `${date.toLocaleDateString()}`;
+    return `${date.toISOString().split("T")[0]}`;
+  };
+
+  const finalDate = () => {
+    const date = new Date();
+    const timeDate = date.getTime();
+    const theFinalDate = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
+    return `${theFinalDate.toISOString().split("T")[0]}`;
   };
 
   /** Envoie du formulaire */
@@ -140,7 +149,23 @@ function NewDecision() {
           <div className="decisionByUser sm:w-6/12">
             <div className="flex justify-start mb-5 dark:text-[#e7ebec]">
               <p className="pr-5 text-xl font-bold">Date de création :</p>
-              <p className="text-xl">{getDate()}</p>
+              <p className="text-xl">{new Date().toLocaleDateString()}</p>
+              <p
+                className="hidden text-xl"
+                onChange={(e) =>
+                  handleMainDecision(e.target.name, e.target.value)
+                }
+              >
+                {(mainDecision.dateCreate = getDate())}
+              </p>
+              <p
+                className="hidden ml-6 text-xl"
+                onChange={(e) =>
+                  handleMainDecision(e.target.name, e.target.value)
+                }
+              >
+                {(mainDecision.dateFinalDecision = finalDate())}
+              </p>
             </div>
             <div className="mb-2">
               <SearchPerson SearchPerson={SearchPerson} />
