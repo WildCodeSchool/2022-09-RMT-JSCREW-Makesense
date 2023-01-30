@@ -7,7 +7,7 @@ import editMeta from "../services/seo";
 import Logo from "../assets/logo1.svg";
 
 function UpdatePassword() {
-  editMeta("Connexion");
+  editMeta("Changement mot de passe");
 
   const [password, setPassword] = useState({ password: "" });
   const [message, setMessage] = useState("");
@@ -30,7 +30,7 @@ function UpdatePassword() {
     const pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     if (pwdPattern.test(password.password)) {
       apiConnexion
-        .post("/login", { ...password })
+        .put("/edit/password", { ...password })
         .then((res) => {
           navigate("/home");
           userContext.handleNewPassword(res.data);

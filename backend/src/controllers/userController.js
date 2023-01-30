@@ -111,6 +111,25 @@ const edit = (req, res) => {
       res.sendStatus(500);
     });
 };
+const editPassword = (req, res) => {
+  const { password } = req.body;
+
+  const id = parseInt(req.params.id, 10);
+
+  models.user
+    .update(password, id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   browse,
@@ -119,4 +138,5 @@ module.exports = {
   validateUser,
   add,
   edit,
+  editPassword,
 };
