@@ -63,7 +63,7 @@ function SearchPerson() {
     <div>
       <div className="expertPerson mb-8">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personne(s) experte(s)*
+          Personne experte
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
@@ -87,7 +87,7 @@ function SearchPerson() {
         </div>
         <div className="choosenExpert">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personne(s) experte(s) choisie(s)
+            Personne(s) experte(s) choisie(s)*
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {experts &&
@@ -112,7 +112,7 @@ function SearchPerson() {
       </div>
       <div className="impactedPerson">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personne(s) impactée(s)*
+          Personne impactée*
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
@@ -136,7 +136,7 @@ function SearchPerson() {
         </div>
         <div className="choosenImpacted my-5">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personne(s) impactée(s) choisie(s)
+            Personne(s) impactée(s) choisie(s)*
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {impacted &&

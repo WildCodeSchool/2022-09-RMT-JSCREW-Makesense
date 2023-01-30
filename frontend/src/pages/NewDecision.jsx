@@ -13,7 +13,7 @@ import editMeta from "../services/seo";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import "react-toastify/dist/ReactToastify.css";
 
-function NewDecision(choosenExperts) {
+function NewDecision() {
   editMeta("Créer une prise de décision");
   const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ function NewDecision(choosenExperts) {
           },
         ],
       });
-    } else toast("Les champs des personnes choisie sont requis");
+    } else toast("Les champs des personnes choisies sont requis.");
   }
 
   return (
@@ -142,7 +142,9 @@ function NewDecision(choosenExperts) {
                     />
                   </div>
                   <div>
-                    <p className="pb-4 text-xl font-bold">Risques potentiels*</p>
+                    <p className="pb-4 text-xl font-bold">
+                      Risques potentiels*
+                    </p>
                     <textarea
                       className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 h-80 w-full sm:w-10/12 border-[#e7ebec] rounded-lg outline-[#ced7da] resize-none mb-10 text-lg"
                       type="text"
@@ -180,7 +182,7 @@ function NewDecision(choosenExperts) {
                 </p>
               </div>
               <div className="mb-2">
-                <SearchPerson SearchPerson={SearchPerson} id={choosenExperts} />
+                <SearchPerson SearchPerson={SearchPerson} />
               </div>
             </div>
           </div>
