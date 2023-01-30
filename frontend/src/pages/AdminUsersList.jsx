@@ -93,7 +93,7 @@ function AdminUsersList() {
   };
 
   return (
-    <div className="dark:bg-[#0c3944]">
+    <div className="min-h-screen dark:bg-[#0c3944]">
       <Toast />
       <Search search={searchUser} handleSearch={setSearchUSer} />
       <div className="h-min-screen dark:bg-[#0c3944] dark:text-[#e7ebec] py-8">
