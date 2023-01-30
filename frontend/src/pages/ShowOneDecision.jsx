@@ -167,9 +167,7 @@ export default function ShowOneDecision() {
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
                 Première décision
               </summary>
-              <p className="text-black ml-10 mb-5">
-                {oneDecision.firstDecision}
-              </p>
+              <p className="text-lg ml-10 mb-5">{oneDecision.firstDecision}</p>
             </details>
             <details className="border-b-2 sm:ml-8">
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
@@ -190,9 +188,7 @@ export default function ShowOneDecision() {
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
                 Décision Définitive
               </summary>
-              <p className="text-black ml-10 mb-5">
-                {oneDecision.finalDecision}
-              </p>
+              <p className="text-lg ml-10 mb-5">{oneDecision.finalDecision}</p>
             </details>
           </div>
           <div className="text-center sm:w-1/5 sm:border-l-2">
