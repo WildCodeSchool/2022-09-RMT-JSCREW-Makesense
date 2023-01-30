@@ -1,15 +1,23 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
-
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { confirmAlert } from "react-confirm-alert";
+import Toast from "@components/Toast";
 import { Avatar, AvatarDark } from "@assets/";
 import apiConnexion from "../services/apiConnexion";
 import editMeta from "../services/seo";
 import User from "../contexts/User";
 
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 export default function ShowOneDecision() {
   const [oneDecision, setOneDecision] = useState([]);
   const { id } = useParams();
   const { user } = useContext(User.UserContext);
+  const navigate = useNavigate();
+  const notify = (msg) => {
+    toast(msg);
+  };
   editMeta(oneDecision.title);
 
   useEffect(() => {
@@ -37,6 +45,32 @@ export default function ShowOneDecision() {
     const date = new Date();
     return `${date.getTime()}`;
   };
+
+  const deleteOneDecision = () => {
+    apiConnexion
+      .delete(`decisionsMaking/${id}`)
+      .then(() => {
+        notify(`Votre décision a été supprimée.`);
+        navigate("/home");
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const submit = (decision) => {
+    confirmAlert({
+      title: `Confirmez-vous la suppression de la décision "${oneDecision.title}" ?`,
+      buttons: [
+        {
+          label: "Non",
+        },
+        {
+          label: "Oui",
+          onClick: () => deleteOneDecision(decision),
+        },
+      ],
+    });
+  };
+
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
       {oneDecision && (
@@ -46,15 +80,26 @@ export default function ShowOneDecision() {
               {oneDecision.status}
             </p>
             <div className="flex flex-col sm:flex-row">
-              <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
+              <h2 className="text-center font-bold text-3xl mb-2">
+                {oneDecision.title}
+              </h2>
               {(user.role === "administrator" ||
                 user.id === oneDecision.user_id) && (
-                <Link
-                  to={`/user/${user.id}/decisions/${id}`}
-                  className="text-center sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-5 py-2 text-ml mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
-                >
-                  Modifier
-                </Link>
+                <div className="flex justify-center">
+                  <button
+                    type="button"
+                    onClick={submit}
+                    className="text-center mr-0 sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-4 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
+                  >
+                    Supprimer
+                  </button>
+                  <Link
+                    to={`/user/${user.id}/decisions/${id}`}
+                    className="text-center ml-4 sm:ml-4 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-6 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
+                  >
+                    Modifier
+                  </Link>
+                </div>
               )}
             </div>
             <div className="inline-flex mb-12 mt-2">
