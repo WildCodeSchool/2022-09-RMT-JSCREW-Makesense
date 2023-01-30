@@ -76,7 +76,7 @@ function SearchPerson() {
               return (
                 <button
                   type="button"
-                  className="searchResult flex w-full bg-gray-300 p-2"
+                  className="searchResult flex w-full bg-gray-300 p-2 dark:text-[#0c3944]"
                   key={user.id}
                   onClick={() => handleExpertAdd(user)}
                 >
@@ -125,7 +125,7 @@ function SearchPerson() {
               return (
                 <button
                   type="button"
-                  className="searchResult flex w-full bg-gray-300 p-2"
+                  className="searchResult flex w-full bg-gray-300 dark:text-[#0c3944] p-2"
                   key={user.id}
                   onClick={() => handleImpactedAdd(user)}
                 >
