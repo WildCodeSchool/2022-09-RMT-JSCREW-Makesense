@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -372,15 +370,15 @@ export default function ShowOneDecision() {
                 />
               </div>
             </div>
-            {oneDecision.decisionStatus_id ===
-            3 ? null : oneDecision.decisionStatus_id === 2 ? (
+            {oneDecision.decisionStatus_id === 2 && (
               <Link
                 to={`/decision/${id}/conflict`}
                 className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
               >
                 Donner mon avis
               </Link>
-            ) : (
+            )}
+            {oneDecision.decisionStatus_id === 1 && (
               <Link
                 to={`/decision/${id}/advice`}
                 className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"

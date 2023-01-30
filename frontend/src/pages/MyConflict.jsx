@@ -46,9 +46,7 @@ export default function MyConflict() {
       <Toast />
       <div className="pt-6 sm:pt-10 px-6 sm:px-12">
         <div className="text-left">
-          <h2 className="text-4xl font-bold mt-2">
-            Soumettre un nouvel conflit
-          </h2>
+          <h2 className="text-4xl font-bold mt-2">Soumettre un nouvel avis</h2>
         </div>
         <div className="mb-6">
           <form onSubmit={handleSubmit}>
