@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import SearchPerson from "@components/SearchPerson";
 import { confirmAlert } from "react-confirm-alert";
 import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function NewDecision(choosenExperts) {
   editMeta("Créer une prise de décision");
@@ -34,6 +36,10 @@ function NewDecision(choosenExperts) {
     }
   };
 
+  const notify = (msg) => {
+    toast(msg);
+  };
+
   /** Fonction qui alerte par un modal de confirmation de la création d'une nouvelle décision */
   function sendFormDecision(e) {
     e.preventDefault();
@@ -50,9 +56,9 @@ function NewDecision(choosenExperts) {
           },
         ],
       });
-    }
-    return false;
+    } else notify("Les champs des personnes choisie sont requis");
   }
+
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
       <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
