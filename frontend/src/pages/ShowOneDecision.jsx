@@ -117,6 +117,18 @@ export default function ShowOneDecision() {
           </summary>
           <p className="text-black ml-10 mb-5">{oneDecision.firstDecision}</p>
         </details>
+        <details className="border-b-2 sm:ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
+            Conflits
+          </summary>
+          <p className="text-lg mb-5 sm:ml-10">test</p>
+        </details>
+        <details className="border-b-2 sm:ml-8">
+          <summary className="text-2xl font-bold items-center mt-5 mb-3">
+            Décision Définitive
+          </summary>
+          <p className="text-black ml-10 mb-5">{oneDecision.finalDecision}</p>
+        </details>
       </div>
       <div className="text-center sm:w-1/5 sm:border-l-2">
         <div className="mb-8 sm:mb-16">

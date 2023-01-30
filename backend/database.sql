@@ -302,8 +302,8 @@ VALUES (
         "Pour les salariés, les bénéfices seront multiples : 1. Lien social : Cette décision permettra incontestablement de favoriser le lien social entre les collaborateurs.  2. Productivité : Des études ont démontré que la caféine améliore les performances au travail.",
         "Le principal risque de cette demande tient à la multiplication des pauses café. Les managers seront particulièrement attentifs et veilleront à limiter les abus.",
         3,
-        "2022-12-08",
-        "2023-01-21"
+        "2022-11-08",
+        "2023-01-17"
     ), (
         2,
         17,
@@ -313,8 +313,8 @@ VALUES (
         "Les collaborateurs étant forcés à prendre leurs pauses à l'extérieur de la société pourront bénéficier d'un menu au sein de nos cantines",
         "Certains risques, liés aux allergènes, peuvent être prévenu dès lors de l'entrée de la cantine, il suffira de prévenir le chef cuisinier qui se tiendra à votre disposition, pour qu'il prenne en compte votre demande.",
         1,
-        "2023-04-12",
-        "2023-06-21"
+        "2023-01-28",
+        "2023-04-08"
     ), (
         3,
         14,
@@ -324,7 +324,7 @@ VALUES (
         "Meilleur environnement pour une meilleure rentabilité, ces fauteuils éco-responsable seront changés tous les 5 ans et remis à diverses associations pour être réutilisés dans les pays les plus nécessiteux.",
         "Date de livraison indéterminée, certains open-space seront livrés plusieurs semaines avant d'autres",
         1,
-        "2023-01-02",
+        "2023-01-27",
         "2023-03-13"
     ), (
         4,
@@ -363,8 +363,8 @@ VALUES (
         "Cependant, il n'est pas à exclure un allongement de la durée des travaux selon les difficultés d’approvisionnement des fournitures de
         bureautique. Cela peut avoir un impact sur le chiffre d'affaires de l'entreprise compte tenu de la dégradation temporaire de l'environnement de travail. Néanmoins, nous espérons que les travaux se dérouleront sans incident.",
         2,
-        "2023-03-02",
-        "2023-05-11"
+        "2023-01-02",
+        "2023-03-13"
     ), (
         5,
         18,
@@ -437,4 +437,18 @@ CREATE TABLE
         CONSTRAINT fk_conflict_user FOREIGN KEY (user_id) REFERENCES `user`(id),
         decisionMaking_id INT NOT NULL,
         CONSTRAINT fk_conflict_firstDecision FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id)
+    );
+
+INSERT INTO
+    conflict (
+        id,
+        textConflict,
+        user_id,
+        decisionMaking_id
+    )
+VALUES (
+        1,
+        "Cela ne me semble pas très raisonnable au vu des coûts. Je ne suis donc pas tout à fait en accord avec les ambitions de l'entreprise, je dirais même que je suis sceptique pour le moment.",
+        20,
+        2
     );
