@@ -84,7 +84,8 @@ export default function ShowOneDecision() {
                 {oneDecision.title}
               </h2>
               {(user.role === "administrator" ||
-                user.id === oneDecision.user_id) && (
+                user.id === oneDecision.user_id) &&
+                (oneDecision.status === 1 || oneDecision.status === 2) && (
                 <div className="flex justify-center">
                   <button
                     type="button"
