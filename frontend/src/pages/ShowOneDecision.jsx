@@ -48,14 +48,15 @@ export default function ShowOneDecision() {
             <div className="flex flex-col sm:flex-row">
               <h2 className="font-bold text-3xl">{oneDecision.title}</h2>
               {(user.role === "administrator" ||
-                user.id === oneDecision.user_id) && (
-                <Link
-                  to={`/user/${user.id}/decisions/${id}`}
-                  className="text-center sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-5 py-2 text-ml mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
-                >
-                  Modifier
-                </Link>
-              )}
+                user.id === oneDecision.user_id) &&
+                (oneDecision.status === 1 || oneDecision.status === 2) && (
+                  <Link
+                    to={`/user/${user.id}/decisions/${id}`}
+                    className="text-center sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-5 py-2 text-ml mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
+                  >
+                    Modifier
+                  </Link>
+                )}
             </div>
             <div className="inline-flex mb-12 mt-2">
               <img
