@@ -11,6 +11,8 @@ function DecisionProvider({ children }) {
     impact: "",
     profit: "",
     risk: "",
+    dateCreate: "",
+    dateFinalDecision: "",
   });
 
   /** State en fonction du statut */

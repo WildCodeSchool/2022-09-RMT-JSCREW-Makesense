@@ -19,6 +19,15 @@ export default function ShowOneDecision() {
   };
   editMeta(oneDecision.title);
 
+  /* récupération de la date du jour */
+
+  const dateOfTheDay = () => {
+    const date = new Date();
+    return `${date.getTime()}`;
+  };
+
+  /* récupération des informations de la décision en fonction de l'id */
+
   useEffect(() => {
     apiConnexion
       .get(`decisionsMaking/${id}`)
@@ -28,6 +37,10 @@ export default function ShowOneDecision() {
       .catch((err) => console.error(err));
   }, [id]);
 
+  /** récupération de la date de création et génération des dates en conséquences 
+  @params (array) oneDecision
+  */
+
   const dateCreate = new Date(oneDecision.dateCreate);
   const timeDate = dateCreate.getTime();
 
@@ -35,15 +48,6 @@ export default function ShowOneDecision() {
   const dateFirstDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 4);
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
-
-  /**
-   *maj de la date du jour
-   */
-
-  const dateOfTheDay = () => {
-    const date = new Date();
-    return `${date.getTime()}`;
-  };
 
   const deleteOneDecision = () => {
     apiConnexion
@@ -79,7 +83,7 @@ export default function ShowOneDecision() {
               {oneDecision.status}
             </p>
             <div className="flex flex-col sm:flex-row">
-              <h2 className="text-center font-bold text-3xl mb-2">
+              <h2 className="text-center sm:text-left font-bold text-3xl mb-2">
                 {oneDecision.title}
               </h2>
               {(user.role === "administrator" ||
@@ -89,13 +93,13 @@ export default function ShowOneDecision() {
                     <button
                       type="button"
                       onClick={submit}
-                      className="text-center mr-0 sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-4 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
+                      className="text-center mr-0 sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-4 py-2 mx-20 sm:mx-0 h-fit font-semibold my-2 sm:mt-0"
                     >
                       Supprimer
                     </button>
                     <Link
                       to={`/user/${user.id}/decisions/${id}`}
-                      className="text-center ml-4 sm:ml-4 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-6 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
+                      className="text-center ml-4 sm:ml-4 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-6 py-2 mx-20 sm:mx-0 h-fit font-semibold my-2 sm:mt-0"
                     >
                       Modifier
                     </Link>
@@ -163,6 +167,18 @@ export default function ShowOneDecision() {
               <p className="text-black ml-10 mb-5">
                 {oneDecision.firstDecision}
               </p>
+            </details>
+            <details className="border-b-2 sm:ml-8">
+              <summary className="text-2xl font-bold items-center mt-5 mb-3">
+                Conflits
+              </summary>
+              <p className="text-lg mb-5 sm:ml-10">test</p>
+            </details>
+            <details className="border-b-2 sm:ml-8">
+              <summary className="text-2xl font-bold items-center mt-5 mb-3">
+                Décision Définitive
+              </summary>
+              <p className="text-black ml-10 mb-5">{oneDecision.finalDecision}</p>
             </details>
           </div>
           <div className="text-center sm:w-1/5 sm:border-l-2">

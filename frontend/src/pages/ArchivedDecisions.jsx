@@ -8,7 +8,12 @@ function ArchivedDecisions({ search, handleSearch }) {
   return (
     <div className="min-h-screen dark:bg-[#0c3944]">
       <Search search={search} handleSearch={handleSearch} />
-      <DecisionList statusId={3} title="Décisions archivées" search={search} />
+      <DecisionList
+        definitive
+        statusId={4}
+        title="Décision(s) archivée(s)"
+        search={search}
+      />
     </div>
   );
 }
