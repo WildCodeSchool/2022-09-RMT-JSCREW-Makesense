@@ -5,7 +5,6 @@ class DecisionMakingManager extends AbstractManager {
     super({ table: "decisionMaking" });
   }
 
-
   findAll(statusId, search) {
     let query = `select dm.id, dm.title, dm.description, dm.impact, dm.profit, dm.risk, dm.dateCreate, dm.dateAdvice, dm.dateFirstDecision, dm.dateConflict, dm.dateFinalDecision, dm.user_id, u.firstname, u.lastname, dm.decisionStatus_id, ds.status from ${this.table} as dm 
   inner join user as u on u.id = dm.user_id

@@ -35,6 +35,13 @@ router.delete(
 );
 
 router.post("/decisions/:id/advice", checkAuth, AdviceController.postAdvice);
+router.post(
+  "/decisions/:id/conflict",
+  checkAuth,
+  ConflictController.postConflict
+);
 router.post("/decisionsMaking", checkAuth, DecisionMakingController.add);
+
+router.get("/conflicts", checkAuth, ConflictController.browse);
 
 module.exports = router;
