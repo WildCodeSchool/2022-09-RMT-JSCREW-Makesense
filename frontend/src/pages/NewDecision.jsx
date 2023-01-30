@@ -23,6 +23,8 @@ function NewDecision() {
     createNewDecision,
     experts,
     impacted,
+    resetImpacted,
+    resetExperts,
   } = useContext(ExportContextDecision.DecisionContext);
 
   /** maj de la date du jour */
@@ -42,6 +44,8 @@ function NewDecision() {
   const sendForm = async () => {
     const respons = await createNewDecision();
     if (respons.status === 201) {
+      resetImpacted();
+      resetExperts();
       navigate(`/decision/${respons.data.id}`);
     }
   };
@@ -70,7 +74,7 @@ function NewDecision() {
       <Toast />
       <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
         <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
-        <form onSubmit={sendFormDecision}>
+         <form onSubmit={(e) => sendFormDecision(e)}>
           <div className="decision sm:flex">
             <div className="writeDecision w-full dark:text-[#e7ebec]">
               <div className="flex">

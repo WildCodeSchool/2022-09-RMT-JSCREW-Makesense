@@ -105,14 +105,14 @@ const add = (req, res) => {
           ...experts.map((exp) => {
             return {
               user_id: exp.id,
-              status: "Personne expertes",
+              status_id: 1,
               decisionMaking_id: result.insertId,
             };
           }),
           ...impacted.map((imp) => {
             return {
               user_id: imp.id,
-              status: "Personne impactée",
+              status_id: 2,
               decisionMaking_id: result.insertId,
             };
           }),
