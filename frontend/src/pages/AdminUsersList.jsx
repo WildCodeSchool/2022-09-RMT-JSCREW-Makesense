@@ -133,7 +133,9 @@ function AdminUsersList() {
                     <td className="p-1.5">
                       {user.firstname} {user.lastname}
                     </td>
-                    <td className="hidden sm:inline-table">{user.email}</td>
+                    <td className="hidden sm:inline-table">
+                      <td className="p-1.5">{user.email}</td>
+                    </td>
                     <td>
                       <div className="flex justify-center sm:w-52">
                         <select
