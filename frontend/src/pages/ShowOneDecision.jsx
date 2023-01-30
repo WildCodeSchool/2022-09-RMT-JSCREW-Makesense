@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { confirmAlert } from "react-confirm-alert";
-import Toast from "@components/Toast";
 import { Avatar, AvatarDark } from "@assets/";
 import apiConnexion from "../services/apiConnexion";
 import editMeta from "../services/seo";
@@ -86,22 +85,22 @@ export default function ShowOneDecision() {
               {(user.role === "administrator" ||
                 user.id === oneDecision.user_id) &&
                 (oneDecision.status === 1 || oneDecision.status === 2) && (
-                <div className="flex justify-center">
-                  <button
-                    type="button"
-                    onClick={submit}
-                    className="text-center mr-0 sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-4 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
-                  >
-                    Supprimer
-                  </button>
-                  <Link
-                    to={`/user/${user.id}/decisions/${id}`}
-                    className="text-center ml-4 sm:ml-4 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-6 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
-                  >
-                    Modifier
-                  </Link>
-                </div>
-              )}
+                  <div className="flex justify-center">
+                    <button
+                      type="button"
+                      onClick={submit}
+                      className="text-center mr-0 sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-4 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
+                    >
+                      Supprimer
+                    </button>
+                    <Link
+                      to={`/user/${user.id}/decisions/${id}`}
+                      className="text-center ml-4 sm:ml-4 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-6 py-2 mx-20 sm:mx-0 font-semibold my-2 sm:mt-0"
+                    >
+                      Modifier
+                    </Link>
+                  </div>
+                )}
             </div>
             <div className="inline-flex mb-12 mt-2">
               <img
