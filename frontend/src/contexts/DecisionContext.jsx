@@ -15,6 +15,8 @@ function DecisionProvider({ children }) {
     impact: "",
     profit: "",
     risk: "",
+    dateCreate: "",
+    dateFinalDecision: "",
   });
 
   /**

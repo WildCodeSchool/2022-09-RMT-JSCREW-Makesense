@@ -57,8 +57,9 @@ class DecisionMakingManager extends AbstractManager {
         profit,
         risk,
         decisionStatus_id,
-        dateCreate
-        ) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+        dateCreate,
+        dateFinalDecision
+        ) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         id,
         decisionMaking.title,
@@ -67,7 +68,8 @@ class DecisionMakingManager extends AbstractManager {
         decisionMaking.profit,
         decisionMaking.risk,
         1,
-        new Date().toISOString().split("T")[0],
+        decisionMaking.dateCreate,
+        decisionMaking.dateFinalDecision,
       ]
     );
   }
