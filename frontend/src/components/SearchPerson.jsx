@@ -3,8 +3,8 @@ import apiConnexion from "../services/apiConnexion";
 import ExportContextDecision from "../contexts/DecisionContext";
 
 function SearchPerson() {
-  const [searchExpertInput, setSearchExpertInput] = useState();
-  const [searchImpactedInput, setSearchImpactedInput] = useState();
+  const [searchExpertInput, setSearchExpertInput] = useState("");
+  const [searchImpactedInput, setSearchImpactedInput] = useState("");
   const [searchExpert, setSearchExpert] = useState();
   const [searchImpacted, setSearchImpacted] = useState();
   const {
@@ -34,7 +34,7 @@ function SearchPerson() {
   /** Fonction de recherche personnes expertes */
   const handleSearchExpert = (e) => {
     const { value } = e.target;
-    setSearchImpactedInput();
+    setSearchImpactedInput("");
     setSearchImpacted();
     setSearchExpertInput(value);
   };
@@ -42,7 +42,7 @@ function SearchPerson() {
   /** Fonction de recherche personnes impactées */
   const handleSearchImpacted = (e) => {
     const { value } = e.target;
-    setSearchExpertInput();
+    setSearchExpertInput("");
     setSearchExpert();
     setSearchImpactedInput(value);
   };
@@ -51,12 +51,14 @@ function SearchPerson() {
   const handleExpertAdd = (user) => {
     handleExpert(user);
     setSearchExpert();
+    setSearchExpertInput("");
   };
 
   /** Fonction d'ajout personnes impactées */
   const handleImpactedAdd = (user) => {
     handleImpacted(user);
     setSearchImpacted();
+    setSearchImpactedInput("");
   };
 
   return (
@@ -68,6 +70,7 @@ function SearchPerson() {
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
+          value={searchExpertInput}
           onChange={handleSearchExpert}
         />
         <div className="searchResults absolute">
@@ -93,7 +96,7 @@ function SearchPerson() {
             {experts &&
               experts.map((expert) => {
                 return (
-                  <div className="flex">
+                  <div className="flex" key={expert.id}>
                     <p className="w-8/12">
                       - {expert.firstname} {expert.lastname}
                     </p>
@@ -117,6 +120,7 @@ function SearchPerson() {
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
+          value={searchImpactedInput}
           onChange={handleSearchImpacted}
         />
         <div className="searchResults absolute">
@@ -142,7 +146,7 @@ function SearchPerson() {
             {impacted &&
               impacted.map((impact) => {
                 return (
-                  <div className="flex">
+                  <div className="flex" key={impact.id}>
                     <p className="w-8/12">
                       - {impact.firstname} {impact.lastname}
                     </p>
