@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import { Avatar } from "@assets/";
+import { Avatar, AvatarDark } from "@assets/";
 import apiConnexion from "../services/apiConnexion";
 import editMeta from "../services/seo";
 import User from "../contexts/User";
@@ -59,9 +59,14 @@ export default function ShowOneDecision() {
             </div>
             <div className="inline-flex mb-12 mt-2">
               <img
-                className="w-14 h-14"
+                className="w-14 h-14 dark:hidden"
                 src={Avatar}
                 alt="Avatar utilisateur"
+              />
+              <img
+                className="w-14 h-14 hidden dark:inline"
+                src={AvatarDark}
+                alt="Avatar of user"
               />
               <p className="ml-5 mt-3.5 text-xl">
                 Par {oneDecision.firstname} {oneDecision.lastname}
@@ -210,49 +215,89 @@ export default function ShowOneDecision() {
               </h3>
               <div className="flex justify-center mt-3">
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
                 />
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
                 />
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
                 />
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
                 />
               </div>
             </div>
-            <div className="mb-20">
+            <div className="mb-10">
               <h3 className="text-2xl font-bold mt-8">Personnes expertes</h3>
               <div className="flex justify-center mt-3">
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
                 />
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
                 />
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
                 />
                 <img
-                  className="w-10 h-10 rounded-full mr-4"
+                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
                   src={Avatar}
                   alt="Avatar utilisateur"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
+                />
+                <img
+                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                  src={AvatarDark}
+                  alt="Avatar of user"
                 />
               </div>
             </div>
