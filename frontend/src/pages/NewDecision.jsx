@@ -34,14 +34,14 @@ function NewDecision() {
   function sendFormDecision(e) {
     e.preventDefault();
     confirmAlert({
-      title: "Êtes-vous sûr de vouloir créer une nouvelle décision ?",
+      title: "Confirmez-vous la création d'une nouvelle prise de décision ?",
       buttons: [
+        {
+          label: "Non",
+        },
         {
           label: "Oui",
           onClick: () => sendForm(),
-        },
-        {
-          label: "Non",
         },
       ],
     });
