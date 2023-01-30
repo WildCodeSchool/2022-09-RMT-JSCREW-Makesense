@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import Toast from "@components/Toast";
+import Search from "@components/Search";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
 
+import editMeta from "../services/seo";
 import apiConnexion from "../services/apiConnexion";
 import "react-toastify/dist/ReactToastify.css";
-import editMeta from "../services/seo";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
-function AdminUsersList() {
+function AdminUsersList({ searchPerson, handleSearch }) {
   editMeta("Gestion des utilisateurs");
 
   const [usersList, setUsersList] = useState();
@@ -89,8 +90,9 @@ function AdminUsersList() {
   };
 
   return (
-    <>
+    <div className="dark:bg-[#0c3944]">
       <Toast />
+      <Search search={searchPerson} handleSearch={handleSearch} />
       <div className="h-min-screen dark:bg-[#0c3944] dark:text-[#e7ebec] py-8">
         <h1 className="flex justify-center font-bold text-3xl sm:px-12 pb-6">
           Gestion des utilisateurs
@@ -147,7 +149,7 @@ function AdminUsersList() {
           </table>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
