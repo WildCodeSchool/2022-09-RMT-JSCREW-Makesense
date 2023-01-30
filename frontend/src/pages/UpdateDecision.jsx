@@ -40,7 +40,7 @@ function UpdateDecision() {
         finalDecision: decision.finalDecision,
       })
       .then(() => {
-        toast("Décision modifiée avec succès !");
+        toast(`La décision "${decision.title}" a été modifiée.`);
         setTimeout(() => navigate(`/decision/${id}`), 2500);
       })
       .catch((err) => {

@@ -35,7 +35,7 @@ export default function MyAdvice() {
     apiConnexion
       .post(`/decisions/${id}/advice`, myAdviceText)
       .then((res) => {
-        notify("Votre avis a bien été ajouté");
+        notify("Votre avis a été ajouté.");
         setTimeout(() => navigate(`/decision/${id}`), 2000);
       })
       .catch((err) => console.error(err));

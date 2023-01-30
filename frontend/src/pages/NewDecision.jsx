@@ -16,16 +16,13 @@ function NewDecision() {
     ExportContextDecision.DecisionContext
   );
 
-  /**
-   *maj de la date du jour
-   * @param {string} position
-   * @param {string} value
-   */
+  /** maj de la date du jour */
   const getDate = () => {
     const date = new Date();
     return `${date.toLocaleDateString()}`;
   };
 
+  /** Envoie du formulaire */
   const sendForm = async () => {
     const respons = await createNewDecision();
     if (respons.status === 201) {

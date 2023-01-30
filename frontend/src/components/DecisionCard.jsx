@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Avatar } from "@assets/";
+import { Avatar, AvatarDark } from "@assets/";
 
 function DecisionCard({ decisionsMaking }) {
   return (
@@ -20,8 +20,13 @@ function DecisionCard({ decisionsMaking }) {
         <div>
           <div className="flex items-center">
             <img
-              className="w-10 h-10 rounded-full mr-4"
+              className="w-10 h-10 rounded-full mr-4 dark:hidden"
               src={Avatar}
+              alt="Avatar of user"
+            />
+            <img
+              className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+              src={AvatarDark}
               alt="Avatar of user"
             />
             <p className="text-gray-700 text-base text-sm dark:text-[#e7ebec]">
