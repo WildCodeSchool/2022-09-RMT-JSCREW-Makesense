@@ -14,6 +14,20 @@ const browse = (req, res) => {
     });
 };
 
+const browseByUser = (req, res) => {
+  const { status, search } = req.query;
+  const { userId } = req.params;
+  models.decisionMaking
+    .findByUser(status, search, userId)
+    .then(([decisionMaking]) => {
+      res.send(decisionMaking);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   const { id } = req.params;
 
@@ -158,6 +172,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  browseByUser,
   read,
   readByUser,
   update,
