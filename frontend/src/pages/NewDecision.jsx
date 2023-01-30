@@ -8,13 +8,17 @@ import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-function NewDecision() {
+function NewDecision(choosenExperts) {
   editMeta("Créer une prise de décision");
   const navigate = useNavigate();
 
-  const { mainDecision, handleMainDecision, createNewDecision } = useContext(
-    ExportContextDecision.DecisionContext
-  );
+  const {
+    mainDecision,
+    handleMainDecision,
+    createNewDecision,
+    experts,
+    impacted,
+  } = useContext(ExportContextDecision.DecisionContext);
 
   /** maj de la date du jour */
   const getDate = () => {
@@ -33,18 +37,21 @@ function NewDecision() {
   /** Fonction qui alerte par un modal de confirmation de la création d'une nouvelle décision */
   function sendFormDecision(e) {
     e.preventDefault();
-    confirmAlert({
-      title: "Confirmez-vous la création d'une nouvelle prise de décision ?",
-      buttons: [
-        {
-          label: "Non",
-        },
-        {
-          label: "Oui",
-          onClick: () => sendForm(),
-        },
-      ],
-    });
+    if (experts.length > 0 && impacted.length > 0) {
+      confirmAlert({
+        title: "Confirmez-vous la création d'une nouvelle prise de décision ?",
+        buttons: [
+          {
+            label: "Non",
+          },
+          {
+            label: "Oui",
+            onClick: () => sendForm(),
+          },
+        ],
+      });
+    }
+    return false;
   }
   return (
     <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
@@ -143,7 +150,7 @@ function NewDecision() {
               <p className="text-xl">{getDate()}</p>
             </div>
             <div className="mb-2">
-              <SearchPerson SearchPerson={SearchPerson} />
+              <SearchPerson SearchPerson={SearchPerson} id={choosenExperts} />
             </div>
           </div>
         </div>
