@@ -14,6 +14,20 @@ const browse = (req, res) => {
     });
 };
 
+const browseByUser = (req, res) => {
+  const { status, search } = req.query;
+  const { userId } = req.params;
+  models.decisionMaking
+    .findByUser(status, search, userId)
+    .then(([decisionMaking]) => {
+      res.send(decisionMaking);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = async (req, res) => {
   const { id } = req.params;
   try {
@@ -110,14 +124,14 @@ const add = (req, res) => {
           ...experts.map((exp) => {
             return {
               user_id: exp.id,
-              status: "Personne expertes",
+              status_id: 1,
               decisionMaking_id: result.insertId,
             };
           }),
           ...impacted.map((imp) => {
             return {
               user_id: imp.id,
-              status: "Personne impactée",
+              status_id: 2,
               decisionMaking_id: result.insertId,
             };
           }),
@@ -163,6 +177,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  browseByUser,
   read,
   readByUser,
   update,

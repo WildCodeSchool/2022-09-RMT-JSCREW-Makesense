@@ -12,6 +12,11 @@ const ConflictController = require("./controllers/conflictController");
 const UserController = require("./controllers/userController");
 
 router.get("/decisionsMaking", checkAuth, DecisionMakingController.browse);
+router.get(
+  "/decisionsMaking/user/:userId",
+  checkAuth,
+  DecisionMakingController.browseByUser
+);
 router.get("/decisionsMaking/:id", checkAuth, DecisionMakingController.read);
 router.get("/roles", checkAuth, DesignatedUserController.browse);
 router.get("/advices", checkAuth, AdviceController.browse);

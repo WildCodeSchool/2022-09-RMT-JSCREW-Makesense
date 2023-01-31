@@ -84,6 +84,14 @@ function DecisionProvider({ children }) {
       .catch((error) => error);
   };
 
+  const resetImpacted = () => {
+    setImpacted([]);
+  };
+
+  const resetExperts = () => {
+    setExperts([]);
+  };
+
   return (
     <DecisionContext.Provider
       value={{
@@ -96,6 +104,8 @@ function DecisionProvider({ children }) {
         createNewDecision,
         handleDeleteExperts,
         handleDeleteImpacted,
+        resetImpacted,
+        resetExperts,
       }}
     >
       {children}

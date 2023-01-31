@@ -383,6 +383,16 @@ VALUES (
 
 UPDATE decisionMaking SET firstDecision = "test first decision", finalDecision = "test final decision" WHERE id = 1;
 
+
+DROP TABLE IF EXISTS `status`;
+
+CREATE TABLE `status` (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR (20) NOT NULL
+);
+
+INSERT INTO `status` (`name`) VALUES ("Personne impactée"), ("Personne experte");
+
 DROP TABLE IF EXISTS designatedUser;
 
 CREATE TABLE
@@ -392,18 +402,19 @@ CREATE TABLE
         CONSTRAINT fk_designatedUser_user FOREIGN KEY (user_id) REFERENCES `user`(id),
         decisionMaking_id INT NOT NULL,
         CONSTRAINT fk_designatedUser_decisionMaking FOREIGN KEY (decisionMaking_id) REFERENCES decisionMaking(id),
-        `status` VARCHAR (100) NOT NULL
+        status_id INT NOT NULL,
+        CONSTRAINT fk_designatedUser_status FOREIGN KEY (status_id) REFERENCES `status`(id)
     );
+
 
 INSERT INTO
     designatedUser (
         id,
         user_id,
         decisionMaking_id,
-        `status`
+        status_id
     )
-VALUES (1, 25, 1, "Personne impactée"), (2, 6, 1, "Personne experte");
-
+VALUES (1, 25, 1, 1), (2, 6, 1, 2);
 CREATE TABLE
     advice (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
