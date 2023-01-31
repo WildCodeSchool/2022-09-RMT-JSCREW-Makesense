@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import UpdateDecision from "@pages/UpdateDecision";
 import MyAdvice from "@pages/MyAdvice";
+import MyConflict from "@pages/MyConflict";
 import NotFound from "@pages/NotFound";
 import Login from "./pages/Login";
 import MyDecisions from "./pages/MyDecisions";
@@ -57,6 +58,7 @@ function App() {
           />
           <Route path="decision/:id" element={<ShowOneDecision />} />
           <Route path="decision/:id/advice" element={<MyAdvice />} />
+          <Route path="decision/:id/conflict" element={<MyConflict />} />
           <Route path="admin/" element={<Admin />}>
             <Route path="users" element={<AdminUsersList />} />
             <Route path="users/creation" element={<AdminNewUser />} />

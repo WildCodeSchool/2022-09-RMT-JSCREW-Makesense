@@ -165,23 +165,28 @@ export default function ShowOneDecision() {
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
                 Première décision
               </summary>
-              <p className="text-black ml-10 mb-5">
-                {oneDecision.firstDecision}
-              </p>
+              <p className="text-lg ml-10 mb-5">{oneDecision.firstDecision}</p>
             </details>
             <details className="border-b-2 sm:ml-8">
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
                 Conflits
               </summary>
-              <p className="text-lg mb-5 sm:ml-10">test</p>
+              <p className="text-lg mb-5 sm:ml-10">
+                {oneDecision.conflict?.map((e) => (
+                  <div className="mb-6">
+                    <div className="mb-2">
+                      Avis de {e.firstname} {e.lastname} :
+                    </div>
+                    <div>{e.textConflict}</div>
+                  </div>
+                ))}
+              </p>
             </details>
             <details className="border-b-2 sm:ml-8">
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
                 Décision Définitive
               </summary>
-              <p className="text-black ml-10 mb-5">
-                {oneDecision.finalDecision}
-              </p>
+              <p className="text-lg ml-10 mb-5">{oneDecision.finalDecision}</p>
             </details>
           </div>
           <div className="text-center sm:w-1/5 sm:border-l-2">
@@ -365,12 +370,22 @@ export default function ShowOneDecision() {
                 />
               </div>
             </div>
-            <Link
-              to={`/decision/${id}/advice`}
-              className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
-            >
-              Donner mon avis
-            </Link>
+            {oneDecision.decisionStatus_id === 2 && (
+              <Link
+                to={`/decision/${id}/conflict`}
+                className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
+              >
+                Donner mon avis
+              </Link>
+            )}
+            {oneDecision.decisionStatus_id === 1 && (
+              <Link
+                to={`/decision/${id}/advice`}
+                className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
+              >
+                Donner mon avis
+              </Link>
+            )}
           </div>
         </>
       )}

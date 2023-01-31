@@ -28,20 +28,25 @@ const browseByUser = (req, res) => {
     });
 };
 
-const read = (req, res) => {
+const read = async (req, res) => {
   const { id } = req.params;
-
-  models.decisionMaking
-    .findOne(id)
-    .then(([decisionMaking]) => {
-      models.advice.findOne(id).then(([rows]) => {
-        res.status(200).send({ ...decisionMaking[0], advice: rows });
-      });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
+  try {
+    const decisionMaking = await models.decisionMaking.findOne(id);
+    if (!decisionMaking)
+      res.status(404).send("erreur dans le chargement de la page");
+    const advice = await models.advice.findOne(id);
+    if (!advice) res.status(404).send("erreur dans le chargement de la page");
+    const conflict = await models.conflict.findOne(id);
+    if (!conflict) res.status(404).send("erreur dans le chargement de la page");
+    res.status(200).send({
+      ...decisionMaking[0][0],
+      conflict: conflict[0],
+      advice: advice[0],
     });
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
 const readByUser = (req, res) => {

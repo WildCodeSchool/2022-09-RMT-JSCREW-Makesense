@@ -12,6 +12,22 @@ const browse = (req, res) => {
     });
 };
 
+const postConflict = (req, res) => {
+  models.conflict
+    .insert(req.body)
+    .then(([result]) => {
+      res
+        .location(`/decisions/${req.params.id}/conflict/${result.insertId}`)
+        .status(201)
+        .json(result.insertId);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
+  postConflict,
 };
