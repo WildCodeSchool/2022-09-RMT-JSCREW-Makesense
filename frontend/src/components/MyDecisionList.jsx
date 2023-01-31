@@ -3,13 +3,15 @@ import User from "../contexts/User";
 import apiConnexion from "../services/apiConnexion";
 import DecisionCard from "./DecisionCard";
 
-function MyDecisionList({ search, statusId, title }) {
+function MyDecisionList({ search, statusId, title, definitive }) {
   const [myDecisionList, setMyDecisionList] = useState();
   const { user } = useContext(User.UserContext);
 
   useEffect(() => {
     apiConnexion
-      .get(`decisionsMaking/?status=${statusId}&search=${search}`)
+      .get(
+        `decisionsMaking/user/${user.id}?status=${statusId}&search=${search}`
+      )
       .then((res) => {
         setMyDecisionList(res.data);
       })
@@ -22,18 +24,20 @@ function MyDecisionList({ search, statusId, title }) {
           {title}
         </h1>
         <div className="px-2">
-          <div className="sm:flex w-full -mx-2">
-            {myDecisionList &&
-              myDecisionList
-                .filter(
-                  (decisionsMaking) => user.id === decisionsMaking.user_id
-                )
-                .map((decisionsMaking) => (
-                  <DecisionCard
-                    key={decisionsMaking.id}
-                    decisionsMaking={decisionsMaking}
-                  />
-                ))}
+          <div className="sm:flex flex-wrap w-full -mx-2">
+            {myDecisionList && myDecisionList.length > 0 ? (
+              myDecisionList.map((decisionsMaking) => (
+                <DecisionCard
+                  key={decisionsMaking.id}
+                  decisionsMaking={decisionsMaking}
+                  definitive={definitive}
+                />
+              ))
+            ) : (
+              <p className="dark:text-[#e7ebec] text-lg px-6 sm:px-12">
+                Aucune décision n'est disponible.
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -6,19 +6,21 @@ export default function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-[100vh]">
+    <div className="min-h-screen dark:bg-[#0c3944] dark:text-[#e7ebec]">
       <div className="pt-10">
-        <section className="page_404 flex justify-center">
+        <section className="page_404 flex justify-center dark:bg-[#0c3944] dark:text-[#e7ebec]">
           <div className="container">
             <div className="row">
               <div className="col-sm-12">
                 <div className="col-sm-10 col-sm-offset-1 text-center">
-                  <div className="four_zero_four_bg">
-                    <h1 className="text-center">404</h1>
+                  <div className="four_zero_four_bg dark:bg-[#0c3944]">
+                    <h1 className="text-center dark:bg-[#0c3944] dark:text-[#e7ebec]">
+                      404
+                    </h1>
                   </div>
-                  <div className="contant_box_404">
+                  <div className="contant_box_404 dark:bg-[#0c3944] dark:text-[#e7ebec]">
                     <h3 className="h2 pt-10">On dirait que vous êtes perdu,</h3>
-                    <p className="pb-10">
+                    <p className="pb-5">
                       la page que vous recherchez n'est pas disponible !
                     </p>
                     <button

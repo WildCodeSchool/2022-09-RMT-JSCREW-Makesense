@@ -8,7 +8,7 @@ function AllDecisions({ search, handleSearch }) {
   editMeta("Parcourir les décisions");
 
   return (
-    <div className="min-h-screen dark:bg-[#0c3944]">
+    <div className="min-h-screen dark:bg-[#0c3944] pb-10">
       <div className="flex flex-col sm:flex-row justify-between">
         <Link
           to="/user/decision/new"
@@ -22,6 +22,11 @@ function AllDecisions({ search, handleSearch }) {
       <DecisionList
         statusId={2}
         title="Première décision prise"
+        search={search}
+      />
+      <DecisionList
+        statusId={3}
+        title="Décisions définitives"
         search={search}
       />
     </div>

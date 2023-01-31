@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const models = require("../models");
 
 const browse = (req, res) => {
@@ -13,20 +14,39 @@ const browse = (req, res) => {
     });
 };
 
-const read = (req, res) => {
-  const { id } = req.params;
-
+const browseByUser = (req, res) => {
+  const { status, search } = req.query;
+  const { userId } = req.params;
   models.decisionMaking
-    .findOne(id)
+    .findByUser(status, search, userId)
     .then(([decisionMaking]) => {
-      models.advice.findOne(id).then(([rows]) => {
-        res.status(200).send({ ...decisionMaking[0], advice: rows });
-      });
+      res.send(decisionMaking);
     })
     .catch((err) => {
       console.error(err);
       res.sendStatus(500);
     });
+};
+
+const read = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const decisionMaking = await models.decisionMaking.findOne(id);
+    if (!decisionMaking)
+      res.status(404).send("erreur dans le chargement de la page");
+    const advice = await models.advice.findOne(id);
+    if (!advice) res.status(404).send("erreur dans le chargement de la page");
+    const conflict = await models.conflict.findOne(id);
+    if (!conflict) res.status(404).send("erreur dans le chargement de la page");
+    res.status(200).send({
+      ...decisionMaking[0][0],
+      conflict: conflict[0],
+      advice: advice[0],
+    });
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
 const readByUser = (req, res) => {
@@ -104,14 +124,14 @@ const add = (req, res) => {
           ...experts.map((exp) => {
             return {
               user_id: exp.id,
-              status: "Personne expertes",
+              status_id: 1,
               decisionMaking_id: result.insertId,
             };
           }),
           ...impacted.map((imp) => {
             return {
               user_id: imp.id,
-              status: "Personne impactée",
+              status_id: 2,
               decisionMaking_id: result.insertId,
             };
           }),
@@ -131,10 +151,36 @@ const add = (req, res) => {
     });
 };
 
+const destroy = (req, res) => {
+  models.designatedUser
+    .delete(req.params.id)
+    .then(([row]) => {
+      models.decisionMaking
+        .delete(req.params.id)
+        .then(([result]) => {
+          if (result.affectedRows === 0) {
+            res.sendStatus(404);
+          } else {
+            res.sendStatus(204);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
+  browseByUser,
   read,
   readByUser,
   update,
   add,
+  destroy,
 };

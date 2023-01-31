@@ -3,14 +3,14 @@ import apiConnexion from "../services/apiConnexion";
 import ExportContextDecision from "../contexts/DecisionContext";
 
 function SearchPerson() {
-  const [searchExpertInput, setSearchExpertInput] = useState();
-  const [searchImpactedInput, setSearchImpactedInput] = useState();
+  const [searchExpertInput, setSearchExpertInput] = useState("");
+  const [searchImpactedInput, setSearchImpactedInput] = useState("");
   const [searchExpert, setSearchExpert] = useState();
   const [searchImpacted, setSearchImpacted] = useState();
   const {
     experts,
-    handleExpert,
     impacted,
+    handleExpert,
     handleImpacted,
     handleDeleteExperts,
     handleDeleteImpacted,
@@ -31,39 +31,46 @@ function SearchPerson() {
     }
   }, [searchExpertInput, searchImpactedInput]);
 
+  /** Fonction de recherche personnes expertes */
   const handleSearchExpert = (e) => {
     const { value } = e.target;
-    setSearchImpactedInput();
+    setSearchImpactedInput("");
     setSearchImpacted();
     setSearchExpertInput(value);
   };
 
+  /** Fonction de recherche personnes impactées */
   const handleSearchImpacted = (e) => {
     const { value } = e.target;
-    setSearchExpertInput();
+    setSearchExpertInput("");
     setSearchExpert();
     setSearchImpactedInput(value);
   };
 
+  /** Fonction d'ajout personnes expertes */
   const handleExpertAdd = (user) => {
     handleExpert(user);
     setSearchExpert();
+    setSearchExpertInput("");
   };
 
+  /** Fonction d'ajout personnes impactées */
   const handleImpactedAdd = (user) => {
     handleImpacted(user);
     setSearchImpacted();
+    setSearchImpactedInput("");
   };
 
   return (
     <div>
       <div className="expertPerson mb-8">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personne(s) experte(s)*
+          Personne experte
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
+          value={searchExpertInput}
           onChange={handleSearchExpert}
         />
         <div className="searchResults absolute">
@@ -72,7 +79,7 @@ function SearchPerson() {
               return (
                 <button
                   type="button"
-                  className="searchResult flex w-full bg-gray-300 p-2"
+                  className="searchResult flex w-full bg-gray-300 p-2 dark:text-[#0c3944]"
                   key={user.id}
                   onClick={() => handleExpertAdd(user)}
                 >
@@ -83,14 +90,14 @@ function SearchPerson() {
         </div>
         <div className="choosenExpert">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personne(s) experte(s) choisie(s)
+            Personne(s) experte(s) choisie(s)*
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {experts &&
               experts.map((expert) => {
                 return (
-                  <div className="flex">
-                    <p className="w-8/12" required="required">
+                  <div className="flex" key={expert.id}>
+                    <p className="w-8/12">
                       - {expert.firstname} {expert.lastname}
                     </p>
                     <button
@@ -108,11 +115,12 @@ function SearchPerson() {
       </div>
       <div className="impactedPerson">
         <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl">
-          Personne(s) impactée(s)*
+          Personne impactée
         </p>
         <input
           className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 w-10/12 rounded-lg border-[#e7ebec] outline-[#ced7da]"
           type="text"
+          value={searchImpactedInput}
           onChange={handleSearchImpacted}
         />
         <div className="searchResults absolute">
@@ -121,7 +129,7 @@ function SearchPerson() {
               return (
                 <button
                   type="button"
-                  className="searchResult flex w-full bg-gray-300 p-2"
+                  className="searchResult flex w-full bg-gray-300 dark:text-[#0c3944] p-2"
                   key={user.id}
                   onClick={() => handleImpactedAdd(user)}
                 >
@@ -132,14 +140,14 @@ function SearchPerson() {
         </div>
         <div className="choosenImpacted my-5">
           <p className="mb-2 font-semibold dark:text-[#e7ebec] text-xl mt-5">
-            Personne(s) impactée(s) choisie(s)
+            Personne(s) impactée(s) choisie(s)*
           </p>
           <div className="experts dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 w-full h-60 rounded-lg overflow-x-auto">
             {impacted &&
               impacted.map((impact) => {
                 return (
-                  <div className="flex">
-                    <p className="w-8/12" required="required">
+                  <div className="flex" key={impact.id}>
+                    <p className="w-8/12">
                       - {impact.firstname} {impact.lastname}
                     </p>
                     <button

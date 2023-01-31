@@ -10,12 +10,12 @@ import User from "../contexts/User";
 
 import "react-toastify/dist/ReactToastify.css";
 
-export default function MyAdvice() {
+export default function MyConflict() {
   const { id } = useParams();
   const navigate = useNavigate();
   const userContext = useContext(User.UserContext);
-  const [myAdviceText, setMyAdviceText] = useState({
-    textAdvice: "",
+  const [myConflictText, setMyConflictText] = useState({
+    textConflict: "",
     userId: userContext.user.id,
     decisionMakingId: id,
   });
@@ -24,16 +24,16 @@ export default function MyAdvice() {
     toast(msg);
   };
 
-  const handleAdvice = (position, value) => {
-    const newAdvice = { ...myAdviceText };
-    newAdvice[position] = value;
-    setMyAdviceText(newAdvice);
+  const handleConflict = (position, value) => {
+    const newConflict = { ...myConflictText };
+    newConflict[position] = value;
+    setMyConflictText(newConflict);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     apiConnexion
-      .post(`/decisions/${id}/advice`, myAdviceText)
+      .post(`/decisions/${id}/conflict`, myConflictText)
       .then((res) => {
         notify("Votre avis a été ajouté.");
         setTimeout(() => navigate(`/decision/${id}`), 2000);
@@ -53,11 +53,11 @@ export default function MyAdvice() {
             <textarea
               className="dark:bg-[#ced7da] dark:text-[#0c3944] border-2 border-500 h-80 w-full mt-20 border-[#e7ebec] rounded-lg outline-[#ced7da] p-4"
               type="text"
-              id="adviceText"
-              name="textAdvice"
+              id="conflictText"
+              name="textConflict"
               required="required"
-              value={myAdviceText.textAdvice}
-              onChange={(e) => handleAdvice(e.target.name, e.target.value)}
+              value={myConflictText.textConflict}
+              onChange={(e) => handleConflict(e.target.name, e.target.value)}
               placeholder="Rédigez votre avis."
             />
             <div className="flex justify-end mt-5">

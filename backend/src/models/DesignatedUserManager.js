@@ -10,9 +10,16 @@ class DesignatedUserManager extends AbstractManager {
       `insert into ${this.table} (
           user_id,
           decisionMaking_id,
-          status
+          status_id
         ) values (?, ?, ?)`,
-      [pers.user_id, pers.decisionMaking_id, pers.status]
+      [pers.user_id, pers.decisionMaking_id, pers.status_id]
+    );
+  }
+
+  delete(id) {
+    return this.connection.query(
+      `delete from ${this.table} where decisionMaking_id = ?`,
+      [id]
     );
   }
 }

@@ -5,25 +5,61 @@ class DecisionMakingManager extends AbstractManager {
     super({ table: "decisionMaking" });
   }
 
-  findAll(id, search) {
+  findAll(statusId, search) {
     let query = `select dm.id, dm.title, dm.description, dm.impact, dm.profit, dm.risk, dm.dateCreate, dm.dateAdvice, dm.dateFirstDecision, dm.dateConflict, dm.dateFinalDecision, dm.user_id, u.firstname, u.lastname, dm.decisionStatus_id, ds.status from ${this.table} as dm 
   inner join user as u on u.id = dm.user_id
   inner join decisionStatus as ds on ds.id = dm.decisionStatus_id`;
     const value = [];
-    if (id && search) {
-      query += " where ds.id = ? and dm.title like ? ";
-      value.push(id);
+    if (statusId && search) {
+      query += " where ds.id = ? and dm.title like ?";
+      value.push(statusId);
       value.push(`%${search}%`);
-    } else if (id) {
+    } else if (statusId) {
       query += " where ds.id = ?";
-      value.push(id);
+      value.push(statusId);
+    }
+
+    if (parseInt(statusId, 10) === 3) {
+      query += " and dateFinalDecision > ?";
+      value.push(new Date(Date.now() - 1000 * 60 * 60 * 24 * 7));
+    }
+
+    if (parseInt(statusId, 10) === 4) {
+      query += " and dateFinalDecision <= ?";
+      value.push(new Date(Date.now() + 1000 * 60 * 60 * 24 * 7));
+      value.splice(0, 1, 3);
+    }
+    return this.connection.query(query, value);
+  }
+
+  findByUser(statusId, search, userId) {
+    let query = `select dm.id, dm.title, dm.description, dm.impact, dm.profit, dm.risk, dm.dateCreate, dm.dateAdvice, dm.dateFirstDecision, dm.dateConflict, dm.dateFinalDecision, dm.user_id, u.firstname, u.lastname, dm.decisionStatus_id, ds.status from ${this.table} as dm 
+  inner join user as u on u.id = dm.user_id
+  inner join decisionStatus as ds on ds.id = dm.decisionStatus_id where dm.user_id = ?`;
+    const value = [userId];
+    if (statusId && search) {
+      query += " and ds.id = ? and dm.title like ?";
+      value.push(statusId);
+      value.push(`%${search}%`);
+    } else if (statusId) {
+      query += " and ds.id = ?";
+      value.push(statusId);
+    }
+    if (parseInt(statusId, 10) === 3) {
+      query += " and dateFinalDecision > ?";
+      value.push(new Date(Date.now() - 1000 * 60 * 60 * 24 * 7));
+    }
+    if (parseInt(statusId, 10) === 4) {
+      query += " and dateFinalDecision <= ?";
+      value.push(new Date(Date.now() + 1000 * 60 * 60 * 24 * 7));
+      value.splice(0, 1, 3);
     }
     return this.connection.query(query, value);
   }
 
   findOne(id) {
     const query = `select dm.id, dm.user_id, dm.title, dm.description, dm.decisionStatus_id, dm.impact, dm.profit, dm.risk, dm.dateCreate, dm.dateAdvice, dm.dateFirstDecision, dm.dateConflict, dm.dateFinalDecision, u.firstname, u.lastname, ds.status, dm.firstDecision, dm.finalDecision from ${this.table} as dm 
-  inner join user as u on u.id = dm.user_id 
+  inner join user as u on u.id = dm.user_id
   inner join decisionStatus as ds on ds.id = dm.decisionStatus_id
   where dm.id = ?`;
     return this.connection.query(query, [id]);
@@ -46,8 +82,9 @@ class DecisionMakingManager extends AbstractManager {
         profit,
         risk,
         decisionStatus_id,
-        dateCreate
-        ) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+        dateCreate,
+        dateFinalDecision
+        ) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         id,
         decisionMaking.title,
@@ -56,7 +93,8 @@ class DecisionMakingManager extends AbstractManager {
         decisionMaking.profit,
         decisionMaking.risk,
         1,
-        new Date().toISOString().split("T")[0],
+        decisionMaking.dateCreate,
+        decisionMaking.dateFinalDecision,
       ]
     );
   }

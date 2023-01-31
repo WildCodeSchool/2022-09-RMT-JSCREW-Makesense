@@ -3,7 +3,7 @@ import apiConnexion from "../services/apiConnexion";
 
 import DecisionCard from "./DecisionCard";
 
-function DecisionList({ search, statusId, title }) {
+function DecisionList({ search, statusId, title, definitive }) {
   const [decisionList, setDecisionList] = useState();
 
   useEffect(() => {
@@ -14,6 +14,7 @@ function DecisionList({ search, statusId, title }) {
       })
       .catch((err) => console.error(err));
   }, [search]);
+
   return (
     <div>
       <div>
@@ -21,14 +22,20 @@ function DecisionList({ search, statusId, title }) {
           {title}
         </h1>
         <div className="px-2">
-          <div className="sm:flex w-full -mx-2">
-            {decisionList &&
+          <div className="sm:flex flex-wrap w-full -mx-2">
+            {decisionList && decisionList.length > 0 ? (
               decisionList.map((decisionsMaking) => (
                 <DecisionCard
                   key={decisionsMaking.id}
                   decisionsMaking={decisionsMaking}
+                  definitive={definitive}
                 />
-              ))}
+              ))
+            ) : (
+              <p className="dark:text-[#e7ebec] text-lg px-6 sm:px-12">
+                Aucune décision n'est disponible.
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -12,6 +12,11 @@ const ConflictController = require("./controllers/conflictController");
 const UserController = require("./controllers/userController");
 
 router.get("/decisionsMaking", checkAuth, DecisionMakingController.browse);
+router.get(
+  "/decisionsMaking/user/:userId",
+  checkAuth,
+  DecisionMakingController.browseByUser
+);
 router.get("/decisionsMaking/:id", checkAuth, DecisionMakingController.read);
 router.get("/roles", checkAuth, DesignatedUserController.browse);
 router.get("/advices", checkAuth, AdviceController.browse);
@@ -28,8 +33,20 @@ router.post("/users", checkAuth, UserController.add);
 router.put("/users/:id", checkAuth, UserController.edit);
 router.put("/decision/:id/update", checkAuth, DecisionMakingController.update);
 router.delete("/users/:id", checkAuth, UserController.destroy);
+router.delete(
+  "/decisionsMaking/:id",
+  checkAuth,
+  DecisionMakingController.destroy
+);
 
 router.post("/decisions/:id/advice", checkAuth, AdviceController.postAdvice);
+router.post(
+  "/decisions/:id/conflict",
+  checkAuth,
+  ConflictController.postConflict
+);
 router.post("/decisionsMaking", checkAuth, DecisionMakingController.add);
+
+router.get("/conflicts", checkAuth, ConflictController.browse);
 
 module.exports = router;
