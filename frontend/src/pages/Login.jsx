@@ -49,7 +49,7 @@ function Login() {
       <h1 className="flex justify-center font-bold text-4xl pt-16 py-8">
         Connexion
       </h1>
-      <div className="flex justify-center card rounded-none ml-8">
+      <div className="flex justify-center card rounded-none ml-8 mr-3">
         <form>
           <div className="group">
             <input
