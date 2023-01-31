@@ -11,7 +11,7 @@ function ArchivedDecisions({ search, handleSearch }) {
       <DecisionList
         definitive
         statusId={4}
-        title="Décision(s) archivée(s)"
+        title="Décisions archivées"
         search={search}
       />
     </div>

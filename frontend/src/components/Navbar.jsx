@@ -43,7 +43,7 @@ function Navbar() {
                 src={PictoHome}
                 alt="logo1"
               />
-              <p>Parcourir les décisions</p>
+              <p className="text-sm">Parcourir les décisions</p>
             </Link>
           </div>
           <div className="inline-block text-center place-content-center mr-4">
@@ -53,7 +53,7 @@ function Navbar() {
                 src={PictoDecision}
                 alt="logo2"
               />
-              <p>Mes décisions</p>
+              <p className="text-sm">Mes décisions</p>
             </Link>
           </div>
           <div className="inline-block text-center place-content-center mr-4">
@@ -63,7 +63,7 @@ function Navbar() {
                 src={PictoArchive}
                 alt="logo3"
               />
-              <p>Archives</p>
+              <p className="text-sm">Archives</p>
             </Link>
           </div>
           {user?.role === "administrator" && (
@@ -74,7 +74,7 @@ function Navbar() {
                   src={PictoUsers}
                   alt="users"
                 />
-                <p>Gestion des utilisateurs</p>
+                <p className="text-sm">Gestion des utilisateurs</p>
               </Link>
             </div>
           )}
@@ -84,13 +84,13 @@ function Navbar() {
             className="text-center place-content-center mr-10"
           >
             <img className="ml-9 p-1 m-1" src={PictoLogout} alt="logo6" />
-            <p>Se déconnecter</p>
+            <p className="text-sm">Se déconnecter</p>
           </button>
         </div>
       </div>
-      <div className="sm:hidden relative flex justify-end mr-1 bg-[#ced7da]">
+      <div className="sm:hidden relative flex justify-end bg-[#ced7da]">
         <Link to="/home">
-          <img className="ml-6 mt-2 aspect-auto w-3/4" src={Logo} alt="logo" />
+          <img className="ml-6 mt-4 aspect-auto w-3/5" src={Logo} alt="logo" />
         </Link>
         <button
           className="p-4 space-y-2"

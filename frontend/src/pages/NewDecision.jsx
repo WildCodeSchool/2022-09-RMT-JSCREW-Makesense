@@ -74,7 +74,7 @@ function NewDecision() {
       <Toast />
       <div className="dark:bg-[#0c3944] dark:text-[#e7ebec] px-6 sm:px-12">
         <h1 className="font-bold text-3xl py-8">Créer une prise de décision</h1>
-         <form onSubmit={(e) => sendFormDecision(e)}>
+        <form onSubmit={(e) => sendFormDecision(e)}>
           <div className="decision sm:flex">
             <div className="writeDecision w-full dark:text-[#e7ebec]">
               <div className="flex">
@@ -190,7 +190,7 @@ function NewDecision() {
               </div>
             </div>
           </div>
-          <div className="flex justify-end w-10/12 mb-5">
+          <div className="flex justify-end w-10/12 pb-5">
             <Link
               to="/home"
               className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-2 mb-2"
