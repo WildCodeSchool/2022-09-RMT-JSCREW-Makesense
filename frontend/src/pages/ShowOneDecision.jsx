@@ -17,6 +17,9 @@ export default function ShowOneDecision() {
   const notify = (msg) => {
     toast(msg);
   };
+
+  /* référencement SEO de la page ShowOneDecision */
+
   editMeta(oneDecision.title);
 
   /* récupération de la date du jour */
@@ -38,7 +41,7 @@ export default function ShowOneDecision() {
   }, [id]);
 
   /** récupération de la date de création et génération des dates en conséquences 
-  @params (array) oneDecision
+  @param {array} oneDecision
   */
 
   const dateCreate = new Date(oneDecision.dateCreate);
@@ -49,6 +52,8 @@ export default function ShowOneDecision() {
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
 
+  /* route back pour supprimer la décision */
+
   const deleteOneDecision = () => {
     apiConnexion
       .delete(`decisionsMaking/${id}`)
@@ -58,6 +63,10 @@ export default function ShowOneDecision() {
       })
       .catch((err) => console.error(err));
   };
+
+  /** message d'alerte pour confirmer ou non la suppression de la décision
+   * @param {object} decision
+   */
 
   const submit = (decision) => {
     confirmAlert({
