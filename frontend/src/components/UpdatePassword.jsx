@@ -9,9 +9,14 @@ import Logo from "../assets/logo1.svg";
 function UpdatePassword() {
   editMeta("Changement mot de passe");
 
-  const [password, setPassword] = useState({ password: "" });
+  const [user, setUser] = useState({
+    password: "",
+    confirmPassword: "",
+    email: "",
+  });
   const [message, setMessage] = useState("");
   const [hidePassword, setHidePassword] = useState(true);
+
   const userContext = useContext(User.UserContext);
   const navigate = useNavigate();
 
@@ -20,28 +25,33 @@ function UpdatePassword() {
   }
 
   const handleNewPassword = (position, value) => {
-    const newPassword = { ...password };
+    const newPassword = { ...user };
     newPassword[position] = value;
-    setPassword(newPassword);
+    setUser(newPassword);
   };
 
   const handleSubmit = () => {
     setMessage("");
     const pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-    if (pwdPattern.test(password.password)) {
-      apiConnexion
-        .put("/edit/password", { ...password })
-        .then((res) => {
-          navigate("/home");
-          userContext.handleNewPassword(res.data);
-        })
-        .catch((err) => {
-          setMessage(err.response.data);
-        });
+    if (user.password === user.confirmPassword) {
+      if (pwdPattern.test(user.password)) {
+        apiConnexion
+          .put("/edit/password", { password: user.password, email: user.email })
+          .then((res) => {
+            navigate("/home");
+            userContext.handleNewPassword(res.data);
+          })
+          .catch((err) => {
+            setMessage(err.response.data);
+          });
+      } else {
+        setMessage("Invalid credentials");
+      }
     } else {
-      setMessage("Invalid credentials");
+      setMessage("be sure that the 2 password match");
     }
   };
+
   return (
     <div className="min-h-screen">
       <div className="flex justify-center h-100 pt-10">
@@ -52,16 +62,27 @@ function UpdatePassword() {
       </h1>
       <div className="flex justify-center card rounded-none ml-8">
         <form>
+          <div className="group">
+            <input
+              className="mb-5 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              id="email-address"
+              name="email"
+              type="email"
+              value={user.email}
+              autoComplete="email"
+              onChange={(e) => handleNewPassword(e.target.name, e.target.value)}
+              required
+              placeholder="Adresse email"
+            />
+          </div>
           <div className="group flex flex-row">
             <input
               className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="password"
               type={hidePassword ? "password" : "text"}
-              value={password.password}
-              onChange={(e) =>
-                handleNewPassword({ ...password, password: e.target.value })
-              }
+              value={user.password}
+              onChange={(e) => handleNewPassword(e.target.name, e.target.value)}
               autoComplete="current-password"
               required
               placeholder="Nouveau mot de passe"
@@ -90,12 +111,10 @@ function UpdatePassword() {
             <input
               className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="password"
-              name="password"
+              name="confirmPassword"
               type={hidePassword ? "password" : "text"}
-              value={password.password}
-              onChange={(e) =>
-                handleNewPassword({ ...password, password: e.target.value })
-              }
+              value={user.confirmPassword}
+              onChange={(e) => handleNewPassword(e.target.name, e.target.value)}
               autoComplete="current-password"
               required
               placeholder="Confirmer nouveau mot de passe"

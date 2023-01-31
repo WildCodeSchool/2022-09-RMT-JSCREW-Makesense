@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const models = require("../models");
-const { verifyHash } = require("../services/auth");
+const { verifyHash, hashPassword } = require("../services/auth");
 
 const browse = (req, res) => {
   models.user
@@ -112,23 +112,22 @@ const edit = (req, res) => {
     });
 };
 const editPassword = (req, res) => {
-  const { password } = req.body;
-
-  const id = parseInt(req.params.id, 10);
-
-  models.user
-    .update(password, id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  const { password, email } = req.body;
+  hashPassword(password).then((hashedPassword) => {
+    models.user
+      .editPassword(hashedPassword, email)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  });
 };
 
 module.exports = {

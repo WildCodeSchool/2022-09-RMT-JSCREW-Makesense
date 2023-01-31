@@ -43,10 +43,10 @@ class UserManager extends AbstractManager {
     );
   }
 
-  editPassword(password, id) {
+  editPassword(password, email) {
     return this.connection.query(
-      `update ${this.table} set password = ? where id = ?`,
-      [password, id]
+      `update ${this.table} set password = ? where email = ?`,
+      [password, email]
     );
   }
 }

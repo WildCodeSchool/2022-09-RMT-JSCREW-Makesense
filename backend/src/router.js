@@ -27,7 +27,7 @@ router.post("/login", checkUser, UserController.validateUser);
 router.post("/users", checkAuth, UserController.add);
 router.put("/users/:id", checkAuth, UserController.edit);
 router.put("/decision/:id/update", checkAuth, DecisionMakingController.update);
-router.put("/edit/password", checkAuth, UserController.editPassword);
+router.put("/edit/password", UserController.editPassword);
 router.delete("/users/:id", checkAuth, UserController.destroy);
 router.delete(
   "/decisionsMaking/:id",
