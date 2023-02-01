@@ -14,6 +14,11 @@ export default function ShowOneDecision() {
   const { id } = useParams();
   const { user } = useContext(User.UserContext);
   const navigate = useNavigate();
+
+  /** logique de notification lors de la suppression de la décision
+   * @param {object} msg
+   */
+
   const notify = (msg) => {
     toast(msg);
   };
