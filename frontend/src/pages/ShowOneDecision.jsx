@@ -297,91 +297,45 @@ export default function ShowOneDecision() {
                 Personnes impactées
               </h3>
               <div className="flex justify-center mt-3">
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
+                {oneDecision.impacted?.map((e) => (
+                  <div className="mb-6">
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 dark:hidden"
+                      src={Avatar}
+                      alt="Avatar utilisateur"
+                    />
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                      src={AvatarDark}
+                      alt="Avatar of user"
+                    />
+                    <div className="mb-2 mr-4 w-10">
+                      {e.firstname} {e.lastname.substr(0, 1)}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="mb-10">
               <h3 className="text-2xl font-bold mt-8">Personnes expertes</h3>
               <div className="flex justify-center mt-3">
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
+                {oneDecision.expert?.map((e) => (
+                  <div className="mb-6">
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 dark:hidden"
+                      src={Avatar}
+                      alt="Avatar utilisateur"
+                    />
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                      src={AvatarDark}
+                      alt="Avatar of user"
+                    />
+                    <div className="mb-2 mr-4 w-10">
+                      {e.firstname} {e.lastname.substr(0, 1)}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             {oneDecision.decisionStatus_id === 2 && (

@@ -38,10 +38,17 @@ const read = async (req, res) => {
     if (!advice) res.status(404).send("erreur dans le chargement de la page");
     const conflict = await models.conflict.findOne(id);
     if (!conflict) res.status(404).send("erreur dans le chargement de la page");
+    const impacted = await models.designatedUser.find(
+      decisionMaking[0][0].id,
+      1
+    );
+    const expert = await models.designatedUser.find(decisionMaking[0][0].id, 2);
     res.status(200).send({
       ...decisionMaking[0][0],
       conflict: conflict[0],
       advice: advice[0],
+      impacted: impacted[0],
+      expert: expert[0],
     });
   } catch (err) {
     console.error(err);
