@@ -174,7 +174,7 @@ export default function ShowOneDecision() {
               <p className="text-lg mb-5 sm:ml-10">
                 {oneDecision.conflict?.map((e) => (
                   <div className="mb-6">
-                    <div className="mb-2">
+                    <div className="mb-2 font-bold">
                       Avis de {e.firstname} {e.lastname} :
                     </div>
                     <div>{e.textConflict}</div>
