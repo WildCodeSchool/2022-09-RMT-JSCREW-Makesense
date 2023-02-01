@@ -14,6 +14,7 @@ function UpdatePassword() {
   const userContext = useContext(User.UserContext);
 
   const [user, setUser] = useState({
+    oldPassword: "",
     password: "",
     confirmPassword: "",
     email: userContext.user.email,
@@ -39,14 +40,18 @@ function UpdatePassword() {
     if (user.password === user.confirmPassword) {
       if (pwdPattern.test(user.password)) {
         apiConnexion
-          .put("/password", { password: user.password, email: user.email })
+          .put("/password", {
+            oldPassword: user.oldPassword,
+            password: user.password,
+            email: user.email,
+          })
           .then((res) => {
             toast(`Votre mot de passe a bien été modifié.`);
             setTimeout(() => navigate("/home"), 2500);
             userContext.handleNewPassword(res.data);
           })
           .catch((err) => {
-            setMessage(err.response.data);
+            setMessage(err.response.data || "");
           });
       } else {
         setMessage("Invalid credentials");
@@ -79,6 +84,38 @@ function UpdatePassword() {
               required
               placeholder="Adresse email"
             />
+          </div>
+          <div className="group flex flex-row">
+            <input
+              className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              id="password"
+              name="oldPassword"
+              type={hidePassword ? "password" : "text"}
+              value={user.oldPassword}
+              onChange={(e) => handleNewPassword(e.target.name, e.target.value)}
+              autoComplete="current-password"
+              required
+              placeholder="Mot de passe actuel"
+            />
+            <div>
+              <button
+                className="w-[20px] h-[20px] ml-2 mt-1.5"
+                onClick={showPassword}
+                type="button"
+              >
+                {hidePassword ? (
+                  <img
+                    src="https://www.svgrepo.com/show/384356/close-cross-eye-hidden-vision.svg"
+                    alt="eyeCross"
+                  />
+                ) : (
+                  <img
+                    src="https://www.svgrepo.com/show/384342/eye-look-show-view-visible-visiblity.svg"
+                    alt="eyeOpen"
+                  />
+                )}
+              </button>
+            </div>
           </div>
           <div className="group flex flex-row">
             <input

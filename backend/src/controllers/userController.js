@@ -111,24 +111,28 @@ const edit = (req, res) => {
       res.sendStatus(500);
     });
 };
-const editPassword = (req, res) => {
-  const { password, email } = req.body;
+const editPassword = async (req, res) => {
+  const { oldPassword, password, email } = req.body;
+  try {
+    const user = await models.user.findOne({ email });
 
-  hashPassword(password).then((hashedPassword) => {
-    models.user
-      .editPassword(hashedPassword, email)
-      .then(([result]) => {
-        if (result.affectedRows === 0) {
-          res.sendStatus(404);
-        } else {
-          res.sendStatus(204);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  });
+    if (await verifyHash(user[0][0].password, oldPassword)) {
+      const hashedPassword = await hashPassword(password);
+
+      const result = await models.user.editPassword(hashedPassword, email);
+
+      if (result[0].affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    } else {
+      res.sendStatus(401);
+    }
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
 module.exports = {
