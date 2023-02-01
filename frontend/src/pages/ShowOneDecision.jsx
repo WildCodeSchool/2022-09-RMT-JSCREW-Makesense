@@ -14,9 +14,17 @@ export default function ShowOneDecision() {
   const { id } = useParams();
   const { user } = useContext(User.UserContext);
   const navigate = useNavigate();
+
+  /** logique de notification lors de la suppression de la décision
+   * @param {object} msg
+   */
+
   const notify = (msg) => {
     toast(msg);
   };
+
+  /* référencement SEO de la page ShowOneDecision */
+
   editMeta(oneDecision.title);
 
   /* récupération de la date du jour */
@@ -38,7 +46,7 @@ export default function ShowOneDecision() {
   }, [id]);
 
   /** récupération de la date de création et génération des dates en conséquences 
-  @params (array) oneDecision
+  @param {array} oneDecision
   */
 
   const dateCreate = new Date(oneDecision.dateCreate);
@@ -49,6 +57,8 @@ export default function ShowOneDecision() {
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
 
+  /* route back pour supprimer la décision */
+
   const deleteOneDecision = () => {
     apiConnexion
       .delete(`decisionsMaking/${id}`)
@@ -58,6 +68,10 @@ export default function ShowOneDecision() {
       })
       .catch((err) => console.error(err));
   };
+
+  /** message d'alerte pour confirmer ou non la suppression de la décision
+   * @param {object} decision
+   */
 
   const submit = (decision) => {
     confirmAlert({
@@ -283,91 +297,45 @@ export default function ShowOneDecision() {
                 Personnes impactées
               </h3>
               <div className="flex justify-center mt-3">
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
+                {oneDecision.impacted?.map((e) => (
+                  <div className="mb-6">
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 dark:hidden"
+                      src={Avatar}
+                      alt="Avatar utilisateur"
+                    />
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                      src={AvatarDark}
+                      alt="Avatar of user"
+                    />
+                    <div className="mb-2 mr-4 w-10">
+                      {e.firstname} {e.lastname.substr(0, 1)}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="mb-10">
               <h3 className="text-2xl font-bold mt-8">Personnes expertes</h3>
               <div className="flex justify-center mt-3">
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 dark:hidden"
-                  src={Avatar}
-                  alt="Avatar utilisateur"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
-                <img
-                  className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
-                  src={AvatarDark}
-                  alt="Avatar of user"
-                />
+                {oneDecision.expert?.map((e) => (
+                  <div className="mb-6">
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 dark:hidden"
+                      src={Avatar}
+                      alt="Avatar utilisateur"
+                    />
+                    <img
+                      className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                      src={AvatarDark}
+                      alt="Avatar of user"
+                    />
+                    <div className="mb-2 mr-4 w-10">
+                      {e.firstname} {e.lastname.substr(0, 1)}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             {oneDecision.decisionStatus_id === 2 && (

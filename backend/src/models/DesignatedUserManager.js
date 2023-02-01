@@ -16,6 +16,17 @@ class DesignatedUserManager extends AbstractManager {
     );
   }
 
+  find(decisionMakingId, statusId) {
+    return this.connection.query(
+      `select user.firstname, user.lastname from ${this.table} 
+      inner join user on user.id = user_id
+      where decisionMaking_id = ?
+      and status_id = ?
+      `,
+      [decisionMakingId, statusId]
+    );
+  }
+
   delete(id) {
     return this.connection.query(
       `delete from ${this.table} where decisionMaking_id = ?`,

@@ -414,7 +414,7 @@ INSERT INTO
         decisionMaking_id,
         status_id
     )
-VALUES (1, 25, 1, 1), (2, 6, 1, 2);
+VALUES (1, 25, 1, 1), (2, 30, 1, 1), (3, 8, 1, 1), (4, 6, 1, 2), (5, 2, 2, 1), (6, 18, 2, 2), (7, 22, 3, 1), (8, 23, 3, 2), (9, 9, 4, 1), (10, 24, 4, 2), (11, 22, 5, 1), (12, 23, 5, 2), (13, 9, 5, 1), (14, 24, 5, 2);
 CREATE TABLE
     advice (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
