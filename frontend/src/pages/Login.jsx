@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 import User from "../contexts/User";
 import editMeta from "../services/seo";
@@ -68,7 +68,7 @@ function Login() {
           </div>
           <div className="group flex flex-row">
             <input
-              className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              className="mb-3 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="password"
               type={hidePassword ? "password" : "text"}
@@ -100,6 +100,9 @@ function Login() {
               </button>
             </div>
           </div>
+          <Link to="password/edition" className="text-center">
+            <p className="mb-5 text-sm">Modifier le mot de passe</p>
+          </Link>
           <p>{message}</p>
           <div className="group m-3 flex justify-center">
             <button

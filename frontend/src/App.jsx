@@ -31,7 +31,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="edit/password" element={<EditPassword />} />
+        <Route path="password/edition" element={<EditPassword />} />
         <Route path="/" element={<Private />}>
           <Route path="*" element={<NotFound />} />
           <Route

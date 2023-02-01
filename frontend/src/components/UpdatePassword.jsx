@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Toast from "@components/Toast";
 import apiConnexion from "../services/apiConnexion";
 import User from "../contexts/User";
 import editMeta from "../services/seo";
@@ -36,9 +38,10 @@ function UpdatePassword() {
     if (user.password === user.confirmPassword) {
       if (pwdPattern.test(user.password)) {
         apiConnexion
-          .put("/edit/password", { password: user.password, email: user.email })
+          .put("/password", { password: user.password, email: user.email })
           .then((res) => {
-            navigate("/home");
+            toast(`Votre mot de passe a bien été modifiée.`);
+            setTimeout(() => navigate("/"), 2500);
             userContext.handleNewPassword(res.data);
           })
           .catch((err) => {
@@ -48,12 +51,13 @@ function UpdatePassword() {
         setMessage("Invalid credentials");
       }
     } else {
-      setMessage("be sure that the 2 password match");
+      setMessage("Assurez-vous que les deux mots de passe soient identiques");
     }
   };
 
   return (
     <div className="min-h-screen">
+      <Toast />
       <div className="flex justify-center h-100 pt-10">
         <img src={Logo} alt="Logo" />
       </div>
