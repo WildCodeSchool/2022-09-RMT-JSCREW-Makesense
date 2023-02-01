@@ -113,6 +113,7 @@ const edit = (req, res) => {
 };
 const editPassword = (req, res) => {
   const { password, email } = req.body;
+
   hashPassword(password).then((hashedPassword) => {
     models.user
       .editPassword(hashedPassword, email)

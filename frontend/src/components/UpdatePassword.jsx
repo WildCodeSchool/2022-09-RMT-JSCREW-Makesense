@@ -11,15 +11,16 @@ import Logo from "../assets/logo1.svg";
 function UpdatePassword() {
   editMeta("Changement mot de passe");
 
+  const userContext = useContext(User.UserContext);
+
   const [user, setUser] = useState({
     password: "",
     confirmPassword: "",
-    email: "",
+    email: userContext.user.email,
   });
   const [message, setMessage] = useState("");
   const [hidePassword, setHidePassword] = useState(true);
 
-  const userContext = useContext(User.UserContext);
   const navigate = useNavigate();
 
   function showPassword() {
@@ -41,7 +42,7 @@ function UpdatePassword() {
           .put("/password", { password: user.password, email: user.email })
           .then((res) => {
             toast(`Votre mot de passe a bien été modifiée.`);
-            setTimeout(() => navigate("/"), 2500);
+            setTimeout(() => navigate("/home"), 2500);
             userContext.handleNewPassword(res.data);
           })
           .catch((err) => {
@@ -62,7 +63,7 @@ function UpdatePassword() {
         <img src={Logo} alt="Logo" />
       </div>
       <h1 className="flex justify-center font-bold text-2xl pt-16 py-8">
-        Changer votre mot de passe
+        Modifier votre mot de passe
       </h1>
       <div className="flex justify-center card rounded-none ml-8">
         <form>
@@ -72,9 +73,9 @@ function UpdatePassword() {
               id="email-address"
               name="email"
               type="email"
-              value={user.email}
+              value={userContext.user.email}
               autoComplete="email"
-              onChange={(e) => handleNewPassword(e.target.name, e.target.value)}
+              readOnly
               required
               placeholder="Adresse email"
             />

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import apiConnexion from "../services/apiConnexion";
 import User from "../contexts/User";
 import editMeta from "../services/seo";
@@ -19,7 +19,7 @@ function Login() {
     setHidePassword(!hidePassword);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (route) => {
     setMessage("");
     const emailPattern =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,7 +31,7 @@ function Login() {
       apiConnexion
         .post("/login", { ...connexion })
         .then((res) => {
-          navigate("/home");
+          navigate(route);
           userContext.handleUser(res.data);
         })
         .catch((err) => {
@@ -100,15 +100,19 @@ function Login() {
               </button>
             </div>
           </div>
-          <Link to="password/edition" className="text-center">
+          <button
+            className="text-center"
+            type="button"
+            onClick={() => handleSubmit("/password/edition")}
+          >
             <p className="mb-5 text-sm">Modifier le mot de passe</p>
-          </Link>
+          </button>
           <p>{message}</p>
           <div className="group m-3 flex justify-center">
             <button
               className="bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-4 mb-2"
               type="button"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit("/home")}
             >
               Se connecter
             </button>
