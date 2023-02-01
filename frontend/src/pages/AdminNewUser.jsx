@@ -95,7 +95,7 @@ function AdminNewUser() {
               className="px-2 dark:bg-[#e7ebec] dark:text-[#0c3944] border-2 sm:w-1/4 rounded-lg border-[#e7ebec] outline-[#ced7da] mb-6 text-lg"
               type="email"
               name="user_email"
-              pattern='/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+              pattern='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
               required="required"
               placeholder="Saisir l'email"
               value={user.user_email}
