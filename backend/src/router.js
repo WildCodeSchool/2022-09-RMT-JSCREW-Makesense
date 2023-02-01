@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const checkUser = require("./services/user");
-const checkAuth = require("./middleware/auth");
+const { checkAuth, checkEmail } = require("./middleware/auth");
 
 const DecisionMakingController = require("./controllers/decisionMakingController");
 const DesignatedUserController = require("./controllers/designatedUserController");
@@ -32,6 +32,7 @@ router.post("/login", checkUser, UserController.validateUser);
 router.post("/users", checkAuth, UserController.add);
 router.put("/users/:id", checkAuth, UserController.edit);
 router.put("/decision/:id/update", checkAuth, DecisionMakingController.update);
+router.put("/password", checkEmail, UserController.editPassword);
 router.delete("/users/:id", checkAuth, UserController.destroy);
 router.delete(
   "/decisionsMaking/:id",

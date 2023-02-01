@@ -20,15 +20,28 @@ export default function MyAdvice() {
     decisionMakingId: id,
   });
 
+  /** logique de notification lors de la validation de l'Avis
+   * @param {object} msg
+   */
+
   const notify = (msg) => {
     toast(msg);
   };
+
+  /** récupération de la saisie du texte Avis
+   * @param {string} position
+   * @param {string} value
+   */
 
   const handleAdvice = (position, value) => {
     const newAdvice = { ...myAdviceText };
     newAdvice[position] = value;
     setMyAdviceText(newAdvice);
   };
+
+  /** envoi du texte Avis vers le back avant redirection vers la page parente ShowOneDecision
+   * @param {event} e
+   */
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -20,15 +20,28 @@ export default function MyConflict() {
     decisionMakingId: id,
   });
 
+  /** logique de notification lors de la validation du Conflit
+   * @param {object} msg
+   */
+
   const notify = (msg) => {
     toast(msg);
   };
+
+  /** récupération de la saisie du texte Conflit
+   * @param {string} position
+   * @param {string} value
+   */
 
   const handleConflict = (position, value) => {
     const newConflict = { ...myConflictText };
     newConflict[position] = value;
     setMyConflictText(newConflict);
   };
+
+  /** envoi du texte Conflit vers le back avant redirection vers la page parente ShowOneDecision
+   * @param {event} e
+   */
 
   const handleSubmit = (e) => {
     e.preventDefault();
