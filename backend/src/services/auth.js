@@ -7,8 +7,12 @@ const hashingOptions = {
   parallelism: 1,
 };
 
+const hashPassword = (plainPassword) => {
+  return argon2.hash(plainPassword, hashingOptions);
+};
+
 const verifyHash = (hashFromDB, passwordSend) => {
   return argon2.verify(hashFromDB, passwordSend, hashingOptions);
 };
 
-module.exports = { verifyHash };
+module.exports = { verifyHash, hashPassword };
