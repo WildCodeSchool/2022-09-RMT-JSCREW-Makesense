@@ -41,7 +41,7 @@ function UpdatePassword() {
         apiConnexion
           .put("/password", { password: user.password, email: user.email })
           .then((res) => {
-            toast(`Votre mot de passe a bien été modifiée.`);
+            toast(`Votre mot de passe a bien été modifié.`);
             setTimeout(() => navigate("/home"), 2500);
             userContext.handleNewPassword(res.data);
           })
