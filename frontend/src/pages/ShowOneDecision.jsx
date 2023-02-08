@@ -92,22 +92,15 @@ export default function ShowOneDecision() {
     });
   };
 
-  /* logique d'actualisation du statut de la décision lors de son archivage */
-
-  useEffect(() => {
-    if (dateOfTheDay() >= dateArchivedDecision.getTime())
-      oneDecision.status = "Décision archivée";
-    if (dateOfTheDay() >= dateArchivedDecision.getTime())
-      oneDecision.decisionStatus_id = 4;
-  }, []);
-
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:pl-12 dark:bg-[#0c3944] dark:text-[#e7ebec] py-8 min-h-screen">
       {oneDecision && (
         <>
           <div className="text-left w-full sm:w-4/5 mr-8">
             <p className="dark:text-[#0c3944] text-center inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-6">
-              {oneDecision.status}
+              {dateOfTheDay() >= dateArchivedDecision.getTime()
+                ? "Décision archivée"
+                : oneDecision.status}
             </p>
             <div className="flex flex-col sm:flex-row pr-6">
               <h2 className="text-center sm:text-left font-bold text-3xl mb-2">
