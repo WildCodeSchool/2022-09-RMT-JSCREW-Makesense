@@ -1,15 +1,15 @@
 /* eslint no-return-assign: "error" */
 
 import React, { useContext } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { confirmAlert } from "react-confirm-alert";
 
 import SearchPerson from "@components/SearchPerson";
 import Toast from "@components/Toast";
-import { confirmAlert } from "react-confirm-alert";
 import ExportContextDecision from "../contexts/DecisionContext";
 import editMeta from "../services/seo";
+
 import "react-confirm-alert/src/react-confirm-alert.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -40,7 +40,7 @@ function NewDecision() {
     return `${theFinalDate.toISOString().split("T")[0]}`;
   };
 
-  /** Envoie du formulaire */
+  /** Envoie du formulaire et reset des champs de saisie */
   const sendForm = async () => {
     const respons = await createNewDecision();
     if (respons.status === 201) {
@@ -48,6 +48,13 @@ function NewDecision() {
       resetExperts();
       navigate(`/decision/${respons.data.id}`);
     }
+    mainDecision.title = "";
+    mainDecision.description = "";
+    mainDecision.impact = "";
+    mainDecision.profit = "";
+    mainDecision.risk = "";
+    mainDecision.dateCreate = "";
+    mainDecision.dateFinalDecision = "";
   };
 
   /** Fonction qui alerte par un modal de confirmation de la création d'une nouvelle décision */
