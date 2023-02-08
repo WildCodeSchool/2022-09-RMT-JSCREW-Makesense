@@ -115,11 +115,11 @@ export default function ShowOneDecision() {
               </h2>
               {(user.role === "administrator" ||
                 user.id === oneDecision.user_id) &&
-                (oneDecision.decisionStatus_id === 1 ||
-                  oneDecision.decisionStatus_id === 2) &&
-                ((dateOfTheDay() >= dateFirstDecision.getTime() &&
+                ((oneDecision.decisionStatus_id === 1 &&
+                  dateOfTheDay() >= dateFirstDecision.getTime() &&
                   dateOfTheDay() <= dateEndFirstDecision.getTime()) ||
-                  dateOfTheDay() >= dateFinalDecision.getTime()) && (
+                  (oneDecision.decisionStatus_id === 2 &&
+                    dateOfTheDay() >= dateFinalDecision.getTime())) && (
                   <div className="flex justify-center">
                     <button
                       type="button"
