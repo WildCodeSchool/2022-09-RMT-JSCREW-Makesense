@@ -89,14 +89,14 @@ export default function ShowOneDecision() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row w-full px-6 sm:px-12 dark:bg-[#0c3944] dark:text-[#e7ebec] pb-16 min-h-screen">
+    <div className="flex flex-col sm:flex-row w-full px-6 sm:pl-12 dark:bg-[#0c3944] dark:text-[#e7ebec] py-8 min-h-screen">
       {oneDecision && (
         <>
-          <div className="text-left w-full sm:w-4/5 py-8 mr-16">
-            <p className="dark:text-[#0c3944] text-center inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-5">
+          <div className="text-left w-full sm:w-4/5 mr-8">
+            <p className="dark:text-[#0c3944] text-center inline-block bg-[#e7ebec] rounded-full px-5 py-2 text-lg font-semibold mb-6">
               {oneDecision.status}
             </p>
-            <div className="flex flex-col sm:flex-row">
+            <div className="flex flex-col sm:flex-row pr-6">
               <h2 className="text-center sm:text-left font-bold text-3xl mb-2">
                 {oneDecision.title}
               </h2>
@@ -198,13 +198,13 @@ export default function ShowOneDecision() {
             </details>
             <details className="border-b-2 sm:ml-8">
               <summary className="text-2xl font-bold items-center mt-5 mb-3">
-                Décision Définitive
+                Décision définitive
               </summary>
               <p className="text-lg ml-10 mb-5">{oneDecision.finalDecision}</p>
             </details>
           </div>
           <div className="text-center sm:w-1/5 sm:border-l-2">
-            <div className="mb-8 sm:mb-16">
+            <div className="mb-8 sm:mb-16 ml-2">
               <h3 className="text-2xl font-bold sm:mt-8">Dates à retenir</h3>
               <div className="inline-flex mt-8">
                 <div className="w-2/5">
@@ -292,47 +292,47 @@ export default function ShowOneDecision() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="ml-2">
               <h3 className="text-2xl font-bold text-center">
                 Personnes impactées
               </h3>
-              <div className="flex justify-center mt-3">
+              <div className="grid grid-cols-3 mt-3 w-full">
                 {oneDecision.impacted?.map((e) => (
-                  <div className="mb-6">
+                  <div className="flex flex-col items-center">
                     <img
-                      className="w-10 h-10 rounded-full mr-4 dark:hidden"
+                      className="w-10 h-10 rounded-full dark:hidden"
                       src={Avatar}
                       alt="Avatar utilisateur"
                     />
                     <img
-                      className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                      className="w-10 h-10 rounded-full hidden dark:inline"
                       src={AvatarDark}
                       alt="Avatar of user"
                     />
-                    <div className="mb-2 mr-4 w-10">
-                      {e.firstname} {e.lastname.substr(0, 1)}
+                    <div className="mb-2 whitespace-nowrap">
+                      {e.firstname} {e.lastname.substr(0, 1)}.
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="mb-10">
-              <h3 className="text-2xl font-bold mt-8">Personnes expertes</h3>
-              <div className="flex justify-center mt-3">
+            <div className="ml-2 mb-6">
+              <h3 className="text-2xl font-bold mt-6">Personnes expertes</h3>
+              <div className="grid grid-cols-3 w-full mt-3">
                 {oneDecision.expert?.map((e) => (
-                  <div className="mb-6">
+                  <div className="flex flex-col items-center">
                     <img
-                      className="w-10 h-10 rounded-full mr-4 dark:hidden"
+                      className="w-10 h-10 rounded-full dark:hidden"
                       src={Avatar}
                       alt="Avatar utilisateur"
                     />
                     <img
-                      className="w-10 h-10 rounded-full mr-4 hidden dark:inline"
+                      className="w-10 h-10 rounded-full hidden dark:inline"
                       src={AvatarDark}
                       alt="Avatar of user"
                     />
-                    <div className="mb-2 mr-4 w-10">
-                      {e.firstname} {e.lastname.substr(0, 1)}
+                    <div className="mb-2 whitespace-nowrap">
+                      {e.firstname} {e.lastname.substr(0, 1)}.
                     </div>
                   </div>
                 ))}
@@ -341,7 +341,7 @@ export default function ShowOneDecision() {
             {oneDecision.decisionStatus_id === 2 && (
               <Link
                 to={`/decision/${id}/conflict`}
-                className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
+                className="dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
               >
                 Donner mon avis
               </Link>
@@ -349,7 +349,7 @@ export default function ShowOneDecision() {
             {oneDecision.decisionStatus_id === 1 && (
               <Link
                 to={`/decision/${id}/advice`}
-                className="mt-10 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
+                className="mt-5 dark:text-[#0c3944] bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold"
               >
                 Donner mon avis
               </Link>
