@@ -45,7 +45,10 @@ function AdminNewUser() {
         );
         setTimeout(() => navigate("/admin/users"), 3000);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        alert("Adresse e-mail déjà existante");
+      });
   };
 
   function showPassword() {
