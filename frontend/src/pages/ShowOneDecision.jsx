@@ -54,8 +54,12 @@ export default function ShowOneDecision() {
 
   const dateAdvice = new Date(timeDate + 1000 * 60 * 60 * 24 * 7);
   const dateFirstDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 4);
+  const dateEndFirstDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 5);
   const dateConflict = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 8);
   const dateFinalDecision = new Date(timeDate + 1000 * 60 * 60 * 24 * 7 * 10);
+  const dateArchivedDecision = new Date(
+    timeDate + 1000 * 60 * 60 * 24 * 7 * 11
+  );
 
   /* route back pour supprimer la décision */
 
@@ -88,6 +92,15 @@ export default function ShowOneDecision() {
     });
   };
 
+  /* logique d'actualisation du statut de la décision lors de son archivage */
+
+  useEffect(() => {
+    if (dateOfTheDay() >= dateArchivedDecision.getTime())
+      oneDecision.status = "Décision archivée";
+    if (dateOfTheDay() >= dateArchivedDecision.getTime())
+      oneDecision.decisionStatus_id = 4;
+  }, []);
+
   return (
     <div className="flex flex-col sm:flex-row w-full px-6 sm:pl-12 dark:bg-[#0c3944] dark:text-[#e7ebec] py-8 min-h-screen">
       {oneDecision && (
@@ -103,7 +116,10 @@ export default function ShowOneDecision() {
               {(user.role === "administrator" ||
                 user.id === oneDecision.user_id) &&
                 (oneDecision.decisionStatus_id === 1 ||
-                  oneDecision.decisionStatus_id === 2) && (
+                  oneDecision.decisionStatus_id === 2) &&
+                ((dateOfTheDay() >= dateFirstDecision.getTime() &&
+                  dateOfTheDay() <= dateEndFirstDecision.getTime()) ||
+                  dateOfTheDay() >= dateFinalDecision.getTime()) && (
                   <div className="flex justify-center">
                     <button
                       type="button"
