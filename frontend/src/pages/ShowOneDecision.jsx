@@ -100,19 +100,26 @@ export default function ShowOneDecision() {
               <h2 className="text-center sm:text-left font-bold text-3xl mb-2">
                 {oneDecision.title}
               </h2>
-
               <div className="flex justify-center">
                 {(user.role === "administrator" ||
                   user.id === oneDecision.user_id) &&
                   (oneDecision.decisionStatus_id === 1 ||
                     oneDecision.decisionStatus_id === 2) && (
-                    <button
-                      type="button"
-                      onClick={submit}
-                      className="text-center mr-0 sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-4 py-2 mx-20 sm:mx-0 h-fit font-semibold my-2 sm:mt-0"
-                    >
-                      Supprimer
-                    </button>
+                    <>
+                      <button
+                        type="button"
+                        onClick={submit}
+                        className="text-center mr-0 sm:ml-10 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-4 py-2 mx-20 sm:mx-0 h-fit font-semibold my-2 sm:mt-0"
+                      >
+                        Supprimer
+                      </button>
+                      <Link
+                        to={`/user/${user.id}/decisions/${id}`}
+                        className="text-center ml-4 sm:ml-4 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-6 py-2 mx-20 sm:mx-0 h-fit font-semibold my-2 sm:mt-0"
+                      >
+                        Modifier
+                      </Link>
+                    </>
                   )}
                 {user.role === "administrator" &&
                   (oneDecision.decisionStatus_id === 3 ||
@@ -124,17 +131,6 @@ export default function ShowOneDecision() {
                     >
                       Supprimer
                     </button>
-                  )}
-                {(user.role === "administrator" ||
-                  user.id === oneDecision.user_id) &&
-                  (oneDecision.decisionStatus_id === 1 ||
-                    oneDecision.decisionStatus_id === 2) && (
-                    <Link
-                      to={`/user/${user.id}/decisions/${id}`}
-                      className="text-center ml-4 sm:ml-4 bg-[#ced7da] dark:text-[#0c3944] rounded-xl px-6 py-2 mx-20 sm:mx-0 h-fit font-semibold my-2 sm:mt-0"
-                    >
-                      Modifier
-                    </Link>
                   )}
               </div>
             </div>
