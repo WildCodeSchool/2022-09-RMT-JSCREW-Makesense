@@ -89,14 +89,14 @@ function UpdatePassword() {
       <div className="flex justify-center h-100 pt-10">
         <img src={Logo} alt="Logo" />
       </div>
-      <h1 className="flex justify-center font-bold text-2xl pt-16 py-8">
+      <h1 className="text-center font-bold text-4xl sm:pt-16 py-8">
         Modifier votre mot de passe
       </h1>
-      <div className="flex justify-center card rounded-none ml-8">
+      <div className="flex justify-center card rounded-none mx-8">
         <form>
           <div className="group">
             <input
-              className="mb-5 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              className="mb-5 pl-3 border-2 border-[#e7ebec] w-80 sm:w-96 rounded-lg outline-[#ced7da] text-lg"
               id="email-address"
               name="email"
               type="email"
@@ -109,7 +109,7 @@ function UpdatePassword() {
           </div>
           <div className="group flex flex-row">
             <input
-              className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              className="mb-5 pl-3 border-2 border-[#e7ebec] w-80 sm:w-96 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="oldPassword"
               type={hidePassword ? "password" : "text"}
@@ -141,7 +141,7 @@ function UpdatePassword() {
           </div>
           <div className="group flex flex-row">
             <input
-              className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              className="mb-5 pl-3 border-2 border-[#e7ebec] w-80 sm:w-96 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="password"
               type={hidePassword2 ? "password" : "text"}
@@ -173,7 +173,7 @@ function UpdatePassword() {
           </div>
           <div className="group flex flex-row">
             <input
-              className="mb-8 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
+              className="mb-5 pl-3 border-2 border-[#e7ebec] w-80 sm:w-96 rounded-lg outline-[#ced7da] text-lg"
               id="password"
               name="confirmPassword"
               type={hidePassword3 ? "password" : "text"}
@@ -181,7 +181,7 @@ function UpdatePassword() {
               onChange={(e) => handleNewPassword(e.target.name, e.target.value)}
               autoComplete="current-password"
               required
-              placeholder="Confirmer nouveau mot de passe"
+              placeholder="Confirmation du nouveau mot de passe"
             />
             <div>
               <button

@@ -63,7 +63,7 @@ function Login() {
               }
               autoComplete="email"
               required
-              placeholder="Adresse email"
+              placeholder="Adresse e-mail"
             />
           </div>
           <div className="group flex flex-row">
