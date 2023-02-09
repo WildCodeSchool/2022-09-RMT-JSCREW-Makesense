@@ -47,7 +47,7 @@ function AdminNewUser() {
       })
       .catch((err) => {
         console.error(err);
-        alert("Adresse e-mail déjà existante");
+        notify("Adresse e-mail déjà existante");
       });
   };
 
