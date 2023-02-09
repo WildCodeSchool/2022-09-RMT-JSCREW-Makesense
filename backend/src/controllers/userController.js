@@ -74,20 +74,20 @@ const read = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+const add = async (req, res) => {
   const user = req.body;
+  try {
+    const hashedPassword = await hashPassword(user.user_password);
 
-  // TODO validations (length, format...)
+    user.user_password = hashedPassword;
 
-  models.user
-    .insert(user)
-    .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+    const userData = await models.user.insert(user);
+
+    res.location(`/users/${userData[0].insertId}`).sendStatus(201);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
 const edit = (req, res) => {
