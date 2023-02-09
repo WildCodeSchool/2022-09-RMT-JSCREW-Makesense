@@ -379,6 +379,31 @@ VALUES (
         3,
         "2022-04-12",
         "2022-08-12"
+    ),(
+        6,
+        24,
+        "Action contre la faim",
+        "Changement climatique, conflits, inégalités, épidémies. La faim continue de progresser. Il est plus que nécessaire de faire des dons pour soutenir les associations luttant contre ce fléau. Il n'appartient qu'à nous de montrer l'exemple à d'autres gros acteurs du marchés financiers. Ensemble nous irons plus loin, ensemble nous pouvons faire du sens dans nos quotidiens.",
+        "Les répercussions seront surtout d'ordre fiancier mais aussi sur la main d'oeuvre. A contrario, nous pouvons aussi bénéficier d'une couverture médiatique sur nos activités même si cela ne fait pas partie des objectifs de cette décision.",
+        "Un soutien sans failles pour des humains dans le besoin. Une lutte contre la précarité et une victoire pour l'humanité.",
+        "Les dons ne pourront être fait que dans la limite de nos finances disponibles.",
+        1,
+        "2023-01-12",
+        "2023-03-23"
+    ),(
+        7,
+        25,
+        "Elargir le nombre d'employés",
+        "Malgré un contexte économique difficile, nous avons tous vu les bénéfices records enregistrés par l'entreprise. Cela nous donne les moyens d'aller plus haut et plus loin dans nos ambitions. Malheureusement, nous ne sommes plus assez nombreux pour continuer cette progression. Il nous faut alors recruter de nouveaux visages aux multiples compétences pour espérer prolonger cet essor.
+        Nous pouvons lancer de nouvelles activités lucratives pour nos objectifs et nos ambitions en intégrant de nouvelles personnes.",
+        "Dans un premier temps, il y aura forcément un impact économique dans les recettes qui sera néanmoins rapidement résorbé. Et dans un second temps, il faudra tenir compte de nos infrastructures qui devront évoluer avec le nombres de salariés.",
+        "Un nouveau souffle pour notre progression.
+        De nouveaux visages avec de nouvelles idées.",
+        "De possibles frictures entre nouveaux employés et anciens.
+        Nos infrastructures limitent nos capacités de recrutement.",
+        2,
+        "2022-12-01",
+        "2023-02-09"
     );
 
 UPDATE decisionMaking SET firstDecision = "test first decision", finalDecision = "test final decision" WHERE id = 1;

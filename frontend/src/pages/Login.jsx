@@ -19,7 +19,8 @@ function Login() {
     setHidePassword(!hidePassword);
   }
 
-  const handleSubmit = (route) => {
+  const handleSubmit = (route, e) => {
+    e.preventDefault();
     setMessage("");
     const emailPattern =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -50,7 +51,7 @@ function Login() {
         Connexion
       </h1>
       <div className="flex justify-center card rounded-none ml-8 mr-3">
-        <form>
+        <form onSubmit={(e) => handleSubmit("/home", e)}>
           <div className="group">
             <input
               className="mb-5 pl-3 border-2 border-[#e7ebec] w-80 rounded-lg outline-[#ced7da] text-lg"
@@ -63,7 +64,7 @@ function Login() {
               }
               autoComplete="email"
               required
-              placeholder="Adresse email"
+              placeholder="Adresse e-mail"
             />
           </div>
           <div className="group flex flex-row">
@@ -79,6 +80,7 @@ function Login() {
               autoComplete="current-password"
               required
               placeholder="Mot de passe"
+              onKeyDown={(e) => e.key === "Enter" && handleSubmit("/home", e)}
             />
             <div>
               <button
@@ -111,8 +113,7 @@ function Login() {
           <div className="group m-3 flex justify-center">
             <button
               className="bg-[#ced7da] rounded-xl px-5 py-2 text-ml font-semibold mr-4 mb-2"
-              type="button"
-              onClick={() => handleSubmit("/home")}
+              type="submit"
             >
               Se connecter
             </button>
